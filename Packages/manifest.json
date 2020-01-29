@@ -2,6 +2,11 @@
   "dependencies": {
     "com.doghouse.coreservices": "https://github.com/Dog-House-Studio/CoreServices.git",
     "com.doghouse.dogscaffold": "https://github.com/Dog-House-Studio/DogScaffold.git",
+    "com.unity.cinemachine": "2.5.0",
+    "com.unity.postprocessing": "2.2.2",
+    "com.unity.render-pipelines.universal": "7.1.8",
+    "com.unity.shadergraph": "7.1.8",
+    "com.unity.textmeshpro": "2.0.1",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
@@ -35,13 +40,13 @@
     "com.unity.modules.xr": "1.0.0"
   },
   "lock": {
-    "com.doghouse.dogscaffold": {
-      "revision": "HEAD",
-      "hash": "4350d2e1733b02f565fee1f3182ba1808f11e49e"
-    },
     "com.doghouse.coreservices": {
       "revision": "HEAD",
       "hash": "0f9690afa9ac0a4749abd07f4607c3ea47286b8f"
+    },
+    "com.doghouse.dogscaffold": {
+      "revision": "HEAD",
+      "hash": "4350d2e1733b02f565fee1f3182ba1808f11e49e"
     }
   }
 }
