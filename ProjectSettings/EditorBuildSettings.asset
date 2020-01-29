@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/_Content/_Scenes/StandaloneScenes/MainMenu.unity
     guid: 9f89e35f8c7127846a4cb1b4cc208cff
   - enabled: 1
+    path: Assets/_Content/_Scenes/StandaloneScenes/Game.unity
+    guid: d839351408b149b4fa47de30a7eadc0c
+  - enabled: 1
     path: Assets/_Content/_Scenes/StandaloneScenes/_EmptySwitchBuffer.unity
     guid: 0e789ce12bc00ae40b92b6a484023915
   m_configObjects: {}
