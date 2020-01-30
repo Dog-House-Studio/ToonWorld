@@ -42,11 +42,11 @@
   "lock": {
     "com.doghouse.coreservices": {
       "revision": "HEAD",
-      "hash": "0f9690afa9ac0a4749abd07f4607c3ea47286b8f"
+      "hash": "d9ff6812a5727e9be7a1bc4978c01cae04dbab8c"
     },
     "com.doghouse.dogscaffold": {
       "revision": "HEAD",
-      "hash": "4350d2e1733b02f565fee1f3182ba1808f11e49e"
+      "hash": "87a6744f739b13e9bbb7f100f819540edf21c6e3"
     }
   }
 }
