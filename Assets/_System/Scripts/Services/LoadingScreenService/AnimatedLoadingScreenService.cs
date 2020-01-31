@@ -23,7 +23,6 @@ namespace DogHouse.CoreServices
 
         public void SetDisplay(bool value)
         {
-            UnityEngine.Debug.Log(value);
             if(value)
             {
                 m_loadingScreen?.TransitionIn();

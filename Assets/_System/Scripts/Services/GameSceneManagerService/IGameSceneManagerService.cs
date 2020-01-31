@@ -10,4 +10,10 @@ namespace DogHouse.ToonWorld.Services
     {
         void LoadScene(GameSceneDefinition sceneDefinition);
     }
+
+    public enum SceneManagerState
+    {
+        IDLE,
+        LOADING
+    }
 }

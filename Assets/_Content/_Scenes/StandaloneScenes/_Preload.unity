@@ -271,6 +271,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1473087115132401014, guid: 92a71bb423bfeb249abc10609f451d4f,
         type: 2}
+    - target: {fileID: 464461297938939269, guid: 4740fc4b3e255b84eaf167344b24f937,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 472555810359656213, guid: 4740fc4b3e255b84eaf167344b24f937,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -324,6 +329,16 @@ PrefabInstance:
     - target: {fileID: 472555810359656213, guid: 4740fc4b3e255b84eaf167344b24f937,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1033690244961894090, guid: 4740fc4b3e255b84eaf167344b24f937,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 32767
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831980259696343143, guid: 4740fc4b3e255b84eaf167344b24f937,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4106558716227534005, guid: 4740fc4b3e255b84eaf167344b24f937,
@@ -411,6 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998b36c037cb9e4408f81d5d977fde9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_fadeTime: 0.48
 --- !u!1 &1648005133
 GameObject:
   m_ObjectHideFlags: 0
