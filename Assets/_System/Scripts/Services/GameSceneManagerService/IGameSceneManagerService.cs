@@ -8,6 +8,6 @@ namespace DogHouse.ToonWorld.Services
     /// </summary>
     public interface IGameSceneManagerService : IService
     {
-
+        void LoadScene(GameSceneDefinition sceneDefinition);
     }
 }

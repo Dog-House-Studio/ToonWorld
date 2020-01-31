@@ -13,6 +13,12 @@ namespace DogHouse.ToonWorld.Services
         menuName = "Dog House/Asset Management/Game Scene Definition")]
     public class GameSceneDefinition : ScriptableObject
     {
+        #region Public Variables
+        public AssetToken Token => m_sceneToken;
+        public LoadSceneMode Mode => m_mode;
+        public TransitionType Type => m_transitionType;
+        #endregion
+
         #region Private Variables
         [SerializeField]
         private AssetToken m_sceneToken;
@@ -28,6 +34,7 @@ namespace DogHouse.ToonWorld.Services
     public enum TransitionType
     {
         Fade,
-        LoadingScreen
+        LoadingScreen,
+        None
     }
 }
