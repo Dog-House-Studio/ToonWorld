@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37268ab18e4d5034c91f6d5b40fe65e6, type: 3}
-  m_Name: Token
+  m_Name: MainMenu_AssetToken
   m_EditorClassIdentifier: 
-  m_asset: {fileID: 102900000, guid: d839351408b149b4fa47de30a7eadc0c, type: 3}
+  m_asset: {fileID: 102900000, guid: 9f89e35f8c7127846a4cb1b4cc208cff, type: 3}
+  m_name: MainMenu
   editorFoldout: 1

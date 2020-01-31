@@ -10,20 +10,29 @@ namespace DogHouse.ScaffoldCandidates.AssetManagement
         menuName = "Dog House/Asset Management/Asset Token")]
     public class AssetToken : ScriptableObject
     {
-        
+        #region Public Variables
+        public Object Asset => m_asset;
+        public string AssetName => m_name;
+        #endregion
 
+        #region Private Variables
         [SerializeField]
         private UnityEngine.Object m_asset;
 
-#if UNITY_EDITOR
+        [SerializeField]
+        [HideInInspector]
+        private string m_name;
+
+        #if UNITY_EDITOR
         [MethodButton("UpdateSerializations")]
         [SerializeField]
         private bool editorFoldout;
-#endif
+        #endif
+        #endregion
 
         private void UpdateSerializations()
         {
-
+            m_name = m_asset.name;
         }
     }
 }
