@@ -1,5 +1,6 @@
 ﻿using DogScaffold;
 using UnityEngine.SceneManagement;
+using DogHouse.CoreServices;
 
 namespace DogHouse.ToonWorld.Services
 {
@@ -11,6 +12,14 @@ namespace DogHouse.ToonWorld.Services
     public class ToonWorldSceneManager : BaseService<IGameSceneManagerService>, 
         IGameSceneManagerService
     {
+        #region Private Variables
+        private ServiceReference<ILoadingScreenService> m_loadingScreenService 
+                = new ServiceReference<ILoadingScreenService>();
+
+        private ServiceReference<ICameraTransition> m_cameraTransition 
+            = new ServiceReference<ICameraTransition>();
+        #endregion
+
         #region Main Methods
         public void LoadScene(GameSceneDefinition sceneDefinition)
         {

@@ -497,7 +497,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2030678623}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6198c1d1aad1c460283f37c6efa3e619, type: 3}
+  m_Script: {fileID: 11500000, guid: 510ecfcdf6dc7e64aa727f7540526995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2030678626
@@ -516,11 +516,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2030678625}
-        m_MethodName: LoadSlideShowScene
-        m_Mode: 1
+        m_MethodName: LoadScene
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 1968a4db233547448ade4161fbe09c4d,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: DogHouse.ToonWorld.Services.GameSceneDefinition,
+            Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
