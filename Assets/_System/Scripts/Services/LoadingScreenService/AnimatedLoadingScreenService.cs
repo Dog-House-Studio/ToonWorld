@@ -9,7 +9,8 @@ namespace DogHouse.CoreServices
     /// takes advantage of the ILoadingScreen interface of a 
     /// child object.
     /// </summary>
-    public class AnimatedLoadingScreenService : BaseService<ILoadingScreenService>, ILoadingScreenService
+    public class AnimatedLoadingScreenService : BaseService<ILoadingScreenService>, 
+        ILoadingScreenService
     {
         #region Private Variables
         private ILoadingScreen m_loadingScreen;

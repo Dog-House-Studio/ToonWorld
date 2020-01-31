@@ -336,6 +336,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 32767
       objectReference: {fileID: 0}
+    - target: {fileID: 3648120648552098499, guid: 4740fc4b3e255b84eaf167344b24f937,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3831980259696343143, guid: 4740fc4b3e255b84eaf167344b24f937,
         type: 3}
       propertyPath: m_Enabled
@@ -350,6 +355,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: '[CORE]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589073029049751668, guid: 4740fc4b3e255b84eaf167344b24f937,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4740fc4b3e255b84eaf167344b24f937, type: 3}
