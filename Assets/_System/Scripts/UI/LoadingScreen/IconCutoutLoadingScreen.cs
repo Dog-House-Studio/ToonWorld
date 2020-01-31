@@ -42,8 +42,11 @@ namespace DogHouse.ToonWorld.UI
         public void TransitionIn()
         {
             if (m_state == LoadingScreenState.TRANSITION_IN) return;
+            if (m_state == LoadingScreenState.ON) return;
             m_targetState = LoadingScreenState.ON;
+            m_state = LoadingScreenState.TRANSITION_IN;
             m_maskObject?.SetActive(true);
+            SetAnimatorValue(true);
         }
 
         public void TransitionIn(Action callback)
@@ -55,8 +58,11 @@ namespace DogHouse.ToonWorld.UI
         public void TransitionOut()
         {
             if (m_state == LoadingScreenState.TRANSITION_OUT) return;
+            if (m_state == LoadingScreenState.OFF) return;
             m_targetState = LoadingScreenState.OFF;
+            m_state = LoadingScreenState.TRANSITION_OUT;
             m_maskObject?.SetActive(true);
+            SetAnimatorValue(false);
         }
 
         public void TransitionOut(Action callback)
