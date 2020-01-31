@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using DogHouse.CoreServices;
 using UnityEngine;
+using ILoadingScreenService = DogHouse.ToonWorld.Services.ILoadingScreenService;
 
 namespace DogHouse.ToonWorld.Services
 {
@@ -53,11 +54,18 @@ namespace DogHouse.ToonWorld.Services
                 return;
             }
 
-            Load(sceneDefinition);
+            m_loadingScreenService?.Reference?.TransitionIn(
+                () => { LoadingScreenLoadedIn(sceneDefinition); });
         }
         #endregion
 
         #region Utility Methods
+        private void LoadingScreenLoadedIn(GameSceneDefinition definition)
+        {
+            SceneManager.LoadScene(definition.Token.AssetName, definition.Mode);
+            m_loadingScreenService?.Reference?.TransitionOut(FinishLoading);
+        }
+
         private void FadeInLoad(GameSceneDefinition definition)
         {
             SceneManager.LoadScene(definition.Token.AssetName, definition.Mode);

@@ -1,7 +1,9 @@
 ﻿using DogScaffold;
 using DogHouse.ToonWorld.UI;
+using System;
+using DogHouse.CoreServices;
 
-namespace DogHouse.CoreServices
+namespace DogHouse.ToonWorld.Services
 {
     /// <summary>
     /// The AnimatedLoadingScreenService is a script that 
@@ -14,6 +16,9 @@ namespace DogHouse.CoreServices
     {
         #region Private Variables
         private ILoadingScreen m_loadingScreen;
+
+        private ServiceReference<ILogService> m_logService 
+            = new ServiceReference<ILogService>();
         #endregion
 
         #region Main Methods
@@ -22,15 +27,26 @@ namespace DogHouse.CoreServices
             m_loadingScreen = GetComponentInChildren<ILoadingScreen>();
         }
 
-        public void SetDisplay(bool value)
+        public void TransitionIn(Action callback = null)
         {
-            if(value)
+            if(m_loadingScreen == null)
             {
-                m_loadingScreen?.TransitionIn();
+                m_logService.Reference?.LogError("No Loading Screen asset setup");
                 return;
             }
 
-            m_loadingScreen?.TransitionOut();
+            m_loadingScreen?.TransitionIn(callback);
+        }
+
+        public void TransitionOut(Action callback = null)
+        {
+            if (m_loadingScreen == null)
+            {
+                m_logService.Reference?.LogError("No Loading Screen asset setup");
+                return;
+            }
+
+            m_loadingScreen?.TransitionOut(callback);
         }
         #endregion
     }
