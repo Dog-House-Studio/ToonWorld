@@ -11,7 +11,19 @@ namespace DogHouse.ScaffoldCandidates.AssetManagement
     public class AssetToken : ScriptableObject
     {
         
+
         [SerializeField]
         private UnityEngine.Object m_asset;
+
+#if UNITY_EDITOR
+        [MethodButton("UpdateSerializations")]
+        [SerializeField]
+        private bool editorFoldout;
+#endif
+
+        private void UpdateSerializations()
+        {
+
+        }
     }
 }
