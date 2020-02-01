@@ -87,6 +87,7 @@ namespace DogHouse.ToonWorld.Map
                 offset.x = (EndNode.Position.x - (m_endZonePlacementRange / 2)) + (m_endZonePlacementRange / (numberOfBranches + 1)) * (i + 1);
                 newNode.SetPosition(EndNode.Position + offset);
                 newNode.SetOutput(EndNode);
+                m_endPositionNodes.Add(newNode);
             }
 
             for(int i = 0; i < numberOfBranches; i++)
@@ -98,7 +99,7 @@ namespace DogHouse.ToonWorld.Map
                 offset.x = (StartNode.Position.x - (m_endZonePlacementRange / 2)) + (m_endZonePlacementRange / (numberOfBranches + 1)) * (i + 1);
                 newNode.SetPosition(StartNode.Position + offset);
                 StartNode.SetOutput(newNode);
-                //CreateBranch(StartNode, EndNode);
+                CreateBranch(newNode, m_endPositionNodes[i]);
             }
         }
 
@@ -128,7 +129,6 @@ namespace DogHouse.ToonWorld.Map
         {
             float distance = RootBranch.Distance(BranchTip);
             float orginalDistance = distance;
-            Debug.Log(distance);
             Node LastNode = RootBranch;
             Vector3 tempPosition = Vector3.zero;
 
