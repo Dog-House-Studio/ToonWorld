@@ -13,10 +13,24 @@ namespace DogHouse.ToonWorld.Map
     {
         #region Private Variables
         [SerializeField]
-        private MapLocation[] m_locations;
+        private GameObject m_startLocation;
+
+        [SerializeField]
+        private GameObject m_endLocation;
+
+        [SerializeField]
+        private GameObject m_mapLocationPrefab;
+
+        [SerializeField]
+        private MapLocationInfo[] m_locations;
         #endregion
 
         #region Main Methods
+        private void Start()
+        {
+            Generate();
+        }
+
         public void Display(bool value)
         {
             
@@ -32,5 +46,19 @@ namespace DogHouse.ToonWorld.Map
             
         }
         #endregion
+    }
+
+    [System.Serializable]
+    public struct MapLocationInfo
+    {
+        public MapLocation m_mapLocation;
+        public MapLocationType m_type;
+    }
+
+    public enum MapLocationType
+    {
+        START,
+        MIDDLE,
+        END
     }
 }
