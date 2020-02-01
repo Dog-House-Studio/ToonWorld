@@ -30,11 +30,11 @@ namespace DogHouse.ToonWorld.Map
 
         [Header("Generation Settings")]
         [SerializeField]
-        [Range(0.0001f, 1f)]
+        [Range(0.0001f, 10f)]
         float m_minPlacementRange;
 
         [SerializeField]
-        [Range(0.0001f, 1f)]
+        [Range(0.0001f, 10f)]
         float m_maximumPlacementRange;
 
         [SerializeField]
@@ -65,18 +65,17 @@ namespace DogHouse.ToonWorld.Map
             Node EndNode = CreateNode(m_locations[1].m_mapLocation);
             EndNode.SetPosition(m_endLocation.transform.position);
 
-            StartNode.SetOutput(EndNode);
-
             int numberOfBranches = Random.Range(m_MinimumNumberOfBranches, m_maximumNumberOfBranches + 1);
+            Debug.Log("Number of branches : " + numberOfBranches);
+
             for(int i = 0; i < numberOfBranches; i++)
             {
-
+                CreateBranch(StartNode, EndNode);
             }
         }
 
         public void SetSeed(int seedValue)
         {
-            CreateBranch();
         }
         #endregion
 
@@ -96,9 +95,27 @@ namespace DogHouse.ToonWorld.Map
             return newNode;
         }
 
-        private void CreateBranch()
+        private void CreateBranch(Node RootBranch, Node BranchTip)
         {
+            float distance = RootBranch.Distance(BranchTip);
+            Debug.Log(distance);
+            Node LastNode = RootBranch;
 
+            do
+            {
+                Node newNode = CreateNode(m_locations[0].m_mapLocation);
+
+                Vector3 Offset = Vector3.zero;
+                Offset.y += Random.Range(m_minPlacementRange, m_maximumPlacementRange);
+                newNode.SetPosition(LastNode.Position + Offset);
+
+                LastNode.SetOutput(newNode);
+                LastNode = newNode;
+                distance = LastNode.Distance(BranchTip);
+
+            } while (distance > m_maximumPlacementRange);
+
+            LastNode.SetOutput(BranchTip);
         }
         #endregion
     }

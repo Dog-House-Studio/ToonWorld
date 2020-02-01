@@ -28,6 +28,8 @@ namespace DogHouse.ToonWorld.Map
     /// </summary>
     public class Node
     {
+        public Vector3 Position => m_nodeRootGameObject.transform.position;
+
         public GameObject m_nodeRootGameObject;
         public MapLocationVisualController m_visualController;
         public List<Node> m_inputs = new List<Node>();
@@ -44,6 +46,11 @@ namespace DogHouse.ToonWorld.Map
             node.m_inputs.Add(this);
 
             m_visualController.SetOutput(node.m_nodeRootGameObject);
+        }
+
+        public float Distance(Node node)
+        {
+            return (node.Position -Position).magnitude;
         }
     }
 }
