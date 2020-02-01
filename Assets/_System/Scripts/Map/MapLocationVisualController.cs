@@ -28,6 +28,8 @@ namespace DogHouse.ToonWorld.Map
             Vector3[] positions = new Vector3[2];
             positions[0] = this.transform.position;
             positions[1] = output.transform.position;
+            m_lineRenderer.positionCount = 2;
+            m_lineRenderer.SetPositions(positions);
         }
         #endregion
     }

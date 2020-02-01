@@ -49,7 +49,7 @@ namespace DogHouse.ToonWorld.Map
             start.transform.SetParent(m_nodeParent.transform);
             MapLocationVisualController startController = start.GetComponent<MapLocationVisualController>();
             startController.SetIcon(m_locations[0].m_mapLocation.LocationSprite);
-
+            
             //Node startNode = new Node();
             //startNode.m_nodeRootGameObject = start;
 
@@ -58,6 +58,8 @@ namespace DogHouse.ToonWorld.Map
             end.transform.SetParent(m_nodeParent.transform);
             MapLocationVisualController endController = end.GetComponent<MapLocationVisualController>();
             endController.SetIcon(m_locations[1].m_mapLocation.LocationSprite);
+
+            startController.SetOutput(end);
         }
 
         public void SetSeed(int seedValue)
