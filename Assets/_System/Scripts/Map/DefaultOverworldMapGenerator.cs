@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace DogHouse.ToonWorld.Map
 {
@@ -13,6 +11,11 @@ namespace DogHouse.ToonWorld.Map
     public class DefaultOverworldMapGenerator : MonoBehaviour, 
         IOverworldMapGenerator
     {
+        #region Private Variables
+        [SerializeField]
+        private MapLocation[] m_locations;
+        #endregion
+
         #region Main Methods
         public void Display(bool value)
         {

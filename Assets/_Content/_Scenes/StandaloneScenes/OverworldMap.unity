@@ -365,6 +365,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1800870803}
+  - component: {fileID: 1800870804}
   m_Layer: 0
   m_Name: '[MAP_PARENT]'
   m_TagString: Untagged
@@ -388,3 +389,22 @@ Transform:
   m_Father: {fileID: 452929074}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1800870804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800870802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d82548b0668bce4382270a413794b78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_locations:
+  - {fileID: 11400000, guid: ed8d568b76cc6354991de15eb84d756b, type: 2}
+  - {fileID: 11400000, guid: 889a3a8b21e64414c9246cdec25d1bb0, type: 2}
+  - {fileID: 11400000, guid: 918547c8ec6a47e45ab9b3f32cf012e4, type: 2}
+  - {fileID: 11400000, guid: 34f633b46944b974d964cbae2508600c, type: 2}
+  - {fileID: 11400000, guid: f3a0c1da2a8beba42a1ccfe67cf4f2af, type: 2}
+  - {fileID: 11400000, guid: e71d8823e7c116d44977705160f03368, type: 2}
