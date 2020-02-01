@@ -540,11 +540,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2122836635}
-        m_MethodName: LoadGameScene
-        m_Mode: 1
+        m_MethodName: LoadScene
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 9407d7ee38ce56b45ae9d3d36edb790c,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: DogHouse.ToonWorld.Services.GameSceneDefinition,
+            Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1009,7 +1011,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.31669894, y: 0.13800001}
   m_AnchorMax: {x: 0.69000006, y: 0.5915497}
-  m_AnchoredPosition: {x: -0.45999908, y: 1.0200043}
+  m_AnchoredPosition: {x: -0.45999146, y: 1.0200043}
   m_SizeDelta: {x: 0.69000244, y: -1.8399963}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1644260896
@@ -1403,6 +1405,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2122836633}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6198c1d1aad1c460283f37c6efa3e619, type: 3}
+  m_Script: {fileID: 11500000, guid: 510ecfcdf6dc7e64aa727f7540526995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
