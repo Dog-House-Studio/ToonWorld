@@ -29,7 +29,21 @@ namespace DogHouse.ToonWorld.Map
     public class Node
     {
         public GameObject m_nodeRootGameObject;
-        public List<Node> m_inputs;
-        public List<Node> m_outputs;
+        public MapLocationVisualController m_visualController;
+        public List<Node> m_inputs = new List<Node>();
+        public List<Node> m_outputs = new List<Node>();
+
+        public void SetPosition(Vector3 position)
+        {
+            m_nodeRootGameObject.transform.position = position;
+        }
+
+        public void SetOutput(Node node)
+        {
+            m_outputs.Add(node);
+            node.m_inputs.Add(this);
+
+            m_visualController.SetOutput(node.m_nodeRootGameObject);
+        }
     }
 }

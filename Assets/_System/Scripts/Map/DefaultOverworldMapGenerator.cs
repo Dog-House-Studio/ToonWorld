@@ -28,6 +28,21 @@ namespace DogHouse.ToonWorld.Map
         [SerializeField]
         private MapLocationInfo[] m_locations;
 
+        [Header("Generation Settings")]
+        [SerializeField]
+        [Range(0.0001f, 1f)]
+        float m_minPlacementRange;
+
+        [SerializeField]
+        [Range(0.0001f, 1f)]
+        float m_maximumPlacementRange;
+
+        [SerializeField]
+        int m_MinimumNumberOfBranches;
+
+        [SerializeField]
+        int m_maximumNumberOfBranches;
+
         private NodeWeb m_nodeWeb = new NodeWeb();
         #endregion
 
@@ -44,27 +59,46 @@ namespace DogHouse.ToonWorld.Map
 
         public void Generate()
         {
-            GameObject start = Instantiate(m_mapLocationPrefab);
-            start.transform.position = m_startLocation.transform.position;
-            start.transform.SetParent(m_nodeParent.transform);
-            MapLocationVisualController startController = start.GetComponent<MapLocationVisualController>();
-            startController.SetIcon(m_locations[0].m_mapLocation.LocationSprite);
-            
-            //Node startNode = new Node();
-            //startNode.m_nodeRootGameObject = start;
+            Node StartNode = CreateNode(m_locations[0].m_mapLocation);
+            StartNode.SetPosition(m_startLocation.transform.position);
 
-            GameObject end = Instantiate(m_mapLocationPrefab);
-            end.transform.position = m_endLocation.transform.position;
-            end.transform.SetParent(m_nodeParent.transform);
-            MapLocationVisualController endController = end.GetComponent<MapLocationVisualController>();
-            endController.SetIcon(m_locations[1].m_mapLocation.LocationSprite);
+            Node EndNode = CreateNode(m_locations[1].m_mapLocation);
+            EndNode.SetPosition(m_endLocation.transform.position);
 
-            startController.SetOutput(end);
+            StartNode.SetOutput(EndNode);
+
+            int numberOfBranches = Random.Range(m_MinimumNumberOfBranches, m_maximumNumberOfBranches + 1);
+            for(int i = 0; i < numberOfBranches; i++)
+            {
+
+            }
         }
 
         public void SetSeed(int seedValue)
         {
-            
+            CreateBranch();
+        }
+        #endregion
+
+        #region Utility Methods
+        private Node CreateNode(MapLocation location)
+        {
+            Node newNode = new Node();
+
+            GameObject nodeObject = Instantiate(m_mapLocationPrefab);
+            nodeObject.transform.SetParent(m_nodeParent.transform);
+            newNode.m_nodeRootGameObject = nodeObject;
+
+            newNode.m_visualController = nodeObject
+                   .GetComponent<MapLocationVisualController>();
+
+            newNode.m_visualController.SetIcon(location.LocationSprite);
+            return newNode;
+        }
+
+        private void CreateBranch()
+        {
+
         }
         #endregion
     }
