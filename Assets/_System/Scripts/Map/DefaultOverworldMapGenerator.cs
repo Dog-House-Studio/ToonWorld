@@ -27,6 +27,8 @@ namespace DogHouse.ToonWorld.Map
 
         [SerializeField]
         private MapLocationInfo[] m_locations;
+
+        private NodeWeb m_nodeWeb = new NodeWeb();
         #endregion
 
         #region Main Methods
