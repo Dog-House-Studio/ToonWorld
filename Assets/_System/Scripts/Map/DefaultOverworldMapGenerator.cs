@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace DogHouse.ToonWorld.Map
 {
@@ -29,6 +31,10 @@ namespace DogHouse.ToonWorld.Map
         private MapLocationInfo[] m_locations;
 
         [Header("Generation Settings")]
+        [SerializeField]
+        [Range(0.0001f, 10f)]
+        float m_endZonePlacementRange;
+
         [SerializeField]
         [Range(0.0001f, 10f)]
         float m_minPlacementRange;
@@ -70,11 +76,29 @@ namespace DogHouse.ToonWorld.Map
             EndNode.SetPosition(m_endLocation.transform.position);
 
             int numberOfBranches = Random.Range(m_MinimumNumberOfBranches, m_maximumNumberOfBranches + 1);
-            Debug.Log("Number of branches : " + numberOfBranches);
+
+            List<Node> m_endPositionNodes = new List<Node>();
+            for(int i = 0; i < numberOfBranches; i++)
+            {
+                Node newNode = CreateNode(m_locations[0].m_mapLocation);
+                Vector3 offset = Vector3.zero;
+                offset.y = Mathf.Lerp(-m_minPlacementRange, -m_maximumPlacementRange, 0.5f);
+
+                offset.x = (EndNode.Position.x - (m_endZonePlacementRange / 2)) + (m_endZonePlacementRange / (numberOfBranches + 1)) * (i + 1);
+                newNode.SetPosition(EndNode.Position + offset);
+                newNode.SetOutput(EndNode);
+            }
 
             for(int i = 0; i < numberOfBranches; i++)
             {
-                CreateBranch(StartNode, EndNode);
+                Node newNode = CreateNode(m_locations[0].m_mapLocation);
+                Vector3 offset = Vector3.zero;
+                offset.y = Mathf.Lerp(m_minPlacementRange, m_maximumPlacementRange, 0.5f);
+
+                offset.x = (StartNode.Position.x - (m_endZonePlacementRange / 2)) + (m_endZonePlacementRange / (numberOfBranches + 1)) * (i + 1);
+                newNode.SetPosition(StartNode.Position + offset);
+                StartNode.SetOutput(newNode);
+                //CreateBranch(StartNode, EndNode);
             }
         }
 

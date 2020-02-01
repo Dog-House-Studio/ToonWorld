@@ -450,8 +450,9 @@ MonoBehaviour:
     m_type: 1
   - m_mapLocation: {fileID: 11400000, guid: e71d8823e7c116d44977705160f03368, type: 2}
     m_type: 0
+  m_endZonePlacementRange: 6.49
   m_minPlacementRange: 0.67
   m_maximumPlacementRange: 2.47
   m_maxSwayRange: 3.1
-  m_MinimumNumberOfBranches: 2
-  m_maximumNumberOfBranches: 2
+  m_MinimumNumberOfBranches: 3
+  m_maximumNumberOfBranches: 4
