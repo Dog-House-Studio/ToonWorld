@@ -10,6 +10,7 @@ namespace DogHouse.ToonWorld.UI
     /// screen.
     /// </summary>
     [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(AudioSource))]
     public class IconCutoutLoadingScreen : MonoBehaviour, ILoadingScreen
     {
         #region Public Variables
@@ -21,7 +22,11 @@ namespace DogHouse.ToonWorld.UI
         [SerializeField]
         private GameObject m_maskObject;
 
+        [SerializeField]
+        private AudioClip m_sfxClip;
+
         private Animator m_animator;
+        private AudioSource m_audioSource;
         private LoadingScreenState m_state = LoadingScreenState.OFF;
         private LoadingScreenState m_targetState;
 
@@ -37,6 +42,7 @@ namespace DogHouse.ToonWorld.UI
         private void Awake()
         {
             m_animator = GetComponent<Animator>();
+            m_audioSource = GetComponent<AudioSource>();
         }
 
         public void TransitionIn()
@@ -47,6 +53,7 @@ namespace DogHouse.ToonWorld.UI
             m_state = LoadingScreenState.TRANSITION_IN;
             m_maskObject?.SetActive(true);
             SetAnimatorValue(true);
+            m_audioSource?.PlayOneShot(m_sfxClip);
         }
 
         public void TransitionIn(Action callback)
