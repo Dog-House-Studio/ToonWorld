@@ -3,7 +3,7 @@
     "com.doghouse.coreservices": "https://github.com/Dog-House-Studio/CoreServices.git",
     "com.doghouse.dogscaffold": "https://github.com/Dog-House-Studio/DogScaffold.git",
     "com.unity.cinemachine": "2.5.0",
-    "com.unity.postprocessing": "2.2.2",
+    "com.unity.postprocessing": "2.3.0",
     "com.unity.render-pipelines.universal": "7.1.8",
     "com.unity.shadergraph": "7.1.8",
     "com.unity.textmeshpro": "2.0.1",
