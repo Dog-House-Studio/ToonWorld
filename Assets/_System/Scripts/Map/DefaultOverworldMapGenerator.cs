@@ -20,6 +20,9 @@ namespace DogHouse.ToonWorld.Map
         private GameObject m_endLocation;
 
         [SerializeField]
+        private GameObject m_nodeParent;
+
+        [SerializeField]
         private GameObject m_mapLocationPrefab;
 
         [SerializeField]
@@ -41,9 +44,11 @@ namespace DogHouse.ToonWorld.Map
         {
             GameObject start = Instantiate(m_mapLocationPrefab);
             start.transform.position = m_startLocation.transform.position;
+            start.transform.SetParent(m_nodeParent.transform);
 
             GameObject end = Instantiate(m_mapLocationPrefab);
             end.transform.position = m_endLocation.transform.position;
+            end.transform.SetParent(m_nodeParent.transform);
         }
 
         public void SetSeed(int seedValue)
