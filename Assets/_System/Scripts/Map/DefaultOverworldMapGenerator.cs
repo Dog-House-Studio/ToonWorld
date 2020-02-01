@@ -38,6 +38,10 @@ namespace DogHouse.ToonWorld.Map
         float m_maximumPlacementRange;
 
         [SerializeField]
+        [Range(0.0001f, 10f)]
+        float m_maxSwayRange;
+
+        [SerializeField]
         int m_MinimumNumberOfBranches;
 
         [SerializeField]
@@ -98,16 +102,24 @@ namespace DogHouse.ToonWorld.Map
         private void CreateBranch(Node RootBranch, Node BranchTip)
         {
             float distance = RootBranch.Distance(BranchTip);
+            float orginalDistance = distance;
             Debug.Log(distance);
             Node LastNode = RootBranch;
+            Vector3 tempPosition = Vector3.zero;
 
             do
             {
                 Node newNode = CreateNode(m_locations[0].m_mapLocation);
+                
 
                 Vector3 Offset = Vector3.zero;
                 Offset.y += Random.Range(m_minPlacementRange, m_maximumPlacementRange);
+                Offset.x += Random.Range(-m_maxSwayRange, m_maxSwayRange);
                 newNode.SetPosition(LastNode.Position + Offset);
+                tempPosition = Vector3.Lerp(newNode.Position, BranchTip.Position, newNode.Distance(RootBranch) / orginalDistance);
+                tempPosition.y = newNode.Position.y;
+                newNode.SetPosition(tempPosition);
+                
 
                 LastNode.SetOutput(newNode);
                 LastNode = newNode;
