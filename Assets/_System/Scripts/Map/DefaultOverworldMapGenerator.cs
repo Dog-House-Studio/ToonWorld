@@ -47,10 +47,17 @@ namespace DogHouse.ToonWorld.Map
             GameObject start = Instantiate(m_mapLocationPrefab);
             start.transform.position = m_startLocation.transform.position;
             start.transform.SetParent(m_nodeParent.transform);
+            MapLocationVisualController startController = start.GetComponent<MapLocationVisualController>();
+            startController.SetIcon(m_locations[0].m_mapLocation.LocationSprite);
+
+            //Node startNode = new Node();
+            //startNode.m_nodeRootGameObject = start;
 
             GameObject end = Instantiate(m_mapLocationPrefab);
             end.transform.position = m_endLocation.transform.position;
             end.transform.SetParent(m_nodeParent.transform);
+            MapLocationVisualController endController = end.GetComponent<MapLocationVisualController>();
+            endController.SetIcon(m_locations[1].m_mapLocation.LocationSprite);
         }
 
         public void SetSeed(int seedValue)
