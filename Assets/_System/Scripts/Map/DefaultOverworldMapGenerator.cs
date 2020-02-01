@@ -120,9 +120,6 @@ namespace DogHouse.ToonWorld.Map
                 tempPosition = Vector3.Lerp(newNode.Position, BranchTip.Position, newNode.Distance(RootBranch) / orginalDistance);
                 tempPosition.y = newNode.Position.y;
                 newNode.SetPosition(tempPosition);
-                
-
-                LastNode.SetOutput(newNode);
                 LastNode = newNode;
                 distance = LastNode.Distance(BranchTip);
 
