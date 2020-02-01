@@ -56,6 +56,9 @@ namespace DogHouse.ToonWorld.Map
         [Range(0.0001f, 10f)]
         float m_paddingSpace;
 
+        [SerializeField]
+        int m_paddingItterations;
+
         private NodeWeb m_nodeWeb = new NodeWeb();
         #endregion
 
@@ -163,38 +166,39 @@ namespace DogHouse.ToonWorld.Map
                 distance = LastNode.Distance(BranchTip);
 
             } while (distance > m_maximumPlacementRange);
-
-            LastNode.SetOutput(BranchTip);
         }
 
         private void ResolvePaddings(List<Node> ignoreList)
         {
             List<Node> CloseList = new List<Node>();
 
-            for(int currentNode = 0; currentNode < m_nodeWeb.Nodes.Count; currentNode++)
+            for (int itteration = 0; itteration < m_paddingItterations; itteration++)
             {
-                Node node = m_nodeWeb.Nodes[currentNode];
-                if (ignoreList.Contains(node)) continue;
-
-                CloseList.Clear();
-                //Calculate close list
-                for(int i = 0; i < m_nodeWeb.Nodes.Count; i++)
+                for (int currentNode = 0; currentNode < m_nodeWeb.Nodes.Count; currentNode++)
                 {
-                    if (i == currentNode) continue;
-                    if(node.Distance(m_nodeWeb.Nodes[i]) < m_paddingSpace)
+                    Node node = m_nodeWeb.Nodes[currentNode];
+                    if (ignoreList.Contains(node)) continue;
+
+                    CloseList.Clear();
+                    //Calculate close list
+                    for (int i = 0; i < m_nodeWeb.Nodes.Count; i++)
                     {
-                        CloseList.Add(m_nodeWeb.Nodes[i]);
+                        if (i == currentNode) continue;
+                        if (node.Distance(m_nodeWeb.Nodes[i]) < m_paddingSpace)
+                        {
+                            CloseList.Add(m_nodeWeb.Nodes[i]);
+                        }
                     }
+
+                    Vector3 averagePosition = Node.AveragePosition(CloseList.ToArray());
+                    Vector3 toAverage = averagePosition - node.Position;
+                    toAverage.Normalize();
+                    Vector3 awayVector = toAverage;
+                    awayVector.x = -awayVector.x;
+                    awayVector.y = -awayVector.y;
+
+                    node.SetPosition(node.Position + (awayVector * m_paddingSpace * 0.5f));
                 }
-
-                Vector3 averagePosition = Node.AveragePosition(CloseList.ToArray());
-                Vector3 toAverage = averagePosition - node.Position;
-                toAverage.Normalize();
-                Vector3 awayVector = toAverage;
-                awayVector.x = -awayVector.x;
-                awayVector.y = -awayVector.y;
-
-                node.SetPosition(node.Position + (awayVector * m_paddingSpace * 0.5f));
             }
         }
         #endregion

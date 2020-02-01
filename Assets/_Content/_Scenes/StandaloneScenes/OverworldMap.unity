@@ -146,8 +146,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 279758955}
   m_LocalRotation: {x: -0, y: -0, z: -0.70710576, w: 0.70710784}
-  m_LocalPosition: {x: 0, y: 9.52, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 18.835, z: 0}
+  m_LocalScale: {x: 1.97017, y: 1.476, z: 1}
   m_Children: []
   m_Father: {fileID: 899865420}
   m_RootOrder: 0
@@ -287,7 +287,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 582940604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 15.44, z: 0}
+  m_LocalPosition: {x: 0, y: 33.68, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1094492287}
@@ -450,10 +450,11 @@ MonoBehaviour:
     m_type: 1
   - m_mapLocation: {fileID: 11400000, guid: e71d8823e7c116d44977705160f03368, type: 2}
     m_type: 0
-  m_endZonePlacementRange: 6.49
+  m_endZonePlacementRange: 9.37
   m_minPlacementRange: 1.31
   m_maximumPlacementRange: 2.47
   m_maxSwayRange: 3.1
-  m_MinimumNumberOfBranches: 3
+  m_MinimumNumberOfBranches: 4
   m_maximumNumberOfBranches: 4
-  m_paddingSpace: 0
+  m_paddingSpace: 1
+  m_paddingItterations: 2
