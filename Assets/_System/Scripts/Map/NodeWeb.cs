@@ -10,6 +10,10 @@ namespace DogHouse.ToonWorld.Map
     /// </summary>
     public class NodeWeb
     {
+        #region Public Variables
+        public List<Node> Nodes => m_nodes;
+        #endregion
+
         #region Private Variables
         private List<Node> m_nodes = new List<Node>();
         #endregion
@@ -51,6 +55,19 @@ namespace DogHouse.ToonWorld.Map
         public float Distance(Node node)
         {
             return (node.Position -Position).magnitude;
+        }
+
+        public static Vector3 AveragePosition(Node[] nodes)
+        {
+            Vector3 position = Vector3.zero;
+            for(int i = 0; i < nodes.Length; i++)
+            {
+                position += nodes[i].Position;
+            }
+
+            position.x /= nodes.Length;
+            position.y /= nodes.Length;
+            return position;
         }
     }
 }

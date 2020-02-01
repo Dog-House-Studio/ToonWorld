@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace DogHouse.ToonWorld.Map
@@ -53,6 +52,10 @@ namespace DogHouse.ToonWorld.Map
         [SerializeField]
         int m_maximumNumberOfBranches;
 
+        [SerializeField]
+        [Range(0.0001f, 10f)]
+        float m_paddingSpace;
+
         private NodeWeb m_nodeWeb = new NodeWeb();
         #endregion
 
@@ -69,16 +72,20 @@ namespace DogHouse.ToonWorld.Map
 
         public void Generate()
         {
+            List<Node> ignoreList = new List<Node>();
+
+            //Start Node
             Node StartNode = CreateNode(m_locations[0].m_mapLocation);
             StartNode.SetPosition(m_startLocation.transform.position);
 
+            //End Node
             Node EndNode = CreateNode(m_locations[1].m_mapLocation);
             EndNode.SetPosition(m_endLocation.transform.position);
 
-            int numberOfBranches = Random.Range(m_MinimumNumberOfBranches, m_maximumNumberOfBranches + 1);
-
+            //End zones
+            int numberOfBranches = UnityEngine.Random.Range(m_MinimumNumberOfBranches, m_maximumNumberOfBranches + 1);
             List<Node> m_endPositionNodes = new List<Node>();
-            for(int i = 0; i < numberOfBranches; i++)
+            for (int i = 0; i < numberOfBranches; i++)
             {
                 Node newNode = CreateNode(m_locations[0].m_mapLocation);
                 Vector3 offset = Vector3.zero;
@@ -88,9 +95,11 @@ namespace DogHouse.ToonWorld.Map
                 newNode.SetPosition(EndNode.Position + offset);
                 newNode.SetOutput(EndNode);
                 m_endPositionNodes.Add(newNode);
+                ignoreList.Add(newNode);
             }
 
-            for(int i = 0; i < numberOfBranches; i++)
+            //Branches
+            for (int i = 0; i < numberOfBranches; i++)
             {
                 Node newNode = CreateNode(m_locations[0].m_mapLocation);
                 Vector3 offset = Vector3.zero;
@@ -99,8 +108,14 @@ namespace DogHouse.ToonWorld.Map
                 offset.x = (StartNode.Position.x - (m_endZonePlacementRange / 2)) + (m_endZonePlacementRange / (numberOfBranches + 1)) * (i + 1);
                 newNode.SetPosition(StartNode.Position + offset);
                 StartNode.SetOutput(newNode);
+                ignoreList.Add(newNode);
                 CreateBranch(newNode, m_endPositionNodes[i]);
             }
+
+            
+            ignoreList.Add(EndNode);
+            ignoreList.Add(StartNode);
+            ResolvePaddings(ignoreList);
         }
 
         public void SetSeed(int seedValue)
@@ -138,8 +153,8 @@ namespace DogHouse.ToonWorld.Map
                 
 
                 Vector3 Offset = Vector3.zero;
-                Offset.y += Random.Range(m_minPlacementRange, m_maximumPlacementRange);
-                Offset.x += Random.Range(-m_maxSwayRange, m_maxSwayRange);
+                Offset.y += UnityEngine.Random.Range(m_minPlacementRange, m_maximumPlacementRange);
+                Offset.x += UnityEngine.Random.Range(-m_maxSwayRange, m_maxSwayRange);
                 newNode.SetPosition(LastNode.Position + Offset);
                 tempPosition = Vector3.Lerp(newNode.Position, BranchTip.Position, newNode.Distance(RootBranch) / orginalDistance);
                 tempPosition.y = newNode.Position.y;
@@ -150,6 +165,37 @@ namespace DogHouse.ToonWorld.Map
             } while (distance > m_maximumPlacementRange);
 
             LastNode.SetOutput(BranchTip);
+        }
+
+        private void ResolvePaddings(List<Node> ignoreList)
+        {
+            List<Node> CloseList = new List<Node>();
+
+            for(int currentNode = 0; currentNode < m_nodeWeb.Nodes.Count; currentNode++)
+            {
+                Node node = m_nodeWeb.Nodes[currentNode];
+                if (ignoreList.Contains(node)) continue;
+
+                CloseList.Clear();
+                //Calculate close list
+                for(int i = 0; i < m_nodeWeb.Nodes.Count; i++)
+                {
+                    if (i == currentNode) continue;
+                    if(node.Distance(m_nodeWeb.Nodes[i]) < m_paddingSpace)
+                    {
+                        CloseList.Add(m_nodeWeb.Nodes[i]);
+                    }
+                }
+
+                Vector3 averagePosition = Node.AveragePosition(CloseList.ToArray());
+                Vector3 toAverage = averagePosition - node.Position;
+                toAverage.Normalize();
+                Vector3 awayVector = toAverage;
+                awayVector.x = -awayVector.x;
+                awayVector.y = -awayVector.y;
+
+                node.SetPosition(node.Position + (awayVector * m_paddingSpace * 0.5f));
+            }
         }
         #endregion
     }
