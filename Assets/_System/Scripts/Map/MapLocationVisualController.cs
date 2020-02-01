@@ -11,7 +11,7 @@ namespace DogHouse.ToonWorld.Map
     {
         #region Private Variables
         [SerializeField]
-        private LineRenderer m_lineRenderer;
+        private GameObject m_lineRendererPrefab;
 
         [SerializeField]
         private SpriteRenderer m_iconRenderer;
@@ -25,11 +25,16 @@ namespace DogHouse.ToonWorld.Map
 
         public void SetOutput(GameObject output)
         {
+            GameObject LineRendererObject = Instantiate(m_lineRendererPrefab);
+            LineRendererObject.transform.SetParent(this.transform);
+            LineRenderer renderer = LineRendererObject.GetComponent<LineRenderer>();
+
             Vector3[] positions = new Vector3[2];
             positions[0] = this.transform.position;
             positions[1] = output.transform.position;
-            m_lineRenderer.positionCount = 2;
-            m_lineRenderer.SetPositions(positions);
+
+            renderer.positionCount = 2;
+            renderer.SetPositions(positions);
         }
         #endregion
     }

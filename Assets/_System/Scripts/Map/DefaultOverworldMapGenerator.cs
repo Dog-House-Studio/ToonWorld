@@ -96,6 +96,7 @@ namespace DogHouse.ToonWorld.Map
                    .GetComponent<MapLocationVisualController>();
 
             newNode.m_visualController.SetIcon(location.LocationSprite);
+            m_nodeWeb.AddNode(newNode);
             return newNode;
         }
 

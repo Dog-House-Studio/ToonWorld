@@ -11,7 +11,7 @@ namespace DogHouse.ToonWorld.Map
     public class NodeWeb
     {
         #region Private Variables
-        private List<Node> m_nodes;
+        private List<Node> m_nodes = new List<Node>();
         #endregion
 
         #region Main Methods
