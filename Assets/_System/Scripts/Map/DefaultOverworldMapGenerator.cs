@@ -12,6 +12,7 @@ namespace DogHouse.ToonWorld.Map
         IOverworldMapGenerator
     {
         #region Private Variables
+        [Header("Objects")]
         [SerializeField]
         private GameObject m_startLocation;
 
@@ -38,7 +39,11 @@ namespace DogHouse.ToonWorld.Map
 
         public void Generate()
         {
-            
+            GameObject start = Instantiate(m_mapLocationPrefab);
+            start.transform.position = m_startLocation.transform.position;
+
+            GameObject end = Instantiate(m_mapLocationPrefab);
+            end.transform.position = m_endLocation.transform.position;
         }
 
         public void SetSeed(int seedValue)
