@@ -60,6 +60,12 @@ namespace DogHouse.ToonWorld.Map
             m_iconRenderer.sprite = sprite;
         }
 
+        public void SetIconSelectedColor(bool value)
+        {
+            m_iconRenderer.color = (value) 
+                ? m_highlightedColor : m_defaultColor;
+        }
+
         public void SetOutput(GameObject output)
         {
             GameObject LineRendererObject = Instantiate(m_lineRendererPrefab);

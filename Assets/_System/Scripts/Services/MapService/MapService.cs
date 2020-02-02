@@ -21,6 +21,7 @@ namespace DogHouse.ToonWorld.Services
         private CinemachineVirtualCamera m_mapCamera;
 
         private NodeWeb m_nodeWeb;
+        private Node m_currentNode = null;
         #endregion
 
         #region Main Methods
@@ -30,11 +31,15 @@ namespace DogHouse.ToonWorld.Services
             generator = FindObjectsOfType<MonoBehaviour>().OfType<IOverworldMapGenerator>().FirstOrDefault();
             m_nodeWeb = generator.Generate();
 
-            m_nodeWeb.Start.SetAsCurrent();
+            m_nodeWeb.Start.SetAsCurrent(true);
+            m_currentNode = m_nodeWeb.Start;
         }
 
         public void ReportIconSelected(Node icon)
         {
+            m_currentNode.SetAsCurrent(false);
+            icon.SetIconSelectedColor(true);
+
             m_iconCamera.transform.position 
                 = icon.m_visualController.m_cameraPositionTarget
                 .transform.position;

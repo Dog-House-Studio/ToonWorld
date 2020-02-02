@@ -49,12 +49,17 @@ namespace DogHouse.ToonWorld.Map
         private ServiceReference<IMapService> m_mapService 
             = new ServiceReference<IMapService>();
 
-        public void SetAsCurrent()
+        public void SetIconSelectedColor(bool value)
         {
-            SetFull(true);
+            m_visualController?.SetIconSelectedColor(value);
+        }
+
+        public void SetAsCurrent(bool value)
+        {
+            SetFull(value);
             for(int i = 0; i < m_outputs.Count; i++)
             {
-                m_outputs[i].SetAsActiveOption(true);
+                m_outputs[i].SetAsActiveOption(value);
             }
         }
 
