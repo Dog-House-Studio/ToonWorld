@@ -128,3 +128,4 @@ MonoBehaviour:
   m_lineRendererPrefab: {fileID: 5609272077113056051, guid: 95c7afde81031e44db3d96066b56cd1b,
     type: 3}
   m_iconRenderer: {fileID: 5946827037367024605}
+  m_lineEarlyStop: 0.4
