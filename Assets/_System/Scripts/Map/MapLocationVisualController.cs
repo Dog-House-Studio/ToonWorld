@@ -15,6 +15,8 @@ namespace DogHouse.ToonWorld.Map
 
         [SerializeField]
         private SpriteRenderer m_iconRenderer;
+
+        private Vector3 LineRendererOffset = new Vector3(0f, 0f, 0.25f);
         #endregion
 
         #region Main Methods
@@ -30,8 +32,8 @@ namespace DogHouse.ToonWorld.Map
             LineRenderer renderer = LineRendererObject.GetComponent<LineRenderer>();
 
             Vector3[] positions = new Vector3[2];
-            positions[0] = this.transform.position;
-            positions[1] = output.transform.position;
+            positions[0] = this.transform.position + LineRendererOffset;
+            positions[1] = output.transform.position + LineRendererOffset;
 
             renderer.positionCount = 2;
             renderer.SetPositions(positions);

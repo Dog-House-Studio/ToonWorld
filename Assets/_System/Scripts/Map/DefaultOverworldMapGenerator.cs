@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DogHouse.ToonWorld.Map
 {
@@ -58,6 +59,14 @@ namespace DogHouse.ToonWorld.Map
 
         [SerializeField]
         int m_paddingItterations;
+
+        [SerializeField]
+        [Range(0.0001f, 10f)]
+        private float m_connectionDistance;
+
+        [SerializeField]
+        [Range(0f, 1f)]
+        private float m_connectionDotValue;
 
         private NodeWeb m_nodeWeb = new NodeWeb();
         #endregion
@@ -119,10 +128,16 @@ namespace DogHouse.ToonWorld.Map
             ignoreList.Add(EndNode);
             ignoreList.Add(StartNode);
             ResolvePaddings(ignoreList);
+            ModifyConnections(ignoreList);
+            for(int i = 0; i < m_nodeWeb.Nodes.Count; i++)
+            {
+                m_nodeWeb.Nodes[i].CreateLineRenders();
+            }
         }
 
         public void SetSeed(int seedValue)
         {
+
         }
         #endregion
 
@@ -162,10 +177,13 @@ namespace DogHouse.ToonWorld.Map
                 tempPosition = Vector3.Lerp(newNode.Position, BranchTip.Position, newNode.Distance(RootBranch) / orginalDistance);
                 tempPosition.y = newNode.Position.y;
                 newNode.SetPosition(tempPosition);
+                LastNode.SetOutput(newNode);
                 LastNode = newNode;
                 distance = LastNode.Distance(BranchTip);
 
             } while (distance > m_maximumPlacementRange);
+
+            LastNode.SetOutput(BranchTip);
         }
 
         private void ResolvePaddings(List<Node> ignoreList)
@@ -198,6 +216,53 @@ namespace DogHouse.ToonWorld.Map
                     awayVector.y = -awayVector.y;
 
                     node.SetPosition(node.Position + (awayVector * m_paddingSpace * 0.5f));
+                }
+            }
+        }
+
+        private void ModifyConnections(List<Node> ignoreList)
+        {
+            List<Node> orderList = new List<Node>();
+            //Get all the nodes into the list except the ones were ignoring.
+            for(int i = 0; i < m_nodeWeb.Nodes.Count; i++)
+            {
+                if (ignoreList.Contains(m_nodeWeb.Nodes[i])) continue;
+                orderList.Add(m_nodeWeb.Nodes[i]);
+            }
+
+            orderList = orderList.OrderBy(x => x.Position.y).ToList();
+
+            for(int i = 0; i < orderList.Count; i++)
+            {
+                List<Node> closeNodes = new List<Node>();
+
+                //Get all nodes that are close enough for a connection but not connected yet
+                for (int j = i + 1; j < orderList.Count; j++)
+                {
+                    if (orderList[i].m_outputs.Contains(orderList[j])) continue;
+
+                    if(orderList[i].Distance(orderList[j]) < m_connectionDistance)
+                    {
+                        closeNodes.Add(orderList[j]);
+                    }
+                }
+
+                for(int j = 0; j < closeNodes.Count; j++)
+                {
+                    Vector3 toPrimary = orderList[i].m_outputs[0].Position - orderList[i].Position;
+                    toPrimary.Normalize();
+
+                    Vector3 toCloseNode = closeNodes[j].Position - orderList[i].Position;
+                    toCloseNode.Normalize();
+
+                    if(Vector3.Dot(toPrimary, toCloseNode) > m_connectionDotValue)
+                    {
+                        closeNodes[j].SetOutput(orderList[i].m_outputs[0]);
+                        orderList[i].RemoveOutput(orderList[i].m_outputs[0]);
+                        
+                    }
+
+                    orderList[i].SetOutput(closeNodes[j]);
                 }
             }
         }

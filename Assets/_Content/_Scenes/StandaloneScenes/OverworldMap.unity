@@ -451,10 +451,12 @@ MonoBehaviour:
   - m_mapLocation: {fileID: 11400000, guid: e71d8823e7c116d44977705160f03368, type: 2}
     m_type: 0
   m_endZonePlacementRange: 9.37
-  m_minPlacementRange: 1.31
-  m_maximumPlacementRange: 2.47
+  m_minPlacementRange: 1.91
+  m_maximumPlacementRange: 3.16
   m_maxSwayRange: 3.1
   m_MinimumNumberOfBranches: 4
   m_maximumNumberOfBranches: 4
-  m_paddingSpace: 1
-  m_paddingItterations: 2
+  m_paddingSpace: 2.29
+  m_paddingItterations: 3
+  m_connectionDistance: 3.27
+  m_connectionDotValue: 0.782

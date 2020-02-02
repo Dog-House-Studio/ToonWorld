@@ -48,8 +48,21 @@ namespace DogHouse.ToonWorld.Map
         {
             m_outputs.Add(node);
             node.m_inputs.Add(this);
+        }
 
-            m_visualController.SetOutput(node.m_nodeRootGameObject);
+        public void RemoveOutput(Node node)
+        {
+            if (!m_outputs.Contains(node)) return;
+
+            m_outputs.Remove(node);
+        }
+
+        public void CreateLineRenders()
+        {
+            for(int i = 0; i < m_outputs.Count; i++)
+            {
+                m_visualController.SetOutput(m_outputs[i].m_nodeRootGameObject);
+            }
         }
 
         public float Distance(Node node)
