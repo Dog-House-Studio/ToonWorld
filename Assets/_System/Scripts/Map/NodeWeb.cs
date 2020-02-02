@@ -49,8 +49,14 @@ namespace DogHouse.ToonWorld.Map
             SetFull(true);
             for(int i = 0; i < m_outputs.Count; i++)
             {
-                m_outputs[i].SetFull(true);
+                m_outputs[i].SetAsActiveOption(true);
             }
+        }
+
+        public void SetAsActiveOption(bool value)
+        {
+            SetFull(value);
+            m_visualController?.SetIconActive(true);
         }
 
         public void SetFull(bool value)

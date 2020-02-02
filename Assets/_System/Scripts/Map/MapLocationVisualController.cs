@@ -1,4 +1,7 @@
 ﻿using UnityEngine;
+using System;
+using DogScaffold;
+using DogHouse.CoreServices;
 
 namespace DogHouse.ToonWorld.Map
 {
@@ -7,8 +10,14 @@ namespace DogHouse.ToonWorld.Map
     /// controls the visual aspect of a node on
     /// the map.
     /// </summary>
+    [RequireComponent(typeof(Animator))]
     public class MapLocationVisualController : MonoBehaviour
     {
+        #region Public Variables
+        [HideInInspector]
+        public Action OnClicked;
+        #endregion
+
         #region Private Variables
         [SerializeField]
         private GameObject m_lineRendererPrefab;
@@ -19,10 +28,24 @@ namespace DogHouse.ToonWorld.Map
         [SerializeField]
         private float m_lineEarlyStop;
 
+        [SerializeField]
+        [Range(0.0001f, 1f)]
+        private float m_screenSelectionRange;
+
+        private ServiceReference<ICameraFinder> m_cameraFinder 
+            = new ServiceReference<ICameraFinder>();
+
+        private Animator m_animator;
         private Vector3 LineRendererOffset = new Vector3(0f, 0f, 0.0f);
+        private MapIconState m_state = MapIconState.IDLE;
         #endregion
 
         #region Main Methods
+        private void Awake()
+        {
+            m_animator = GetComponent<Animator>();
+        }
+
         public void SetIcon(Sprite sprite)
         {
             m_iconRenderer.sprite = sprite;
@@ -47,12 +70,55 @@ namespace DogHouse.ToonWorld.Map
             renderer.SetPositions(positions);
         }
 
+        public void SetIconActive(bool value)
+        {
+            if (m_animator == null) m_animator.GetComponent<Animator>();
+            m_animator?.SetBool("Available", value);
+            m_state = (value) ? MapIconState.AVAILABLE : MapIconState.IDLE;
+        }
+
         public void SetFull(bool value)
         {
             Color c = m_iconRenderer.color;
             c.a = (value) ? 1f : 0.5f;
             m_iconRenderer.color = c;
         }
+
+        private void Update()
+        {
+            if (m_state != MapIconState.AVAILABLE) return;
+            if (!m_cameraFinder.CheckServiceRegistered()) return;
+            if (m_cameraFinder.Reference.Camera == null) return;
+
+            Vector3 screenPosition = 
+                m_cameraFinder.Reference.
+                Camera.WorldToScreenPoint(this.transform.position);
+
+            Vector3 mousePos = Input.mousePosition;
+
+            screenPosition.z = 0f;
+            mousePos.z = 0f;
+
+            Vector3 fromTo = mousePos - screenPosition;
+            fromTo.x = fromTo.x / Screen.width;
+            fromTo.y = fromTo.y / Screen.height;
+
+            if(fromTo.magnitude < m_screenSelectionRange)
+            {
+                m_iconRenderer.color = Color.green;
+                return;
+            }
+
+            m_iconRenderer.color = Color.white;
+        }
+
+        
         #endregion
+    }
+
+    public enum MapIconState
+    {
+        IDLE,
+        AVAILABLE
     }
 }
