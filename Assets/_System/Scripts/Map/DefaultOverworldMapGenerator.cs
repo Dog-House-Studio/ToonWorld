@@ -160,7 +160,7 @@ namespace DogHouse.ToonWorld.Map
             newNode.m_visualController = nodeObject
                    .GetComponent<MapLocationVisualController>();
 
-            newNode.m_visualController.SetIcon(location.LocationSprite);
+            newNode.SetData(location);
             m_nodeWeb.AddNode(newNode);
             return newNode;
         }

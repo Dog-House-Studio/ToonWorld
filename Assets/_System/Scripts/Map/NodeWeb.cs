@@ -36,6 +36,7 @@ namespace DogHouse.ToonWorld.Map
     /// </summary>
     public class Node
     {
+        public MapLocation IconType => m_data;
         public Vector3 Position => m_nodeRootGameObject.transform.position;
 
         public static float MinXPosition;
@@ -48,6 +49,13 @@ namespace DogHouse.ToonWorld.Map
 
         private ServiceReference<IMapService> m_mapService 
             = new ServiceReference<IMapService>();
+
+        private MapLocation m_data;
+
+        public void SetData(MapLocation location)
+        {
+            m_visualController.SetIcon(location.LocationSprite);
+        }
 
         public void SetIconSelectedColor(bool value)
         {
