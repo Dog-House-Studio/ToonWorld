@@ -78,11 +78,6 @@ namespace DogHouse.ToonWorld.Map
         #endregion
 
         #region Main Methods
-        private void Start()
-        {
-            Generate();
-        }
-
         public void Display(bool value)
         {
             
