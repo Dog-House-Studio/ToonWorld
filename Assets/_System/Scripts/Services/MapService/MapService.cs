@@ -110,6 +110,7 @@ namespace DogHouse.ToonWorld.Services
         private void OnIconSceneLoaded()
         {
             m_mapSceneCamera.gameObject?.SetActive(false);
+            m_UIObject.gameObject?.SetActive(false);
         }
         #endregion
     }
