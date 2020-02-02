@@ -112,6 +112,11 @@ namespace DogHouse.ToonWorld.Services
             m_mapSceneCamera.gameObject?.SetActive(false);
             m_UIObject.gameObject?.SetActive(false);
         }
+
+        public void ReturnToMapScene()
+        {
+
+        }
         #endregion
     }
 }
