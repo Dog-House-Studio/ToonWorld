@@ -18,6 +18,15 @@ EditorBuildSettings:
     path: Assets/_Content/_Scenes/StandaloneScenes/Game.unity
     guid: d839351408b149b4fa47de30a7eadc0c
   - enabled: 1
-    path: Assets/_Content/_Scenes/StandaloneScenes/_EmptySwitchBuffer.unity
-    guid: 0e789ce12bc00ae40b92b6a484023915
+    path: Assets/_Content/_Scenes/StandaloneScenes/OverworldMap.unity
+    guid: 5f42aa12f9371c84a80ca779bc4f0e6a
+  - enabled: 1
+    path: Assets/_Content/_Scenes/LocationScenes/BattleScene.unity
+    guid: d3b64ed9c91324945ace710357ccea0d
+  - enabled: 1
+    path: Assets/_Content/_Scenes/LocationScenes/CampScene.unity
+    guid: 7c2b4bfbcf15c854786c6cd46a717cac
+  - enabled: 1
+    path: Assets/_Content/_Scenes/LocationScenes/ShopScene.unity
+    guid: 5a921481ab344e5488c6cde282abc0b6
   m_configObjects: {}

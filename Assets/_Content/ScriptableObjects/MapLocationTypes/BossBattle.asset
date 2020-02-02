@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15b612b8baa4bf343b153d6ec5c44d3f, type: 3}
+  m_Name: BossBattle
+  m_EditorClassIdentifier: 
+  m_locationSprite: {fileID: 21300000, guid: e128b01dab70e7a498a78577123c2db0, type: 3}
+  m_locationName: Boss
+  m_sceneDefinition: {fileID: 11400000, guid: 830e84b2a4851044285f0e7b700aab87, type: 2}

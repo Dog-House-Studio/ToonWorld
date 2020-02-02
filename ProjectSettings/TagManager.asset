@@ -13,8 +13,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Post Processing
+  - Map
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: MapLines
+    uniqueID: 1932208247
+    locked: 0
+  - name: Map
+    uniqueID: 3743055675
     locked: 0
