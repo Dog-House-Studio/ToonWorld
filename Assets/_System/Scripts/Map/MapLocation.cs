@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using DogHouse.ToonWorld.Services;
 
 namespace DogHouse.ToonWorld.Map
 {
@@ -16,6 +17,7 @@ namespace DogHouse.ToonWorld.Map
         #region Public Variables
         public Sprite LocationSprite => m_locationSprite;
         public string LocationName => m_locationName;
+        public GameSceneDefinition SceneDefinition => m_sceneDefinition;
         #endregion
 
         #region Private Variables
@@ -24,6 +26,9 @@ namespace DogHouse.ToonWorld.Map
 
         [SerializeField]
         private string m_locationName;
+
+        [SerializeField]
+        private GameSceneDefinition m_sceneDefinition;
         #endregion
     }
 }

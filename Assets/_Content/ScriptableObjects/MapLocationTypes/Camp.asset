@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b612b8baa4bf343b153d6ec5c44d3f, type: 3}
   m_Name: Camp
   m_EditorClassIdentifier: 
-  m_locationSprite: {fileID: 0}
-  m_locationName: 
+  m_locationSprite: {fileID: 21300000, guid: 8c500d54ff99a5546a4409724f9b5579, type: 3}
+  m_locationName: Camp
+  m_sceneDefinition: {fileID: 11400000, guid: 1390d42ea99fd7046841527213bf25e5, type: 2}

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_locationSprite: {fileID: 21300000, guid: 772f522a9c782904e9d220a7f8690c6c, type: 3}
   m_locationName: End
+  m_sceneDefinition: {fileID: 11400000, guid: 830e84b2a4851044285f0e7b700aab87, type: 2}
