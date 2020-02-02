@@ -112,6 +112,10 @@ namespace DogHouse.ToonWorld.Map
             if(fromTo.magnitude < m_screenSelectionRange)
             {
                 m_iconRenderer.color = m_highlightedColor;
+                if(Input.GetMouseButtonDown(0))
+                {
+                    OnClicked?.Invoke();
+                }
                 return;
             }
 

@@ -57,6 +57,14 @@ namespace DogHouse.ToonWorld.Map
         {
             SetFull(value);
             m_visualController?.SetIconActive(true);
+
+            m_visualController.OnClicked -= OnClicked;
+            m_visualController.OnClicked += OnClicked;
+        }
+
+        private void OnClicked()
+        {
+            Debug.Log("Clicked");
         }
 
         public void SetFull(bool value)
