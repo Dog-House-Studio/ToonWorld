@@ -16,7 +16,7 @@ namespace DogHouse.ToonWorld.Map
         [SerializeField]
         private SpriteRenderer m_iconRenderer;
 
-        private Vector3 LineRendererOffset = new Vector3(0f, 0f, 0.25f);
+        private Vector3 LineRendererOffset = new Vector3(0f, 0f, 0.1f);
         #endregion
 
         #region Main Methods

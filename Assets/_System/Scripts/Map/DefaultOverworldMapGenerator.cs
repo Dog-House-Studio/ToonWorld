@@ -214,6 +214,7 @@ namespace DogHouse.ToonWorld.Map
                     Vector3 awayVector = toAverage;
                     awayVector.x = -awayVector.x;
                     awayVector.y = -awayVector.y;
+                    awayVector.z = 0f;
 
                     node.SetPosition(node.Position + (awayVector * m_paddingSpace * 0.5f));
                 }
