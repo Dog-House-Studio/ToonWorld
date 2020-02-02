@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _albedo:
-        m_Texture: {fileID: 2800000, guid: 4e138283625b55942896778afb498bed, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _gridMask:
@@ -37,5 +37,6 @@ Material:
     - _metallic: 0
     - _smoothness: 0
     m_Colors:
-    - _zonecolor: {r: 0.17123532, g: 0.57471675, b: 0.9811321, a: 1}
-    - _zonecolor2: {r: 0.1273585, g: 0.30372748, b: 1, a: 1}
+    - _mainColor: {r: 0.5660378, g: 0.4607588, b: 0.32306874, a: 1}
+    - _zonecolor: {r: 0.6901961, g: 2.3058825, b: 3.9215686, a: 1}
+    - _zonecolor2: {r: 0.5019608, g: 1.2078432, b: 4, a: 1}
