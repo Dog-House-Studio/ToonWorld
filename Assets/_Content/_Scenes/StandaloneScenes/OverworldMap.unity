@@ -166,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_iconCamera: {fileID: 1632791476}
   m_mapCamera: {fileID: 414047597}
-  m_mapSceneCamera: {fileID: 0}
+  m_mapSceneCamera: {fileID: 1392433566}
   m_UIObject: {fileID: 1195862397}
   m_goButton: {fileID: 814668867}
   m_backButton: {fileID: 1426223477}
