@@ -130,6 +130,7 @@ namespace DogHouse.ToonWorld.Services
             m_UIObject.gameObject.SetActive(true);
             SceneManager.UnloadScene(sceneName);
             m_loadingScreenService.Reference.TransitionOut();
+            ReturnToMapView();
         }
         #endregion
     }

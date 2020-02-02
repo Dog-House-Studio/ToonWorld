@@ -2092,16 +2092,40 @@ MonoBehaviour:
   m_locations:
   - m_mapLocation: {fileID: 11400000, guid: ed8d568b76cc6354991de15eb84d756b, type: 2}
     m_type: 1
+    m_useStaticNumber: 0
+    m_munNumberOfInstances: 0
+    m_maxNumberOfInstances: 0
+    m_oddsWeight: 0.715
   - m_mapLocation: {fileID: 11400000, guid: 889a3a8b21e64414c9246cdec25d1bb0, type: 2}
     m_type: 1
+    m_useStaticNumber: 0
+    m_munNumberOfInstances: 0
+    m_maxNumberOfInstances: 0
+    m_oddsWeight: 0.142
   - m_mapLocation: {fileID: 11400000, guid: 918547c8ec6a47e45ab9b3f32cf012e4, type: 2}
     m_type: 1
+    m_useStaticNumber: 1
+    m_munNumberOfInstances: 4
+    m_maxNumberOfInstances: 8
+    m_oddsWeight: 0
   - m_mapLocation: {fileID: 11400000, guid: 34f633b46944b974d964cbae2508600c, type: 2}
     m_type: 2
+    m_useStaticNumber: 0
+    m_munNumberOfInstances: 0
+    m_maxNumberOfInstances: 0
+    m_oddsWeight: 0
   - m_mapLocation: {fileID: 11400000, guid: f3a0c1da2a8beba42a1ccfe67cf4f2af, type: 2}
     m_type: 1
+    m_useStaticNumber: 1
+    m_munNumberOfInstances: 3
+    m_maxNumberOfInstances: 4
+    m_oddsWeight: 0
   - m_mapLocation: {fileID: 11400000, guid: e71d8823e7c116d44977705160f03368, type: 2}
     m_type: 0
+    m_useStaticNumber: 0
+    m_munNumberOfInstances: 0
+    m_maxNumberOfInstances: 0
+    m_oddsWeight: 0
   m_endZonePlacementRange: 9.37
   m_minXPosition: -5.13841
   m_maxXPosition: 4.675632
