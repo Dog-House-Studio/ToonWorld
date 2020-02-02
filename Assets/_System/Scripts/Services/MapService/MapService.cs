@@ -20,6 +20,9 @@ namespace DogHouse.ToonWorld.Services
         [SerializeField]
         private CinemachineVirtualCamera m_mapCamera;
 
+        [SerializeField]
+        private GameObject m_UIObject;
+
         private NodeWeb m_nodeWeb;
         private Node m_currentNode = null;
         #endregion
@@ -49,6 +52,8 @@ namespace DogHouse.ToonWorld.Services
 
             m_iconCamera.gameObject.SetActive(true);
             m_mapCamera.gameObject.SetActive(false);
+
+            m_UIObject?.SetActive(true);
         }
 
         public void ReturnToMapView()
