@@ -36,6 +36,12 @@ namespace DogHouse.ToonWorld.Map
         float m_endZonePlacementRange;
 
         [SerializeField]
+        float m_minXPosition;
+
+        [SerializeField]
+        float m_maxXPosition;
+
+        [SerializeField]
         [Range(0.0001f, 10f)]
         float m_minPlacementRange;
 
@@ -85,6 +91,8 @@ namespace DogHouse.ToonWorld.Map
         public void Generate()
         {
             List<Node> ignoreList = new List<Node>();
+            Node.MinXPosition = m_minXPosition;
+            Node.MaxXPosition = m_maxXPosition;
 
             //Start Node
             Node StartNode = CreateNode(m_locations[0].m_mapLocation);
