@@ -96,7 +96,7 @@ namespace DogHouse.ToonWorld.Map
             if (!m_cameraFinder.CheckServiceRegistered()) return;
             if (m_cameraFinder.Reference.Camera == null) return;
 
-            Vector3 screenPosition = 
+            Vector3 screenPosition =
                 m_cameraFinder.Reference.
                 Camera.WorldToScreenPoint(this.transform.position);
 
@@ -109,20 +109,17 @@ namespace DogHouse.ToonWorld.Map
             fromTo.x = fromTo.x / Screen.width;
             fromTo.y = fromTo.y / Screen.height;
 
-            if(fromTo.magnitude < m_screenSelectionRange)
+            if (fromTo.magnitude < m_screenSelectionRange)
             {
                 m_iconRenderer.color = m_highlightedColor;
-                if(Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0))
                 {
                     OnClicked?.Invoke();
                 }
                 return;
             }
-
             m_iconRenderer.color = m_defaultColor;
         }
-
-        
         #endregion
     }
 

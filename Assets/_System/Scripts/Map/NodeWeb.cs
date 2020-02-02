@@ -64,7 +64,7 @@ namespace DogHouse.ToonWorld.Map
 
         private void OnClicked()
         {
-            Debug.Log("Clicked");
+            
         }
 
         public void SetFull(bool value)
