@@ -126,6 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78caa69f9216a2145a66d5018890e20a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  m_highlightedColor: {r: 0.8679245, g: 0.24154504, b: 0.8625981, a: 1}
   m_lineRendererPrefab: {fileID: 5609272077113056051, guid: 95c7afde81031e44db3d96066b56cd1b,
     type: 3}
   m_iconRenderer: {fileID: 5946827037367024605}

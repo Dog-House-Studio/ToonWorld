@@ -20,6 +20,12 @@ namespace DogHouse.ToonWorld.Map
 
         #region Private Variables
         [SerializeField]
+        private Color m_defaultColor;
+
+        [SerializeField]
+        private Color m_highlightedColor;
+
+        [SerializeField]
         private GameObject m_lineRendererPrefab;
 
         [SerializeField]
@@ -105,11 +111,11 @@ namespace DogHouse.ToonWorld.Map
 
             if(fromTo.magnitude < m_screenSelectionRange)
             {
-                m_iconRenderer.color = Color.green;
+                m_iconRenderer.color = m_highlightedColor;
                 return;
             }
 
-            m_iconRenderer.color = Color.white;
+            m_iconRenderer.color = m_defaultColor;
         }
 
         
