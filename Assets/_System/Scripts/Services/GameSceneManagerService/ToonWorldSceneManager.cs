@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using DogHouse.CoreServices;
 using UnityEngine;
+using System;
 using ILoadingScreenService = DogHouse.ToonWorld.Services.ILoadingScreenService;
 
 namespace DogHouse.ToonWorld.Services
@@ -29,10 +30,13 @@ namespace DogHouse.ToonWorld.Services
             = new ServiceReference<ICameraTransition>();
 
         private SceneManagerState m_state = SceneManagerState.IDLE;
+
+        private Action m_callback;
         #endregion
 
         #region Main Methods
-        public void LoadScene(GameSceneDefinition sceneDefinition)
+        public void LoadScene(GameSceneDefinition sceneDefinition, 
+            Action callback = null)
         {
             if(m_state == SceneManagerState.LOADING)
             {
@@ -40,6 +44,8 @@ namespace DogHouse.ToonWorld.Services
                 return;
             }
             m_state = SceneManagerState.LOADING;
+
+            m_callback = callback;
 
             if(sceneDefinition.Type == TransitionType.None)
             {
@@ -63,18 +69,21 @@ namespace DogHouse.ToonWorld.Services
         private void LoadingScreenLoadedIn(GameSceneDefinition definition)
         {
             SceneManager.LoadScene(definition.Token.AssetName, definition.Mode);
+            m_callback?.Invoke();
             m_loadingScreenService?.Reference?.TransitionOut(FinishLoading);
         }
 
         private void FadeInLoad(GameSceneDefinition definition)
         {
             SceneManager.LoadScene(definition.Token.AssetName, definition.Mode);
+            m_callback?.Invoke();
             m_cameraTransition.Reference?.FadeOut(m_fadeTime, FinishLoading);
         }
 
         private void Load(GameSceneDefinition definition)
         {
             SceneManager.LoadScene(definition.Token.AssetName,definition.Mode);
+            m_callback?.Invoke();
             FinishLoading();
         }
 

@@ -1,4 +1,5 @@
 ﻿using DogScaffold;
+using System;
 
 namespace DogHouse.ToonWorld.Services
 {
@@ -8,7 +9,7 @@ namespace DogHouse.ToonWorld.Services
     /// </summary>
     public interface IGameSceneManagerService : IService
     {
-        void LoadScene(GameSceneDefinition sceneDefinition);
+        void LoadScene(GameSceneDefinition sceneDefinition, Action callback = null);
     }
 
     public enum SceneManagerState

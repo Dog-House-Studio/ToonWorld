@@ -55,6 +55,7 @@ namespace DogHouse.ToonWorld.Map
         public void SetData(MapLocation location)
         {
             m_visualController.SetIcon(location.LocationSprite);
+            m_data = location;
         }
 
         public void SetIconSelectedColor(bool value)

@@ -23,6 +23,9 @@ namespace DogHouse.ToonWorld.Services
         private CinemachineVirtualCamera m_mapCamera;
 
         [SerializeField]
+        private Camera m_mapSceneCamera;
+
+        [SerializeField]
         private GameObject m_UIObject;
 
         [SerializeField]
@@ -36,6 +39,9 @@ namespace DogHouse.ToonWorld.Services
 
         private NodeWeb m_nodeWeb;
         private Node m_currentNode = null;
+        private Node m_zoomedNode = null;
+        private ServiceReference<IGameSceneManagerService> m_sceneManager 
+            = new ServiceReference<IGameSceneManagerService>();
         #endregion
 
         #region Main Methods
@@ -65,6 +71,7 @@ namespace DogHouse.ToonWorld.Services
 
         public void ReportIconSelected(Node icon)
         {
+            m_zoomedNode = icon;
             m_currentNode.SetAsCurrent(false);
             icon.SetIconSelectedColor(true);
 
@@ -81,6 +88,7 @@ namespace DogHouse.ToonWorld.Services
             m_UIObject?.SetActive(true);
 
             m_text.text = icon.IconType.LocationName.ToUpper();
+            
         }
 
         public void ReturnToMapView()
@@ -94,7 +102,14 @@ namespace DogHouse.ToonWorld.Services
 
         private void GoToNodeScene()
         {
+            if (!m_sceneManager.CheckServiceRegistered()) return;
+            m_sceneManager.Reference.LoadScene(m_zoomedNode.IconType.SceneDefinition, 
+                OnIconSceneLoaded);
+        }
 
+        private void OnIconSceneLoaded()
+        {
+            m_mapSceneCamera.gameObject?.SetActive(false);
         }
         #endregion
     }
