@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using DogScaffold;
+using DogHouse.ToonWorld.Services;
 
 namespace DogHouse.ToonWorld.Map
 {
@@ -44,6 +46,9 @@ namespace DogHouse.ToonWorld.Map
         public List<Node> m_inputs = new List<Node>();
         public List<Node> m_outputs = new List<Node>();
 
+        private ServiceReference<IMapService> m_mapService 
+            = new ServiceReference<IMapService>();
+
         public void SetAsCurrent()
         {
             SetFull(true);
@@ -64,7 +69,8 @@ namespace DogHouse.ToonWorld.Map
 
         private void OnClicked()
         {
-            
+            if (!m_mapService.CheckServiceRegistered()) return;
+            m_mapService.Reference.ReportIconSelected(this);
         }
 
         public void SetFull(bool value)

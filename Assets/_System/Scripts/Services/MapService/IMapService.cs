@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using DogScaffold;
+﻿using DogScaffold;
+using DogHouse.ToonWorld.Map;
 
 namespace DogHouse.ToonWorld.Services
 {
@@ -11,6 +11,8 @@ namespace DogHouse.ToonWorld.Services
     /// </summary>
     public interface IMapService : IService
     {
-                
+        void ReportIconSelected(Node icon);
+        void ReturnToMapView();
+
     }
 }

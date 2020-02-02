@@ -16,6 +16,9 @@ namespace DogHouse.ToonWorld.Map
         #region Public Variables
         [HideInInspector]
         public Action OnClicked;
+
+        public GameObject m_cameraPositionTarget;
+        public GameObject m_cameraLookAtTarget;
         #endregion
 
         #region Private Variables

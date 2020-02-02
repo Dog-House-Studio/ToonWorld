@@ -142,6 +142,7 @@ Transform:
   m_Children:
   - {fileID: 9041138121718184009}
   - {fileID: 8106037416499878293}
+  - {fileID: 1397447904584197320}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -157,6 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78caa69f9216a2145a66d5018890e20a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_cameraPositionTarget: {fileID: 2828911343299685109}
+  m_cameraLookAtTarget: {fileID: 8337644429805479711}
   m_defaultColor: {r: 1, g: 1, b: 1, a: 1}
   m_highlightedColor: {r: 0.8679245, g: 0.24154504, b: 0.8625981, a: 1}
   m_lineRendererPrefab: {fileID: 5609272077113056051, guid: 95c7afde81031e44db3d96066b56cd1b,
@@ -183,3 +186,33 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &8337644429805479711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1397447904584197320}
+  m_Layer: 0
+  m_Name: CameraLookAtTargetPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1397447904584197320
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8337644429805479711}
+  m_LocalRotation: {x: -0, y: 0.5532634, z: -0, w: 0.8330064}
+  m_LocalPosition: {x: 0.881, y: 0, z: 0.153}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8222406083089452688}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 67.18201, z: 0}
