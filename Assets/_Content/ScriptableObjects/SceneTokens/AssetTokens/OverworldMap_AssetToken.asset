@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: OverworldMap_AssetToken
   m_EditorClassIdentifier: 
   m_asset: {fileID: 102900000, guid: 5f42aa12f9371c84a80ca779bc4f0e6a, type: 3}
-  m_name: 
-  editorFoldout: 0
+  m_name: OverworldMap
+  editorFoldout: 1

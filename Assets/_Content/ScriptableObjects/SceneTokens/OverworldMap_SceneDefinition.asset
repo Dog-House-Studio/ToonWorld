@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: OverworldMap_SceneDefinition
   m_EditorClassIdentifier: 
   m_sceneToken: {fileID: 11400000, guid: 346bf32991d905941adb426de2c5b426, type: 2}
-  m_mode: 1
-  m_transitionType: 2
+  m_mode: 0
+  m_transitionType: 1

@@ -543,7 +543,7 @@ MonoBehaviour:
         m_MethodName: LoadScene
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 9407d7ee38ce56b45ae9d3d36edb790c,
+          m_ObjectArgument: {fileID: 11400000, guid: 9c7e171e8928cff4996e26742aa722f5,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: DogHouse.ToonWorld.Services.GameSceneDefinition,
             Assembly-CSharp
