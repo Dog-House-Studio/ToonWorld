@@ -4,6 +4,7 @@ using DogHouse.ToonWorld.Map;
 using System.Linq;
 using Cinemachine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace DogHouse.ToonWorld.Services
 {
@@ -29,6 +30,9 @@ namespace DogHouse.ToonWorld.Services
 
         [SerializeField]
         private Button m_backButton;
+
+        [SerializeField]
+        private TMP_Text m_text;
 
         private NodeWeb m_nodeWeb;
         private Node m_currentNode = null;
@@ -75,6 +79,8 @@ namespace DogHouse.ToonWorld.Services
             m_mapCamera.gameObject.SetActive(false);
 
             m_UIObject?.SetActive(true);
+
+            m_text.text = icon.IconType.LocationName.ToUpper();
         }
 
         public void ReturnToMapView()
