@@ -166,7 +166,7 @@ MonoBehaviour:
     type: 3}
   m_iconRenderer: {fileID: 5946827037367024605}
   m_lineEarlyStop: 0.4
-  m_screenSelectionRange: 0.025
+  m_screenSelectionRange: 0.057
 --- !u!95 &7095776035737928305
 Animator:
   serializedVersion: 3

@@ -3,6 +3,7 @@ using DogScaffold;
 using DogHouse.ToonWorld.Map;
 using System.Linq;
 using Cinemachine;
+using UnityEngine.UI;
 
 namespace DogHouse.ToonWorld.Services
 {
@@ -23,6 +24,12 @@ namespace DogHouse.ToonWorld.Services
         [SerializeField]
         private GameObject m_UIObject;
 
+        [SerializeField]
+        private Button m_goButton;
+
+        [SerializeField]
+        private Button m_backButton;
+
         private NodeWeb m_nodeWeb;
         private Node m_currentNode = null;
         #endregion
@@ -36,6 +43,20 @@ namespace DogHouse.ToonWorld.Services
 
             m_nodeWeb.Start.SetAsCurrent(true);
             m_currentNode = m_nodeWeb.Start;
+        }
+
+        public override void OnEnable()
+        {
+            base.OnEnable();
+            m_backButton.onClick.AddListener(ReturnToMapView);
+            m_goButton.onClick.AddListener(GoToNodeScene);
+        }
+
+        public override void OnDisable()
+        {
+            base.OnDisable();
+            m_backButton.onClick.RemoveAllListeners();
+            m_goButton.onClick.RemoveAllListeners();
         }
 
         public void ReportIconSelected(Node icon)
@@ -60,6 +81,14 @@ namespace DogHouse.ToonWorld.Services
         {
             m_iconCamera.gameObject.SetActive(false);
             m_mapCamera.gameObject.SetActive(true);
+
+            m_UIObject?.SetActive(false);
+            m_currentNode.SetAsCurrent(true);
+        }
+
+        private void GoToNodeScene()
+        {
+
         }
         #endregion
     }

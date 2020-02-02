@@ -167,6 +167,8 @@ MonoBehaviour:
   m_iconCamera: {fileID: 1632791476}
   m_mapCamera: {fileID: 414047597}
   m_UIObject: {fileID: 1195862397}
+  m_goButton: {fileID: 814668867}
+  m_backButton: {fileID: 1426223477}
 --- !u!1 &226042218
 GameObject:
   m_ObjectHideFlags: 0
