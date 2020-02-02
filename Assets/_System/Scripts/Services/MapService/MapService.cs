@@ -5,6 +5,7 @@ using System.Linq;
 using Cinemachine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 namespace DogHouse.ToonWorld.Services
 {
@@ -40,8 +41,12 @@ namespace DogHouse.ToonWorld.Services
         private NodeWeb m_nodeWeb;
         private Node m_currentNode = null;
         private Node m_zoomedNode = null;
+
         private ServiceReference<IGameSceneManagerService> m_sceneManager 
             = new ServiceReference<IGameSceneManagerService>();
+
+        private ServiceReference<ILoadingScreenService> m_loadingScreenService 
+            = new ServiceReference<ILoadingScreenService>();
         #endregion
 
         #region Main Methods
@@ -113,9 +118,18 @@ namespace DogHouse.ToonWorld.Services
             m_UIObject.gameObject?.SetActive(false);
         }
 
-        public void ReturnToMapScene()
+        public void ReturnToMapScene(string currentSceneName)
         {
+            m_loadingScreenService.Reference.TransitionIn(
+                ()=> { LoadingScreenFadedIn(currentSceneName); });
+        }
 
+        private void LoadingScreenFadedIn(string sceneName)
+        {
+            m_mapSceneCamera.gameObject.SetActive(true);
+            m_UIObject.gameObject.SetActive(true);
+            SceneManager.UnloadScene(sceneName);
+            m_loadingScreenService.Reference.TransitionOut();
         }
         #endregion
     }

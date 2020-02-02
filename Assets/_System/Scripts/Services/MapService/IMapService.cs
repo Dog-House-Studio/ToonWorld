@@ -13,6 +13,6 @@ namespace DogHouse.ToonWorld.Services
     {
         void ReportIconSelected(Node icon);
         void ReturnToMapView();
-        void ReturnToMapScene();
+        void ReturnToMapScene(string currentSceneName);
     }
 }

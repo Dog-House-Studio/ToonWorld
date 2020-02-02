@@ -33,7 +33,7 @@ namespace DogHouse.ToonWorld.Map
         private void OnClick()
         {
             if (!m_mapService.CheckServiceRegistered()) return;
-            m_mapService.Reference.ReturnToMapScene();
+            m_mapService.Reference.ReturnToMapScene(gameObject.scene.name);
         }
         #endregion
     }
