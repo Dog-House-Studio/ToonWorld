@@ -27,6 +27,19 @@ namespace DogHouse.ToonWorld.Map
         {
             m_nodes.Add(node);
         }
+
+        public int ContainsCount(MapLocation locationType)
+        {
+            int count = 0;
+            foreach(Node node in m_nodes)
+            {
+                if(node.IconType == locationType)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
         #endregion
     }
 

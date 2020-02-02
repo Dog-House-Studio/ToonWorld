@@ -160,9 +160,27 @@ namespace DogHouse.ToonWorld.Map
             newNode.m_visualController = nodeObject
                    .GetComponent<MapLocationVisualController>();
 
-            newNode.SetData(location);
+            newNode.SetData(FetchMapLocationType());
             m_nodeWeb.AddNode(newNode);
             return newNode;
+        }
+
+        private MapLocation FetchMapLocationType()
+        {
+            List<MapLocationInfo> availableMapLocationTypes = new List<MapLocationInfo>();
+            availableMapLocationTypes = m_locations.Where(x => x.m_type == MapLocationType.MIDDLE).ToList();
+            
+            for(int i = availableMapLocationTypes.Count - 1; i >= 0; i--)
+            {
+                if (!availableMapLocationTypes[i].m_useStaticNumber) continue;
+                if(m_nodeWeb.ContainsCount(availableMapLocationTypes[i].m_mapLocation) >= 
+                    availableMapLocationTypes[i].m_maxNumberOfInstances)
+                {
+                    availableMapLocationTypes.RemoveAt(i);
+                }
+            }
+            int index = Random.Range(0, availableMapLocationTypes.Count);
+            return availableMapLocationTypes[index].m_mapLocation;
         }
 
         private void CreateBranch(Node RootBranch, Node BranchTip)
