@@ -46,6 +46,13 @@ namespace DogHouse.ToonWorld.Map
             renderer.positionCount = 2;
             renderer.SetPositions(positions);
         }
+
+        public void SetFull(bool value)
+        {
+            Color c = m_iconRenderer.color;
+            c.a = (value) ? 1f : 0.5f;
+            m_iconRenderer.color = c;
+        }
         #endregion
     }
 }

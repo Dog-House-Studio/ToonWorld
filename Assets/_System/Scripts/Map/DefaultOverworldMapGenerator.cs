@@ -83,7 +83,7 @@ namespace DogHouse.ToonWorld.Map
             
         }
 
-        public void Generate()
+        public NodeWeb Generate()
         {
             List<Node> ignoreList = new List<Node>();
             Node.MinXPosition = m_minXPosition;
@@ -92,10 +92,12 @@ namespace DogHouse.ToonWorld.Map
             //Start Node
             Node StartNode = CreateNode(m_locations[0].m_mapLocation);
             StartNode.SetPosition(m_startLocation.transform.position);
+            m_nodeWeb.Start = StartNode;
 
             //End Node
             Node EndNode = CreateNode(m_locations[1].m_mapLocation);
             EndNode.SetPosition(m_endLocation.transform.position);
+            m_nodeWeb.End = EndNode;
 
             //End zones
             int numberOfBranches = UnityEngine.Random.Range(m_MinimumNumberOfBranches, m_maximumNumberOfBranches + 1);
@@ -136,6 +138,8 @@ namespace DogHouse.ToonWorld.Map
             {
                 m_nodeWeb.Nodes[i].CreateLineRenders();
             }
+
+            return m_nodeWeb;
         }
 
         public void SetSeed(int seedValue)

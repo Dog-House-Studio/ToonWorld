@@ -12,12 +12,18 @@ namespace DogHouse.ToonWorld.Services
     /// </summary>
     public class MapService : BaseService<IMapService>, IMapService
     {
+        #region Private Variables
+        private NodeWeb m_nodeWeb;
+        #endregion
+
         #region Main Methods
         void Start()
         {
             IOverworldMapGenerator generator;
             generator = FindObjectsOfType<MonoBehaviour>().OfType<IOverworldMapGenerator>().FirstOrDefault();
-            generator.Generate();
+            m_nodeWeb = generator.Generate();
+
+            m_nodeWeb.Start.SetAsCurrent();
         }
         #endregion
     }

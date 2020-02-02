@@ -12,6 +12,8 @@ namespace DogHouse.ToonWorld.Map
     {
         #region Public Variables
         public List<Node> Nodes => m_nodes;
+        public Node Start;
+        public Node End;
         #endregion
 
         #region Private Variables
@@ -41,6 +43,20 @@ namespace DogHouse.ToonWorld.Map
         public MapLocationVisualController m_visualController;
         public List<Node> m_inputs = new List<Node>();
         public List<Node> m_outputs = new List<Node>();
+
+        public void SetAsCurrent()
+        {
+            SetFull(true);
+            for(int i = 0; i < m_outputs.Count; i++)
+            {
+                m_outputs[i].SetFull(true);
+            }
+        }
+
+        public void SetFull(bool value)
+        {
+            m_visualController.SetFull(value);
+        }
 
         public void SetPosition(Vector3 position)
         {

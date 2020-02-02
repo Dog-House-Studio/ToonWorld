@@ -9,7 +9,7 @@
     public interface IOverworldMapGenerator
     {
         void SetSeed(int seedValue);
-        void Generate();
+        NodeWeb Generate();
         void Display(bool value);
     }
 }
