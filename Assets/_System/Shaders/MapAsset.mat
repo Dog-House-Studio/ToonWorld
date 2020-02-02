@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MapAsset
+  m_Shader: {fileID: -6465566751694194690, guid: 2f20654a12a06dd47b801092b5ebd00e,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _albedo:
+        m_Texture: {fileID: 2800000, guid: 4e138283625b55942896778afb498bed, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _gridMask:
+        m_Texture: {fileID: 2800000, guid: 70f13a4f1d77930488b06f98ffcaec00, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _normal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _flashSpeed: 2
+    - _metallic: 0
+    - _smoothness: 0
+    m_Colors:
+    - _zonecolor: {r: 0.17123532, g: 0.57471675, b: 0.9811321, a: 1}
+    - _zonecolor2: {r: 0.1273585, g: 0.30372748, b: 1, a: 1}
