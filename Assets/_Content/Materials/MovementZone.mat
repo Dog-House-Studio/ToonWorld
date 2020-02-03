@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MapAsset
+  m_Name: MovementZone
   m_Shader: {fileID: -6465566751694194690, guid: 2f20654a12a06dd47b801092b5ebd00e,
     type: 3}
   m_ShaderKeywords: 
@@ -37,6 +37,6 @@ Material:
     - _metallic: 0
     - _smoothness: 0
     m_Colors:
-    - _mainColor: {r: 0.5660378, g: 0.4607588, b: 0.32306874, a: 1}
+    - _mainColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
     - _zonecolor: {r: 0.6901961, g: 2.3058825, b: 3.9215686, a: 1}
     - _zonecolor2: {r: 0.5019608, g: 1.2078432, b: 4, a: 1}
