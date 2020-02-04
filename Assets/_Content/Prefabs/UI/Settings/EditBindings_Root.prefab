@@ -91,7 +91,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 15.7
+  m_fontSize: 16
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -166,6 +166,8 @@ GameObject:
   - component: {fileID: 8096286124770310629}
   - component: {fileID: 8096286124770310631}
   - component: {fileID: 8096286124770310628}
+  - component: {fileID: 3594004635764586048}
+  - component: {fileID: 2131729214063061822}
   m_Layer: 5
   m_Name: EditBindings_Root
   m_TagString: Untagged
@@ -230,6 +232,61 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3594004635764586048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8096286124770310634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2131729214063061822}
+          m_MethodName: SetAlpha
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0.5
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2131729214063061822}
+          m_MethodName: SetAlpha
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0.38
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &2131729214063061822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8096286124770310634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ac73a00034a4b44819442bc3902194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8096286125129607399
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,6 +330,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8096286125129607398}
     m_Modifications:
+    - target: {fileID: 1733254317, guid: 8e797e99e0a058e4f85b69a58996ae61, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1733254318, guid: 8e797e99e0a058e4f85b69a58996ae61, type: 3}
       propertyPath: m_textInfo.characterCount
       value: 8
@@ -299,7 +360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1733254318, guid: 8e797e99e0a058e4f85b69a58996ae61, type: 3}
       propertyPath: m_fontSize
-      value: 16
+      value: 9.55
       objectReference: {fileID: 0}
     - target: {fileID: 1733254318, guid: 8e797e99e0a058e4f85b69a58996ae61, type: 3}
       propertyPath: m_fontSizeMin
@@ -372,7 +433,7 @@ PrefabInstance:
     - target: {fileID: 8781328786409899313, guid: 8e797e99e0a058e4f85b69a58996ae61,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 127.45
+      value: -0.3999939
       objectReference: {fileID: 0}
     - target: {fileID: 8781328786409899313, guid: 8e797e99e0a058e4f85b69a58996ae61,
         type: 3}
@@ -382,32 +443,32 @@ PrefabInstance:
     - target: {fileID: 8781328786409899313, guid: 8e797e99e0a058e4f85b69a58996ae61,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 112.9
+      value: -12.100006
       objectReference: {fileID: 0}
     - target: {fileID: 8781328786409899313, guid: 8e797e99e0a058e4f85b69a58996ae61,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 19.72
+      value: -14.280001
       objectReference: {fileID: 0}
     - target: {fileID: 8781328786409899313, guid: 8e797e99e0a058e4f85b69a58996ae61,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0.7883734
       objectReference: {fileID: 0}
     - target: {fileID: 8781328786409899313, guid: 8e797e99e0a058e4f85b69a58996ae61,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8781328786409899313, guid: 8e797e99e0a058e4f85b69a58996ae61,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8781328786409899313, guid: 8e797e99e0a058e4f85b69a58996ae61,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8781328786409899313, guid: 8e797e99e0a058e4f85b69a58996ae61,
         type: 3}
