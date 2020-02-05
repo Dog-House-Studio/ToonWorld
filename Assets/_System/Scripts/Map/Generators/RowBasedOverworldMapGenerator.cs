@@ -102,9 +102,14 @@ namespace DogHouse.ToonWorld.Map
             {
                 nodes.Add(CreateNode(m_locations[0].m_mapLocation));
                 Vector3 pos = Vector3.zero;
-                pos.y = height + (m_rowHeight * 0.5f);
                 pos.z = 0.25f;
+                pos.y = height + (m_rowHeight * 0.5f);
                 pos.x = segmentLengths * i + (segmentLengths * 0.5f) - (m_rowWidth * 0.5f);
+
+                Vector2 randomOffset = UnityEngine.Random.insideUnitCircle* segmentLengths * 0.25f;
+                pos.x += randomOffset.x;
+                pos.y += randomOffset.y;
+
                 nodes[i].SetPosition(pos);
             }
 
