@@ -172,12 +172,12 @@ namespace DogHouse.ToonWorld.Map
             
             for(int i = availableMapLocationTypes.Count - 1; i >= 0; i--)
             {
-                if (!availableMapLocationTypes[i].m_useStaticNumber) continue;
-                if(m_nodeWeb.ContainsCount(availableMapLocationTypes[i].m_mapLocation) >= 
-                    availableMapLocationTypes[i].m_maxNumberOfInstances)
-                {
-                    availableMapLocationTypes.RemoveAt(i);
-                }
+                //if (!availableMapLocationTypes[i].m_useStaticNumber) continue;
+                //if(m_nodeWeb.ContainsCount(availableMapLocationTypes[i].m_mapLocation) >= 
+                //    availableMapLocationTypes[i].m_maxNumberOfInstances)
+                //{
+                //    availableMapLocationTypes.RemoveAt(i);
+                //}
             }
             int index = Random.Range(0, availableMapLocationTypes.Count);
             return availableMapLocationTypes[index].m_mapLocation;
@@ -301,9 +301,9 @@ namespace DogHouse.ToonWorld.Map
         public MapLocation m_mapLocation;
         public MapLocationType m_type;
 
-        public bool m_useStaticNumber;
-        public int m_munNumberOfInstances;
-        public int m_maxNumberOfInstances;
+        //public bool m_useStaticNumber;
+        //public int m_munNumberOfInstances;
+        //public int m_maxNumberOfInstances;
 
         [Range(0f,1f)]
         public float m_oddsWeight;

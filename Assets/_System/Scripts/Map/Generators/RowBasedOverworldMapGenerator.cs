@@ -67,11 +67,14 @@ namespace DogHouse.ToonWorld.Map
 
             for (int i = 0; i < m_numberOfRows; i++)
             {
-                rows.Add(CreateRow(ref height, lastRowCount));
+                MapLocationType type;
+                type = (i == 0) ? MapLocationType.START : MapLocationType.MIDDLE;
+
+                rows.Add(CreateRow(ref height, lastRowCount, type));
                 lastRowCount = rows[i].Count;
             }
 
-            Node endNode = CreateNode();
+            Node endNode = CreateNode(MapLocationType.END);
             Vector3 pos = new Vector3(m_endLocation.transform.position.x,height + 3f,-0.25f);
             endNode.SetPosition(pos);
             List<Node> endRow = new List<Node>();
@@ -102,7 +105,7 @@ namespace DogHouse.ToonWorld.Map
         #endregion
 
         #region Utility Methods
-        private List<Node> CreateRow(ref float height, int lastRowCount)
+        private List<Node> CreateRow(ref float height, int lastRowCount, MapLocationType type)
         {
             int numberOfIcons = UnityEngine.Random.Range(m_minNumberOfIconsPerRow, m_maximumNumberOfIconsPerRow);
 
@@ -111,7 +114,7 @@ namespace DogHouse.ToonWorld.Map
 
             for(int i = 0; i < numberOfIcons; i++)
             {
-                nodes.Add(CreateNode());
+                nodes.Add(CreateNode(type));
                 Vector3 pos = Vector3.zero;
                 pos.z = -0.25f;
                 pos.y = height + (m_rowHeight * 0.5f);
@@ -128,7 +131,7 @@ namespace DogHouse.ToonWorld.Map
             return nodes;
         }
 
-        private Node CreateNode()
+        private Node CreateNode(MapLocationType LocationType)
         {
             Node newNode = new Node();
 
@@ -139,7 +142,7 @@ namespace DogHouse.ToonWorld.Map
             newNode.m_visualController = nodeObject
                    .GetComponent<MapLocationVisualController>();
 
-            newNode.SetData(CalculateMapLocationType());
+            newNode.SetData(CalculateMapLocationType(LocationType));
             m_nodeWeb.AddNode(newNode);
             return newNode;
         }
@@ -269,9 +272,29 @@ namespace DogHouse.ToonWorld.Map
             }
         }
 
-        private MapLocation CalculateMapLocationType()
+        private MapLocation CalculateMapLocationType(MapLocationType type)
         {
-            return m_locations[UnityEngine.Random.Range(0, m_locations.Length)].m_mapLocation;
+            List<MapLocationInfo> available = m_locations.Where(x => x.m_type == type).ToList();
+            float totalWeight = 0f;
+            for(int i = 0; i < available.Count; i++)
+            {
+                totalWeight += available[i].m_oddsWeight;
+            }
+
+            float weight = UnityEngine.Random.Range(0f, totalWeight);
+            MapLocationInfo chosenType = default(MapLocationInfo);
+
+            for(int i = 0; i < available.Count;i++)
+            {
+                weight -= available[i].m_oddsWeight;
+                if(weight < 0)
+                {
+                    chosenType = available[i];
+                    break;
+                }
+            }
+
+            return chosenType.m_mapLocation;
         }
         #endregion
     }
