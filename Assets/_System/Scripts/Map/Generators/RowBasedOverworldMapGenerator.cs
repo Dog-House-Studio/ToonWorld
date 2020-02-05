@@ -47,6 +47,9 @@ namespace DogHouse.ToonWorld.Map
         [Range(0.0001f, 10f)]
         private float m_rowWidth;
 
+        [SerializeField]
+        private float m_rowGap;
+
         private NodeWeb m_nodeWeb = new NodeWeb();
         #endregion
 
@@ -58,10 +61,6 @@ namespace DogHouse.ToonWorld.Map
 
         public NodeWeb Generate()
         {
-            List<Node> ignoreList = new List<Node>();
-            //Node.MinXPosition = m_minXPosition;
-            //Node.MaxXPosition = m_maxXPosition;
-
             List<List<Node>> rows = new List<List<Node>>();
             float height = m_startLocation.transform.position.y;
             int lastRowCount = 0;
@@ -72,7 +71,7 @@ namespace DogHouse.ToonWorld.Map
                 lastRowCount = rows[i].Count;
             }
 
-            Node endNode = CreateNode(m_locations[0].m_mapLocation);
+            Node endNode = CreateNode();
             Vector3 pos = new Vector3(m_endLocation.transform.position.x,height + 3f,-0.25f);
             endNode.SetPosition(pos);
             List<Node> endRow = new List<Node>();
@@ -106,17 +105,13 @@ namespace DogHouse.ToonWorld.Map
         private List<Node> CreateRow(ref float height, int lastRowCount)
         {
             int numberOfIcons = UnityEngine.Random.Range(m_minNumberOfIconsPerRow, m_maximumNumberOfIconsPerRow);
-            //if(numberOfIcons == lastRowCount)
-            //{
-            //    numberOfIcons = UnityEngine.Random.Range(m_minNumberOfIconsPerRow, m_maximumNumberOfIconsPerRow);
-            //}
 
             List<Node> nodes = new List<Node>();
             float segmentLengths = m_rowWidth / numberOfIcons;
 
             for(int i = 0; i < numberOfIcons; i++)
             {
-                nodes.Add(CreateNode(m_locations[0].m_mapLocation));
+                nodes.Add(CreateNode());
                 Vector3 pos = Vector3.zero;
                 pos.z = -0.25f;
                 pos.y = height + (m_rowHeight * 0.5f);
@@ -129,11 +124,11 @@ namespace DogHouse.ToonWorld.Map
                 nodes[i].SetPosition(pos);
             }
 
-            height += m_rowHeight;
+            height += m_rowHeight + m_rowGap;
             return nodes;
         }
 
-        private Node CreateNode(MapLocation location)
+        private Node CreateNode()
         {
             Node newNode = new Node();
 
@@ -144,7 +139,7 @@ namespace DogHouse.ToonWorld.Map
             newNode.m_visualController = nodeObject
                    .GetComponent<MapLocationVisualController>();
 
-            newNode.SetData(location);
+            newNode.SetData(CalculateMapLocationType());
             m_nodeWeb.AddNode(newNode);
             return newNode;
         }
@@ -272,6 +267,11 @@ namespace DogHouse.ToonWorld.Map
             {
                 bottom[i].SetOutput(top[i]);
             }
+        }
+
+        private MapLocation CalculateMapLocationType()
+        {
+            return m_locations[UnityEngine.Random.Range(0, m_locations.Length)].m_mapLocation;
         }
         #endregion
     }

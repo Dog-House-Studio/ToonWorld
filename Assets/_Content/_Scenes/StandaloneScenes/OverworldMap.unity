@@ -1987,10 +1987,11 @@ MonoBehaviour:
     m_maxNumberOfInstances: 0
     m_oddsWeight: 0
   m_minNumberOfIconsPerRow: 2
-  m_maximumNumberOfIconsPerRow: 5
+  m_maximumNumberOfIconsPerRow: 6
   m_numberOfRows: 15
   m_rowHeight: 2.58
   m_rowWidth: 9.63
+  m_rowGap: 0.5
 --- !u!1 &1881260175
 GameObject:
   m_ObjectHideFlags: 0
