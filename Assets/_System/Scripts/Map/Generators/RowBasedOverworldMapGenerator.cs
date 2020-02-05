@@ -306,4 +306,25 @@ namespace DogHouse.ToonWorld.Map
         }
         #endregion
     }
+
+    [System.Serializable]
+    public struct MapLocationInfo
+    {
+        public MapLocation m_mapLocation;
+        public MapLocationType m_type;
+
+        //public bool m_useStaticNumber;
+        //public int m_munNumberOfInstances;
+        //public int m_maxNumberOfInstances;
+
+        [Range(0f, 1f)]
+        public float m_oddsWeight;
+    }
+
+    public enum MapLocationType
+    {
+        START,
+        MIDDLE,
+        END
+    }
 }
