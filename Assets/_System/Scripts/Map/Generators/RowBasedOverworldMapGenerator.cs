@@ -176,7 +176,48 @@ namespace DogHouse.ToonWorld.Map
 
         private void ConnectBottomHeavy(List<Node> bottom, List<Node> top)
         {
-            
+            List<Node> unusedBottom = new List<Node>();
+            for(int i = 0; i < bottom.Count; i++)
+            {
+                unusedBottom.Add(bottom[i]);
+            }
+
+            for(int i = 0; i < top.Count; i++)
+            {
+                float closestDistance = float.MaxValue;
+                Node closestNode = null;
+
+                for(int j = 0; j < bottom.Count; j++)
+                {
+                    float distance = Mathf.Abs(top[i].Position.x - bottom[j].Position.x);
+                    if(distance < closestDistance)
+                    {
+                        closestDistance = distance;
+                        closestNode = bottom[j];
+                    }
+                }
+
+                closestNode.SetOutput(top[i]);
+                unusedBottom.Remove(closestNode);
+            }
+
+            for(int i = 0; i < unusedBottom.Count; i++)
+            {
+                float closestDistance = float.MaxValue;
+                Node closestNode = null;
+
+                for(int j = 0; j < top.Count;j++)
+                {
+                    float distance = Mathf.Abs(top[j].Position.x - unusedBottom[i].Position.x);
+                    if(distance < closestDistance)
+                    {
+                        closestDistance = distance;
+                        closestNode = top[j];
+                    }
+                }
+
+                unusedBottom[i].SetOutput(closestNode);
+            }
         }
 
         private void ConnectTopHeavy(List<Node> bottom, List<Node> top)
