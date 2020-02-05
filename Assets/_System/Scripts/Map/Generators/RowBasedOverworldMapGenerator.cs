@@ -72,6 +72,22 @@ namespace DogHouse.ToonWorld.Map
                 lastRowCount = rows[i].Count;
             }
 
+            Node endNode = CreateNode(m_locations[0].m_mapLocation);
+            Vector3 pos = new Vector3(m_endLocation.transform.position.x,height + 3f,-0.25f);
+            endNode.SetPosition(pos);
+            List<Node> endRow = new List<Node>();
+            
+            endRow.Add(endNode);
+            rows.Add(endRow);
+
+            GenerateConnections(rows);
+            for(int i = 0; i < rows.Count; i++)
+            {
+                for (int j = 0; j < rows[i].Count;j++)
+                {
+                    rows[i][j].CreateLineRenders();
+                }
+            }
 
             Vector3 endPosition = m_endLocation.transform.position;
             endPosition.y = height;
@@ -90,10 +106,10 @@ namespace DogHouse.ToonWorld.Map
         private List<Node> CreateRow(ref float height, int lastRowCount)
         {
             int numberOfIcons = UnityEngine.Random.Range(m_minNumberOfIconsPerRow, m_maximumNumberOfIconsPerRow);
-            if(numberOfIcons == lastRowCount)
-            {
-                numberOfIcons = UnityEngine.Random.Range(m_minNumberOfIconsPerRow, m_maximumNumberOfIconsPerRow);
-            }
+            //if(numberOfIcons == lastRowCount)
+            //{
+            //    numberOfIcons = UnityEngine.Random.Range(m_minNumberOfIconsPerRow, m_maximumNumberOfIconsPerRow);
+            //}
 
             List<Node> nodes = new List<Node>();
             float segmentLengths = m_rowWidth / numberOfIcons;
@@ -102,7 +118,7 @@ namespace DogHouse.ToonWorld.Map
             {
                 nodes.Add(CreateNode(m_locations[0].m_mapLocation));
                 Vector3 pos = Vector3.zero;
-                pos.z = 0.25f;
+                pos.z = -0.25f;
                 pos.y = height + (m_rowHeight * 0.5f);
                 pos.x = segmentLengths * i + (segmentLengths * 0.5f) - (m_rowWidth * 0.5f);
 
@@ -128,27 +144,52 @@ namespace DogHouse.ToonWorld.Map
             newNode.m_visualController = nodeObject
                    .GetComponent<MapLocationVisualController>();
 
-            newNode.SetData(FetchMapLocationType());
+            newNode.SetData(location);
             m_nodeWeb.AddNode(newNode);
             return newNode;
         }
 
-        private MapLocation FetchMapLocationType()
+        private void GenerateConnections(List<List<Node>> rows)
         {
-            List<MapLocationInfo> availableMapLocationTypes = new List<MapLocationInfo>();
-            availableMapLocationTypes = m_locations.Where(x => x.m_type == MapLocationType.MIDDLE).ToList();
-
-            for (int i = availableMapLocationTypes.Count - 1; i >= 0; i--)
+            //Looping the rows backwards
+            for(int i = rows.Count - 2; i >= 0; i--)
             {
-                if (!availableMapLocationTypes[i].m_useStaticNumber) continue;
-                if (m_nodeWeb.ContainsCount(availableMapLocationTypes[i].m_mapLocation) >=
-                    availableMapLocationTypes[i].m_maxNumberOfInstances)
+                int topCount = rows[i + 1].Count;
+                int bottomCount = rows[i].Count;
+
+                //Same number on top as bottom
+                if(topCount == bottomCount)
                 {
-                    availableMapLocationTypes.RemoveAt(i);
+                    ConnectDirectly(rows[i], rows[i + 1]);
+                    continue;
                 }
+
+                if(topCount > bottomCount)
+                {
+                    ConnectTopHeavy(rows[i], rows[i + 1]);
+                    continue;
+                }
+
+                ConnectBottomHeavy(rows[i], rows[i + 1]);
             }
-            int index = UnityEngine.Random.Range(0, availableMapLocationTypes.Count);
-            return availableMapLocationTypes[index].m_mapLocation;
+        }
+
+        private void ConnectBottomHeavy(List<Node> bottom, List<Node> top)
+        {
+            
+        }
+
+        private void ConnectTopHeavy(List<Node> bottom, List<Node> top)
+        {
+            
+        }
+
+        private void ConnectDirectly(List<Node> bottom, List<Node> top)
+        {
+            for(int i = 0; i < bottom.Count; i++)
+            {
+                bottom[i].SetOutput(top[i]);
+            }
         }
         #endregion
     }
