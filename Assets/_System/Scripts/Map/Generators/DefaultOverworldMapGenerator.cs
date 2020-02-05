@@ -10,8 +10,7 @@ namespace DogHouse.ToonWorld.Map
     /// implementation creates the map similar to how
     /// the maps are generated in slay the spire.
     /// </summary>
-    public class DefaultOverworldMapGenerator : MonoBehaviour, 
-        IOverworldMapGenerator
+    public class DefaultOverworldMapGenerator : MonoBehaviour
     {
         #region Private Variables
         [Header("Objects")]

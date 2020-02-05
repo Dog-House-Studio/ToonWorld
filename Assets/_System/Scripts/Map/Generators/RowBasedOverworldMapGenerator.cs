@@ -51,12 +51,18 @@ namespace DogHouse.ToonWorld.Map
         private float m_rowGap;
 
         private NodeWeb m_nodeWeb = new NodeWeb();
+        private List<Node> m_startingNodes;
         #endregion
 
         #region Main Methods
         public void Display(bool value)
         {
 
+        }
+
+        public List<Node> FetchStartingAvailableNodes()
+        {
+            return m_startingNodes;
         }
 
         public NodeWeb Generate()
@@ -94,6 +100,8 @@ namespace DogHouse.ToonWorld.Map
             Vector3 endPosition = m_endLocation.transform.position;
             endPosition.y = height;
             m_endLocation.transform.position = endPosition;
+
+            m_startingNodes = rows[0];
 
             return m_nodeWeb;
         }
