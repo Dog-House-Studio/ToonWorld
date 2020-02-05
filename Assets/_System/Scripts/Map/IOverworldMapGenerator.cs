@@ -1,4 +1,6 @@
-﻿namespace DogHouse.ToonWorld.Map
+﻿using System.Collections.Generic;
+
+namespace DogHouse.ToonWorld.Map
 {
     /// <summary>
     /// IOverworldMapGenerator is an interface that defines
@@ -10,6 +12,7 @@
     {
         void SetSeed(int seedValue);
         NodeWeb Generate();
+        List<Node> FetchStartingAvailableNodes();
         void Display(bool value);
     }
 }

@@ -52,9 +52,6 @@ namespace DogHouse.ToonWorld.Map
         public MapLocation IconType => m_data;
         public Vector3 Position => m_nodeRootGameObject.transform.position;
 
-        public static float MinXPosition;
-        public static float MaxXPosition;
-
         public GameObject m_nodeRootGameObject;
         public MapLocationVisualController m_visualController;
         public List<Node> m_inputs = new List<Node>();
@@ -107,9 +104,6 @@ namespace DogHouse.ToonWorld.Map
 
         public void SetPosition(Vector3 position)
         {
-            position.x = Mathf.Max(MinXPosition, position.x);
-            position.x = Mathf.Min(MaxXPosition, position.x);
-
             m_nodeRootGameObject.transform.position = position;
         }
 

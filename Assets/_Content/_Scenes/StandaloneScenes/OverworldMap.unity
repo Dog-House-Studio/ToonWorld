@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -196,8 +196,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 279758955}
   m_LocalRotation: {x: -0, y: -0, z: -0.70710576, w: 0.70710784}
-  m_LocalPosition: {x: 0, y: 22.06, z: 0}
-  m_LocalScale: {x: 2.3050988, y: 1.476, z: 1}
+  m_LocalPosition: {x: -0, y: 44.13, z: 0}
+  m_LocalScale: {x: 4.6101975, y: 1.0897115, z: 1}
   m_Children: []
   m_Father: {fileID: 899865420}
   m_RootOrder: 0
@@ -1941,7 +1941,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1800870802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d82548b0668bce4382270a413794b78, type: 3}
+  m_Script: {fileID: 11500000, guid: eff7b4131ed2ad141851c9961d83cfda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_startLocation: {fileID: 1780114119}
@@ -1952,52 +1952,28 @@ MonoBehaviour:
   m_locations:
   - m_mapLocation: {fileID: 11400000, guid: ed8d568b76cc6354991de15eb84d756b, type: 2}
     m_type: 1
-    m_useStaticNumber: 0
-    m_munNumberOfInstances: 0
-    m_maxNumberOfInstances: 0
-    m_oddsWeight: 0.715
+    m_oddsWeight: 0.5
   - m_mapLocation: {fileID: 11400000, guid: 889a3a8b21e64414c9246cdec25d1bb0, type: 2}
     m_type: 1
-    m_useStaticNumber: 0
-    m_munNumberOfInstances: 0
-    m_maxNumberOfInstances: 0
-    m_oddsWeight: 0.142
+    m_oddsWeight: 0.1
   - m_mapLocation: {fileID: 11400000, guid: 918547c8ec6a47e45ab9b3f32cf012e4, type: 2}
     m_type: 1
-    m_useStaticNumber: 1
-    m_munNumberOfInstances: 4
-    m_maxNumberOfInstances: 8
-    m_oddsWeight: 0
+    m_oddsWeight: 0.1
   - m_mapLocation: {fileID: 11400000, guid: 34f633b46944b974d964cbae2508600c, type: 2}
     m_type: 2
-    m_useStaticNumber: 0
-    m_munNumberOfInstances: 0
-    m_maxNumberOfInstances: 0
-    m_oddsWeight: 0
+    m_oddsWeight: 1
   - m_mapLocation: {fileID: 11400000, guid: f3a0c1da2a8beba42a1ccfe67cf4f2af, type: 2}
     m_type: 1
-    m_useStaticNumber: 1
-    m_munNumberOfInstances: 3
-    m_maxNumberOfInstances: 4
-    m_oddsWeight: 0
-  - m_mapLocation: {fileID: 11400000, guid: e71d8823e7c116d44977705160f03368, type: 2}
+    m_oddsWeight: 0.15
+  - m_mapLocation: {fileID: 11400000, guid: ed8d568b76cc6354991de15eb84d756b, type: 2}
     m_type: 0
-    m_useStaticNumber: 0
-    m_munNumberOfInstances: 0
-    m_maxNumberOfInstances: 0
-    m_oddsWeight: 0
-  m_endZonePlacementRange: 9.37
-  m_minXPosition: -5.13841
-  m_maxXPosition: 4.675632
-  m_minPlacementRange: 1.91
-  m_maximumPlacementRange: 3.16
-  m_maxSwayRange: 3.1
-  m_MinimumNumberOfBranches: 4
-  m_maximumNumberOfBranches: 4
-  m_paddingSpace: 2.29
-  m_paddingItterations: 3
-  m_connectionDistance: 3.27
-  m_connectionDotValue: 0.782
+    m_oddsWeight: 1
+  m_minNumberOfIconsPerRow: 2
+  m_maximumNumberOfIconsPerRow: 6
+  m_numberOfRows: 15
+  m_rowHeight: 2.58
+  m_rowWidth: 9.63
+  m_rowGap: 0.5
 --- !u!1 &2090062486
 GameObject:
   m_ObjectHideFlags: 0

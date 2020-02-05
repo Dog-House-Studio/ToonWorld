@@ -6,6 +6,7 @@ using Cinemachine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 namespace DogHouse.ToonWorld.Services
 {
@@ -56,8 +57,12 @@ namespace DogHouse.ToonWorld.Services
             generator = FindObjectsOfType<MonoBehaviour>().OfType<IOverworldMapGenerator>().FirstOrDefault();
             m_nodeWeb = generator.Generate();
 
-            m_nodeWeb.Start.SetAsCurrent(true);
-            m_currentNode = m_nodeWeb.Start;
+            List<Node> startingNodes = generator.FetchStartingAvailableNodes();
+            
+            for(int i = 0; i < startingNodes.Count; i++)
+            {
+                startingNodes[i].SetAsActiveOption(true);
+            }
         }
 
         public override void OnEnable()
@@ -77,7 +82,7 @@ namespace DogHouse.ToonWorld.Services
         public void ReportIconSelected(Node icon)
         {
             m_zoomedNode = icon;
-            m_currentNode.SetAsCurrent(false);
+            m_currentNode?.SetAsCurrent(false);
             icon.SetIconSelectedColor(true);
 
             m_iconCamera.transform.position 
@@ -102,7 +107,7 @@ namespace DogHouse.ToonWorld.Services
             m_mapCamera.gameObject.SetActive(true);
 
             m_UIObject?.SetActive(false);
-            m_currentNode.SetAsCurrent(true);
+            m_currentNode?.SetAsCurrent(true);
         }
 
         private void GoToNodeScene()
