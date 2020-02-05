@@ -86,8 +86,8 @@ namespace DogHouse.ToonWorld.Map
         public NodeWeb Generate()
         {
             List<Node> ignoreList = new List<Node>();
-            Node.MinXPosition = m_minXPosition;
-            Node.MaxXPosition = m_maxXPosition;
+            //Node.MinXPosition = m_minXPosition;
+            //Node.MaxXPosition = m_maxXPosition;
 
             //Start Node
             Node StartNode = CreateNode(m_locations[0].m_mapLocation);

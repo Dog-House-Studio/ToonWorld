@@ -56,7 +56,8 @@ namespace DogHouse.ToonWorld.Services
             generator = FindObjectsOfType<MonoBehaviour>().OfType<IOverworldMapGenerator>().FirstOrDefault();
             m_nodeWeb = generator.Generate();
 
-            m_nodeWeb.Start.SetAsCurrent(true);
+
+            //m_nodeWeb.Start.SetAsCurrent(true);
             m_currentNode = m_nodeWeb.Start;
         }
 
