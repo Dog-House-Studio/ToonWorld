@@ -40,7 +40,6 @@ namespace DogHouse.ToonWorld.Services
         private TMP_Text m_text;
 
         private NodeWeb m_nodeWeb;
-        private Node m_currentNode = null;
         private List<Node> m_availableOptionNodes = new List<Node>();
 
         private Node m_zoomedNode = null;
@@ -58,7 +57,6 @@ namespace DogHouse.ToonWorld.Services
             IOverworldMapGenerator generator;
             generator = FindObjectsOfType<MonoBehaviour>().OfType<IOverworldMapGenerator>().FirstOrDefault();
             m_nodeWeb = generator.Generate();
-
 
             m_availableOptionNodes = generator.FetchStartingAvailableNodes();
             SetAvailableNodes(true);
@@ -120,7 +118,11 @@ namespace DogHouse.ToonWorld.Services
         private void OnIconSceneLoaded()
         {
             m_availableOptionNodes.Clear();
-            m_availableOptionNodes = m_zoomedNode.m_outputs;
+
+            for(int i = 0; i < m_zoomedNode.Outputs.Count; i++)
+            {
+                m_availableOptionNodes.Add(m_zoomedNode.Outputs[i]);
+            }
 
             m_mapSceneCamera.gameObject?.SetActive(false);
             m_UIObject.gameObject?.SetActive(false);
