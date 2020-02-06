@@ -81,7 +81,6 @@ namespace DogHouse.ToonWorld.Services
         public void ReportIconSelected(Node icon)
         {
             m_zoomedNode = icon;
-            //m_currentNode?.SetAsCurrent(false);
             SetAvailableNodes(false);
 
             icon.SetIconSelectedColor(true);
@@ -108,7 +107,6 @@ namespace DogHouse.ToonWorld.Services
             m_mapCamera.gameObject.SetActive(true);
 
             m_UIObject?.SetActive(false);
-            //m_currentNode?.SetAsCurrent(true);
             SetAvailableNodes(true);
         }
 
@@ -121,6 +119,9 @@ namespace DogHouse.ToonWorld.Services
 
         private void OnIconSceneLoaded()
         {
+            m_availableOptionNodes.Clear();
+            m_availableOptionNodes = m_zoomedNode.m_outputs;
+
             m_mapSceneCamera.gameObject?.SetActive(false);
             m_UIObject.gameObject?.SetActive(false);
         }
