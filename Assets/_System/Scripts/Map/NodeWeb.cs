@@ -49,13 +49,16 @@ namespace DogHouse.ToonWorld.Map
     /// </summary>
     public class Node
     {
+        public List<Node> Outputs => m_outputs;
+
+
         public MapLocation IconType => m_data;
         public Vector3 Position => m_nodeRootGameObject.transform.position;
 
         public GameObject m_nodeRootGameObject;
         public MapLocationVisualController m_visualController;
-        public List<Node> m_inputs = new List<Node>();
-        public List<Node> m_outputs = new List<Node>();
+
+        private List<Node> m_outputs = new List<Node>();
 
         private ServiceReference<IMapService> m_mapService 
             = new ServiceReference<IMapService>();
@@ -73,18 +76,9 @@ namespace DogHouse.ToonWorld.Map
             m_visualController?.SetIconSelectedColor(value);
         }
 
-        public void SetAsCurrent(bool value)
-        {
-            SetFull(value);
-            for(int i = 0; i < m_outputs.Count; i++)
-            {
-                m_outputs[i].SetAsActiveOption(value);
-            }
-        }
-
         public void SetAsActiveOption(bool value)
         {
-            SetFull(value);
+            m_visualController.SetFull(value);
             m_visualController?.SetIconActive(value);
 
             m_visualController.OnClicked -= OnClicked;
@@ -97,11 +91,6 @@ namespace DogHouse.ToonWorld.Map
             m_mapService.Reference.ReportIconSelected(this);
         }
 
-        public void SetFull(bool value)
-        {
-            m_visualController.SetFull(value);
-        }
-
         public void SetPosition(Vector3 position)
         {
             m_nodeRootGameObject.transform.position = position;
@@ -110,21 +99,13 @@ namespace DogHouse.ToonWorld.Map
         public void SetOutput(Node node)
         {
             m_outputs.Add(node);
-            node.m_inputs.Add(this);
-        }
-
-        public void RemoveOutput(Node node)
-        {
-            if (!m_outputs.Contains(node)) return;
-
-            m_outputs.Remove(node);
         }
 
         public void CreateLineRenders()
         {
-            for(int i = 0; i < m_outputs.Count; i++)
+            for(int i = 0; i < Outputs.Count; i++)
             {
-                m_visualController.SetOutput(m_outputs[i].m_nodeRootGameObject);
+                m_visualController.SetOutput(Outputs[i].m_nodeRootGameObject);
             }
         }
 

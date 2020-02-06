@@ -52,6 +52,7 @@ namespace DogHouse.ToonWorld.Map
 
         private NodeWeb m_nodeWeb = new NodeWeb();
         private List<Node> m_startingNodes;
+        List<List<Node>> m_rows = new List<List<Node>>();
         #endregion
 
         #region Main Methods
@@ -67,7 +68,6 @@ namespace DogHouse.ToonWorld.Map
 
         public NodeWeb Generate()
         {
-            List<List<Node>> rows = new List<List<Node>>();
             float height = m_startLocation.transform.position.y;
             int lastRowCount = 0;
 
@@ -76,8 +76,8 @@ namespace DogHouse.ToonWorld.Map
                 MapLocationType type;
                 type = (i == 0) ? MapLocationType.START : MapLocationType.MIDDLE;
 
-                rows.Add(CreateRow(ref height, lastRowCount, type));
-                lastRowCount = rows[i].Count;
+                m_rows.Add(CreateRow(ref height, lastRowCount, type));
+                lastRowCount = m_rows[i].Count;
             }
 
             Node endNode = CreateNode(MapLocationType.END);
@@ -86,14 +86,14 @@ namespace DogHouse.ToonWorld.Map
             List<Node> endRow = new List<Node>();
             
             endRow.Add(endNode);
-            rows.Add(endRow);
+            m_rows.Add(endRow);
 
-            GenerateConnections(rows);
-            for(int i = 0; i < rows.Count; i++)
+            GenerateConnections(ref m_rows);
+            for(int i = 0; i < m_rows.Count; i++)
             {
-                for (int j = 0; j < rows[i].Count;j++)
+                for (int j = 0; j < m_rows[i].Count;j++)
                 {
-                    rows[i][j].CreateLineRenders();
+                    m_rows[i][j].CreateLineRenders();
                 }
             }
 
@@ -101,7 +101,15 @@ namespace DogHouse.ToonWorld.Map
             endPosition.y = height;
             m_endLocation.transform.position = endPosition;
 
-            m_startingNodes = rows[0];
+            m_startingNodes = m_rows[0];
+
+            for (int i = 0; i < m_rows.Count; i++)
+            {
+                for (int j = 0; j < m_rows[i].Count; j++)
+                {
+                    m_nodeWeb.AddNode(m_rows[i][j]);
+                }
+            }
 
             return m_nodeWeb;
         }
@@ -151,11 +159,10 @@ namespace DogHouse.ToonWorld.Map
                    .GetComponent<MapLocationVisualController>();
 
             newNode.SetData(CalculateMapLocationType(LocationType));
-            m_nodeWeb.AddNode(newNode);
             return newNode;
         }
 
-        private void GenerateConnections(List<List<Node>> rows)
+        private void GenerateConnections(ref List<List<Node>> rows)
         {
             //Looping the rows backwards
             for(int i = rows.Count - 2; i >= 0; i--)
@@ -249,7 +256,7 @@ namespace DogHouse.ToonWorld.Map
                     }
                 }
 
-                closestNode.SetOutput(bottom[i]);
+                bottom[i].SetOutput(closestNode);
                 unusedTop.Remove(closestNode);
             }
 
@@ -268,7 +275,7 @@ namespace DogHouse.ToonWorld.Map
                     }
                 }
 
-                unusedTop[i].SetOutput(closestNode);
+                closestNode.SetOutput(unusedTop[i]);
             }
         }
 

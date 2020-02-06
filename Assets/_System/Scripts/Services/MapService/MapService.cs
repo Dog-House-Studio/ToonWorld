@@ -40,7 +40,8 @@ namespace DogHouse.ToonWorld.Services
         private TMP_Text m_text;
 
         private NodeWeb m_nodeWeb;
-        private Node m_currentNode = null;
+        private List<Node> m_availableOptionNodes = new List<Node>();
+
         private Node m_zoomedNode = null;
 
         private ServiceReference<IGameSceneManagerService> m_sceneManager 
@@ -57,12 +58,8 @@ namespace DogHouse.ToonWorld.Services
             generator = FindObjectsOfType<MonoBehaviour>().OfType<IOverworldMapGenerator>().FirstOrDefault();
             m_nodeWeb = generator.Generate();
 
-            List<Node> startingNodes = generator.FetchStartingAvailableNodes();
-            
-            for(int i = 0; i < startingNodes.Count; i++)
-            {
-                startingNodes[i].SetAsActiveOption(true);
-            }
+            m_availableOptionNodes = generator.FetchStartingAvailableNodes();
+            SetAvailableNodes(true);
         }
 
         public override void OnEnable()
@@ -82,7 +79,8 @@ namespace DogHouse.ToonWorld.Services
         public void ReportIconSelected(Node icon)
         {
             m_zoomedNode = icon;
-            m_currentNode?.SetAsCurrent(false);
+            SetAvailableNodes(false);
+
             icon.SetIconSelectedColor(true);
 
             m_iconCamera.transform.position 
@@ -107,7 +105,7 @@ namespace DogHouse.ToonWorld.Services
             m_mapCamera.gameObject.SetActive(true);
 
             m_UIObject?.SetActive(false);
-            m_currentNode?.SetAsCurrent(true);
+            SetAvailableNodes(true);
         }
 
         private void GoToNodeScene()
@@ -119,6 +117,13 @@ namespace DogHouse.ToonWorld.Services
 
         private void OnIconSceneLoaded()
         {
+            m_availableOptionNodes.Clear();
+
+            for(int i = 0; i < m_zoomedNode.Outputs.Count; i++)
+            {
+                m_availableOptionNodes.Add(m_zoomedNode.Outputs[i]);
+            }
+
             m_mapSceneCamera.gameObject?.SetActive(false);
             m_UIObject.gameObject?.SetActive(false);
         }
@@ -136,6 +141,17 @@ namespace DogHouse.ToonWorld.Services
             SceneManager.UnloadScene(sceneName);
             m_loadingScreenService.Reference.TransitionOut();
             ReturnToMapView();
+        }
+        #endregion
+
+        #region Utility Methods
+        private void SetAvailableNodes(bool value)
+        {
+            foreach (Node node in m_nodeWeb.Nodes)
+                node?.SetAsActiveOption(false);
+
+            foreach (Node node in m_availableOptionNodes)
+                node?.SetAsActiveOption(value);
         }
         #endregion
     }
