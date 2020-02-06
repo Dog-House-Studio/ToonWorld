@@ -58,6 +58,7 @@ namespace DogHouse.ToonWorld.UI
 
         public void TransitionIn(Action callback)
         {
+            m_callbackIn -= callback;
             m_callbackIn += callback;
             TransitionIn();
         }
