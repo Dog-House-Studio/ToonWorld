@@ -895,6 +895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 2.27
+  m_dragSpeed: 0.602
   m_bottomObject: {fileID: 1780114119}
   m_topObject: {fileID: 582940604}
 --- !u!1 &1195862397
