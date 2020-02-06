@@ -50,14 +50,7 @@ namespace DogHouse.ToonWorld.Map
 
                 interpolant += Input.mouseScrollDelta.y * m_speed * Time.deltaTime;
                 interpolant = Mathf.Clamp01(interpolant);
-
-
-                m_positionCopy = this.transform.position;
-                m_positionCopy.y =
-                    Mathf.Lerp(m_bottomObject.transform.position.y,
-                    m_topObject.transform.position.y, interpolant);
-
-                this.transform.position = m_positionCopy;
+                Move();
                 return;
             }
 
@@ -72,12 +65,17 @@ namespace DogHouse.ToonWorld.Map
 
             y = y / Screen.height;
             interpolant = m_startDragInterpolant + (-y) * m_dragSpeed;
+            Move();
+        }
+        #endregion
 
+        #region Utility Methods
+        private void Move()
+        {
             m_positionCopy = this.transform.position;
             m_positionCopy.y =
                 Mathf.Lerp(m_bottomObject.transform.position.y,
                 m_topObject.transform.position.y, interpolant);
-
             this.transform.position = m_positionCopy;
         }
         #endregion
