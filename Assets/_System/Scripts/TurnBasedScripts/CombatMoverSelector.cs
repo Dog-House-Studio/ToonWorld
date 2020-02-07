@@ -21,7 +21,7 @@ public class CombatMoverSelector : MonoBehaviour
 
     protected void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Submit"))
         {
             if (GridManager.Instance.m_HoveredGridTile != null)
             {

@@ -6,7 +6,7 @@ public class CombatUnitSelector : MonoBehaviour
 {
     protected CombatMoverSelector moveSelector;
 
-    protected void Awake()
+    protected void Start()
     {
         moveSelector = GetComponent<CombatMoverSelector>();
     }
@@ -14,7 +14,7 @@ public class CombatUnitSelector : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)||Input.GetButtonDown("Submit"))
         {
             if (GridManager.Instance.m_HoveredGridTile != null)
             {
@@ -34,7 +34,8 @@ public class CombatUnitSelector : MonoBehaviour
 
     protected void ExitState(GridObject movingPiece)
     {
-        enabled = false;
+        
         moveSelector.EnterState(movingPiece);
+        enabled = false;
     }
 }

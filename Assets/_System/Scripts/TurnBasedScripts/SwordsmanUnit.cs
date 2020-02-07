@@ -18,7 +18,8 @@ public class SwordsmanUnit : BaseUnitClass
 
         GridTile start = GridManager.GetGridTileAtPosition(gridPoint);
         final.Add(start);
-        foreach(GridTile neighbor in GridManager.Instance.Neighbors(start))
+        List<GridTile> tempTiles = GridManager.Instance.Neighbors(start);
+        foreach (GridTile neighbor in tempTiles)
         {
             Costs.Add(neighbor, neighbor.m_costOfMovingToTile);
             if(movementAmount - Costs[neighbor] >= 0)

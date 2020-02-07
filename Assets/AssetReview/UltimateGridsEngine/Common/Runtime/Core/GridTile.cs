@@ -35,10 +35,11 @@ public class GridTile : MonoBehaviour {
     }
 
     //  Any GridTile or GridObject requires its GridPosition to be set so it can be initialized
-    protected virtual void Start() {
+    protected virtual void Awake() {
         if (!_initialized && m_GridPosition != new Vector2Int(int.MaxValue, int.MaxValue)) {
             Initialize(new Vector3Int(m_GridPosition.x, m_GridPosition.y, m_TileHeight));
         }
+        Debug.Log("Tile has been Initialized");
     }
 
     // Method used to initialize the tile

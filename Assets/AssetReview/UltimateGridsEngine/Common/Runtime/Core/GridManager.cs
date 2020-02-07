@@ -25,6 +25,14 @@ public class GridManager : Singleton<GridManager> {
         m_Grid = GetComponent<Grid>();
     }
 
+    private void Awake()
+    {
+        if(m_DefaultNeighbors == null)
+        {
+            SetDefaultRectNeighbours();
+        }
+    }
+
     [ContextMenu("Set Default Rectangle Neighbors")]
     public virtual void SetDefaultRectNeighbours() {
         m_DefaultNeighbors = defaultRectangleDirections;
@@ -141,6 +149,10 @@ public class GridManager : Singleton<GridManager> {
     public virtual List<GridTile> Neighbors(GridTile gridTile) {
         List<GridTile> results = new List<GridTile>();
 
+        if (m_DefaultNeighbors.Count<4)
+        {
+            SetDefaultRectNeighbours();
+        }
         foreach (Vector2Int dir in m_DefaultNeighbors) {
             Vector2Int newVector = dir + gridTile.m_GridPosition;
             if (ExistsTileAtPosition(newVector)) {

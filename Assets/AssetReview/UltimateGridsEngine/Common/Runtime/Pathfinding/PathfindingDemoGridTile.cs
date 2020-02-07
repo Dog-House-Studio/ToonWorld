@@ -17,8 +17,8 @@ public class PathfindingDemoGridTile : GridTile
 		}
 	}
 
-    protected override void Start() {
-        base.Start();
+    protected override void Awake() {
+        base.Awake();
         DisableDistanceText();
         _renderer = GetComponent<Renderer>();
         if (_renderer == null) {
