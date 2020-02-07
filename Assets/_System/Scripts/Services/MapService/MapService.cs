@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System;
 
 namespace DogHouse.ToonWorld.Services
 {
@@ -17,6 +18,11 @@ namespace DogHouse.ToonWorld.Services
     /// </summary>
     public class MapService : BaseService<IMapService>, IMapService
     {
+        #region Public Variables
+        public Action OnLeavingMapView { get; set; }
+        public Action OnReturningToMapView { get; set; }
+        #endregion
+
         #region Private Variables
         [SerializeField]
         private CinemachineVirtualCamera m_iconCamera;
@@ -96,7 +102,7 @@ namespace DogHouse.ToonWorld.Services
             m_UIObject?.SetActive(true);
 
             m_text.text = icon.IconType.LocationName.ToUpper();
-            
+            OnLeavingMapView?.Invoke();
         }
 
         public void ReturnToMapView()
@@ -106,6 +112,7 @@ namespace DogHouse.ToonWorld.Services
 
             m_UIObject?.SetActive(false);
             SetAvailableNodes(true);
+            OnReturningToMapView?.Invoke();
         }
 
         private void GoToNodeScene()
@@ -126,6 +133,7 @@ namespace DogHouse.ToonWorld.Services
 
             m_mapSceneCamera.gameObject?.SetActive(false);
             m_UIObject.gameObject?.SetActive(false);
+            OnLeavingMapView?.Invoke();
         }
 
         public void ReturnToMapScene(string currentSceneName)
