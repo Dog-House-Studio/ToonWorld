@@ -1982,6 +1982,9 @@ MonoBehaviour:
   - m_mapLocation: {fileID: 11400000, guid: ed8d568b76cc6354991de15eb84d756b, type: 2}
     m_type: 0
     m_oddsWeight: 1
+  - m_mapLocation: {fileID: 11400000, guid: dce544857d3a8fb4b970d5bf85ba497d, type: 2}
+    m_type: 1
+    m_oddsWeight: 0.103
   m_minNumberOfIconsPerRow: 2
   m_maximumNumberOfIconsPerRow: 6
   m_numberOfRows: 15
