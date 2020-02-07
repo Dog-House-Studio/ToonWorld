@@ -1,5 +1,6 @@
 ﻿using DogScaffold;
 using DogHouse.ToonWorld.Map;
+using System;
 
 namespace DogHouse.ToonWorld.Services
 {
@@ -14,5 +15,8 @@ namespace DogHouse.ToonWorld.Services
         void ReportIconSelected(Node icon);
         void ReturnToMapView();
         void ReturnToMapScene(string currentSceneName);
+
+        Action OnLeavingMapView { get; set; }
+        Action OnReturningToMapView { get; set; }
     }
 }
