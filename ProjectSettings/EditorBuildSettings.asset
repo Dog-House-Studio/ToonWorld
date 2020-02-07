@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Content/_Scenes/LocationScenes/ShopScene.unity
     guid: 5a921481ab344e5488c6cde282abc0b6
+  - enabled: 1
+    path: Assets/_Content/_Scenes/StandaloneScenes/Disclaimer.unity
+    guid: de78920521acb6441909d0dea887b79d
   m_configObjects: {}
