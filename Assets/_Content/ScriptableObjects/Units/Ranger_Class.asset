@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Ranger_Class
   m_EditorClassIdentifier: 
   m_className: Ranger
-  m_classSprite: {fileID: 0}
+  m_classSprite: {fileID: 21300000, guid: 4c4ce53b27123314498e80a9827b4d5c, type: 3}
   m_movementType: {fileID: 11400000, guid: f08647ab8bed5e0479b29e289a1a919a, type: 2}
   m_baseStats: {fileID: 11400000, guid: d1aa80d673cfd1347a63b9c6263509ec, type: 2}
+  m_experienceType: 0
   m_weakness:
   - {fileID: 11400000, guid: c3f7bcf1055dd6742916822f5d565880, type: 2}
   m_strength:

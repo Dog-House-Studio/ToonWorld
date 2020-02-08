@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hacker_Class
   m_EditorClassIdentifier: 
   m_className: Hacker
-  m_classSprite: {fileID: 0}
+  m_classSprite: {fileID: 21300000, guid: 11fd0c8ceaef48040a511c1401df0040, type: 3}
   m_movementType: {fileID: 11400000, guid: fb9c62f1e18c06848ac93d912ad5389b, type: 2}
   m_baseStats: {fileID: 11400000, guid: b8bda609a861f494b986354a1dce3c68, type: 2}
   m_experienceType: 1
