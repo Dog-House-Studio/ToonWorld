@@ -51,7 +51,7 @@ namespace DogHouse.ToonWorld.CombatControllers
 
         public List<Vector2Int> MovesForUnit(GridObject unit)
         {
-            var piececomp = unit as BaseUnitClass;
+            var piececomp = unit as BattleFieldUnit;
             var locations = piececomp.MoveLocations(unit.m_GridPosition);
 
             // filter out locations with friendly piece

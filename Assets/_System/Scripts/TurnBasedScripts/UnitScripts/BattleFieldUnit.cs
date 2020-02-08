@@ -1,11 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace DogHouse.ToonWorld.CombatControllers
 {
-
-    public abstract class BaseUnitClass : GridObject
+    /// <summary>
+    /// A Battlefield Unit is a unit on the battlefield. It has stats,
+    /// a movement pattern and some form of data associated with the
+    /// unit on the battlefield.
+    /// </summary>
+    public class BattleFieldUnit : GridObject
     {
         public int movementAmount;
 

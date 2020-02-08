@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace DogHouse.ToonWorld.CombatControllers
 {
-    public class SwordsmanUnit : BaseUnitClass
+    public class SwordsmanUnit : BattleFieldUnit
     {
 
     }
