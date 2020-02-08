@@ -55,6 +55,9 @@ namespace DogHouse.ToonWorld.Services
 
         private ServiceReference<ILoadingScreenService> m_loadingScreenService 
             = new ServiceReference<ILoadingScreenService>();
+
+        private ServiceReference<IAnalyticsService> m_analyticsService 
+            = new ServiceReference<IAnalyticsService>();
         #endregion
 
         #region Main Methods
@@ -118,6 +121,9 @@ namespace DogHouse.ToonWorld.Services
         private void GoToNodeScene()
         {
             if (!m_sceneManager.CheckServiceRegistered()) return;
+
+            m_analyticsService.Reference?.SendMapLocationEntered(m_zoomedNode.IconType.ToString());
+
             m_sceneManager.Reference.LoadScene(m_zoomedNode.IconType.SceneDefinition, 
                 OnIconSceneLoaded);
         }
