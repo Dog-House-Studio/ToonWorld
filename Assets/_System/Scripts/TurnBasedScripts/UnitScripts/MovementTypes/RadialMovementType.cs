@@ -1,15 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace DogHouse.ToonWorld.CombatControllers
 {
-
-    public abstract class BaseUnitClass : GridObject
+    /// <summary>
+    /// RadialMovementType is a script that contains
+    /// the logic for the radial movement type. This is
+    /// a type that moves in equally radial movement patterns.
+    /// </summary>
+    [CreateAssetMenu(menuName = "Dog House/ToonWorld/Unit/Movement/Radial", fileName = "MyNewRadialMovement")]
+    public class RadialMovementType : BaseMovementType
     {
-        public int movementAmount;
-
-        public virtual List<Vector2Int> MoveLocations(Vector2Int gridPoint)
+        #region Main Methods
+        public override List<Vector2Int> MoveLocations(Vector2Int gridPoint)
         {
             List<Vector2Int> locations = new List<Vector2Int>();
 
@@ -24,7 +27,7 @@ namespace DogHouse.ToonWorld.CombatControllers
             foreach (GridTile neighbor in GridManager.Instance.Neighbors(start))
             {
                 Costs.Add(neighbor, neighbor.m_costOfMovingToTile);
-                if (movementAmount - Costs[neighbor] >= 0)
+                if (m_movementAmount - Costs[neighbor] >= 0)
                 {
                     UI.Add(neighbor);
                 }
@@ -42,7 +45,7 @@ namespace DogHouse.ToonWorld.CombatControllers
                             {
                                 float cost = neighbor.m_costOfMovingToTile + Costs[g];
                                 Costs.Add(neighbor, cost);
-                                if (movementAmount - Costs[neighbor] >= 0)
+                                if (m_movementAmount - Costs[neighbor] >= 0)
                                 {
                                     tempUI.Add(neighbor);
                                 }
@@ -64,7 +67,6 @@ namespace DogHouse.ToonWorld.CombatControllers
             }
             return locations;
         }
-
+        #endregion
     }
-
 }

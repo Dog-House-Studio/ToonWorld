@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: BaseRangerStats
+  m_EditorClassIdentifier: Assembly-CSharp:DogHouse.ToonWorld.CombatControllers:BaseClassUnitStats
+  Stats:
+    MyDestroyableStats:
+      Health:
+        StatName: Health
+        StatShortHandName: HP
+        Value: 4
+      Defence:
+        StatName: Defence
+        StatShortHandName: DEF
+        Value: 2
+    Strength:
+      StatName: Strength
+      StatShortHandName: STR
+      Value: 7
+    Accuracy:
+      StatName: Accuracy
+      StatShortHandName: ACC
+      Value: 10
+    Speed:
+      StatName: Speed
+      StatShortHandName: SPD
+      Value: 6
+    Luck:
+      StatName: Luck
+      StatShortHandName: LCK
+      Value: 7

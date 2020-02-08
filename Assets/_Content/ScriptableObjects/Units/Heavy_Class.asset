@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3181cb3230cdd1348b596dcbeb2143d7, type: 3}
+  m_Name: Heavy_Class
+  m_EditorClassIdentifier: 
+  m_className: Heavy
+  m_classSprite: {fileID: 21300000, guid: a2786e82345370d4bb43810c37fb57f6, type: 3}
+  m_movementType: {fileID: 11400000, guid: 85c084708d04fe7458689b621d055632, type: 2}
+  m_baseStats: {fileID: 11400000, guid: 536dc2b9c976a8e429e12bb6d23b5e03, type: 2}
+  m_experienceType: 2
+  m_weakness:
+  - {fileID: 11400000, guid: e0881e467177a7242936867e93398321, type: 2}
+  m_strength:
+  - {fileID: 11400000, guid: 48c15c274bf4a194084d8353d4237f2f, type: 2}
