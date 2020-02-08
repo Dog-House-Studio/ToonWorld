@@ -31,6 +31,9 @@ namespace DogHouse.ToonWorld.CombatControllers
         private BaseMovementType m_movementType;
 
         [SerializeField]
+        private BaseClassUnitStats m_baseStats;
+
+        [SerializeField]
         private UnitClassType[] m_weakness;
 
         [SerializeField]

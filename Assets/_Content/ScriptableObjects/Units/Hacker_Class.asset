@@ -15,6 +15,7 @@ MonoBehaviour:
   m_className: Hacker
   m_classSprite: {fileID: 0}
   m_movementType: {fileID: 11400000, guid: fb9c62f1e18c06848ac93d912ad5389b, type: 2}
+  m_baseStats: {fileID: 11400000, guid: b8bda609a861f494b986354a1dce3c68, type: 2}
   m_weakness:
   - {fileID: 11400000, guid: 48c15c274bf4a194084d8353d4237f2f, type: 2}
   m_strength:
