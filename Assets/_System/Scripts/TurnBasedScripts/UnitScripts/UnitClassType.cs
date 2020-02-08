@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace DogHouse.ToonWorld.CombatControllers
 {
@@ -9,7 +7,7 @@ namespace DogHouse.ToonWorld.CombatControllers
     /// that contains the definition for a 
     /// unit class type.
     /// </summary>
-    [CreateAssetMenu(menuName ="Dog House/ToonWorld/Unit Class", fileName ="MyNewUnitClass")]
+    [CreateAssetMenu(menuName ="Dog House/ToonWorld/Unit/Unit Class", fileName ="MyNewUnitClass")]
     public class UnitClassType : ScriptableObject
     {
         #region Public Variables
@@ -19,6 +17,7 @@ namespace DogHouse.ToonWorld.CombatControllers
 
         public UnitClassType[] Weakness => m_weakness;
         public UnitClassType[] Strength => m_strength;
+        public BaseMovementType Movement => m_movementType;
         #endregion
 
         #region Private Variables
@@ -27,6 +26,9 @@ namespace DogHouse.ToonWorld.CombatControllers
 
         [SerializeField]
         private Sprite m_classSprite;
+
+        [SerializeField]
+        private BaseMovementType m_movementType;
 
         [SerializeField]
         private UnitClassType[] m_weakness;

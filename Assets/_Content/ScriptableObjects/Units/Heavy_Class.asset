@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_className: Heavy
   m_classSprite: {fileID: 0}
+  m_movementType: {fileID: 11400000, guid: 85c084708d04fe7458689b621d055632, type: 2}
   m_weakness:
   - {fileID: 11400000, guid: e0881e467177a7242936867e93398321, type: 2}
   m_strength:
