@@ -29,6 +29,9 @@ namespace DogHouse.ToonWorld.Services
         private ServiceReference<ICameraTransition> m_cameraTransition 
             = new ServiceReference<ICameraTransition>();
 
+        private ServiceReference<IAnalyticsService> m_analyticsService 
+            = new ServiceReference<IAnalyticsService>();
+
         private SceneManagerState m_state = SceneManagerState.IDLE;
 
         private Action m_callback;
@@ -69,6 +72,7 @@ namespace DogHouse.ToonWorld.Services
         private void LoadingScreenLoadedIn(GameSceneDefinition definition)
         {
             SceneManager.LoadScene(definition.Token.AssetName, definition.Mode);
+            m_analyticsService.Reference?.SendSceneLoaded(definition.Token.AssetName);
             m_callback?.Invoke();
             m_loadingScreenService?.Reference?.TransitionOut(FinishLoading);
         }
@@ -76,6 +80,7 @@ namespace DogHouse.ToonWorld.Services
         private void FadeInLoad(GameSceneDefinition definition)
         {
             SceneManager.LoadScene(definition.Token.AssetName, definition.Mode);
+            m_analyticsService.Reference?.SendSceneLoaded(definition.Token.AssetName);
             m_callback?.Invoke();
             m_cameraTransition.Reference?.FadeOut(m_fadeTime, FinishLoading);
         }
@@ -83,6 +88,7 @@ namespace DogHouse.ToonWorld.Services
         private void Load(GameSceneDefinition definition)
         {
             SceneManager.LoadScene(definition.Token.AssetName,definition.Mode);
+            m_analyticsService.Reference?.SendSceneLoaded(definition.Token.AssetName);
             m_callback?.Invoke();
             FinishLoading();
         }
