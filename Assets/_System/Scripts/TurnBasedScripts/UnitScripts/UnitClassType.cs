@@ -18,6 +18,7 @@ namespace DogHouse.ToonWorld.CombatControllers
         public UnitClassType[] Weakness => m_weakness;
         public UnitClassType[] Strength => m_strength;
         public BaseMovementType Movement => m_movementType;
+        public ExperienceType Experience => m_experienceType;
         #endregion
 
         #region Private Variables
@@ -34,10 +35,20 @@ namespace DogHouse.ToonWorld.CombatControllers
         private BaseClassUnitStats m_baseStats;
 
         [SerializeField]
+        private ExperienceType m_experienceType;
+
+        [SerializeField]
         private UnitClassType[] m_weakness;
 
         [SerializeField]
         private UnitClassType[] m_strength;
         #endregion
+    }
+
+    public enum ExperienceType
+    {
+        SLOW,
+        REGULAR,
+        FAST
     }
 }
