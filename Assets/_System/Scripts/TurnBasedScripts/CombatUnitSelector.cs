@@ -1,41 +1,52 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DogScaffold;
 
-public class CombatUnitSelector : MonoBehaviour
+namespace DogHouse.ToonWorld.CombatControllers
 {
-    protected CombatMoverSelector moveSelector;
-
-    protected void Start()
+    public class CombatUnitSelector : MonoBehaviour
     {
-        moveSelector = GetComponent<CombatMoverSelector>();
-    }
+        protected CombatMoverSelector moveSelector;
 
-    // Update is called once per frame
-    protected void Update()
-    {
-        if (Input.GetMouseButtonDown(0)||Input.GetButtonDown("Submit"))
+        private ServiceReference<ICombatManager> CombatManager = new ServiceReference<ICombatManager>();
+
+        protected void Start()
         {
-            if (GridManager.Instance.m_HoveredGridTile != null)
+            moveSelector = GetComponent<CombatMoverSelector>();
+        }
+
+        // Update is called once per frame
+        protected void Update()
+        {
+            if (!Input.GetMouseButtonDown(0) && !Input.GetButtonDown("Submit"))
             {
-                var resultPiece = CombatManager.Instance.TrySelectUnitAtTile(GridManager.Instance.m_HoveredGridTile);
-                if (resultPiece != null)
-                {
-                    ExitState(resultPiece);
-                }
+                return;
             }
+
+            if (GridManager.Instance.m_HoveredGridTile == null)
+            {
+                return;
+            }
+
+            var resultPiece = CombatManager.Reference.TrySelectUnitAtTile(GridManager.Instance.m_HoveredGridTile);
+            if (resultPiece != null)
+            {
+                ExitState(resultPiece);
+            }
+        }
+
+        public void EnterState()
+        {
+            enabled = true;
+        }
+
+        protected void ExitState(GridObject movingPiece)
+        {
+
+            moveSelector.EnterState(movingPiece);
+            enabled = false;
         }
     }
 
-    public void EnterState()
-    {
-        enabled = true;
-    }
-
-    protected void ExitState(GridObject movingPiece)
-    {
-        
-        moveSelector.EnterState(movingPiece);
-        enabled = false;
-    }
 }

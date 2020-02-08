@@ -39,7 +39,6 @@ public class GridTile : MonoBehaviour {
         if (!_initialized && m_GridPosition != new Vector2Int(int.MaxValue, int.MaxValue)) {
             Initialize(new Vector3Int(m_GridPosition.x, m_GridPosition.y, m_TileHeight));
         }
-        Debug.Log("Tile has been Initialized");
     }
 
     // Method used to initialize the tile

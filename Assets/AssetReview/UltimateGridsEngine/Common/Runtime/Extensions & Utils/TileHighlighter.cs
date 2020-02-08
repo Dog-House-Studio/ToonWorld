@@ -36,5 +36,4 @@ public class TileHighlighter : MonoBehaviour
             transform.position = m_UnHighlightedPosition;
         }
     }
-
 }

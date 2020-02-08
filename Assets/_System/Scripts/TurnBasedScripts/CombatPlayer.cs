@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public class CombatPlayer
+namespace DogHouse.ToonWorld.CombatControllers
 {
-    public List<GridObject> units;
-
-    public string name;
-
-    public CombatPlayer(string name)
+    //This class is used to distinguise between the player and the enemy ai.
+    public class CombatPlayer
     {
-        this.name = name;
+        public List<GridObject> units;
 
-        units = new List<GridObject>();
+        public string name;
+
+        public CombatPlayer(string name)
+        {
+            this.name = name;
+
+            units = new List<GridObject>();
+        }
     }
 }
+
