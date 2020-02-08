@@ -1,7 +1,5 @@
 ﻿using DogScaffold;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.Analytics;
 
 namespace DogHouse.ToonWorld.Services
 {
@@ -43,102 +41,157 @@ namespace DogHouse.ToonWorld.Services
         #region Main Methods
         public void SendAchievementAquired(string achievementName)
         {
-            
+            SendEvent(ACHIEVEMENT_AQUIRED,
+                new Dictionary<string, object>
+                {
+                    {"Achievement Name", achievementName }
+                });
         }
 
-        public void SendBattleCompleted(int enemyUnitsKilled, int playerUnitsKilled, int turnsTaken, int attacksUsed, int attacksReceived)
+        public void SendBattleCompleted(int enemyUnitsKilled, int playerUnitsKilled, 
+            int turnsTaken, int attacksUsed, int attacksReceived)
         {
-            
+            SendEvent(BATTLE_COMPLETED,
+                new Dictionary<string, object>
+                {
+                    {"Enemy Units Killed", enemyUnitsKilled },
+                    {"Player Units Killed", playerUnitsKilled },
+                    {"Turns Taken", turnsTaken },
+                    { "Attacks Used", attacksUsed},
+                    { "Attacks Received", attacksReceived}
+                });
         }
 
         public void SendCreditsMenuEntered()
         {
-            
+            SendEvent(CREDITS_ENTERED);
         }
 
         public void SendCutSceneSkipped(int cutSceneNumber)
         {
-            
+            SendEvent(CUTSCENE_SKIPPED, new Dictionary<string, object>
+            {
+                {"Cut Scene Number", cutSceneNumber }
+            });
         }
 
         public void SendCutSceneStarted(int cutSceneNumber)
         {
-            
+            SendEvent(CUTSCENE_STARTED, new Dictionary<string, object>
+            {
+                {"Cut Scene Number", cutSceneNumber }
+            });
         }
 
         public void SendEnemyUnitKilled(string unitType, string killerUnitType)
         {
-            
+            SendEvent(ENEMY_UNIT_KILLED, new Dictionary<string, object>
+            {
+                {"Unit Type", unitType },
+                {"Killer Unit Type", killerUnitType }
+            });
         }
 
         public void SendExitButtonPressed()
         {
-            
+            SendEvent(EXIT_BUTTON_PRESSED);
         }
 
         public void SendMapCompleted(int mapNumber)
         {
-            
+            SendEvent(MAP_COMPLETED, new Dictionary<string, object>
+            {
+                {"Map Number", mapNumber }
+            });
         }
 
         public void SendMapFailed(int mapNumber, int stepNumber, string startUnitName)
         {
-            
+            SendEvent(MAP_FAILED, new Dictionary<string, object>
+            {
+                {"Map Number", mapNumber},
+                { "Step Number", stepNumber},
+                {"Start Unit Name", startUnitName }
+            });
         }
 
         public void SendMapLocationEntered(string locationName)
         {
-            
+            SendEvent(MAP_LOCATION_ENTERED, new Dictionary<string, object>
+            {
+                {"Location Name", locationName }
+            });
         }
 
         public void SendNewGameStarted()
         {
-            
+            SendEvent(NEW_GAME_STARTED);
         }
 
         public void SendPauseMenuEntered()
         {
-            
+            SendEvent(PAUSE_MENU_ENTERED);
         }
 
         public void SendPlayerUnitKilled(string unitName, string unitType, string killerUnitType)
         {
-            
+            SendEvent(PLAYER_UNIT_KILLED, new Dictionary<string, object>
+            {
+                { "Unit Name", unitName},
+                {"Unit Type", unitType },
+                {"Killer Unit Type", killerUnitType }
+            });
         }
 
         public void SendSceneLoaded(string sceneName)
         {
-            
+            SendEvent(SCENE_LOADED, new Dictionary<string, object>
+            {
+                {"Scene Name", sceneName }
+            });
         }
 
         public void SendSettingMenuEntered()
         {
-            
+            SendEvent(SETTING_MENU_ENTERED);
         }
 
         public void SendShopItemPressed(string itemName)
         {
-            
+            SendEvent(SHOP_ITEM_PRESSED, new Dictionary<string, object>
+            {
+                { "Item Name", itemName}
+            });
         }
 
         public void SendShopPurchase(string itemName, int value)
         {
-            
+            SendEvent(SHOP_PURCHASE, new Dictionary<string, object>
+            {
+                {"Item Name", itemName },
+                {"Value", value }
+            });
         }
 
         public void SendStartUnitChoosen(string unitName)
         {
-            
+            SendEvent(START_UNIT_CHOOSEN, new Dictionary<string, object>
+            {
+                {"Unit Name", unitName }
+            });
         }
 
         public void SendStorePageOpened()
         {
-            
+            SendEvent(STORE_PAGE_OPENED);
         }
 
         public void SendUnitLeveledUp(int level)
         {
-            
+            SendEvent(UNIT_LEVELED_UP, new Dictionary<string, object>
+            {
+                {"Level", level }
+            });
         }
         #endregion
 
@@ -146,6 +199,7 @@ namespace DogHouse.ToonWorld.Services
         private void SendEvent(string EventID,
                                Dictionary<string, object> parameters = null)
         {
+            #if !UNITY_EDITOR
             Dictionary<string, object> eventParams
                 = new Dictionary<string, object>();
 
@@ -154,6 +208,7 @@ namespace DogHouse.ToonWorld.Services
             eventParams.Add(VERSION_KEY, VERSION);
 
             Analytics.CustomEvent(EventID, eventParams);
+            #endif
         }
         #endregion
     }
