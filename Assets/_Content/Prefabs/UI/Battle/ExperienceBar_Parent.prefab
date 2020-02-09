@@ -697,10 +697,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b934b75940a884b92707f03bb4f20d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_level: 7
   m_percentageText: {fileID: 1435120582450433317}
-  m_levelUpText: {fileID: 0}
   m_barParent: {fileID: 6266978198757776953}
   m_classEmblem: {fileID: 6293950949277314011}
+  m_levelText: {fileID: 7687679155968734088}
   m_barPrefab: {fileID: 2849263834600882570, guid: 7924688826a51de4fb5e56f966751c2a,
     type: 3}
   m_lerpCurve:
@@ -955,7 +956,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 7
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffe247de52cac424982badae0b571f26, type: 2}
   m_sharedMaterial: {fileID: -4585468617634132711, guid: ffe247de52cac424982badae0b571f26,

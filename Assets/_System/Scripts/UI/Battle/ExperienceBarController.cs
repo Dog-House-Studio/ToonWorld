@@ -15,18 +15,22 @@ namespace DogHouse.ToonWorld.CombatControllers
     public class ExperienceBarController : MonoBehaviour
     {
         #region Private Variables
+        [Header("General")]
+        [SerializeField]
+        private int m_level;
+
         [Header("Elements")]
         [SerializeField]
         private TMP_Text m_percentageText;
-
-        [SerializeField]
-        private TMP_Text m_levelUpText;
 
         [SerializeField]
         private GameObject m_barParent;
 
         [SerializeField]
         private Image m_classEmblem;
+
+        [SerializeField]
+        private TMP_Text m_levelText;
 
         [SerializeField]
         private GameObject m_barPrefab;
@@ -96,6 +100,8 @@ namespace DogHouse.ToonWorld.CombatControllers
             }
 
             m_classEmblem.color = m_startColor;
+
+            m_levelText.text = m_level.ToString();
         }
 
         public void SetValue(float value)
