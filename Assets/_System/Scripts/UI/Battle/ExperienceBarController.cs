@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
 using DogHouse.ToonWorld.Animation;
-using System.Collections;
 using System.Collections.Generic;
 using DogHouse.ToonWorld.UI;
 using static UnityEngine.Mathf;
@@ -69,8 +68,11 @@ namespace DogHouse.ToonWorld.CombatControllers
         [SerializeField]
         private Color m_endColor;
 
+        private int m_currentBarIndex = 0;
         private bool m_animating = false;
-        private List<ExperienceBarSlotController> m_barControllers;
+        private float m_barThreshholdAmount;
+        private List<ExperienceBarSlotController> m_barControllers 
+            = new List<ExperienceBarSlotController>();
 
         [MethodButton("TestFull")]
         [SerializeField]
@@ -80,6 +82,7 @@ namespace DogHouse.ToonWorld.CombatControllers
         #region Main Methods
         private void Start()
         {
+            m_barThreshholdAmount = 1f / ((float)m_slotAmount);
             Vector3 offset = Vector3.zero;
             for(int i = 0; i < m_slotAmount; i++)
             {
@@ -106,9 +109,16 @@ namespace DogHouse.ToonWorld.CombatControllers
             lerp = m_lerpCurve.Evaluate(lerp);
 
             m_slowAmount = Lerp(m_startSlowAmount, m_progressAmount, lerp);
+
             SetText(m_slowAmount);
 
-            if (UnityEngine.Random.Range(lerp, 1f) > m_shakeThreshhold)
+            while (m_currentBarIndex * m_barThreshholdAmount < m_slowAmount)
+            {
+                m_barControllers[m_currentBarIndex].SetFilled(true);
+                m_currentBarIndex++;
+            } 
+
+            if (Random.Range(lerp, 1f) > m_shakeThreshhold)
             {
                 m_textShaker.AddShake();
             }
