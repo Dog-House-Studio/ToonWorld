@@ -4,6 +4,7 @@ using DogHouse.ToonWorld.Animation;
 using System.Collections.Generic;
 using DogHouse.ToonWorld.UI;
 using UnityEngine.UI;
+using UnityEngine.Playables;
 using static UnityEngine.Mathf;
 
 namespace DogHouse.ToonWorld.CombatControllers
@@ -37,6 +38,12 @@ namespace DogHouse.ToonWorld.CombatControllers
 
         [SerializeField]
         private GameObject m_barPrefab;
+
+        [SerializeField]
+        private AudioSource m_audioSource;
+
+        [SerializeField]
+        private PlayableDirector m_playableDirector;
 
         [SerializeField]
         private ExperienceBarOverlayController m_overlayController;
@@ -81,6 +88,14 @@ namespace DogHouse.ToonWorld.CombatControllers
 
         [SerializeField]
         private Color m_endColor;
+
+        [Header("Audio")]
+        [SerializeField]
+        private AudioClip m_barAddedClip;
+
+        [SerializeField]
+        [Range(1f, 2f)]
+        private float m_maxPitch;
 
         private int m_currentBarIndex = 0;
         private bool m_animating = false;
@@ -136,11 +151,20 @@ namespace DogHouse.ToonWorld.CombatControllers
 
             SetText(m_slowAmount);
 
+            bool playSFX = false;
+
             while (m_currentBarIndex * m_barThreshholdAmount < m_slowAmount)
             {
                 m_barControllers[m_currentBarIndex].SetFilled(true);
                 m_currentBarIndex++;
+                playSFX = true;
             } 
+
+            if(playSFX)
+            {
+                m_audioSource.pitch = Lerp(1f, m_maxPitch, m_slowAmount);
+                m_audioSource.PlayOneShot(m_barAddedClip);
+            }
 
             if (Random.Range(lerp, 1f) > m_shakeThreshhold)
             {
@@ -181,6 +205,15 @@ namespace DogHouse.ToonWorld.CombatControllers
         private void HandleLevelUp()
         {
             m_overlayController?.Play();
+            m_playableDirector?.Play();
+        }
+
+        private void HandleLevelValueChanged()
+        {
+            m_level++;
+            m_levelText.text = m_level.ToString();
+            m_overlayLevelText.text = m_level.ToString();
+
             m_progressAmount = 0f;
             m_slowAmount = 0f;
             m_classEmblem.color = m_startColor;
@@ -190,13 +223,6 @@ namespace DogHouse.ToonWorld.CombatControllers
             {
                 controller?.ResetBar();
             }
-        }
-
-        private void HandleLevelValueChanged()
-        {
-            m_level++;
-            m_levelText.text = m_level.ToString();
-            m_overlayLevelText.text = m_level.ToString();
         }
         #endregion
 
