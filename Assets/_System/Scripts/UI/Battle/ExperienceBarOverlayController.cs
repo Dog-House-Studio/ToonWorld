@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 namespace DogHouse.ToonWorld.UI
 {
@@ -8,6 +9,11 @@ namespace DogHouse.ToonWorld.UI
     /// </summary>
     public class ExperienceBarOverlayController : MonoBehaviour
     {
+        #region Public Variables
+        [HideInInspector]
+        public Action OnValueChanged;
+        #endregion
+
         #region Private Variables
         [SerializeField]
         private Animator m_animator;
@@ -19,6 +25,11 @@ namespace DogHouse.ToonWorld.UI
         public void Play()
         {
             m_animator?.SetTrigger(TRIGGER_NAME);
+        }
+
+        public void ChangeValue()
+        {
+            OnValueChanged?.Invoke();
         }
         #endregion
     }

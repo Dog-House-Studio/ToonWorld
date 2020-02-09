@@ -702,6 +702,7 @@ MonoBehaviour:
   m_barParent: {fileID: 6266978198757776953}
   m_classEmblem: {fileID: 6293950949277314011}
   m_levelText: {fileID: 7687679155968734088}
+  m_overlayLevelText: {fileID: 7330389774037618294}
   m_barPrefab: {fileID: 2849263834600882570, guid: 7924688826a51de4fb5e56f966751c2a,
     type: 3}
   m_overlayController: {fileID: 6830091437612581507}

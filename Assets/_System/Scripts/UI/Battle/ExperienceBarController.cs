@@ -33,6 +33,9 @@ namespace DogHouse.ToonWorld.CombatControllers
         private TMP_Text m_levelText;
 
         [SerializeField]
+        private TMP_Text m_overlayLevelText;
+
+        [SerializeField]
         private GameObject m_barPrefab;
 
         [SerializeField]
@@ -105,6 +108,10 @@ namespace DogHouse.ToonWorld.CombatControllers
             m_classEmblem.color = m_startColor;
 
             m_levelText.text = m_level.ToString();
+            m_overlayLevelText.text = m_level.ToString();
+
+            m_overlayController.OnValueChanged -= HandleLevelValueChanged;
+            m_overlayController.OnValueChanged += HandleLevelValueChanged;
         }
 
         public void SetValue(float value)
@@ -175,17 +182,19 @@ namespace DogHouse.ToonWorld.CombatControllers
         {
             m_overlayController?.Play();
         }
+
+        private void HandleLevelValueChanged()
+        {
+            m_level++;
+            m_levelText.text = m_level.ToString();
+            m_overlayLevelText.text = m_level.ToString();
+        }
         #endregion
 
         #region Editor Functions
         private void TestFull()
         {
             SetValue(1f);
-        }
-
-        private void TestEmpty()
-        {
-            SetValue(0f);
         }
         #endregion
     }
