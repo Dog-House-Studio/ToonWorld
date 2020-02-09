@@ -31,9 +31,15 @@ namespace DogHouse.ToonWorld.UI
         private float m_timePassed = 0f;
         private bool m_filling = false;
         private Color m_color;
+        private Vector3 m_localScale;
         #endregion
 
         #region Main Methods
+        private void Start()
+        {
+            m_localScale = transform.localScale;
+        }
+
         public void SetFillColor(Color col)
         {
             m_color = col;
@@ -60,6 +66,7 @@ namespace DogHouse.ToonWorld.UI
             }
 
             m_timePassed += Time.deltaTime;
+            Vector3 scale = m_localScale;
 
             if (passedValue < 0.5f)
             {
@@ -67,11 +74,18 @@ namespace DogHouse.ToonWorld.UI
                 Color c = Color.white;
                 c.a = (m_filling) ? m_lerp : 1 - m_lerp;
                 m_fillImage.color = c;
+
+                
+                scale.y = Mathf.Lerp(1f,m_localScale.y * m_scaleAmount, m_lerp);
+                this.transform.localScale = scale;
                 return;
             }
 
             m_lerp = m_colorCurve.Evaluate((passedValue  - 0.5f) * 2f);
             m_fillImage.color = Color.Lerp(Color.white, m_color, m_lerp);
+
+            scale.y = Mathf.Lerp(m_localScale.y * m_scaleAmount, 1f, m_lerp);
+            this.transform.localScale = scale;
         }
         #endregion
     }
