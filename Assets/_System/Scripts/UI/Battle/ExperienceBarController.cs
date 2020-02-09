@@ -3,6 +3,7 @@ using TMPro;
 using DogHouse.ToonWorld.Animation;
 using System.Collections.Generic;
 using DogHouse.ToonWorld.UI;
+using UnityEngine.UI;
 using static UnityEngine.Mathf;
 
 namespace DogHouse.ToonWorld.CombatControllers
@@ -25,7 +26,7 @@ namespace DogHouse.ToonWorld.CombatControllers
         private GameObject m_barParent;
 
         [SerializeField]
-        private SpriteRenderer m_classEmblem;
+        private Image m_classEmblem;
 
         [SerializeField]
         private GameObject m_barPrefab;

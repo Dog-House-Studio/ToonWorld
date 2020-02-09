@@ -452,7 +452,7 @@ MonoBehaviour:
   m_percentageText: {fileID: 1435120582450433317}
   m_levelUpText: {fileID: 2767986427448892274}
   m_barParent: {fileID: 6266978198757776953}
-  m_classEmblem: {fileID: 0}
+  m_classEmblem: {fileID: 6293950949277314011}
   m_barPrefab: {fileID: 2849263834600882570, guid: 7924688826a51de4fb5e56f966751c2a,
     type: 3}
   m_lerpCurve:
