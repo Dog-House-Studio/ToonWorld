@@ -181,6 +181,15 @@ namespace DogHouse.ToonWorld.CombatControllers
         private void HandleLevelUp()
         {
             m_overlayController?.Play();
+            m_progressAmount = 0f;
+            m_slowAmount = 0f;
+            m_classEmblem.color = m_startColor;
+            SetText(0f);
+
+            foreach (ExperienceBarSlotController controller in m_barControllers)
+            {
+                controller?.ResetBar();
+            }
         }
 
         private void HandleLevelValueChanged()

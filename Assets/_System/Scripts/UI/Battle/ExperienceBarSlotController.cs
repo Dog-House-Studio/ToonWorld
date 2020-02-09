@@ -55,6 +55,13 @@ namespace DogHouse.ToonWorld.UI
             m_lerp = 0f;
         }
 
+        public void ResetBar()
+        {
+            Color c = m_fillImage.color;
+            c.a = 0f;
+            m_fillImage.color = c;
+        }
+
         private void Update()
         {
             if (!m_animating) return;
