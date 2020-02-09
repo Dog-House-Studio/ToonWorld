@@ -18,7 +18,10 @@ namespace DogHouse.ToonWorld.UI
         private float m_transitionTime;
 
         [SerializeField]
-        private AnimationCurve m_lerpCurve;
+        private AnimationCurve m_whiteCurve;
+
+        [SerializeField]
+        private AnimationCurve m_colorCurve;
 
         [SerializeField]
         private float m_scaleAmount;
@@ -33,9 +36,9 @@ namespace DogHouse.ToonWorld.UI
         #region Main Methods
         public void SetFillColor(Color col)
         {
-            col.a = m_fillImage.color.a;
-            m_fillImage.color = col;
             m_color = col;
+            col.a = 0f;
+            m_fillImage.color = col;
         }
 
         public void SetFilled(bool value)
@@ -49,16 +52,26 @@ namespace DogHouse.ToonWorld.UI
         private void Update()
         {
             if (!m_animating) return;
-            if(Mathf.Approximately(m_lerp, 1f))
+            float passedValue = Mathf.Clamp01(m_timePassed / m_transitionTime);
+
+            if (Mathf.Approximately(passedValue, 1f))
             {
                 m_animating = false;
             }
 
             m_timePassed += Time.deltaTime;
-            m_lerp = m_lerpCurve.Evaluate(Mathf.Clamp01(m_timePassed / m_transitionTime));
 
-            m_color.a = (m_filling) ? m_lerp : 1 - m_lerp;
-            m_fillImage.color = m_color;
+            if (passedValue < 0.5f)
+            {
+                m_lerp = m_whiteCurve.Evaluate(passedValue * 2f);
+                Color c = Color.white;
+                c.a = (m_filling) ? m_lerp : 1 - m_lerp;
+                m_fillImage.color = c;
+                return;
+            }
+
+            m_lerp = m_colorCurve.Evaluate((passedValue  - 0.5f) * 2f);
+            m_fillImage.color = Color.Lerp(Color.white, m_color, m_lerp);
         }
         #endregion
     }
