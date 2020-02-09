@@ -373,7 +373,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_percentageText: {fileID: 1435120582450433317}
-  m_textParent: {fileID: 0}
   m_levelUpText: {fileID: 2767986427448892274}
   m_lerpCurve:
     serializedVersion: 2
@@ -410,8 +409,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   m_lerpTime: 3.21
   m_progressAmount: 0
-  m_shakeAmount: 2.36
-  m_shakeChance: 0.532
+  m_shakeThreshhold: 0.955
+  m_textShaker: {fileID: 432413866892508200}
   editorFoldout: 0
 --- !u!1 &2547448774600782755
 GameObject:

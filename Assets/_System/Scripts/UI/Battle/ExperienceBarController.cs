@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
+using DogHouse.ToonWorld.Animation;
 using static UnityEngine.Mathf;
 
 namespace DogHouse.ToonWorld.CombatControllers
@@ -14,9 +15,6 @@ namespace DogHouse.ToonWorld.CombatControllers
         [Header("Elements")]
         [SerializeField]
         private TMP_Text m_percentageText;
-
-        [SerializeField]
-        private GameObject m_textParent;
 
         [SerializeField]
         private TMP_Text m_levelUpText;
@@ -39,12 +37,11 @@ namespace DogHouse.ToonWorld.CombatControllers
 
         [Header("Shake")]
         [SerializeField]
-        [Range(0f,10f)]
-        private float m_shakeAmount;
+        [Range(0f, 1f)]
+        private float m_shakeThreshhold;
 
         [SerializeField]
-        [Range(0f, 1f)]
-        private float m_shakeChance;
+        private Shake m_textShaker;
 
         private bool m_animating = false;
 
@@ -72,6 +69,11 @@ namespace DogHouse.ToonWorld.CombatControllers
 
             m_slowAmount = Lerp(m_startSlowAmount, m_progressAmount, lerp);
             SetText(m_slowAmount);
+
+            if (Random.Range(lerp, 1f) > m_shakeThreshhold)
+            {
+                m_textShaker.AddShake();
+            }
 
             if(Approximately(lerp, 1f))
             {

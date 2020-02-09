@@ -43,10 +43,6 @@ namespace DogHouse.ToonWorld.Animation
         public void AddShake()
         {
             m_shaking = true;
-
-            //m_currentShakeAmount += Random.Range(0.0001f, m_shakeAmount);
-            //m_currentShakeAmount = Mathf.Min(m_currentShakeAmount, m_shakeAmount);
-
             m_currentShakeAmount = m_shakeAmount;
         }
 
