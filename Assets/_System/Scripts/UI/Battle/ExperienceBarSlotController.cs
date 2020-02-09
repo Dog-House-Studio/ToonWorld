@@ -60,6 +60,7 @@ namespace DogHouse.ToonWorld.UI
             Color c = m_fillImage.color;
             c.a = 0f;
             m_fillImage.color = c;
+            m_animating = false;
         }
 
         private void Update()
