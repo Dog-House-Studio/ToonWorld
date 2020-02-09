@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
-using System;
+using static UnityEngine.Mathf;
 
 namespace DogHouse.ToonWorld.CombatControllers
 {
@@ -24,10 +24,6 @@ namespace DogHouse.ToonWorld.CombatControllers
 
         [SerializeField]
         [Range(0.0001f, 10f)]
-        private float m_lerpScalar;
-
-        [SerializeField]
-        [Range(0.0001f, 10f)]
         private float m_lerpTime;
         private float m_currentTime;
 
@@ -36,23 +32,39 @@ namespace DogHouse.ToonWorld.CombatControllers
         [SerializeField]
         private float m_progressAmount;
         private float m_slowAmount = 0f;
+        private float m_startSlowAmount = 0f;
+
+        private bool m_animating = false;
+
+        [MethodButton("TestFull")]
+        [SerializeField]
+        private bool editorFoldout;
         #endregion
 
         #region Main Methods
+        public void SetValue(float value)
+        {
+            m_progressAmount = Clamp01(value);
+            m_animating = true;
+            m_startSlowAmount = m_slowAmount;
+        }
+
         private void Update()
         {
-            if(Mathf.Approximately(m_slowAmount, m_progressAmount))
-            {
-                m_currentTime = 0f;
-                return;
-            }
+            if (!m_animating) return;
+
 
             m_currentTime += Time.deltaTime;
-            float lerp = Mathf.Clamp01(m_currentTime / m_lerpTime);
+            float lerp = Clamp01(m_currentTime / m_lerpTime);
             lerp = m_lerpCurve.Evaluate(lerp);
 
-            m_slowAmount = Mathf.Lerp(m_slowAmount, m_progressAmount, lerp * m_lerpScalar * Time.deltaTime);
+            m_slowAmount = Lerp(m_startSlowAmount, m_progressAmount, lerp);
             SetText(m_slowAmount);
+
+            if(Approximately(lerp, 1f))
+            {
+                m_animating = false;
+            }
         }
 
         private void SetText(float value)
@@ -60,6 +72,22 @@ namespace DogHouse.ToonWorld.CombatControllers
             value = value * 100f;
             string text = value.ToString("0");
             m_percentageText.text = text + "%";
+        }
+        #endregion
+
+        #region Utility Methods
+
+        #endregion
+
+        #region Editor Functions
+        private void TestFull()
+        {
+            SetValue(1f);
+        }
+
+        private void TestEmpty()
+        {
+            SetValue(0f);
         }
         #endregion
     }
