@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 namespace DogHouse.ToonWorld.UI
 {
@@ -12,12 +11,14 @@ namespace DogHouse.ToonWorld.UI
         #region Private Variables
         [SerializeField]
         private Animator m_animator;
+
+        private const string TRIGGER_NAME = "Play";
         #endregion
 
         #region Main Methods
-        public void SetEnabled(bool value)
+        public void Play()
         {
-
+            m_animator?.SetTrigger(TRIGGER_NAME);
         }
         #endregion
     }

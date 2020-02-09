@@ -236,7 +236,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 1358954495
   m_fontColor: {r: 1, g: 1, b: 1, a: 0.3137255}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -704,6 +704,7 @@ MonoBehaviour:
   m_levelText: {fileID: 7687679155968734088}
   m_barPrefab: {fileID: 2849263834600882570, guid: 7924688826a51de4fb5e56f966751c2a,
     type: 3}
+  m_overlayController: {fileID: 6830091437612581507}
   m_lerpCurve:
     serializedVersion: 2
     m_Curve:
@@ -1278,7 +1279,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16768619
+    rgba: 2164252267
   m_fontColor: {r: 0.4198113, g: 0.87196684, b: 1, a: 0.5019608}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1757,6 +1758,7 @@ GameObject:
   - component: {fileID: 7905469924114687491}
   - component: {fileID: 3402471705854064758}
   - component: {fileID: 2659583143615552253}
+  - component: {fileID: 6830091437612581507}
   m_Layer: 0
   m_Name: OverlayCanvas
   m_TagString: Untagged
@@ -1837,6 +1839,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6830091437612581507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6981070579128145641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 708426907a26e6249b830cede0be4055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_animator: {fileID: 2659583143615552253}
 --- !u!1 &9023129004598077285
 GameObject:
   m_ObjectHideFlags: 0
@@ -1910,7 +1925,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 1358954495
   m_fontColor: {r: 1, g: 1, b: 1, a: 0.3137255}
   m_enableVertexGradient: 0
   m_colorMode: 3

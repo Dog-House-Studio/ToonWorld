@@ -35,6 +35,9 @@ namespace DogHouse.ToonWorld.CombatControllers
         [SerializeField]
         private GameObject m_barPrefab;
 
+        [SerializeField]
+        private ExperienceBarOverlayController m_overlayController;
+
         [Header("Lerping")]
         [SerializeField]
         private AnimationCurve m_lerpCurve;
@@ -140,6 +143,10 @@ namespace DogHouse.ToonWorld.CombatControllers
             if(Approximately(lerp, 1f))
             {
                 m_animating = false;
+                if(Mathf.Approximately(m_progressAmount, 1f))
+                {
+                    HandleLevelUp();
+                }
             }
         }
 
@@ -162,6 +169,11 @@ namespace DogHouse.ToonWorld.CombatControllers
             ExperienceBarSlotController controller = bar.GetComponent<ExperienceBarSlotController>();
             m_barControllers.Add(controller);
             controller.SetFillColor(Color.Lerp(m_startColor, m_endColor, lerpValue));
+        }
+
+        private void HandleLevelUp()
+        {
+            m_overlayController?.Play();
         }
         #endregion
 
