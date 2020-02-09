@@ -16,6 +16,9 @@ namespace DogHouse.ToonWorld.CombatControllers
         private TMP_Text m_percentageText;
 
         [SerializeField]
+        private GameObject m_textParent;
+
+        [SerializeField]
         private TMP_Text m_levelUpText;
 
         [Header("Lerping")]
@@ -33,6 +36,15 @@ namespace DogHouse.ToonWorld.CombatControllers
         private float m_progressAmount;
         private float m_slowAmount = 0f;
         private float m_startSlowAmount = 0f;
+
+        [Header("Shake")]
+        [SerializeField]
+        [Range(0f,10f)]
+        private float m_shakeAmount;
+
+        [SerializeField]
+        [Range(0f, 1f)]
+        private float m_shakeChance;
 
         private bool m_animating = false;
 
