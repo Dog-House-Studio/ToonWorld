@@ -56,7 +56,8 @@ namespace DogHouse.ToonWorld.CombatControllers
             // Normal movement, just check if there is no GridObject at the target position
             if (GridManager.GetGridObjectAtPosition(GridManager.Instance.m_HoveredGridTile.m_GridPosition) == null)
             {
-                _movingPiece.GetComponent<GridMovement>().TryMoveTo(GridManager.Instance.m_HoveredGridTile, false, false, false);
+                //_movingPiece.GetComponent<GridMovement>().TryMoveTo(GridManager.Instance.m_HoveredGridTile, false, false, false);
+                _movingPiece.GetComponent<GridPathfinder>().SetNewDestination(GridManager.Instance.m_HoveredGridTile);
             }
 
             else

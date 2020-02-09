@@ -28,6 +28,7 @@ public class GridPathfinder : MonoBehaviour {
     protected GridObject _gridObject;
     protected GridMovement _gridMovement;
 
+    private float timer = 0f;
     /// <summary>
     /// On Awake we grab our components
     /// </summary>
@@ -49,11 +50,16 @@ public class GridPathfinder : MonoBehaviour {
     /// On Update, we draw the path if needed, determine the next waypoint, and move to it if needed
     /// </summary>
     protected virtual void Update() {
+        timer -= Time.deltaTime;
         if (m_DestinationTile == null) {
             return;
         }
-        DetermineNextPathpoint();
-        MoveGridObject();
+        if (timer <= 0)
+        {
+            DetermineNextPathpoint();
+            MoveGridObject();
+            timer = 2f;
+        }  
     }
 
     /// <summary>
@@ -110,31 +116,4 @@ public class GridPathfinder : MonoBehaviour {
             DeterminePath(_gridObject.m_CurrentGridTile, m_DestinationTile);
         }
     }
-
-#if UNITY_EDITOR
-
-    /// <summary>
-    /// Draws wire spheres on top of each tile in the current path and a line to visualize the path
-    /// </summary>
-    protected virtual void OnDrawGizmosSelected() {
-        if (m_DebugDrawPath) {
-            if (Path != null && Path.Count > 0) {
-                Handles.color = Color.grey;
-                for (int i = 0; i < Path.Count; i++) {
-                    var height = Vector3.up * .5f;
-
-                    if (i == Path.Count - 1)
-                        Handles.color = Color.green;
-
-                    Handles.zTest = UnityEngine.Rendering.CompareFunction.LessEqual;
-                    Handles.DrawWireCube(Path[i].m_WorldPosition + height, Vector3.one * 0.3f);
-                    Handles.CubeHandleCap(0, Path[i].m_WorldPosition + height, Quaternion.identity, 0.3f, EventType.Repaint);
-
-                    if (i > 0)
-                        Debug.DrawLine(Path[i - 1].m_WorldPosition + height, Path[i].m_WorldPosition + height, Color.yellow, 0.0f, true);
-                }
-            }
-        }
-    }
-#endif
 }
