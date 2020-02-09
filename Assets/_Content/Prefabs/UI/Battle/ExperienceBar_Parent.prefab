@@ -418,6 +418,8 @@ MonoBehaviour:
   m_slotAmount: 20
   m_barOffsetAmount: -0.122
   m_expSlotZRotOffset: 29
+  m_startColor: {r: 0, g: 0.7695224, b: 1, a: 1}
+  m_endColor: {r: 1, g: 0, b: 0.78736305, a: 1}
   editorFoldout: 0
 --- !u!1 &2547448774600782755
 GameObject:

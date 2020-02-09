@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using TMPro;
 using DogHouse.ToonWorld.Animation;
+using System.Collections;
+using System.Collections.Generic;
+using DogHouse.ToonWorld.UI;
 using static UnityEngine.Mathf;
-using System;
 
 namespace DogHouse.ToonWorld.CombatControllers
 {
@@ -60,7 +62,15 @@ namespace DogHouse.ToonWorld.CombatControllers
         [SerializeField]
         private float m_expSlotZRotOffset;
 
+        [Header("Color")]
+        [SerializeField]
+        private Color m_startColor;
+
+        [SerializeField]
+        private Color m_endColor;
+
         private bool m_animating = false;
+        private List<ExperienceBarSlotController> m_barControllers;
 
         [MethodButton("TestFull")]
         [SerializeField]
@@ -73,7 +83,8 @@ namespace DogHouse.ToonWorld.CombatControllers
             Vector3 offset = Vector3.zero;
             for(int i = 0; i < m_slotAmount; i++)
             {
-                CreateExpSlot(offset);
+                float lerp = ((float)i) / ((float)m_slotAmount - 1);
+                CreateExpSlot(offset, lerp);
                 offset.x += m_barOffsetAmount;
             }
         }
@@ -117,12 +128,16 @@ namespace DogHouse.ToonWorld.CombatControllers
         #endregion
 
         #region Utility Methods
-        private void CreateExpSlot(Vector3 offset)
+        private void CreateExpSlot(Vector3 offset, float lerpValue)
         {
             GameObject bar = Instantiate(m_barPrefab);
             bar.transform.SetParent(m_barParent.transform);
             bar.transform.localPosition = offset;
             bar.transform.localRotation = Quaternion.Euler(0f, 0f, m_expSlotZRotOffset);
+
+            ExperienceBarSlotController controller = bar.GetComponent<ExperienceBarSlotController>();
+            m_barControllers.Add(controller);
+            controller.SetFillColor(Color.Lerp(m_startColor, m_endColor, lerpValue));
         }
         #endregion
 
