@@ -104,6 +104,7 @@ RectTransform:
   - {fileID: 1435120581094669998}
   - {fileID: 2311534741136837372}
   - {fileID: 8210159997937416952}
+  - {fileID: 6039847002788261797}
   m_Father: {fileID: 1435120582478325997}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -338,7 +339,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1435120581426448051}
-  - {fileID: 6039847002788261797}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -375,6 +375,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_percentageText: {fileID: 1435120582450433317}
   m_levelUpText: {fileID: 2767986427448892274}
+  m_barParent: {fileID: 6266978198757776953}
+  m_barPrefab: {fileID: 2849263834600882570, guid: 7924688826a51de4fb5e56f966751c2a,
+    type: 3}
   m_lerpCurve:
     serializedVersion: 2
     m_Curve:
@@ -412,6 +415,9 @@ MonoBehaviour:
   m_progressAmount: 0
   m_shakeThreshhold: 0.955
   m_textShaker: {fileID: 432413866892508200}
+  m_slotAmount: 20
+  m_barOffsetAmount: -0.122
+  m_expSlotZRotOffset: 29
   editorFoldout: 0
 --- !u!1 &2547448774600782755
 GameObject:
@@ -602,7 +608,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.669, y: 0.3039999}
+  m_AnchoredPosition: {x: 0.585, y: 0.3039999}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6266978198757776953
@@ -628,10 +634,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6266978198757776953}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.158, y: -0.133, z: 0.025}
+  m_LocalRotation: {x: -0, y: -0.000000014901161, z: -0, w: 1}
+  m_LocalPosition: {x: 1.158, y: -0.09, z: 0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1435120582478325997}
-  m_RootOrder: 1
+  m_Father: {fileID: 1435120581426448051}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

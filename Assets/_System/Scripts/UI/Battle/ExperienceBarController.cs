@@ -2,6 +2,7 @@
 using TMPro;
 using DogHouse.ToonWorld.Animation;
 using static UnityEngine.Mathf;
+using System;
 
 namespace DogHouse.ToonWorld.CombatControllers
 {
@@ -18,6 +19,12 @@ namespace DogHouse.ToonWorld.CombatControllers
 
         [SerializeField]
         private TMP_Text m_levelUpText;
+
+        [SerializeField]
+        private GameObject m_barParent;
+
+        [SerializeField]
+        private GameObject m_barPrefab;
 
         [Header("Lerping")]
         [SerializeField]
@@ -43,6 +50,16 @@ namespace DogHouse.ToonWorld.CombatControllers
         [SerializeField]
         private Shake m_textShaker;
 
+        [Header("Slots")]
+        [SerializeField]
+        private int m_slotAmount;
+
+        [SerializeField]
+        private float m_barOffsetAmount;
+
+        [SerializeField]
+        private float m_expSlotZRotOffset;
+
         private bool m_animating = false;
 
         [MethodButton("TestFull")]
@@ -51,6 +68,16 @@ namespace DogHouse.ToonWorld.CombatControllers
         #endregion
 
         #region Main Methods
+        private void Start()
+        {
+            Vector3 offset = Vector3.zero;
+            for(int i = 0; i < m_slotAmount; i++)
+            {
+                CreateExpSlot(offset);
+                offset.x += m_barOffsetAmount;
+            }
+        }
+
         public void SetValue(float value)
         {
             m_progressAmount = Clamp01(value);
@@ -70,7 +97,7 @@ namespace DogHouse.ToonWorld.CombatControllers
             m_slowAmount = Lerp(m_startSlowAmount, m_progressAmount, lerp);
             SetText(m_slowAmount);
 
-            if (Random.Range(lerp, 1f) > m_shakeThreshhold)
+            if (UnityEngine.Random.Range(lerp, 1f) > m_shakeThreshhold)
             {
                 m_textShaker.AddShake();
             }
@@ -90,7 +117,13 @@ namespace DogHouse.ToonWorld.CombatControllers
         #endregion
 
         #region Utility Methods
-
+        private void CreateExpSlot(Vector3 offset)
+        {
+            GameObject bar = Instantiate(m_barPrefab);
+            bar.transform.SetParent(m_barParent.transform);
+            bar.transform.localPosition = offset;
+            bar.transform.localRotation = Quaternion.Euler(0f, 0f, m_expSlotZRotOffset);
+        }
         #endregion
 
         #region Editor Functions
