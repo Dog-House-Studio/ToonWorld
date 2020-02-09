@@ -25,6 +25,9 @@ namespace DogHouse.ToonWorld.CombatControllers
         private GameObject m_barParent;
 
         [SerializeField]
+        private SpriteRenderer m_classEmblem;
+
+        [SerializeField]
         private GameObject m_barPrefab;
 
         [Header("Lerping")]
@@ -90,6 +93,8 @@ namespace DogHouse.ToonWorld.CombatControllers
                 CreateExpSlot(offset, lerp);
                 offset.x += m_barOffsetAmount;
             }
+
+            m_classEmblem.color = m_startColor;
         }
 
         public void SetValue(float value)
@@ -103,12 +108,14 @@ namespace DogHouse.ToonWorld.CombatControllers
         {
             if (!m_animating) return;
 
-
             m_currentTime += Time.deltaTime;
             float lerp = Clamp01(m_currentTime / m_lerpTime);
             lerp = m_lerpCurve.Evaluate(lerp);
 
             m_slowAmount = Lerp(m_startSlowAmount, m_progressAmount, lerp);
+
+            Color lerpedColor = Color.Lerp(m_startColor, m_endColor, m_slowAmount);
+            m_classEmblem.color = lerpedColor;
 
             SetText(m_slowAmount);
 
