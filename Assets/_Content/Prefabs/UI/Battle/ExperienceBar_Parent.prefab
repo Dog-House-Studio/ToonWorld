@@ -710,6 +710,8 @@ MonoBehaviour:
   m_lookAtContraint: {fileID: 1435120582478325996}
   m_playableDirector: {fileID: 2254537357884841007}
   m_overlayController: {fileID: 6830091437612581507}
+  m_nameText: {fileID: 6966622762538972414}
+  m_classNameText: {fileID: 134445108753612232}
   m_lerpCurve:
     serializedVersion: 2
     m_Curve:

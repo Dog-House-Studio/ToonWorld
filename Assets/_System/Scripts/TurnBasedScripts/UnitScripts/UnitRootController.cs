@@ -24,6 +24,7 @@ namespace DogHouse.ToonWorld.CombatControllers
         {
             m_definition = definition;
             CreateUnitModel(definition);
+            SetUnitIdentifiers(definition);
         }
         #endregion
 
@@ -33,6 +34,18 @@ namespace DogHouse.ToonWorld.CombatControllers
             GameObject model = Instantiate(definition.Model);
             model.transform.SetParent(m_modelParent.transform);
             model.transform.localPosition = Vector3.zero;
+        }
+
+        private void SetUnitIdentifiers(GameUnitDefinition definition)
+        {
+            IUnitIdentifier[] identifiers = GetComponentsInChildren<IUnitIdentifier>();
+            foreach(IUnitIdentifier identifier in identifiers)
+            {
+                identifier?.SetName(definition.UnitName);
+                identifier?.SetClassName(definition.BaseClassType.ClassName);
+                identifier?.SetClassEmblem(definition.BaseClassType.ClassSprite);
+                identifier?.SetUnitLevel(definition.Level);
+            }
         }
         #endregion
     }

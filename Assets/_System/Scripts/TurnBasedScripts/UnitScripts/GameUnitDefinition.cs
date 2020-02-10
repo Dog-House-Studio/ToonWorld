@@ -13,6 +13,9 @@ namespace DogHouse.ToonWorld.CombatControllers
     {
         #region Public Variables
         public GameObject Model => m_model;
+        public UnitClassType BaseClassType => m_baseType;
+        public string UnitName => m_unitName;
+        public int Level => m_level;
         #endregion
 
         #region Private Variables

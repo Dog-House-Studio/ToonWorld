@@ -16,7 +16,7 @@ namespace DogHouse.ToonWorld.CombatControllers
     /// ExperienceBarController is a script that controls the
     /// experience bar visuals.
     /// </summary>
-    public class ExperienceBarController : MonoBehaviour
+    public class ExperienceBarController : MonoBehaviour, IUnitIdentifier
     {
         #region Private Variables
         [Header("General")]
@@ -53,6 +53,12 @@ namespace DogHouse.ToonWorld.CombatControllers
 
         [SerializeField]
         private ExperienceBarOverlayController m_overlayController;
+
+        [SerializeField]
+        private TMP_Text m_nameText;
+
+        [SerializeField]
+        private TMP_Text m_classNameText;
 
         [Header("Lerping")]
         [SerializeField]
@@ -197,6 +203,26 @@ namespace DogHouse.ToonWorld.CombatControllers
             value = value * 100f;
             string text = value.ToString("0");
             m_percentageText.text = text + "%";
+        }
+
+        public void SetName(string name)
+        {
+            m_nameText.text = name;
+        }
+
+        public void SetClassName(string className)
+        {
+            m_classNameText.text = className;
+        }
+
+        public void SetClassEmblem(Sprite sprite)
+        {
+            m_classEmblem.overrideSprite = sprite;
+        }
+
+        public void SetUnitLevel(int level)
+        {
+            m_level = level;
         }
         #endregion
 
