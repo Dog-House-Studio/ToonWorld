@@ -25,6 +25,9 @@ namespace DogHouse.ToonWorld.CombatControllers
         private string m_unitName;
 
         [SerializeField]
+        private GameObject m_model;
+
+        [SerializeField]
         private int m_level;
         #endregion
 
