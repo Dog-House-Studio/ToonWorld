@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using DogHouse.ToonWorld.UI;
 using UnityEngine.UI;
 using UnityEngine.Playables;
+using UnityEngine.Animations;
+using DogScaffold;
+using DogHouse.CoreServices;
 using static UnityEngine.Mathf;
 
 namespace DogHouse.ToonWorld.CombatControllers
@@ -41,6 +44,9 @@ namespace DogHouse.ToonWorld.CombatControllers
 
         [SerializeField]
         private AudioSource m_audioSource;
+
+        [SerializeField]
+        private LookAtConstraint m_lookAtContraint;
 
         [SerializeField]
         private PlayableDirector m_playableDirector;
@@ -103,6 +109,9 @@ namespace DogHouse.ToonWorld.CombatControllers
         private List<ExperienceBarSlotController> m_barControllers 
             = new List<ExperienceBarSlotController>();
 
+        private ServiceReference<ICameraFinder> m_cameraFinderService 
+            = new ServiceReference<ICameraFinder>();
+
         [MethodButton("TestFull")]
         [SerializeField]
         private bool editorFoldout;
@@ -127,6 +136,8 @@ namespace DogHouse.ToonWorld.CombatControllers
 
             m_overlayController.OnValueChanged -= HandleLevelValueChanged;
             m_overlayController.OnValueChanged += HandleLevelValueChanged;
+
+            m_cameraFinderService.AddRegistrationHandle(HandleCameraFinderAvailable);
         }
 
         public void SetValue(float value)
@@ -225,6 +236,14 @@ namespace DogHouse.ToonWorld.CombatControllers
             {
                 controller?.ResetBar();
             }
+        }
+
+        private void HandleCameraFinderAvailable()
+        {
+            ConstraintSource source = new ConstraintSource();
+            source.weight = 1f;
+            source.sourceTransform = m_cameraFinderService.Reference.Camera.transform;
+            m_lookAtContraint.AddSource(source);
         }
         #endregion
 

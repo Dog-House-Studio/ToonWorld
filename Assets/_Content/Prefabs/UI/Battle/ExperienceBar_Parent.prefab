@@ -685,9 +685,7 @@ LookAtConstraint:
   m_UseUpObject: 0
   m_IsContraintActive: 1
   m_IsLocked: 1
-  m_Sources:
-  - sourceTransform: {fileID: 0}
-    weight: 1
+  m_Sources: []
 --- !u!114 &3500431081589015669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -709,6 +707,7 @@ MonoBehaviour:
   m_barPrefab: {fileID: 2849263834600882570, guid: 7924688826a51de4fb5e56f966751c2a,
     type: 3}
   m_audioSource: {fileID: 4120205988763320743}
+  m_lookAtContraint: {fileID: 1435120582478325996}
   m_playableDirector: {fileID: 2254537357884841007}
   m_overlayController: {fileID: 6830091437612581507}
   m_lerpCurve:
