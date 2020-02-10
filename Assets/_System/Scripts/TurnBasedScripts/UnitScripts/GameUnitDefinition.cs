@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace DogHouse.ToonWorld.CombatControllers
 {
@@ -14,7 +12,7 @@ namespace DogHouse.ToonWorld.CombatControllers
     public class GameUnitDefinition : ScriptableObject
     {
         #region Public Variables
-
+        public GameObject Model => m_model;
         #endregion
 
         #region Private Variables

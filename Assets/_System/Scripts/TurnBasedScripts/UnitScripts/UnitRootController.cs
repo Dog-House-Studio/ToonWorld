@@ -13,11 +13,27 @@ namespace DogHouse.ToonWorld.CombatControllers
     public class UnitRootController : MonoBehaviour
     {
         #region Private Variables
-        
+        [SerializeField]
+        private GameObject m_modelParent;
+
+        private GameUnitDefinition m_definition;
         #endregion
 
         #region Main Methods
+        public void CreateUnit(GameUnitDefinition definition)
+        {
+            m_definition = definition;
+            CreateUnitModel(definition);
+        }
+        #endregion
 
+        #region Utility Methods
+        private void CreateUnitModel(GameUnitDefinition definition)
+        {
+            GameObject model = Instantiate(definition.Model);
+            model.transform.SetParent(m_modelParent.transform);
+            model.transform.localPosition = Vector3.zero;
+        }
         #endregion
     }
 }
