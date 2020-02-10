@@ -360,7 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_unitRootPrefab: {fileID: 4289593637941757727, guid: 4879693c8f1a8174abcf9c768e2bf453,
     type: 3}
-  m_unitDefinition: {fileID: 11400000, guid: 47615cb1a855aae4e9f81eb8f9314f63, type: 2}
+  m_unitDefinition: {fileID: 11400000, guid: abfdfdad92f99324bb8c3bda78974783, type: 2}
   editorFoldout: 1
 --- !u!4 &1502956774
 Transform:

@@ -42,7 +42,7 @@ namespace DogHouse.ToonWorld.CombatControllers
             foreach(IUnitIdentifier identifier in identifiers)
             {
                 identifier?.SetName(definition.UnitName);
-                identifier?.SetClassName(definition.BaseClassType.ClassName);
+                identifier?.SetClassName(definition.BaseClassType.ClassName.ToUpper() + " CLASS");
                 identifier?.SetClassEmblem(definition.BaseClassType.ClassSprite);
                 identifier?.SetUnitLevel(definition.Level);
             }
