@@ -218,6 +218,8 @@ namespace DogHouse.ToonWorld.CombatControllers
             m_slowAmount = 0f;
             m_classEmblem.color = m_startColor;
             SetText(0f);
+            m_currentTime = 0f;
+            m_currentBarIndex = 0;
 
             foreach (ExperienceBarSlotController controller in m_barControllers)
             {
