@@ -75,6 +75,11 @@ namespace DogHouse.ToonWorld.CombatControllers
         {
             StartCoroutine(_FadeItem(m_experienceBarController, value));
         }
+
+        public void AddExperience(int amount)
+        {
+            m_definition.AddExperience(amount);
+        }
         #endregion
 
         #region Utility Methods

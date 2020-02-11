@@ -15,4 +15,3 @@ MonoBehaviour:
   m_baseType: {fileID: 11400000, guid: 48c15c274bf4a194084d8353d4237f2f, type: 2}
   m_unitName: Gamma
   m_model: {fileID: 1859177370518512203, guid: c7a99aa3ebf6e77449afe8bd6fb808c3, type: 3}
-  m_level: 1

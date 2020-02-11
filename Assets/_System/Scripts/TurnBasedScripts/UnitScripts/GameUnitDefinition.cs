@@ -33,9 +33,7 @@ namespace DogHouse.ToonWorld.CombatControllers
         [SerializeField]
         private GameObject m_model;
 
-        [SerializeField]
         private int m_level;
-
         private UnitStats m_stats;
         private int m_experience = 0;
         private int m_levelExperienceTarget = 0;
@@ -47,6 +45,7 @@ namespace DogHouse.ToonWorld.CombatControllers
         //GameUnitDefinitions we've designed aren't created all at once.
         private void OnEnable()
         {
+            m_level = 1;
             m_stats = m_baseType.BaseStats;
             m_levelExperienceTarget = m_baseType.CalculateExperienceNeeded(m_level + 1);
         }
