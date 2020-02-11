@@ -8,6 +8,7 @@ using UnityEngine.Playables;
 using UnityEngine.Animations;
 using DogScaffold;
 using DogHouse.CoreServices;
+using System;
 using static UnityEngine.Mathf;
 
 namespace DogHouse.ToonWorld.CombatControllers
@@ -20,6 +21,9 @@ namespace DogHouse.ToonWorld.CombatControllers
     {
         #region Public Variables
         public float FadeValue => m_canvasGroup.alpha;
+
+        [HideInInspector]
+        public Action OnAnimationFinished;
         #endregion
 
         #region Private Variables
@@ -153,6 +157,17 @@ namespace DogHouse.ToonWorld.CombatControllers
             m_cameraFinderService.AddRegistrationHandle(HandleCameraFinderAvailable);
         }
 
+        private void OnEnable()
+        {
+            m_playableDirector.stopped -= OnAudioTimelineFinished;
+            m_playableDirector.stopped += OnAudioTimelineFinished;
+        }
+
+        private void OnDisable()
+        {
+            m_playableDirector.stopped -= OnAudioTimelineFinished;
+        }
+
         public void SetValue(float value)
         {
             m_progressAmount = Clamp01(value);
@@ -190,7 +205,7 @@ namespace DogHouse.ToonWorld.CombatControllers
                 m_audioSource.PlayOneShot(m_barAddedClip);
             }
 
-            if (Random.Range(lerp, 1f) > m_shakeThreshhold)
+            if (UnityEngine.Random.Range(lerp, 1f) > m_shakeThreshhold)
             {
                 m_textShaker.AddShake();
             }
@@ -198,10 +213,13 @@ namespace DogHouse.ToonWorld.CombatControllers
             if(Approximately(lerp, 1f))
             {
                 m_animating = false;
-                if(Mathf.Approximately(m_progressAmount, 1f))
+                if(Approximately(m_progressAmount, 1f))
                 {
                     HandleLevelUp();
+                    return;
                 }
+
+                OnAnimationFinished?.Invoke();
             }
         }
 
@@ -270,6 +288,11 @@ namespace DogHouse.ToonWorld.CombatControllers
             source.weight = 1f;
             source.sourceTransform = m_cameraFinderService.Reference.Camera.transform;
             m_lookAtContraint.AddSource(source);
+        }
+
+        private void OnAudioTimelineFinished(PlayableDirector director)
+        {
+            OnAnimationFinished?.Invoke();
         }
         #endregion
 

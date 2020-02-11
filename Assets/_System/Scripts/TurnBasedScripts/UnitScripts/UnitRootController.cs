@@ -52,9 +52,19 @@ namespace DogHouse.ToonWorld.CombatControllers
             CreateUnitModel(definition);
             SetUnitIdentifiers(definition);
             SetFadeValue(1f);
+            DisplayHealthBar(true);
 
             m_definition.OnExperienceGained -= OnExperienceCalculated;
             m_definition.OnExperienceGained += OnExperienceCalculated;
+
+            m_experienceBarController.OnAnimationFinished -= HandleExperienceBarAnimationFinished;
+            m_experienceBarController.OnAnimationFinished += HandleExperienceBarAnimationFinished;
+        }
+
+        public void OnDestroy()
+        {
+            m_definition.OnExperienceGained -= OnExperienceCalculated;
+            m_experienceBarController.OnAnimationFinished -= HandleExperienceBarAnimationFinished;
         }
 
         public void SetFadeValue(float value)
@@ -145,6 +155,12 @@ namespace DogHouse.ToonWorld.CombatControllers
         private void SetVisualExperienceBarValue(float value)
         {
             m_experienceBarController.SetValue(value);
+        }
+
+        private void HandleExperienceBarAnimationFinished()
+        {
+            DisplayExperienceBar(false);
+            DisplayHealthBar(true);
         }
         #endregion
     }
