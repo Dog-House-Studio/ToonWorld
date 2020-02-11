@@ -44,6 +44,20 @@ namespace DogHouse.ToonWorld.CombatControllers
         [SerializeField]
         private UnitClassType[] m_strength;
         #endregion
+
+        #region Main Methods
+        public int CalculateExperienceNeeded(int level)
+        {
+            float multiplier = 1f;
+            if (m_experienceType == ExperienceType.FAST) multiplier = 0.75f;
+            if (m_experienceType == ExperienceType.SLOW) multiplier = 1.25f;
+
+            int value = (int)((float)(level * 8) * multiplier);
+            value = Mathf.Max(1, value);
+
+            return value;
+        }
+        #endregion
     }
 
     public enum ExperienceType

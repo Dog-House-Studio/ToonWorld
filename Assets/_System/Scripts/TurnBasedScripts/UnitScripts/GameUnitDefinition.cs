@@ -33,12 +33,18 @@ namespace DogHouse.ToonWorld.CombatControllers
         private int m_level;
 
         private UnitStats m_stats;
+        private int m_experience = 0;
+        private int m_levelExperienceTarget = 0;
         #endregion
 
         #region Main Methods
+        //We will need to change this to a separate method. A unit service
+        //will need to be written so that all the different types of
+        //GameUnitDefinitions we've designed aren't created all at once.
         private void OnEnable()
         {
             m_stats = m_baseType.BaseStats;
+            m_levelExperienceTarget = m_baseType.CalculateExperienceNeeded(m_level + 1);
         }
         #endregion
     }
