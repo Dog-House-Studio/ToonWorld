@@ -73,7 +73,7 @@ namespace DogHouse.ToonWorld.CombatControllers
 
         private void SetHealthText(GameUnitDefinition definition)
         {
-            int maxHealth = definition.BaseClassType.BaseStats.Stats.MyDestroyableStats.Health.Value;
+            int maxHealth = definition.BaseClassType.BaseStats.Health;
             string healthTextValue = "HP " + maxHealth.ToString() + " / " + maxHealth.ToString();
             m_healthText.text = healthTextValue;
         }

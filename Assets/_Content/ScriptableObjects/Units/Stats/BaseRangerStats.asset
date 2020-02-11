@@ -12,29 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: BaseRangerStats
   m_EditorClassIdentifier: Assembly-CSharp:DogHouse.ToonWorld.CombatControllers:BaseClassUnitStats
-  Stats:
-    MyDestroyableStats:
+  m_stats:
+    m_myDestroyableStats:
       Health:
-        StatName: Health
-        StatShortHandName: HP
-        Value: 4
+        Value: 8
       Defence:
-        StatName: Defence
-        StatShortHandName: DEF
-        Value: 2
-    Strength:
-      StatName: Strength
-      StatShortHandName: STR
-      Value: 7
-    Accuracy:
-      StatName: Accuracy
-      StatShortHandName: ACC
-      Value: 10
-    Speed:
-      StatName: Speed
-      StatShortHandName: SPD
-      Value: 6
-    Luck:
-      StatName: Luck
-      StatShortHandName: LCK
-      Value: 7
+        Value: 5
+    m_strength:
+      Value: 15
+    m_accuracy:
+      Value: 15
+    m_speed:
+      Value: 8
+    m_luck:
+      Value: 12
