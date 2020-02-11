@@ -33,6 +33,9 @@ namespace DogHouse.ToonWorld.CombatControllers
         [SerializeField]
         private GameObject m_model;
 
+        [SerializeField]
+        private int m_baseExperienceDrop;
+
         private int m_level;
         private UnitStats m_stats;
         private int m_experience = 0;
@@ -64,6 +67,11 @@ namespace DogHouse.ToonWorld.CombatControllers
                 m_experience = 0;
                 m_levelExperienceTarget = m_baseType.CalculateExperienceNeeded(m_level + 1);
             }
+        }
+
+        public int CalculateExperienceDrop()
+        {
+            return m_baseExperienceDrop + (4 * m_level);
         }
         #endregion
     }

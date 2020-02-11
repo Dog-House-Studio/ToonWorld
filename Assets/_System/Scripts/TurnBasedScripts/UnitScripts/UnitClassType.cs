@@ -25,7 +25,7 @@ namespace DogHouse.ToonWorld.CombatControllers
         #region Private Variables
         [SerializeField]
         private string m_className;
-
+        
         [SerializeField]
         private Sprite m_classSprite;
 
