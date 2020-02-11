@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 namespace DogHouse.ToonWorld.CombatControllers
 {
@@ -12,6 +13,9 @@ namespace DogHouse.ToonWorld.CombatControllers
     public class GameUnitDefinition : ScriptableObject
     {
         #region Public Variables
+        [HideInInspector]
+        public Action<float> OnExperienceGained;
+
         public GameObject Model => m_model;
         public UnitClassType BaseClassType => m_baseType;
         public string UnitName => m_unitName;
@@ -45,6 +49,22 @@ namespace DogHouse.ToonWorld.CombatControllers
         {
             m_stats = m_baseType.BaseStats;
             m_levelExperienceTarget = m_baseType.CalculateExperienceNeeded(m_level + 1);
+        }
+
+        public void AddExperience(int amount)
+        {
+            m_experience += amount;
+            if (m_experience > m_levelExperienceTarget) m_experience = m_levelExperienceTarget;
+
+            float percentage = ((float)m_experience) / ((float)m_levelExperienceTarget);
+            OnExperienceGained?.Invoke(percentage);
+
+            if(m_experience == m_levelExperienceTarget)
+            {
+                m_level++;
+                m_experience = 0;
+                m_levelExperienceTarget = m_baseType.CalculateExperienceNeeded(m_level + 1);
+            }
         }
         #endregion
     }
