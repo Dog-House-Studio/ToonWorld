@@ -18,6 +18,10 @@ namespace DogHouse.ToonWorld.CombatControllers
     /// </summary>
     public class ExperienceBarController : MonoBehaviour, IUnitIdentifier
     {
+        #region Public Variables
+        public float FadeValue => m_canvasGroup.alpha;
+        #endregion
+
         #region Private Variables
         [Header("General")]
         [SerializeField]

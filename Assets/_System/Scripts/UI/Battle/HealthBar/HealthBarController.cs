@@ -15,6 +15,10 @@ namespace DogHouse.ToonWorld.CombatControllers
     /// </summary>
     public class HealthBarController : MonoBehaviour, IUnitIdentifier
     {
+        #region Public Variables
+        public float FadeValue => m_canvasGroup.alpha;
+        #endregion
+
         #region Private Variables
         [SerializeField]
         private CanvasGroup m_canvasGroup;

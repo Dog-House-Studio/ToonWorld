@@ -8,5 +8,6 @@
     {
         //Value from 0 to 1
         void SetFadeValue(float value);
+        float FadeValue { get; }
     }
 }

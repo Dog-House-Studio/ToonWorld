@@ -16,6 +16,10 @@ namespace DogHouse.ToonWorld.CombatControllers
     /// </summary>
     public class UnitRootController : MonoBehaviour, IFade
     {
+        #region Public Variables
+        public float FadeValue => m_UICanvasGroup.alpha;
+        #endregion
+
         #region Private Variables
         [Header("Elements")]
         [SerializeField]
@@ -48,6 +52,9 @@ namespace DogHouse.ToonWorld.CombatControllers
             CreateUnitModel(definition);
             SetUnitIdentifiers(definition);
             SetFadeValue(1f);
+
+            m_definition.OnExperienceGained -= OnExperienceCalculated;
+            m_definition.OnExperienceGained += OnExperienceCalculated;
         }
 
         public void SetFadeValue(float value)
@@ -80,6 +87,13 @@ namespace DogHouse.ToonWorld.CombatControllers
         {
             m_definition.AddExperience(amount);
         }
+
+        private void OnExperienceCalculated(float percent)
+        {
+            DisplayHealthBar(false);
+            StartCoroutine(_FadeItem(m_experienceBarController, true,
+                () => { SetVisualExperienceBarValue(percent); }));
+        }
         #endregion
 
         #region Utility Methods
@@ -106,19 +120,31 @@ namespace DogHouse.ToonWorld.CombatControllers
             float lerpValue = 0f;
             float value = 0;
 
-            do
-            {
-                timePassed += Time.deltaTime;
-                lerpValue = m_UIFadeCurve.Evaluate(Clamp01(timePassed / m_UIFadeTime));
-                value = (fadeIn) ? lerpValue : 1f - lerpValue;
+            bool skip = false;
+            if (fadeIn && Approximately(1f, fader.FadeValue)) skip = true;
+            if (!fadeIn && Approximately(0f, fader.FadeValue)) skip = true;
 
-                fader.SetFadeValue(value);
-                yield return null;
-                
-            } while (timePassed < m_UIFadeTime);
+            if (!skip)
+            {
+                do
+                {
+                    timePassed += Time.deltaTime;
+                    lerpValue = m_UIFadeCurve.Evaluate(Clamp01(timePassed / m_UIFadeTime));
+                    value = (fadeIn) ? lerpValue : 1f - lerpValue;
+
+                    fader.SetFadeValue(value);
+                    yield return null;
+
+                } while (timePassed < m_UIFadeTime);
+            }
 
             yield return null;
             callback?.Invoke();
+        }
+
+        private void SetVisualExperienceBarValue(float value)
+        {
+            m_experienceBarController.SetValue(value);
         }
         #endregion
     }
