@@ -647,6 +647,7 @@ GameObject:
   - component: {fileID: 3500431081589015669}
   - component: {fileID: 4120205988763320743}
   - component: {fileID: 2254537357884841007}
+  - component: {fileID: 4494456666763995294}
   m_Layer: 0
   m_Name: ExperienceBar_Parent
   m_TagString: Untagged
@@ -877,6 +878,18 @@ PlayableDirector:
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
+--- !u!225 &4494456666763995294
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435120582478325998}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2749239587182611860
 GameObject:
   m_ObjectHideFlags: 0
