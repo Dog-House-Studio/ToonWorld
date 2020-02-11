@@ -313,6 +313,16 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3732057157166894559, guid: 448f22c5566e6924eba8b4330b41a693,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3732057157166894559, guid: 448f22c5566e6924eba8b4330b41a693,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6966622762538972414, guid: 448f22c5566e6924eba8b4330b41a693,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -487,6 +497,11 @@ PrefabInstance:
         type: 3}
       propertyPath: editorFoldout
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4494456666763995294, guid: efd8396033f54ed46a8d73d7ffabe5f1,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efd8396033f54ed46a8d73d7ffabe5f1, type: 3}

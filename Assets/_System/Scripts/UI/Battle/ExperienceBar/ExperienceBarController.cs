@@ -205,24 +205,12 @@ namespace DogHouse.ToonWorld.CombatControllers
             m_percentageText.text = text + "%";
         }
 
-        public void SetName(string name)
+        public void SetDataDisplay(GameUnitDefinition definition)
         {
-            m_nameText.text = name;
-        }
-
-        public void SetClassName(string className)
-        {
-            m_classNameText.text = className;
-        }
-
-        public void SetClassEmblem(Sprite sprite)
-        {
-            m_classEmblem.overrideSprite = sprite;
-        }
-
-        public void SetUnitLevel(int level)
-        {
-            m_level = level;
+            m_nameText.text = definition.UnitName;
+            m_classNameText.text = definition.BaseClassType.ClassName;
+            m_classEmblem.overrideSprite = definition.BaseClassType.ClassSprite;
+            m_level = definition.Level;
         }
         #endregion
 

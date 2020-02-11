@@ -41,10 +41,7 @@ namespace DogHouse.ToonWorld.CombatControllers
             IUnitIdentifier[] identifiers = GetComponentsInChildren<IUnitIdentifier>();
             foreach(IUnitIdentifier identifier in identifiers)
             {
-                identifier?.SetName(definition.UnitName);
-                identifier?.SetClassName(definition.BaseClassType.ClassName.ToUpper() + " CLASS");
-                identifier?.SetClassEmblem(definition.BaseClassType.ClassSprite);
-                identifier?.SetUnitLevel(definition.Level);
+                identifier?.SetDataDisplay(definition);
             }
         }
         #endregion

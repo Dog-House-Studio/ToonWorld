@@ -11,9 +11,6 @@ namespace DogHouse.ToonWorld.CombatControllers
     /// </summary>
     public interface IUnitIdentifier
     {
-        void SetName(string name);
-        void SetClassName(string className);
-        void SetClassEmblem(Sprite sprite);
-        void SetUnitLevel(int level);
+        void SetDataDisplay(GameUnitDefinition definition);
     }
 }
