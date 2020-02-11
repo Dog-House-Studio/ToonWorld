@@ -15,4 +15,4 @@ MonoBehaviour:
   m_baseType: {fileID: 11400000, guid: c3f7bcf1055dd6742916822f5d565880, type: 2}
   m_unitName: Beetle
   m_model: {fileID: 6821371211201752735, guid: 2ce0b4768b127374da12dad1222c958f, type: 3}
-  m_level: 0
+  m_level: 1

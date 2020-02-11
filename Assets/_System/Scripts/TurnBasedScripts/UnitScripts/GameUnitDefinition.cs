@@ -16,6 +16,7 @@ namespace DogHouse.ToonWorld.CombatControllers
         public UnitClassType BaseClassType => m_baseType;
         public string UnitName => m_unitName;
         public int Level => m_level;
+        public UnitStats Stats => m_stats;
         #endregion
 
         #region Private Variables
@@ -30,10 +31,15 @@ namespace DogHouse.ToonWorld.CombatControllers
 
         [SerializeField]
         private int m_level;
+
+        private UnitStats m_stats;
         #endregion
 
         #region Main Methods
-
+        private void OnEnable()
+        {
+            m_stats = m_baseType.BaseStats;
+        }
         #endregion
     }
 }

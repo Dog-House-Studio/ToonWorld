@@ -9,8 +9,8 @@ namespace DogHouse.ToonWorld.CombatControllers
         public Stat Defence = new Stat("Defence", "DEF", 0);
     }
 
-    [System.Serializable]
-    public class BattlefieldUnitStats
+    [CreateAssetMenu(menuName = "Dog House/ToonWorld/Unit/Base Stats", fileName = "MyNewClassStats")]
+    public class UnitStats : ScriptableObject
     {
         #region Public Variables
         public int Health => m_myDestroyableStats.Health.Value;
@@ -37,20 +37,6 @@ namespace DogHouse.ToonWorld.CombatControllers
         [SerializeField]
         private Stat m_luck = new Stat("Luck", "LCK", 0);
         #endregion
-    }
-
-    [CreateAssetMenu(menuName = "Dog House/ToonWorld/Unit/Base Stats", fileName = "MyNewClassStats")]
-    public class BaseClassUnitStats : ScriptableObject
-    {
-        public int Health => m_stats.Health;
-        public int Defence => m_stats.Defence;
-        public int Strength => m_stats.Strength;
-        public int Accuracy => m_stats.Accuracy;
-        public int Speed => m_stats.Speed;
-        public int Luck => m_stats.Luck;
-
-        [SerializeField]
-        private BattlefieldUnitStats m_stats;
     }
 
     [System.Serializable]

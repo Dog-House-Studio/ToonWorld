@@ -19,7 +19,7 @@ namespace DogHouse.ToonWorld.CombatControllers
         public UnitClassType[] Strength => m_strength;
         public BaseMovementType Movement => m_movementType;
         public ExperienceType Experience => m_experienceType;
-        public BaseClassUnitStats BaseStats => m_baseStats;
+        public UnitStats BaseStats => m_baseStats;
         #endregion
 
         #region Private Variables
@@ -33,7 +33,7 @@ namespace DogHouse.ToonWorld.CombatControllers
         private BaseMovementType m_movementType;
 
         [SerializeField]
-        private BaseClassUnitStats m_baseStats;
+        private UnitStats m_baseStats;
 
         [SerializeField]
         private ExperienceType m_experienceType;
