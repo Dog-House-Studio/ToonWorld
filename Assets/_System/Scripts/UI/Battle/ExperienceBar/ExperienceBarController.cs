@@ -60,6 +60,9 @@ namespace DogHouse.ToonWorld.CombatControllers
         [SerializeField]
         private TMP_Text m_classNameText;
 
+        [SerializeField]
+        private CanvasGroup m_canvasGroup;
+
         [Header("Lerping")]
         [SerializeField]
         private AnimationCurve m_lerpCurve;
@@ -211,6 +214,11 @@ namespace DogHouse.ToonWorld.CombatControllers
             m_classNameText.text = definition.BaseClassType.ClassName;
             m_classEmblem.overrideSprite = definition.BaseClassType.ClassSprite;
             m_level = definition.Level;
+        }
+
+        public void SetFadeValue(float value)
+        {
+            m_canvasGroup.alpha = Clamp01(value);
         }
         #endregion
 

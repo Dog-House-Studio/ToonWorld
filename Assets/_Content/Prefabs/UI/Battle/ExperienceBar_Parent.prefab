@@ -713,6 +713,7 @@ MonoBehaviour:
   m_overlayController: {fileID: 6830091437612581507}
   m_nameText: {fileID: 6966622762538972414}
   m_classNameText: {fileID: 134445108753612232}
+  m_canvasGroup: {fileID: 4494456666763995294}
   m_lerpCurve:
     serializedVersion: 2
     m_Curve:
@@ -888,7 +889,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &2749239587182611860
 GameObject:

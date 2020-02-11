@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿using DogHouse.ToonWorld.Animation;
 
 namespace DogHouse.ToonWorld.CombatControllers
 {
@@ -9,7 +9,7 @@ namespace DogHouse.ToonWorld.CombatControllers
     /// the concrete implementation must set the given
     /// information about a particular unit.
     /// </summary>
-    public interface IUnitIdentifier
+    public interface IUnitIdentifier : IFade
     {
         void SetDataDisplay(GameUnitDefinition definition);
     }

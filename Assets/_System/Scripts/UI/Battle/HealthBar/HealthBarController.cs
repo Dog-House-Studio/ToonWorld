@@ -4,6 +4,7 @@ using TMPro;
 using DogScaffold;
 using DogHouse.CoreServices;
 using UnityEngine.Animations;
+using static UnityEngine.Mathf;
 
 namespace DogHouse.ToonWorld.CombatControllers
 {
@@ -15,6 +16,9 @@ namespace DogHouse.ToonWorld.CombatControllers
     public class HealthBarController : MonoBehaviour, IUnitIdentifier
     {
         #region Private Variables
+        [SerializeField]
+        private CanvasGroup m_canvasGroup;
+
         [SerializeField]
         private Image m_classEmblemImage;
 
@@ -50,6 +54,11 @@ namespace DogHouse.ToonWorld.CombatControllers
             m_nameText.text = definition.UnitName;
             m_unitLevelText.text = definition.Level.ToString();
             SetHealthText(definition);
+        }
+
+        public void SetFadeValue(float value)
+        {
+            m_canvasGroup.alpha = Clamp01(value);
         }
         #endregion
 

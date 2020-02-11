@@ -461,7 +461,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &8993598030545256786
 MonoBehaviour:
@@ -475,6 +475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ba6e0f243cd74468f42df49e1e87d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_canvasGroup: {fileID: 9164420207406497815}
   m_classEmblemImage: {fileID: 6293950949277314011}
   m_nameText: {fileID: 6966622762538972414}
   m_classNameText: {fileID: 134445108753612232}

@@ -77,6 +77,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_modelParent: {fileID: 4289593637506825459}
   m_UICanvasGroup: {fileID: 4289593638382627100}
+  m_healthBarController: {fileID: 7221964831835665796}
+  m_experienceBarController: {fileID: 798180752879289882}
   m_UIFadeTime: 0.5
   m_UIFadeCurve:
     serializedVersion: 2
@@ -447,6 +449,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1798694379181847766}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7221964831835665796 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8993598030545256786, guid: 448f22c5566e6924eba8b4330b41a693,
+    type: 3}
+  m_PrefabInstance: {fileID: 1798694379181847766}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ba6e0f243cd74468f42df49e1e87d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4289593637923521135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -537,3 +551,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4289593637923521135}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &798180752879289882 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3500431081589015669, guid: efd8396033f54ed46a8d73d7ffabe5f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 4289593637923521135}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7b934b75940a884b92707f03bb4f20d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
