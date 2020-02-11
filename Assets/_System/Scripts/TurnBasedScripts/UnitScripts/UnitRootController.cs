@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DogHouse.ToonWorld.CombatControllers
 {
@@ -13,8 +14,20 @@ namespace DogHouse.ToonWorld.CombatControllers
     public class UnitRootController : MonoBehaviour
     {
         #region Private Variables
+        [Header("Elements")]
         [SerializeField]
         private GameObject m_modelParent;
+
+        [SerializeField]
+        private CanvasGroup m_UICanvasGroup;
+
+        [Header("Transitions")]
+        [SerializeField]
+        [Range(0f, 10f)]
+        private float m_UIFadeTime;
+
+        [SerializeField]
+        private AnimationCurve m_UIFadeCurve;
 
         private GameUnitDefinition m_definition;
         #endregion

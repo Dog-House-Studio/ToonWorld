@@ -76,6 +76,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_modelParent: {fileID: 4289593637506825459}
+  m_UICanvasGroup: {fileID: 4289593638382627100}
+  m_UIFadeTime: 0.5
+  m_UIFadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4289593638382627102
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,9 +143,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4289593638382627102}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1001 &1798694379181847766
 PrefabInstance:
@@ -501,7 +527,7 @@ PrefabInstance:
     - target: {fileID: 4494456666763995294, guid: efd8396033f54ed46a8d73d7ffabe5f1,
         type: 3}
       propertyPath: m_Alpha
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efd8396033f54ed46a8d73d7ffabe5f1, type: 3}
