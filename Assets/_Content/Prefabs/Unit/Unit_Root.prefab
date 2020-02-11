@@ -181,12 +181,12 @@ PrefabInstance:
     - target: {fileID: 1435120582450433317, guid: 448f22c5566e6924eba8b4330b41a693,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1435120582450433317, guid: 448f22c5566e6924eba8b4330b41a693,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1435120582450433317, guid: 448f22c5566e6924eba8b4330b41a693,
         type: 3}
@@ -261,7 +261,7 @@ PrefabInstance:
     - target: {fileID: 1435120582478325998, guid: 448f22c5566e6924eba8b4330b41a693,
         type: 3}
       propertyPath: m_Name
-      value: StatsBar_Parent
+      value: HealthBar_Parent
       objectReference: {fileID: 0}
     - target: {fileID: 2093754886106744049, guid: 448f22c5566e6924eba8b4330b41a693,
         type: 3}
