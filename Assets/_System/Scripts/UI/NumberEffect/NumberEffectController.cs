@@ -50,7 +50,7 @@ namespace DogHouse.ToonWorld.UI
         {
             if(m_animator.GetCurrentAnimatorStateInfo(0).IsName(ANIMATOR_END_STATE))
             {
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
         }
         #endregion
