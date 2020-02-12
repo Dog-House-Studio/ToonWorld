@@ -127,7 +127,7 @@ namespace DogHouse.ToonWorld.CombatControllers
             m_barValue = ((float)currentStats.Health) / ((float)baseStats.Health);
         }
 
-        private void HandleStatChange(UnitStats currentStats, UnitStats baseStats)
+        private void HandleStatChange(UnitStats currentStats, UnitStats baseStats, int delta)
         {
             GameObject numberEffectObject = Instantiate(m_numberEffectPrefab);
             numberEffectObject.transform.SetParent(this.transform);
@@ -135,7 +135,7 @@ namespace DogHouse.ToonWorld.CombatControllers
             numberEffectObject.transform.localRotation = Quaternion.identity;
 
             NumberEffectController controller = numberEffectObject.GetComponent<NumberEffectController>();
-            controller?.SetValue(-1);
+            controller?.SetValue(delta);
 
             m_shake.AddShake();
             SetHealthText(currentStats, baseStats);

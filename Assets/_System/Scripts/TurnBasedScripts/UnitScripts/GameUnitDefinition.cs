@@ -17,7 +17,7 @@ namespace DogHouse.ToonWorld.CombatControllers
         public Action<float> OnExperienceGained;
 
         [HideInInspector]
-        public Action<UnitStats, UnitStats> OnStatsChanged;
+        public Action<UnitStats, UnitStats, int> OnStatsChanged;
 
         public GameObject Model => m_model;
         public UnitClassType BaseClassType => m_baseType;
@@ -99,7 +99,7 @@ namespace DogHouse.ToonWorld.CombatControllers
             m_stats.Health = Mathf.Max(0, m_stats.Health);
             m_stats.Health = Mathf.Min(m_baseStats.Health, m_stats.Health);
 
-            OnStatsChanged?.Invoke(m_stats, m_baseStats);
+            OnStatsChanged?.Invoke(m_stats, m_baseStats, delta);
         }
         #endregion
     }
