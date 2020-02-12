@@ -16,6 +16,9 @@ namespace DogHouse.ToonWorld.CombatControllers
         [HideInInspector]
         public Action<float> OnExperienceGained;
 
+        [HideInInspector]
+        public Action<UnitStats, UnitStats> OnStatsChanged;
+
         public GameObject Model => m_model;
         public UnitClassType BaseClassType => m_baseType;
         public string UnitName => m_unitName;
@@ -83,6 +86,15 @@ namespace DogHouse.ToonWorld.CombatControllers
             m_experience = 0;
             m_levelExperienceTarget = m_baseType.CalculateExperienceNeeded(m_level + 1);
             m_skillPoints++;
+        }
+
+        public void ChangeHealth(int delta)
+        {
+            m_stats.Health += delta;
+            m_stats.Health = Mathf.Max(0, m_stats.Health);
+            m_stats.Health = Mathf.Min(m_baseStats.Health, m_stats.Health);
+
+            OnStatsChanged?.Invoke(m_stats, m_baseStats);
         }
         #endregion
     }

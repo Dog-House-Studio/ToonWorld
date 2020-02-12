@@ -13,7 +13,12 @@ namespace DogHouse.ToonWorld.CombatControllers
     public class UnitStats : ScriptableObject
     {
         #region Public Variables
-        public int Health => m_myDestroyableStats.Health.Value;
+        public int Health
+        {
+            get { return m_myDestroyableStats.Health.Value; }
+            set { m_myDestroyableStats.Health.Value = value; }
+        }
+
         public int Defence => m_myDestroyableStats.Defence.Value;
         public int Strength => m_strength.Value;
         public int Accuracy => m_accuracy.Value;
