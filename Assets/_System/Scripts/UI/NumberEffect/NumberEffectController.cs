@@ -16,6 +16,12 @@ namespace DogHouse.ToonWorld.UI
         [SerializeField]
         private TMP_Text m_text;
 
+        [SerializeField]
+        private Color m_damageColor;
+
+        [SerializeField]
+        private Color m_healColor;
+
         private Animator m_animator;
 
         private const string ANIMATOR_END_STATE = "End";
@@ -30,6 +36,8 @@ namespace DogHouse.ToonWorld.UI
         public void SetValue(int value)
         {
             m_text.text = value.ToString();
+            if (value < 0) m_text.color = m_damageColor;
+            if (value > 0) m_text.color = m_healColor;
         }
 
         public void Update()
