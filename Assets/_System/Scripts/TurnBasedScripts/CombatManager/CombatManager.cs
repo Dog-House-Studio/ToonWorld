@@ -7,9 +7,11 @@ namespace DogHouse.ToonWorld.CombatControllers
 {
     public class CombatManager : BaseService<ICombatManager>,ICombatManager
     {
+        [SerializeField]
         private GridObject SelectedUnit = null;   // Currently highlighted GridTile
-
+        [SerializeField]
         private CombatPlayer GamePlayer = new CombatPlayer("Player");
+        [SerializeField]
         private CombatPlayer EnemyPlayer = new CombatPlayer("Enemy");
 
         private CombatPlayer currentPlayer;

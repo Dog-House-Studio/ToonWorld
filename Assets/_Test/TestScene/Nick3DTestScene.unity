@@ -35187,21 +35187,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c09e3c6b2d17c4b48adac8cf4bfd6b78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedUnit: {fileID: 0}
-  gamePlayer:
+  SelectedUnit: {fileID: 0}
+  GamePlayer:
     units:
     - {fileID: 1705953971}
     - {fileID: 283848640}
     name: Player
-  enemyPlayer:
+  EnemyPlayer:
     units: []
     name: Enemy
-  currentPlayer:
-    units: []
-    name: 
-  otherPlayer:
-    units: []
-    name: 
 --- !u!4 &1688146783
 Transform:
   m_ObjectHideFlags: 0
@@ -35568,7 +35562,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1796749260}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2100809183}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 428434d36efbf154eb9ee02a4a4763eb, type: 3}
@@ -43444,6 +43438,31 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2094972950}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2100809183 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 968475809843567339, guid: 35f186ca2e4f94c4182c183eda0c19bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 1796749260}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2100809184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100809183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d857fa4efcacb1a429d939fa45e4e2e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TargetGridObject: {fileID: 0}
+  m_DestinationTile: {fileID: 0}
+  m_AnimateMovement: 0
+  m_RotateTowardsDirection: 0
+  m_DebugDrawPath: 0
+  m_NextPathpointIndex: 0
+  Path: []
 --- !u!1001 &2101145831
 PrefabInstance:
   m_ObjectHideFlags: 0
