@@ -503,6 +503,8 @@ MonoBehaviour:
   m_healthSlider: {fileID: 948595719431785417}
   m_lookAtConstraint: {fileID: 1435120582478325996}
   m_shake: {fileID: 8227269179733434493}
+  m_numberEffectPrefab: {fileID: 878017371886598057, guid: 5bbb5bee485551d49b7d82f9f06d15ad,
+    type: 3}
   m_lerpValue: 4
 --- !u!1 &2448817800308494891
 GameObject:

@@ -5,6 +5,7 @@ using DogScaffold;
 using DogHouse.CoreServices;
 using DogHouse.ToonWorld.Animation;
 using UnityEngine.Animations;
+using DogHouse.ToonWorld.UI;
 using static UnityEngine.Mathf;
 
 namespace DogHouse.ToonWorld.CombatControllers
@@ -48,6 +49,9 @@ namespace DogHouse.ToonWorld.CombatControllers
 
         [SerializeField]
         private Shake m_shake;
+
+        [SerializeField]
+        private GameObject m_numberEffectPrefab;
 
         [Header("Lerping")]
         [SerializeField]
@@ -125,6 +129,14 @@ namespace DogHouse.ToonWorld.CombatControllers
 
         private void HandleStatChange(UnitStats currentStats, UnitStats baseStats)
         {
+            GameObject numberEffectObject = Instantiate(m_numberEffectPrefab);
+            numberEffectObject.transform.SetParent(this.transform);
+            numberEffectObject.transform.localPosition = Vector3.forward * 0.05f;
+            numberEffectObject.transform.localRotation = Quaternion.identity;
+
+            NumberEffectController controller = numberEffectObject.GetComponent<NumberEffectController>();
+            controller?.SetValue(-1);
+
             m_shake.AddShake();
             SetHealthText(currentStats, baseStats);
         }
