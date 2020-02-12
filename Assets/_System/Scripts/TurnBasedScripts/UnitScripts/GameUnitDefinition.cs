@@ -21,6 +21,8 @@ namespace DogHouse.ToonWorld.CombatControllers
         public string UnitName => m_unitName;
         public int Level => m_level;
         public UnitStats Stats => m_stats;
+        public UnitStats BaseStats => m_baseStats;
+        public int SkillPoints => m_skillPoints;
         #endregion
 
         #region Private Variables
@@ -38,8 +40,10 @@ namespace DogHouse.ToonWorld.CombatControllers
 
         private int m_level;
         private UnitStats m_stats;
+        private UnitStats m_baseStats;
         private int m_experience = 0;
         private int m_levelExperienceTarget = 0;
+        private int m_skillPoints;
         #endregion
 
         #region Main Methods
@@ -50,6 +54,7 @@ namespace DogHouse.ToonWorld.CombatControllers
         {
             m_level = 1;
             m_stats = m_baseType.BaseStats;
+            m_baseStats = m_baseType.BaseStats;
             m_levelExperienceTarget = m_baseType.CalculateExperienceNeeded(m_level + 1);
         }
 
@@ -63,15 +68,21 @@ namespace DogHouse.ToonWorld.CombatControllers
 
             if(m_experience == m_levelExperienceTarget)
             {
-                m_level++;
-                m_experience = 0;
-                m_levelExperienceTarget = m_baseType.CalculateExperienceNeeded(m_level + 1);
+                HandleLevelUp();
             }
         }
 
         public int CalculateExperienceDrop()
         {
             return m_baseExperienceDrop + (4 * m_level);
+        }
+
+        private void HandleLevelUp()
+        {
+            m_level++;
+            m_experience = 0;
+            m_levelExperienceTarget = m_baseType.CalculateExperienceNeeded(m_level + 1);
+            m_skillPoints++;
         }
         #endregion
     }
