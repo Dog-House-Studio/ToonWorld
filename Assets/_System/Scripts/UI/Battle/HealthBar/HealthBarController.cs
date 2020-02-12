@@ -39,6 +39,9 @@ namespace DogHouse.ToonWorld.CombatControllers
         private TMP_Text m_healthText;
 
         [SerializeField]
+        private Slider m_healthSlider;
+
+        [SerializeField]
         private LookAtConstraint m_lookAtConstraint;
 
         private GameUnitDefinition m_definition;
@@ -95,6 +98,8 @@ namespace DogHouse.ToonWorld.CombatControllers
                 + " / " + baseStats.Health.ToString();
 
             m_healthText.text = healthTextValue;
+
+            m_healthSlider.value = ((float)currentStats.Health) / ((float)baseStats.Health);
         }
 
         private void HandleStatChange(UnitStats currentStats, UnitStats baseStats)
