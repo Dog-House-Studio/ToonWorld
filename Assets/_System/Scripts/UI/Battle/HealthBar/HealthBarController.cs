@@ -51,6 +51,9 @@ namespace DogHouse.ToonWorld.CombatControllers
         private Shake m_shake;
 
         [SerializeField]
+        private Image m_healthBarImage;
+
+        [SerializeField]
         private GameObject m_numberEffectPrefab;
 
         [Header("Audio")]
@@ -72,6 +75,12 @@ namespace DogHouse.ToonWorld.CombatControllers
         [SerializeField]
         [Range(0.0001f, 10f)]
         private float m_lerpValue;
+
+        [SerializeField]
+        private Color m_fullColor;
+
+        [SerializeField]
+        private Color m_emptyColor;
 
         private float m_lazyBarValue = 1f;
         private float m_barValue = 1f;
@@ -120,6 +129,8 @@ namespace DogHouse.ToonWorld.CombatControllers
 
             m_lazyBarValue = Lerp(m_lazyBarValue, m_barValue, m_lerpValue * Time.deltaTime);
             m_healthSlider.value = m_lazyBarValue;
+
+            m_healthBarImage.color = Color.Lerp(m_emptyColor, m_fullColor, m_lazyBarValue);
         }
         #endregion
 

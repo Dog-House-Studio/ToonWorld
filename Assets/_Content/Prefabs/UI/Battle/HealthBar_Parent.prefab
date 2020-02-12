@@ -504,6 +504,7 @@ MonoBehaviour:
   m_healthSlider: {fileID: 948595719431785417}
   m_lookAtConstraint: {fileID: 1435120582478325996}
   m_shake: {fileID: 8227269179733434493}
+  m_healthBarImage: {fileID: 7339812249940767947}
   m_numberEffectPrefab: {fileID: 878017371886598057, guid: 5bbb5bee485551d49b7d82f9f06d15ad,
     type: 3}
   m_source: {fileID: 4794957693079905973}
@@ -511,6 +512,8 @@ MonoBehaviour:
   m_pitchMax: 1.15
   m_pitchMin: 0.75
   m_lerpValue: 4
+  m_fullColor: {r: 0.3537736, g: 0.97900057, b: 1, a: 1}
+  m_emptyColor: {r: 0, g: 0.21568632, b: 1, a: 1}
 --- !u!82 &4794957693079905973
 AudioSource:
   m_ObjectHideFlags: 0
