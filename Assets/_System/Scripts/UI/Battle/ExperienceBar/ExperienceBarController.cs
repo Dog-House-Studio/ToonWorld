@@ -166,6 +166,7 @@ namespace DogHouse.ToonWorld.CombatControllers
         private void OnDisable()
         {
             m_playableDirector.stopped -= OnAudioTimelineFinished;
+            CancelInvoke();
         }
 
         public void SetValue(float value)
@@ -219,7 +220,7 @@ namespace DogHouse.ToonWorld.CombatControllers
                     return;
                 }
 
-                OnAnimationFinished?.Invoke();
+                Invoke(nameof(HandleAnimationFinished), 1f);
             }
         }
 
@@ -291,6 +292,11 @@ namespace DogHouse.ToonWorld.CombatControllers
         }
 
         private void OnAudioTimelineFinished(PlayableDirector director)
+        {
+            HandleAnimationFinished();
+        }
+
+        private void HandleAnimationFinished()
         {
             OnAnimationFinished?.Invoke();
         }
