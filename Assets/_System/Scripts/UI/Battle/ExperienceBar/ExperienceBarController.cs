@@ -123,6 +123,8 @@ namespace DogHouse.ToonWorld.CombatControllers
         private int m_currentBarIndex = 0;
         private bool m_animating = false;
         private float m_barThreshholdAmount;
+        private float m_timeScalar = 0f;
+
         private List<ExperienceBarSlotController> m_barControllers 
             = new List<ExperienceBarSlotController>();
 
@@ -174,6 +176,7 @@ namespace DogHouse.ToonWorld.CombatControllers
             m_progressAmount = Clamp01(value);
             m_animating = true;
             m_startSlowAmount = m_slowAmount;
+            m_timeScalar = (m_progressAmount - m_startSlowAmount);
         }
 
         private void Update()
@@ -181,7 +184,7 @@ namespace DogHouse.ToonWorld.CombatControllers
             if (!m_animating) return;
 
             m_currentTime += Time.deltaTime;
-            float lerp = Clamp01(m_currentTime / m_lerpTime);
+            float lerp = Clamp01(m_currentTime / (m_lerpTime * m_timeScalar));
             lerp = m_lerpCurve.Evaluate(lerp);
 
             m_slowAmount = Lerp(m_startSlowAmount, m_progressAmount, lerp);
