@@ -36,6 +36,12 @@ namespace DogHouse.ToonWorld.UI
         public void SetValue(int value)
         {
             m_text.text = value.ToString();
+            
+            if(value > 0)
+            {
+                m_text.text = "+" + m_text.text;
+            }
+            
             if (value < 0) m_text.color = m_damageColor;
             if (value > 0) m_text.color = m_healColor;
         }
