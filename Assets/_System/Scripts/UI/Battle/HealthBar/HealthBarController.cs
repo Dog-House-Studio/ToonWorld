@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using DogScaffold;
 using DogHouse.CoreServices;
+using DogHouse.ToonWorld.Animation;
 using UnityEngine.Animations;
 using static UnityEngine.Mathf;
 
@@ -44,6 +45,9 @@ namespace DogHouse.ToonWorld.CombatControllers
 
         [SerializeField]
         private LookAtConstraint m_lookAtConstraint;
+
+        [SerializeField]
+        private Shake m_shake;
 
         [Header("Lerping")]
         [SerializeField]
@@ -121,6 +125,7 @@ namespace DogHouse.ToonWorld.CombatControllers
 
         private void HandleStatChange(UnitStats currentStats, UnitStats baseStats)
         {
+            m_shake.AddShake();
             SetHealthText(currentStats, baseStats);
         }
         #endregion
