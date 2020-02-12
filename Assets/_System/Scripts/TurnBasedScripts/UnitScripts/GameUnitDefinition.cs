@@ -56,10 +56,17 @@ namespace DogHouse.ToonWorld.CombatControllers
         private void OnEnable()
         {
             m_level = 1;
-            m_stats = m_baseType.BaseStats;
-            m_baseStats = m_baseType.BaseStats;
+
+            m_stats = new UnitStats();
+            m_stats.Copy(m_baseType.BaseStats);
+
+            m_baseStats = new UnitStats();
+            m_baseStats.Copy(m_baseType.BaseStats);
+
             m_levelExperienceTarget = m_baseType.CalculateExperienceNeeded(m_level + 1);
         }
+
+
 
         public void AddExperience(int amount)
         {

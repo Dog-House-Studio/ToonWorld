@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp:DogHouse.ToonWorld.CombatControllers:UnitStats
   m_myDestroyableStats:
     Health:
-      Value: 6
+      Value: 8
     Defence:
       Value: 4
   m_strength:

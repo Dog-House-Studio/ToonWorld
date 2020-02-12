@@ -240,6 +240,7 @@ namespace DogHouse.ToonWorld.CombatControllers
             m_classNameText.text = definition.BaseClassType.ClassName;
             m_classEmblem.overrideSprite = definition.BaseClassType.ClassSprite;
             m_level = definition.Level;
+
         }
 
         public void SetFadeValue(float value)

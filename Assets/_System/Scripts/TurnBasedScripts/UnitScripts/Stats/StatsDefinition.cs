@@ -28,7 +28,7 @@ namespace DogHouse.ToonWorld.CombatControllers
 
         #region Private Variables
         [SerializeField]
-        private DestroyableStats m_myDestroyableStats;
+        private DestroyableStats m_myDestroyableStats = new DestroyableStats();
 
         [SerializeField]
         private Stat m_strength = new Stat("Strength", "STR", 0);
@@ -41,6 +41,18 @@ namespace DogHouse.ToonWorld.CombatControllers
 
         [SerializeField]
         private Stat m_luck = new Stat("Luck", "LCK", 0);
+        #endregion
+
+        #region Main Methods
+        public void Copy(UnitStats stats)
+        {
+            m_myDestroyableStats.Health.Value = stats.Health;
+            m_myDestroyableStats.Defence.Value = stats.Defence;
+            m_strength.Value = stats.Strength;
+            m_accuracy.Value = stats.Accuracy;
+            m_speed.Value = stats.Speed;
+            m_luck.Value = stats.Luck;
+        }
         #endregion
     }
 

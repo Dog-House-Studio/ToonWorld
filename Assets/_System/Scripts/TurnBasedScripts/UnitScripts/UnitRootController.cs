@@ -104,6 +104,11 @@ namespace DogHouse.ToonWorld.CombatControllers
             StartCoroutine(_FadeItem(m_experienceBarController, true,
                 () => { SetVisualExperienceBarValue(percent); }));
         }
+
+        public void ApplyHealthChange(int delta)
+        {
+            m_definition.ChangeHealth(delta);
+        }
         #endregion
 
         #region Utility Methods

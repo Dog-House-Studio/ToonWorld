@@ -41,6 +41,8 @@ namespace DogHouse.ToonWorld.CombatControllers
         [SerializeField]
         private LookAtConstraint m_lookAtConstraint;
 
+        private GameUnitDefinition m_definition;
+
         private ServiceReference<ICameraFinder> m_cameraService 
             = new ServiceReference<ICameraFinder>();
         #endregion
@@ -51,13 +53,25 @@ namespace DogHouse.ToonWorld.CombatControllers
             m_cameraService.AddRegistrationHandle(OnCameraServiceRegistered);
         }
 
+        void OnDestroy()
+        {
+            if(m_definition != null)
+            {
+                m_definition.OnStatsChanged -= HandleStatChange;
+            }
+        }
+
         public void SetDataDisplay(GameUnitDefinition definition)
         {
             m_classEmblemImage.overrideSprite = definition.BaseClassType.ClassSprite;
             m_classNameText.text = definition.BaseClassType.ClassName;
             m_nameText.text = definition.UnitName;
             m_unitLevelText.text = definition.Level.ToString();
-            SetHealthText(definition);
+            SetHealthText(definition.Stats, definition.BaseStats);
+
+            m_definition = definition;
+            m_definition.OnStatsChanged -= HandleStatChange;
+            m_definition.OnStatsChanged += HandleStatChange;
         }
 
         public void SetFadeValue(float value)
@@ -75,12 +89,17 @@ namespace DogHouse.ToonWorld.CombatControllers
             m_lookAtConstraint.AddSource(source);
         }
 
-        private void SetHealthText(GameUnitDefinition definition)
+        private void SetHealthText(UnitStats currentStats, UnitStats baseStats)
         {
-            int currentHealth = definition.Stats.Health;
-            int maxHealth = definition.BaseStats.Health;
-            string healthTextValue = "HP " + currentHealth.ToString() + " / " + maxHealth.ToString();
+            string healthTextValue = "HP " + currentStats.Health.ToString() 
+                + " / " + baseStats.Health.ToString();
+
             m_healthText.text = healthTextValue;
+        }
+
+        private void HandleStatChange(UnitStats currentStats, UnitStats baseStats)
+        {
+            SetHealthText(currentStats, baseStats);
         }
         #endregion
     }
