@@ -53,6 +53,21 @@ namespace DogHouse.ToonWorld.CombatControllers
         [SerializeField]
         private GameObject m_numberEffectPrefab;
 
+        [Header("Audio")]
+        [SerializeField]
+        private AudioSource m_source;
+
+        [SerializeField]
+        private AudioClip m_hurtSFX;
+
+        [SerializeField]
+        [Range(0f,2f)]
+        private float m_pitchMax;
+
+        [SerializeField]
+        [Range(0f, 2f)]
+        private float m_pitchMin;
+
         [Header("Lerping")]
         [SerializeField]
         [Range(0.0001f, 10f)]
@@ -128,15 +143,17 @@ namespace DogHouse.ToonWorld.CombatControllers
         }
 
         private void HandleStatChange(UnitStats currentStats, UnitStats baseStats, int delta)
-        {
+        { 
+            SetHealthText(currentStats, baseStats);
+
             CreateNumberEffect(delta);
 
-            if(delta < 0)
+            if (delta < 0)
             {
                 m_shake.AddShake();
+                m_source.pitch = Lerp(m_pitchMin, m_pitchMax, m_barValue);
+                m_source?.PlayOneShot(m_hurtSFX);
             }
-            
-            SetHealthText(currentStats, baseStats);
         }
 
         private void CreateNumberEffect(int delta)
