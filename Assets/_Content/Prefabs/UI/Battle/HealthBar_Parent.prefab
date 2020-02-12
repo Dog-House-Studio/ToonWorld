@@ -483,6 +483,7 @@ MonoBehaviour:
   m_healthText: {fileID: 1435120582450433317}
   m_healthSlider: {fileID: 948595719431785417}
   m_lookAtConstraint: {fileID: 1435120582478325996}
+  m_lerpValue: 4
 --- !u!1 &2448817800308494891
 GameObject:
   m_ObjectHideFlags: 0

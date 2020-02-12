@@ -66,8 +66,6 @@ namespace DogHouse.ToonWorld.CombatControllers
             m_levelExperienceTarget = m_baseType.CalculateExperienceNeeded(m_level + 1);
         }
 
-
-
         public void AddExperience(int amount)
         {
             m_experience += amount;

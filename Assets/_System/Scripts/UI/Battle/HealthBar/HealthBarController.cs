@@ -20,6 +20,7 @@ namespace DogHouse.ToonWorld.CombatControllers
         #endregion
 
         #region Private Variables
+        [Header("Elements")]
         [SerializeField]
         private CanvasGroup m_canvasGroup;
 
@@ -43,6 +44,14 @@ namespace DogHouse.ToonWorld.CombatControllers
 
         [SerializeField]
         private LookAtConstraint m_lookAtConstraint;
+
+        [Header("Lerping")]
+        [SerializeField]
+        [Range(0.0001f, 10f)]
+        private float m_lerpValue;
+
+        private float m_lazyBarValue = 1f;
+        private float m_barValue = 1f;
 
         private GameUnitDefinition m_definition;
 
@@ -81,6 +90,14 @@ namespace DogHouse.ToonWorld.CombatControllers
         {
             m_canvasGroup.alpha = Clamp01(value);
         }
+
+        void Update()
+        {
+            if (Approximately(m_barValue, m_lazyBarValue)) return;
+
+            m_lazyBarValue = Lerp(m_lazyBarValue, m_barValue, m_lerpValue * Time.deltaTime);
+            m_healthSlider.value = m_lazyBarValue;
+        }
         #endregion
 
         #region Utility Methods
@@ -99,7 +116,7 @@ namespace DogHouse.ToonWorld.CombatControllers
 
             m_healthText.text = healthTextValue;
 
-            m_healthSlider.value = ((float)currentStats.Health) / ((float)baseStats.Health);
+            m_barValue = ((float)currentStats.Health) / ((float)baseStats.Health);
         }
 
         private void HandleStatChange(UnitStats currentStats, UnitStats baseStats)
