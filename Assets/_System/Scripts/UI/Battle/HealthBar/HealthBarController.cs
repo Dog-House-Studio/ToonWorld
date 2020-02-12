@@ -56,6 +56,9 @@ namespace DogHouse.ToonWorld.CombatControllers
         [SerializeField]
         private GameObject m_numberEffectPrefab;
 
+        [SerializeField]
+        private HealthBarHealEffectController m_healController;
+
         [Header("Audio")]
         [SerializeField]
         private AudioSource m_source;
@@ -164,6 +167,11 @@ namespace DogHouse.ToonWorld.CombatControllers
                 m_shake.AddShake();
                 m_source.pitch = Lerp(m_pitchMin, m_pitchMax, m_barValue);
                 m_source?.PlayOneShot(m_hurtSFX);
+            }
+
+            if(delta > 0)
+            {
+                m_healController?.PlayEffect();
             }
         }
 
