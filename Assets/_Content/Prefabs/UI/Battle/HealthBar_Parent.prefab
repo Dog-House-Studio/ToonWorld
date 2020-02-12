@@ -511,6 +511,7 @@ MonoBehaviour:
   m_healController: {fileID: 7201079419715321272}
   m_source: {fileID: 4794957693079905973}
   m_hurtSFX: {fileID: 8300000, guid: 7d32d408d94874bebbaf2e0ab55350a6, type: 3}
+  m_healSFX: {fileID: 8300000, guid: acb99fd76f1a14944bc125fd63a89bfa, type: 3}
   m_pitchMax: 1.15
   m_pitchMin: 0.75
   m_lerpValue: 4

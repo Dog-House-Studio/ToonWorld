@@ -67,6 +67,9 @@ namespace DogHouse.ToonWorld.CombatControllers
         private AudioClip m_hurtSFX;
 
         [SerializeField]
+        private AudioClip m_healSFX;
+
+        [SerializeField]
         [Range(0f,2f)]
         private float m_pitchMax;
 
@@ -159,19 +162,19 @@ namespace DogHouse.ToonWorld.CombatControllers
         private void HandleStatChange(UnitStats currentStats, UnitStats baseStats, int delta)
         { 
             SetHealthText(currentStats, baseStats);
-
             CreateNumberEffect(delta);
+            m_source.pitch = Lerp(m_pitchMin, m_pitchMax, m_barValue);
 
             if (delta < 0)
             {
                 m_shake.AddShake();
-                m_source.pitch = Lerp(m_pitchMin, m_pitchMax, m_barValue);
                 m_source?.PlayOneShot(m_hurtSFX);
             }
 
             if(delta > 0)
             {
                 m_healController?.PlayEffect();
+                m_source.PlayOneShot(m_healSFX);
             }
         }
 
