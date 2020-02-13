@@ -19,12 +19,13 @@ namespace DogHouse.ToonWorld.CombatControllers
         public UnitClassType[] Strength => m_strength;
         public BaseMovementType Movement => m_movementType;
         public ExperienceType Experience => m_experienceType;
+        public UnitStats BaseStats => m_baseStats;
         #endregion
 
         #region Private Variables
         [SerializeField]
         private string m_className;
-
+        
         [SerializeField]
         private Sprite m_classSprite;
 
@@ -32,7 +33,7 @@ namespace DogHouse.ToonWorld.CombatControllers
         private BaseMovementType m_movementType;
 
         [SerializeField]
-        private BaseClassUnitStats m_baseStats;
+        private UnitStats m_baseStats;
 
         [SerializeField]
         private ExperienceType m_experienceType;
@@ -42,6 +43,20 @@ namespace DogHouse.ToonWorld.CombatControllers
 
         [SerializeField]
         private UnitClassType[] m_strength;
+        #endregion
+
+        #region Main Methods
+        public int CalculateExperienceNeeded(int level)
+        {
+            float multiplier = 1f;
+            if (m_experienceType == ExperienceType.FAST) multiplier = 0.75f;
+            if (m_experienceType == ExperienceType.SLOW) multiplier = 1.25f;
+
+            int value = (int)((float)(level * 8) * multiplier);
+            value = Mathf.Max(1, value);
+
+            return value;
+        }
         #endregion
     }
 
