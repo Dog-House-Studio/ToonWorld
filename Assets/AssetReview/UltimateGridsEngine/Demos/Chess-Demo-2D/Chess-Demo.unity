@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -127,11 +128,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -197,6 +193,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!114 &13680838 stripped
@@ -224,11 +225,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -294,6 +290,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!114 &24641953 stripped
@@ -321,10 +322,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1989553269}
     m_Modifications:
-    - target: {fileID: 7027345519746583988, guid: 765f68fa99a3ebc4e8dc797380d2134f,
+    - target: {fileID: 1594842051917837795, guid: 765f68fa99a3ebc4e8dc797380d2134f,
         type: 3}
-      propertyPath: m_Name
-      value: ChessBishopPrefab
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3486190527900728443, guid: 765f68fa99a3ebc4e8dc797380d2134f,
         type: 3}
@@ -341,6 +342,11 @@ PrefabInstance:
       propertyPath: m_CurrentGridTile
       value: 
       objectReference: {fileID: 499968526}
+    - target: {fileID: 7027345519746583988, guid: 765f68fa99a3ebc4e8dc797380d2134f,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBishopPrefab
+      objectReference: {fileID: 0}
     - target: {fileID: 7027345519746583998, guid: 765f68fa99a3ebc4e8dc797380d2134f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -423,11 +429,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -493,6 +494,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!4 &43527917 stripped
@@ -525,21 +531,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChessWhitePawnPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_GridPosition.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_GridPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_CurrentGridTile
-      value: 
-      objectReference: {fileID: 732963556}
     - target: {fileID: 4173557453014853304, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -595,6 +586,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_GridPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_GridPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_CurrentGridTile
+      value: 
+      objectReference: {fileID: 732963556}
+    - target: {fileID: 5642822891858108133, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38, type: 3}
 --- !u!4 &49489376 stripped
@@ -622,10 +633,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1989553269}
     m_Modifications:
-    - target: {fileID: 7027345519746583988, guid: 765f68fa99a3ebc4e8dc797380d2134f,
+    - target: {fileID: 1594842051917837795, guid: 765f68fa99a3ebc4e8dc797380d2134f,
         type: 3}
-      propertyPath: m_Name
-      value: ChessBishopPrefab
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3486190527900728443, guid: 765f68fa99a3ebc4e8dc797380d2134f,
         type: 3}
@@ -642,6 +653,11 @@ PrefabInstance:
       propertyPath: m_CurrentGridTile
       value: 
       objectReference: {fileID: 24641953}
+    - target: {fileID: 7027345519746583988, guid: 765f68fa99a3ebc4e8dc797380d2134f,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBishopPrefab
+      objectReference: {fileID: 0}
     - target: {fileID: 7027345519746583998, guid: 765f68fa99a3ebc4e8dc797380d2134f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -724,26 +740,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1989553269}
     m_Modifications:
+    - target: {fileID: 2107295678, guid: 514a5a98696272140b0998345798c761, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d07bb95c4a013f4498f5baed63cba39d, type: 2}
     - target: {fileID: 2933369491634213888, guid: 514a5a98696272140b0998345798c761,
         type: 3}
       propertyPath: m_Name
       value: ChessRookPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
-        type: 3}
-      propertyPath: m_GridPosition.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
-        type: 3}
-      propertyPath: m_GridPosition.y
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
-        type: 3}
-      propertyPath: m_CurrentGridTile
-      value: 
-      objectReference: {fileID: 1624745043}
     - target: {fileID: 2933369491634213898, guid: 514a5a98696272140b0998345798c761,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -799,10 +804,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2107295678, guid: 514a5a98696272140b0998345798c761, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
+        type: 3}
+      propertyPath: m_GridPosition.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
+        type: 3}
+      propertyPath: m_GridPosition.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
+        type: 3}
+      propertyPath: m_CurrentGridTile
       value: 
-      objectReference: {fileID: 2100000, guid: d07bb95c4a013f4498f5baed63cba39d, type: 2}
+      objectReference: {fileID: 1624745043}
+    - target: {fileID: 6850342146580687959, guid: 514a5a98696272140b0998345798c761,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514a5a98696272140b0998345798c761, type: 3}
 --- !u!4 &99909194 stripped
@@ -835,21 +856,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChessWhitePawnPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_GridPosition.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_GridPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_CurrentGridTile
-      value: 
-      objectReference: {fileID: 1960836346}
     - target: {fileID: 4173557453014853304, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -905,6 +911,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_GridPosition.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_GridPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_CurrentGridTile
+      value: 
+      objectReference: {fileID: 1960836346}
+    - target: {fileID: 5642822891858108133, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38, type: 3}
 --- !u!4 &178345848 stripped
@@ -920,11 +946,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -990,6 +1011,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!114 &213526411 stripped
@@ -1017,11 +1043,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1087,6 +1108,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!4 &215836966 stripped
@@ -1114,11 +1140,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1184,6 +1205,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!4 &218793618 stripped
@@ -1211,11 +1237,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1280,6 +1301,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_GridPosition.y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
@@ -1467,11 +1493,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1537,6 +1558,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!4 &271005802 stripped
@@ -1545,6 +1571,95 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 271005801}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &284163252
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1989553269}
+    m_Modifications:
+    - target: {fileID: 207450647284003256, guid: 9c8c02083886eb54c982f9950c571b15,
+        type: 3}
+      propertyPath: m_GridPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 207450647284003256, guid: 9c8c02083886eb54c982f9950c571b15,
+        type: 3}
+      propertyPath: m_GridPosition.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 207450647284003256, guid: 9c8c02083886eb54c982f9950c571b15,
+        type: 3}
+      propertyPath: m_CurrentGridTile
+      value: 
+      objectReference: {fileID: 708891446}
+    - target: {fileID: 207450647284003256, guid: 9c8c02083886eb54c982f9950c571b15,
+        type: 3}
+      propertyPath: movementAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3922515454183354492, guid: 9c8c02083886eb54c982f9950c571b15,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3922515454183354492, guid: 9c8c02083886eb54c982f9950c571b15,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3922515454183354492, guid: 9c8c02083886eb54c982f9950c571b15,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3922515454183354492, guid: 9c8c02083886eb54c982f9950c571b15,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3922515454183354492, guid: 9c8c02083886eb54c982f9950c571b15,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3922515454183354492, guid: 9c8c02083886eb54c982f9950c571b15,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3922515454183354492, guid: 9c8c02083886eb54c982f9950c571b15,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3922515454183354492, guid: 9c8c02083886eb54c982f9950c571b15,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3922515454183354492, guid: 9c8c02083886eb54c982f9950c571b15,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3922515454183354492, guid: 9c8c02083886eb54c982f9950c571b15,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3922515454183354492, guid: 9c8c02083886eb54c982f9950c571b15,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8895474553750363759, guid: 9c8c02083886eb54c982f9950c571b15,
+        type: 3}
+      propertyPath: m_Name
+      value: Swordsman
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9c8c02083886eb54c982f9950c571b15, type: 3}
 --- !u!1001 &301092436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1552,11 +1667,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1622,6 +1732,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!4 &301092437 stripped
@@ -1642,21 +1757,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChessKingPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 1366401600598740260, guid: 14a5fda37f68fb24dbc16419ed6ce880,
-        type: 3}
-      propertyPath: m_GridPosition.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1366401600598740260, guid: 14a5fda37f68fb24dbc16419ed6ce880,
-        type: 3}
-      propertyPath: m_GridPosition.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1366401600598740260, guid: 14a5fda37f68fb24dbc16419ed6ce880,
-        type: 3}
-      propertyPath: m_CurrentGridTile
-      value: 
-      objectReference: {fileID: 1786473221}
     - target: {fileID: 835666057516734168, guid: 14a5fda37f68fb24dbc16419ed6ce880,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1712,6 +1812,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1366401600598740260, guid: 14a5fda37f68fb24dbc16419ed6ce880,
+        type: 3}
+      propertyPath: m_GridPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1366401600598740260, guid: 14a5fda37f68fb24dbc16419ed6ce880,
+        type: 3}
+      propertyPath: m_GridPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1366401600598740260, guid: 14a5fda37f68fb24dbc16419ed6ce880,
+        type: 3}
+      propertyPath: m_CurrentGridTile
+      value: 
+      objectReference: {fileID: 1786473221}
+    - target: {fileID: 8952241523205189253, guid: 14a5fda37f68fb24dbc16419ed6ce880,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14a5fda37f68fb24dbc16419ed6ce880, type: 3}
 --- !u!4 &336627844 stripped
@@ -1744,21 +1864,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChessWhitePawnPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_GridPosition.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_GridPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_CurrentGridTile
-      value: 
-      objectReference: {fileID: 1249476615}
     - target: {fileID: 4173557453014853304, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1814,6 +1919,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_GridPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_GridPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_CurrentGridTile
+      value: 
+      objectReference: {fileID: 1249476615}
+    - target: {fileID: 5642822891858108133, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38, type: 3}
 --- !u!4 &339311391 stripped
@@ -1829,11 +1954,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1899,6 +2019,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!4 &353691640 stripped
@@ -1914,11 +2039,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1984,6 +2104,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!4 &355953613 stripped
@@ -2011,11 +2136,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2081,6 +2201,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!4 &362362071 stripped
@@ -2096,11 +2221,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2165,6 +2285,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_GridPosition.y
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
@@ -2315,7 +2440,7 @@ GameObject:
   m_Component:
   - component: {fileID: 384875721}
   m_Layer: 0
-  m_Name: '----- UI -----'
+  m_Name: ----- UI -----
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2354,11 +2479,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2424,6 +2544,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!4 &427565768 stripped
@@ -2451,11 +2576,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2521,6 +2641,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!4 &432690913 stripped
@@ -2548,11 +2673,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2617,6 +2737,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_GridPosition.y
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
@@ -2708,6 +2833,11 @@ PrefabInstance:
       propertyPath: m_CurrentGridTile
       value: 
       objectReference: {fileID: 1933505512}
+    - target: {fileID: 5642822891858108133, guid: 250458ff6007b494eac5d854d8686551,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 250458ff6007b494eac5d854d8686551, type: 3}
 --- !u!4 &477772331 stripped
@@ -2728,21 +2858,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChessWhitePawnPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_GridPosition.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_GridPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_CurrentGridTile
-      value: 
-      objectReference: {fileID: 1788740256}
     - target: {fileID: 4173557453014853304, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2798,6 +2913,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_GridPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_GridPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_CurrentGridTile
+      value: 
+      objectReference: {fileID: 1788740256}
+    - target: {fileID: 5642822891858108133, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38, type: 3}
 --- !u!4 &487200238 stripped
@@ -2813,11 +2948,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2883,6 +3013,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!114 &499968526 stripped
@@ -2915,21 +3050,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChessRookPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
-        type: 3}
-      propertyPath: m_GridPosition.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
-        type: 3}
-      propertyPath: m_GridPosition.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
-        type: 3}
-      propertyPath: m_CurrentGridTile
-      value: 
-      objectReference: {fileID: 573445397}
     - target: {fileID: 2933369491634213898, guid: 514a5a98696272140b0998345798c761,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2983,6 +3103,26 @@ PrefabInstance:
     - target: {fileID: 2933369491634213898, guid: 514a5a98696272140b0998345798c761,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
+        type: 3}
+      propertyPath: m_GridPosition.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
+        type: 3}
+      propertyPath: m_GridPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
+        type: 3}
+      propertyPath: m_CurrentGridTile
+      value: 
+      objectReference: {fileID: 573445397}
+    - target: {fileID: 6850342146580687959, guid: 514a5a98696272140b0998345798c761,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3087,6 +3227,11 @@ PrefabInstance:
       propertyPath: m_CurrentGridTile
       value: 
       objectReference: {fileID: 1098051537}
+    - target: {fileID: 5642822891858108133, guid: 250458ff6007b494eac5d854d8686551,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 250458ff6007b494eac5d854d8686551, type: 3}
 --- !u!4 &514128063 stripped
@@ -3139,6 +3284,9 @@ GameObject:
   - component: {fileID: 529059385}
   - component: {fileID: 529059384}
   - component: {fileID: 529059386}
+  - component: {fileID: 529059389}
+  - component: {fileID: 529059388}
+  - component: {fileID: 529059387}
   m_Layer: 0
   m_Name: ChessManagers
   m_TagString: Untagged
@@ -3264,6 +3412,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01fde2bb25f2b7347acdf587c918aafa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &529059387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529059381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aea8b63c164c2b0468c270db9e1724fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &529059388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529059381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be7d4d03727ab684698e6e288efcf422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MoveLocationPrefab: {fileID: 6452657428747622539, guid: 50797fb36cb3563409cb6580b93a7b39,
+    type: 3}
+  m_AttackLocationPrefab: {fileID: 1300536564285357074, guid: f7b157ba511270047903337d439b040f,
+    type: 3}
+--- !u!114 &529059389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529059381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c09e3c6b2d17c4b48adac8cf4bfd6b78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedUnit: {fileID: 0}
+  gamePlayer:
+    units:
+    - {fileID: 1995946147}
+    name: Player
+  enemyPlayer:
+    units: []
+    name: Enemy
+  currentPlayer:
+    units: []
+    name: 
+  otherPlayer:
+    units: []
+    name: 
 --- !u!1 &554318891
 GameObject:
   m_ObjectHideFlags: 0
@@ -3347,7 +3549,7 @@ GameObject:
   m_Component:
   - component: {fileID: 558097708}
   m_Layer: 0
-  m_Name: '------- Black Pieces -------'
+  m_Name: ------- Black Pieces -------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3449,6 +3651,11 @@ PrefabInstance:
       propertyPath: m_CurrentGridTile
       value: 
       objectReference: {fileID: 1647442083}
+    - target: {fileID: 5642822891858108133, guid: 250458ff6007b494eac5d854d8686551,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 250458ff6007b494eac5d854d8686551, type: 3}
 --- !u!4 &573303132 stripped
@@ -3464,11 +3671,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3534,6 +3736,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!114 &573445397 stripped
@@ -3573,11 +3780,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3643,6 +3845,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!4 &597371876 stripped
@@ -3658,11 +3865,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3728,6 +3930,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!4 &612535198 stripped
@@ -3743,11 +3950,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3813,6 +4015,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!4 &627561057 stripped
@@ -3852,6 +4059,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4128,8 +4336,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 1
+  m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
@@ -4194,6 +4403,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &708891446 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3586767869889660509, guid: 74406859c1e88f64f93b705d0b3c7f80,
+    type: 3}
+  m_PrefabInstance: {fileID: 1057038870}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da52cb87a8c0b31438aab1def10d9ef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &709142027 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4493009392780437591, guid: 250458ff6007b494eac5d854d8686551,
@@ -4213,11 +4434,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4283,6 +4499,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!114 &716028608 stripped
@@ -4310,11 +4531,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4380,6 +4596,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!114 &732963556 stripped
@@ -4419,11 +4640,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4488,6 +4704,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_GridPosition.y
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
@@ -4591,6 +4812,11 @@ PrefabInstance:
       propertyPath: m_CurrentGridTile
       value: 
       objectReference: {fileID: 2056061936}
+    - target: {fileID: 5642822891858108133, guid: 250458ff6007b494eac5d854d8686551,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 250458ff6007b494eac5d854d8686551, type: 3}
 --- !u!4 &771295783 stripped
@@ -4609,7 +4835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 816387783}
   m_Layer: 0
-  m_Name: '----- GameUtilities -----'
+  m_Name: ----- GameUtilities -----
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4636,11 +4862,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4706,6 +4927,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!4 &825412819 stripped
@@ -4726,21 +4952,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChessRookPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
+    - target: {fileID: 2933369491634213888, guid: 514a5a98696272140b0998345798c761,
         type: 3}
-      propertyPath: m_GridPosition.x
-      value: -3
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
-        type: 3}
-      propertyPath: m_GridPosition.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
-        type: 3}
-      propertyPath: m_CurrentGridTile
-      value: 
-      objectReference: {fileID: 763533925}
     - target: {fileID: 2933369491634213898, guid: 514a5a98696272140b0998345798c761,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4796,6 +5012,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
+        type: 3}
+      propertyPath: m_GridPosition.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
+        type: 3}
+      propertyPath: m_GridPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
+        type: 3}
+      propertyPath: m_CurrentGridTile
+      value: 
+      objectReference: {fileID: 763533925}
+    - target: {fileID: 6850342146580687959, guid: 514a5a98696272140b0998345798c761,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6850342146580687959, guid: 514a5a98696272140b0998345798c761,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514a5a98696272140b0998345798c761, type: 3}
 --- !u!4 &859567999 stripped
@@ -4823,26 +5064,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1989553269}
     m_Modifications:
-    - target: {fileID: 1832559183277987433, guid: b38119d7141d5874794a77039ebf1343,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessKnightPrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
-        type: 3}
-      propertyPath: m_GridPosition.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
-        type: 3}
-      propertyPath: m_GridPosition.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
-        type: 3}
-      propertyPath: m_CurrentGridTile
-      value: 
-      objectReference: {fileID: 1798754148}
     - target: {fileID: 1832559183277987427, guid: b38119d7141d5874794a77039ebf1343,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4898,6 +5119,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1832559183277987433, guid: b38119d7141d5874794a77039ebf1343,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessKnightPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
+        type: 3}
+      propertyPath: m_GridPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
+        type: 3}
+      propertyPath: m_GridPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
+        type: 3}
+      propertyPath: m_CurrentGridTile
+      value: 
+      objectReference: {fileID: 1798754148}
+    - target: {fileID: 7983385978312945214, guid: b38119d7141d5874794a77039ebf1343,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b38119d7141d5874794a77039ebf1343, type: 3}
 --- !u!4 &883687352 stripped
@@ -4925,11 +5171,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1989553269}
     m_Modifications:
-    - target: {fileID: 2933369491634213888, guid: db903ea622fbaa545bbdb58d7bf847a2,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessQueenPrefab
-      objectReference: {fileID: 0}
     - target: {fileID: -5077189062427730584, guid: db903ea622fbaa545bbdb58d7bf847a2,
         type: 3}
       propertyPath: m_GridPosition.x
@@ -4945,6 +5186,11 @@ PrefabInstance:
       propertyPath: m_CurrentGridTile
       value: 
       objectReference: {fileID: 716028608}
+    - target: {fileID: 2933369491634213888, guid: db903ea622fbaa545bbdb58d7bf847a2,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessQueenPrefab
+      objectReference: {fileID: 0}
     - target: {fileID: 2933369491634213898, guid: db903ea622fbaa545bbdb58d7bf847a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4998,6 +5244,11 @@ PrefabInstance:
     - target: {fileID: 2933369491634213898, guid: db903ea622fbaa545bbdb58d7bf847a2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6850342146580687959, guid: db903ea622fbaa545bbdb58d7bf847a2,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5065,6 +5316,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5107,11 +5359,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5177,6 +5424,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!4 &932564812 stripped
@@ -5192,11 +5444,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5262,6 +5509,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!4 &936166996 stripped
@@ -5295,6 +5547,7 @@ GameObject:
   - component: {fileID: 963194226}
   - component: {fileID: 963194230}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194231}
   m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5444,6 +5697,37 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &963194231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_CameraOutput: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1001 &1057038870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5451,11 +5735,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5521,6 +5800,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!4 &1057038871 stripped
@@ -5536,11 +5820,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5606,6 +5885,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!4 &1098051536 stripped
@@ -5633,11 +5917,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1989553269}
     m_Modifications:
-    - target: {fileID: 2933369491634213888, guid: db903ea622fbaa545bbdb58d7bf847a2,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessQueenPrefab
-      objectReference: {fileID: 0}
     - target: {fileID: -5077189062427730584, guid: db903ea622fbaa545bbdb58d7bf847a2,
         type: 3}
       propertyPath: m_GridPosition.x
@@ -5653,6 +5932,15 @@ PrefabInstance:
       propertyPath: m_CurrentGridTile
       value: 
       objectReference: {fileID: 427565769}
+    - target: {fileID: 1081430973, guid: db903ea622fbaa545bbdb58d7bf847a2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d07bb95c4a013f4498f5baed63cba39d, type: 2}
+    - target: {fileID: 2933369491634213888, guid: db903ea622fbaa545bbdb58d7bf847a2,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessQueenPrefab
+      objectReference: {fileID: 0}
     - target: {fileID: 2933369491634213898, guid: db903ea622fbaa545bbdb58d7bf847a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5708,10 +5996,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1081430973, guid: db903ea622fbaa545bbdb58d7bf847a2, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: d07bb95c4a013f4498f5baed63cba39d, type: 2}
+    - target: {fileID: 6850342146580687959, guid: db903ea622fbaa545bbdb58d7bf847a2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db903ea622fbaa545bbdb58d7bf847a2, type: 3}
 --- !u!4 &1115245265 stripped
@@ -5768,21 +6057,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChessWhitePawnPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_GridPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_GridPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_CurrentGridTile
-      value: 
-      objectReference: {fileID: 1659232474}
     - target: {fileID: 4173557453014853304, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5838,6 +6112,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_GridPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_GridPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_CurrentGridTile
+      value: 
+      objectReference: {fileID: 1659232474}
+    - target: {fileID: 5642822891858108133, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38, type: 3}
 --- !u!4 &1137010113 stripped
@@ -5856,7 +6150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1145002416}
   m_Layer: 0
-  m_Name: '----- Level Assets -----'
+  m_Name: ----- Level Assets -----
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5941,11 +6235,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6010,6 +6299,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_GridPosition.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
@@ -6101,6 +6395,11 @@ PrefabInstance:
       propertyPath: m_CurrentGridTile
       value: 
       objectReference: {fileID: 43527918}
+    - target: {fileID: 5642822891858108133, guid: 250458ff6007b494eac5d854d8686551,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 250458ff6007b494eac5d854d8686551, type: 3}
 --- !u!4 &1216337881 stripped
@@ -6116,26 +6415,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1989553269}
     m_Modifications:
-    - target: {fileID: 1832559183277987433, guid: b38119d7141d5874794a77039ebf1343,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessKnightPrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
-        type: 3}
-      propertyPath: m_GridPosition.x
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
-        type: 3}
-      propertyPath: m_GridPosition.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
-        type: 3}
-      propertyPath: m_CurrentGridTile
-      value: 
-      objectReference: {fileID: 1863743674}
     - target: {fileID: 1832559183277987427, guid: b38119d7141d5874794a77039ebf1343,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6191,6 +6470,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1832559183277987433, guid: b38119d7141d5874794a77039ebf1343,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessKnightPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
+        type: 3}
+      propertyPath: m_GridPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
+        type: 3}
+      propertyPath: m_GridPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
+        type: 3}
+      propertyPath: m_CurrentGridTile
+      value: 
+      objectReference: {fileID: 1863743674}
+    - target: {fileID: 7983385978312945214, guid: b38119d7141d5874794a77039ebf1343,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b38119d7141d5874794a77039ebf1343, type: 3}
 --- !u!4 &1224618578 stripped
@@ -6218,11 +6522,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6288,6 +6587,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!114 &1249476615 stripped
@@ -6318,7 +6622,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1260771710}
   m_Layer: 0
-  m_Name: '----- Lighting -----'
+  m_Name: ----- Lighting -----
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6360,7 +6664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1279851325}
   m_Layer: 0
-  m_Name: '------- White Pieces -------'
+  m_Name: ------- White Pieces -------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6387,11 +6691,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6457,6 +6756,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!114 &1285962059 stripped
@@ -6484,11 +6788,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6554,6 +6853,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!4 &1294149789 stripped
@@ -6574,21 +6878,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChessWhitePawnPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_GridPosition.x
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_GridPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_CurrentGridTile
-      value: 
-      objectReference: {fileID: 13680838}
     - target: {fileID: 4173557453014853304, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6644,6 +6933,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_GridPosition.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_GridPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_CurrentGridTile
+      value: 
+      objectReference: {fileID: 13680838}
+    - target: {fileID: 5642822891858108133, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38, type: 3}
 --- !u!4 &1342151408 stripped
@@ -6659,11 +6968,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6729,6 +7033,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!4 &1346795983 stripped
@@ -6744,11 +7053,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6814,6 +7118,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!4 &1351290587 stripped
@@ -6829,26 +7138,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1989553269}
     m_Modifications:
+    - target: {fileID: 2107295678, guid: 514a5a98696272140b0998345798c761, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d07bb95c4a013f4498f5baed63cba39d, type: 2}
     - target: {fileID: 2933369491634213888, guid: 514a5a98696272140b0998345798c761,
         type: 3}
       propertyPath: m_Name
       value: ChessRookPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
-        type: 3}
-      propertyPath: m_GridPosition.x
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
-        type: 3}
-      propertyPath: m_GridPosition.y
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
-        type: 3}
-      propertyPath: m_CurrentGridTile
-      value: 
-      objectReference: {fileID: 1641568006}
     - target: {fileID: 2933369491634213898, guid: 514a5a98696272140b0998345798c761,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6904,10 +7202,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2107295678, guid: 514a5a98696272140b0998345798c761, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
+        type: 3}
+      propertyPath: m_GridPosition.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
+        type: 3}
+      propertyPath: m_GridPosition.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6001645069841787074, guid: 514a5a98696272140b0998345798c761,
+        type: 3}
+      propertyPath: m_CurrentGridTile
       value: 
-      objectReference: {fileID: 2100000, guid: d07bb95c4a013f4498f5baed63cba39d, type: 2}
+      objectReference: {fileID: 1641568006}
+    - target: {fileID: 6850342146580687959, guid: 514a5a98696272140b0998345798c761,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514a5a98696272140b0998345798c761, type: 3}
 --- !u!4 &1357487240 stripped
@@ -6935,11 +7249,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7005,6 +7314,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!4 &1369888627 stripped
@@ -7020,10 +7334,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1989553269}
     m_Modifications:
-    - target: {fileID: 7027345519746583988, guid: 765f68fa99a3ebc4e8dc797380d2134f,
+    - target: {fileID: 627677306, guid: 765f68fa99a3ebc4e8dc797380d2134f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d07bb95c4a013f4498f5baed63cba39d, type: 2}
+    - target: {fileID: 1594842051917837795, guid: 765f68fa99a3ebc4e8dc797380d2134f,
         type: 3}
-      propertyPath: m_Name
-      value: ChessBishopPrefab
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3486190527900728443, guid: 765f68fa99a3ebc4e8dc797380d2134f,
         type: 3}
@@ -7040,6 +7358,11 @@ PrefabInstance:
       propertyPath: m_CurrentGridTile
       value: 
       objectReference: {fileID: 432690914}
+    - target: {fileID: 7027345519746583988, guid: 765f68fa99a3ebc4e8dc797380d2134f,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBishopPrefab
+      objectReference: {fileID: 0}
     - target: {fileID: 7027345519746583998, guid: 765f68fa99a3ebc4e8dc797380d2134f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7095,10 +7418,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 627677306, guid: 765f68fa99a3ebc4e8dc797380d2134f, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: d07bb95c4a013f4498f5baed63cba39d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 765f68fa99a3ebc4e8dc797380d2134f, type: 3}
 --- !u!4 &1391017677 stripped
@@ -7126,26 +7445,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1989553269}
     m_Modifications:
-    - target: {fileID: 1832559183277987433, guid: b38119d7141d5874794a77039ebf1343,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessKnightPrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
-        type: 3}
-      propertyPath: m_GridPosition.x
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
-        type: 3}
-      propertyPath: m_GridPosition.y
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
-        type: 3}
-      propertyPath: m_CurrentGridTile
+    - target: {fileID: 1632621531, guid: b38119d7141d5874794a77039ebf1343, type: 3}
+      propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2019282434}
+      objectReference: {fileID: 2100000, guid: d07bb95c4a013f4498f5baed63cba39d, type: 2}
     - target: {fileID: 1832559183277987427, guid: b38119d7141d5874794a77039ebf1343,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7201,10 +7504,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1632621531, guid: b38119d7141d5874794a77039ebf1343, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+    - target: {fileID: 1832559183277987433, guid: b38119d7141d5874794a77039ebf1343,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessKnightPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
+        type: 3}
+      propertyPath: m_GridPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
+        type: 3}
+      propertyPath: m_GridPosition.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
+        type: 3}
+      propertyPath: m_CurrentGridTile
       value: 
-      objectReference: {fileID: 2100000, guid: d07bb95c4a013f4498f5baed63cba39d, type: 2}
+      objectReference: {fileID: 2019282434}
+    - target: {fileID: 7983385978312945214, guid: b38119d7141d5874794a77039ebf1343,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b38119d7141d5874794a77039ebf1343, type: 3}
 --- !u!4 &1397479076 stripped
@@ -7232,11 +7556,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7301,6 +7620,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_GridPosition.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
@@ -7481,6 +7805,11 @@ PrefabInstance:
       propertyPath: m_CurrentGridTile
       value: 
       objectReference: {fileID: 1594338388}
+    - target: {fileID: 5642822891858108133, guid: 250458ff6007b494eac5d854d8686551,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 250458ff6007b494eac5d854d8686551, type: 3}
 --- !u!4 &1474760911 stripped
@@ -7508,11 +7837,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7577,6 +7901,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_GridPosition.y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
@@ -7659,11 +7988,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7729,6 +8053,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!4 &1592640170 stripped
@@ -7744,11 +8073,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7814,6 +8138,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!4 &1594338387 stripped
@@ -7841,11 +8170,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7911,6 +8235,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!4 &1624745042 stripped
@@ -7938,11 +8267,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8008,6 +8332,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!4 &1641568005 stripped
@@ -8035,11 +8364,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8105,6 +8429,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!4 &1642324626 stripped
@@ -8120,11 +8449,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8190,6 +8514,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!4 &1647442082 stripped
@@ -8217,11 +8546,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8287,6 +8611,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!114 &1659232474 stripped
@@ -8319,21 +8648,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChessWhitePawnPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_GridPosition.x
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_GridPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_CurrentGridTile
-      value: 
-      objectReference: {fileID: 1285962059}
     - target: {fileID: 4173557453014853304, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8389,6 +8703,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_GridPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_GridPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_CurrentGridTile
+      value: 
+      objectReference: {fileID: 1285962059}
+    - target: {fileID: 5642822891858108133, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38, type: 3}
 --- !u!4 &1670284431 stripped
@@ -8404,26 +8738,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1989553269}
     m_Modifications:
-    - target: {fileID: 1832559183277987433, guid: b38119d7141d5874794a77039ebf1343,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessKnightPrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
-        type: 3}
-      propertyPath: m_GridPosition.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
-        type: 3}
-      propertyPath: m_GridPosition.y
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
-        type: 3}
-      propertyPath: m_CurrentGridTile
+    - target: {fileID: 1632621531, guid: b38119d7141d5874794a77039ebf1343, type: 3}
+      propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 355953614}
+      objectReference: {fileID: 2100000, guid: d07bb95c4a013f4498f5baed63cba39d, type: 2}
     - target: {fileID: 1832559183277987427, guid: b38119d7141d5874794a77039ebf1343,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8479,10 +8797,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1632621531, guid: b38119d7141d5874794a77039ebf1343, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+    - target: {fileID: 1832559183277987433, guid: b38119d7141d5874794a77039ebf1343,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessKnightPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
+        type: 3}
+      propertyPath: m_GridPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
+        type: 3}
+      propertyPath: m_GridPosition.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203062607448068394, guid: b38119d7141d5874794a77039ebf1343,
+        type: 3}
+      propertyPath: m_CurrentGridTile
       value: 
-      objectReference: {fileID: 2100000, guid: d07bb95c4a013f4498f5baed63cba39d, type: 2}
+      objectReference: {fileID: 355953614}
+    - target: {fileID: 7983385978312945214, guid: b38119d7141d5874794a77039ebf1343,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b38119d7141d5874794a77039ebf1343, type: 3}
 --- !u!4 &1687041825 stripped
@@ -8597,6 +8936,11 @@ PrefabInstance:
       propertyPath: m_CurrentGridTile
       value: 
       objectReference: {fileID: 218793619}
+    - target: {fileID: 5642822891858108133, guid: 250458ff6007b494eac5d854d8686551,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 250458ff6007b494eac5d854d8686551, type: 3}
 --- !u!4 &1708982096 stripped
@@ -8612,11 +8956,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8682,6 +9021,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!4 &1714264328 stripped
@@ -8697,11 +9041,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8767,6 +9106,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!4 &1716102147 stripped
@@ -8782,11 +9126,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8852,6 +9191,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
 --- !u!4 &1725868092 stripped
@@ -8884,21 +9228,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChessWhitePawnPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_GridPosition.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_GridPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
-        type: 3}
-      propertyPath: m_CurrentGridTile
-      value: 
-      objectReference: {fileID: 213526411}
     - target: {fileID: 4173557453014853304, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8954,6 +9283,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_GridPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_GridPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493009392780437591, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_CurrentGridTile
+      value: 
+      objectReference: {fileID: 213526411}
+    - target: {fileID: 5642822891858108133, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13c3335bed9c1de41b3e3eb6ffcd9d38, type: 3}
 --- !u!4 &1755831264 stripped
@@ -8969,26 +9318,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1989553269}
     m_Modifications:
+    - target: {fileID: 168077622, guid: 14a5fda37f68fb24dbc16419ed6ce880, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d07bb95c4a013f4498f5baed63cba39d, type: 2}
     - target: {fileID: 835666057516734162, guid: 14a5fda37f68fb24dbc16419ed6ce880,
         type: 3}
       propertyPath: m_Name
       value: ChessKingPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 1366401600598740260, guid: 14a5fda37f68fb24dbc16419ed6ce880,
-        type: 3}
-      propertyPath: m_GridPosition.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1366401600598740260, guid: 14a5fda37f68fb24dbc16419ed6ce880,
-        type: 3}
-      propertyPath: m_GridPosition.y
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1366401600598740260, guid: 14a5fda37f68fb24dbc16419ed6ce880,
-        type: 3}
-      propertyPath: m_CurrentGridTile
-      value: 
-      objectReference: {fileID: 1965068375}
     - target: {fileID: 835666057516734168, guid: 14a5fda37f68fb24dbc16419ed6ce880,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9044,10 +9382,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 168077622, guid: 14a5fda37f68fb24dbc16419ed6ce880, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+    - target: {fileID: 1366401600598740260, guid: 14a5fda37f68fb24dbc16419ed6ce880,
+        type: 3}
+      propertyPath: m_GridPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1366401600598740260, guid: 14a5fda37f68fb24dbc16419ed6ce880,
+        type: 3}
+      propertyPath: m_GridPosition.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1366401600598740260, guid: 14a5fda37f68fb24dbc16419ed6ce880,
+        type: 3}
+      propertyPath: m_CurrentGridTile
       value: 
-      objectReference: {fileID: 2100000, guid: d07bb95c4a013f4498f5baed63cba39d, type: 2}
+      objectReference: {fileID: 1965068375}
+    - target: {fileID: 8952241523205189253, guid: 14a5fda37f68fb24dbc16419ed6ce880,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14a5fda37f68fb24dbc16419ed6ce880, type: 3}
 --- !u!4 &1778774556 stripped
@@ -9075,11 +9429,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9145,6 +9494,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!4 &1781231869 stripped
@@ -9160,11 +9514,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9230,6 +9579,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!114 &1786473221 stripped
@@ -9257,11 +9611,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9327,6 +9676,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!114 &1788740256 stripped
@@ -9354,11 +9708,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9424,6 +9773,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!4 &1798128690 stripped
@@ -9439,11 +9793,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9509,6 +9858,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!114 &1798754148 stripped
@@ -9539,7 +9893,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1809367467}
   m_Layer: 0
-  m_Name: '----- Gameplay -----'
+  m_Name: ----- Gameplay -----
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9566,11 +9920,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9636,6 +9985,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!4 &1857862380 stripped
@@ -9651,11 +10005,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9720,6 +10069,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_GridPosition.y
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
@@ -9814,11 +10168,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9883,6 +10232,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_GridPosition.y
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
@@ -9986,6 +10340,11 @@ PrefabInstance:
       propertyPath: m_CurrentGridTile
       value: 
       objectReference: {fileID: 2075038060}
+    - target: {fileID: 5642822891858108133, guid: 250458ff6007b494eac5d854d8686551,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 250458ff6007b494eac5d854d8686551, type: 3}
 --- !u!4 &1951461661 stripped
@@ -10001,11 +10360,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10071,6 +10425,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!114 &1960836346 stripped
@@ -10098,11 +10457,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10168,6 +10522,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!4 &1962970517 stripped
@@ -10183,10 +10542,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1989553269}
     m_Modifications:
-    - target: {fileID: 7027345519746583988, guid: 765f68fa99a3ebc4e8dc797380d2134f,
+    - target: {fileID: 627677306, guid: 765f68fa99a3ebc4e8dc797380d2134f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d07bb95c4a013f4498f5baed63cba39d, type: 2}
+    - target: {fileID: 1594842051917837795, guid: 765f68fa99a3ebc4e8dc797380d2134f,
         type: 3}
-      propertyPath: m_Name
-      value: ChessBishopPrefab
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3486190527900728443, guid: 765f68fa99a3ebc4e8dc797380d2134f,
         type: 3}
@@ -10203,6 +10566,11 @@ PrefabInstance:
       propertyPath: m_CurrentGridTile
       value: 
       objectReference: {fileID: 215836967}
+    - target: {fileID: 7027345519746583988, guid: 765f68fa99a3ebc4e8dc797380d2134f,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBishopPrefab
+      objectReference: {fileID: 0}
     - target: {fileID: 7027345519746583998, guid: 765f68fa99a3ebc4e8dc797380d2134f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10258,10 +10626,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 627677306, guid: 765f68fa99a3ebc4e8dc797380d2134f, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: d07bb95c4a013f4498f5baed63cba39d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 765f68fa99a3ebc4e8dc797380d2134f, type: 3}
 --- !u!4 &1963552973 stripped
@@ -10289,11 +10653,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessWhiteTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10358,6 +10717,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_GridPosition.y
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessWhiteTilePrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f29409b7bcd4b4bbcd14ad79e6df9a, type: 3}
@@ -10533,6 +10897,7 @@ Transform:
   - {fileID: 573303132}
   - {fileID: 1951461661}
   - {fileID: 477772331}
+  - {fileID: 1995946143}
   m_Father: {fileID: 1587905450}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10629,6 +10994,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989841994}
   m_CullTransparentMesh: 0
+--- !u!4 &1995946143 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3922515454183354492, guid: 9c8c02083886eb54c982f9950c571b15,
+    type: 3}
+  m_PrefabInstance: {fileID: 284163252}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1995946147 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 207450647284003256, guid: 9c8c02083886eb54c982f9950c571b15,
+    type: 3}
+  m_PrefabInstance: {fileID: 284163252}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 428434d36efbf154eb9ee02a4a4763eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2019282432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10636,11 +11019,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10706,6 +11084,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!4 &2019282433 stripped
@@ -10733,11 +11116,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10803,6 +11181,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!4 &2056061935 stripped
@@ -10830,11 +11213,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10900,6 +11278,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!4 &2060110997 stripped
@@ -10915,11 +11298,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10985,6 +11363,11 @@ PrefabInstance:
       propertyPath: m_GridPosition.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}
 --- !u!4 &2075038059 stripped
@@ -11012,11 +11395,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 246090600}
     m_Modifications:
-    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
-        type: 3}
-      propertyPath: m_Name
-      value: ChessBlackTilePrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 3586767869889660498, guid: 74406859c1e88f64f93b705d0b3c7f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11081,6 +11459,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_GridPosition.y
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586767869889660510, guid: 74406859c1e88f64f93b705d0b3c7f80,
+        type: 3}
+      propertyPath: m_Name
+      value: ChessBlackTilePrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74406859c1e88f64f93b705d0b3c7f80, type: 3}

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458dcce772c392940a89cf1446233fa3, type: 3}
+  m_Name: Gamma_GameUnitDefinition
+  m_EditorClassIdentifier: 
+  m_baseType: {fileID: 11400000, guid: 48c15c274bf4a194084d8353d4237f2f, type: 2}
+  m_unitName: Gamma
+  m_model: {fileID: 1859177370518512203, guid: c7a99aa3ebf6e77449afe8bd6fb808c3, type: 3}
