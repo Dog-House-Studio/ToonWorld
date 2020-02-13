@@ -806,6 +806,7 @@ GameObject:
   - component: {fileID: 4981573095172565016}
   - component: {fileID: 4981573095172565015}
   - component: {fileID: 4981573095172565013}
+  - component: {fileID: 6305432225056105070}
   m_Layer: 5
   m_Name: SkillTree_Parent
   m_TagString: Untagged
@@ -836,7 +837,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -24.380001, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 2.51, y: 1.33}
+  m_AnchoredPosition: {x: 2.5100098, y: 1.3300018}
   m_SizeDelta: {x: 4.7009, y: 3.2962}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4981573095172565015
@@ -872,6 +873,22 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &6305432225056105070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4981573095172565012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948ef22a031908f47be03fdebd61da9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_group: {fileID: 4981573095172565013}
+  m_classEmblem: {fileID: 4981573094596736785}
+  m_nameText: {fileID: 4981573094512966582}
+  m_classNameText: {fileID: 4981573096250301349}
 --- !u!1 &4981573095213762000
 GameObject:
   m_ObjectHideFlags: 0
