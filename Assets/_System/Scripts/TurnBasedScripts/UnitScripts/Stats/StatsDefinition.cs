@@ -15,7 +15,16 @@ namespace DogHouse.ToonWorld.CombatControllers
         #region Public Variables
         public int Health
         {
-            get { return m_myDestroyableStats.Health.Value; }
+            get
+            {
+                if(m_myDestroyableStats == null)
+                {
+                    m_myDestroyableStats = new DestroyableStats();
+                }
+                return m_myDestroyableStats.Health.Value;
+            }
+
+
             set { m_myDestroyableStats.Health.Value = value; }
         }
 
