@@ -34,6 +34,9 @@ namespace DogHouse.ToonWorld.CombatControllers
         [SerializeField]
         private ExperienceBarController m_experienceBarController;
 
+        [SerializeField]
+        private SkillTreeController m_skillTreeController;
+
         [Header("Transitions")]
         [SerializeField]
         [Range(0f, 10f)]
@@ -91,6 +94,11 @@ namespace DogHouse.ToonWorld.CombatControllers
         public void DisplayExperienceBar(bool value)
         {
             StartCoroutine(_FadeItem(m_experienceBarController, value));
+        }
+
+        public void DisplaySkillTree(bool value)
+        {
+            StartCoroutine(_FadeItem(m_skillTreeController, value));
         }
 
         public void AddExperience(int amount)
