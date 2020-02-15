@@ -13,6 +13,7 @@ namespace DogHouse.ToonWorld.Animation
     {
         #region Public Variables
         public float LerpValue => m_lerpValue;
+        public bool IsLerping => m_isLerping;
         #endregion
 
         #region Private Variables
@@ -25,19 +26,19 @@ namespace DogHouse.ToonWorld.Animation
 
         private float m_timePassed;
         private float m_lerpValue;
-        private bool m_isAnimating;
+        private bool m_isLerping;
         #endregion
 
         #region Main Methods
         public void BeginLerping()
         {
-            m_isAnimating = true;
+            m_isLerping = true;
             m_timePassed = 0f;
         }
 
-        void Update()
+        public void Update()
         {
-            if (!m_isAnimating) return;
+            if (!m_isLerping) return;
 
             m_timePassed += Time.deltaTime;
             m_timePassed = Mathf.Clamp(m_timePassed, 0f, m_lerpTime);
@@ -45,7 +46,7 @@ namespace DogHouse.ToonWorld.Animation
 
             if(Mathf.Approximately(m_lerpTime, m_timePassed))
             {
-                m_isAnimating = false;
+                m_isLerping = false;
             }
         }
         #endregion
