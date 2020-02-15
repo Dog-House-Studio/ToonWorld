@@ -52,7 +52,12 @@ namespace DogHouse.ToonWorld.Services
             List<Vector3> perimeterTiles = DeterminePermimeterTiles(edgeTiles, tileLocations.ToList());
             Debug.Log(perimeterTiles.Count);
 
+            List<Vector3> edgeVertices = CalculateEdgeVertices(edgeTiles, perimeterTiles);
 
+            foreach(Vector3 vert in edgeVertices)
+            {
+                Instantiate(m_cubePrefab, vert, Quaternion.identity);
+            }
 
         }
 
@@ -191,6 +196,45 @@ namespace DogHouse.ToonWorld.Services
             }
 
             return perimeterTiles;
+        }
+
+        private List<Vector3> CalculateEdgeVertices(List<Vector3> edgeTiles, List<Vector3> perimeterTiles)
+        {
+            List<Vector3> edgeTileVertices = new List<Vector3>();
+            List<int> edgeTileIndices = new List<int>();
+            for(int i = 0; i < edgeTiles.Count; i++)
+            {
+                CalculateTileVerts(edgeTiles[i], ref edgeTileVertices, ref edgeTileIndices);
+            }
+
+            List<Vector3> perimeterVertices = new List<Vector3>();
+            List<int> perimeterIndices = new List<int>();
+            for(int i = 0; i < perimeterTiles.Count; i++)
+            {
+                CalculateTileVerts(perimeterTiles[i], ref perimeterVertices, ref perimeterIndices);
+            }
+
+            //Remove any vertices that do not also appear in the perimeter vertices
+            int count = 0;
+            for(int i = edgeTileVertices.Count - 1; i >= 0; i--)
+            {
+                count = 0;
+                for(int j = 0; j < perimeterVertices.Count; j++)
+                {
+                    if(Vector3.Distance(edgeTileVertices[i], perimeterVertices[j]) < (m_tileSize * 0.3f))
+                    {
+                        count++;
+                        break;
+                    }
+                }
+
+                if(count == 0)
+                {
+                    edgeTileVertices.RemoveAt(i);
+                }
+            }
+
+            return edgeTileVertices;
         }
         #endregion
     }
