@@ -63,19 +63,19 @@ namespace DogHouse.ToonWorld.Services
             location += m_tileOffset;
 
             Vector3 vert1 = location;
-            vert1.y += 0.5f * m_tileSize;
+            vert1.z += 0.5f * m_tileSize;
             vert1.x += 0.5f * m_tileSize;
 
             Vector3 vert2 = location;
-            vert2.y -= 0.5f * m_tileSize;
+            vert2.z -= 0.5f * m_tileSize;
             vert2.x += 0.5f * m_tileSize;
 
             Vector3 vert3 = location;
-            vert3.y -= 0.5f * m_tileSize;
+            vert3.z -= 0.5f * m_tileSize;
             vert3.x -= 0.5f * m_tileSize;
 
             Vector3 vert4 = location;
-            vert4.y += 0.5f * m_tileSize;
+            vert4.z += 0.5f * m_tileSize;
             vert4.x -= 0.5f * m_tileSize;
 
             verts.Add(vert1);
@@ -96,7 +96,7 @@ namespace DogHouse.ToonWorld.Services
         #region Utility Methods
         private GameObject SetupZoneObject()
         {
-            GameObject zoneObject = Instantiate(new GameObject());
+            GameObject zoneObject = new GameObject();
             zoneObject.transform.SetParent(transform);
             zoneObject.transform.localPosition = Vector3.zero;
             zoneObject.transform.localRotation = Quaternion.identity;

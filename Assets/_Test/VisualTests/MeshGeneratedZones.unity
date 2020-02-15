@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -130,6 +130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 616117246}
+  - component: {fileID: 616117247}
   - component: {fileID: 616117245}
   m_Layer: 0
   m_Name: MeshZoneService
@@ -150,6 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cbd3e72a3145044cbbe2840211b3572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_tileSize: 1
+  m_tileOffset: {x: 0, y: 0.25, z: 0}
+  m_zoneMaterial: {fileID: 2100000, guid: 2e523fd60fa5348458e7c2d381cb0afe, type: 2}
 --- !u!4 &616117246
 Transform:
   m_ObjectHideFlags: 0
@@ -164,6 +168,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &616117247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616117244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c3778aaf2b3604cb325a78449d3f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  editorFoldout: 1
 --- !u!1 &924320743
 GameObject:
   m_ObjectHideFlags: 0
