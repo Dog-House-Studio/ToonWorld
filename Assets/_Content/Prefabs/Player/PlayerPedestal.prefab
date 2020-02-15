@@ -123,6 +123,8 @@ MonoBehaviour:
   m_emblemImage: {fileID: 6105655214452371884}
   m_group: {fileID: 2571361911289453776}
   m_lightObject: {fileID: 8538675490980625851}
+  m_nameText: {fileID: 2929669864578228152}
+  m_unitInformationParent: {fileID: 3838333074268108240}
   m_highlightRange: 0.084
 --- !u!1 &2142827983665118288
 GameObject:
@@ -540,7 +542,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7613418529807002150
 RectTransform:
   m_ObjectHideFlags: 0
@@ -569,7 +571,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3838333074268108240}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0

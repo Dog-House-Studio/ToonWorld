@@ -36,6 +36,9 @@ namespace DogHouse.ToonWorld.Unit
         [SerializeField]
         private TMP_Text m_nameText;
 
+        [SerializeField]
+        private GameObject m_unitInformationParent;
+
         [Header("Settings")]
         [SerializeField]
         [Range(0f, 1f)]
@@ -69,7 +72,6 @@ namespace DogHouse.ToonWorld.Unit
             if (m_state != PedestalState.IDLE && m_state != PedestalState.SELECTED) return;
             if (!m_cameraFinderService.CheckServiceRegistered()) return;
 
-
             Vector3 mousePos = Input.mousePosition;
             float xPos = mousePos.x / (float)Screen.width;
             Vector3 screenPos = m_cameraFinderService.Reference.Camera.WorldToScreenPoint(transform.position);
@@ -95,6 +97,7 @@ namespace DogHouse.ToonWorld.Unit
             {
                 m_emblemImage.color = Color.gray;
                 m_lightObject.gameObject.SetActive(false);
+                m_unitInformationParent.SetActive(false);
                 return;
             }
 
@@ -102,6 +105,7 @@ namespace DogHouse.ToonWorld.Unit
             {
                 m_emblemImage.color = Color.white;
                 m_lightObject.gameObject.SetActive(true);
+                m_unitInformationParent.SetActive(false);
                 return;
             }
 
@@ -109,6 +113,7 @@ namespace DogHouse.ToonWorld.Unit
             {
                 m_emblemImage.color = Color.white;
                 m_lightObject.gameObject.SetActive(true);
+                m_unitInformationParent.SetActive(true);
                 return;
             }
 
@@ -116,6 +121,7 @@ namespace DogHouse.ToonWorld.Unit
             {
                 m_emblemImage.color = Color.gray;
                 m_lightObject.gameObject.SetActive(false);
+                m_unitInformationParent.SetActive(false);
                 return;
             }
         }
