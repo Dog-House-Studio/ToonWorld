@@ -5,6 +5,10 @@ using System.Collections.Generic;
 using DogHouse.ToonWorld.UI;
 using UnityEngine.UI;
 using UnityEngine.Playables;
+using UnityEngine.Animations;
+using DogScaffold;
+using DogHouse.CoreServices;
+using System;
 using static UnityEngine.Mathf;
 
 namespace DogHouse.ToonWorld.CombatControllers
@@ -13,8 +17,15 @@ namespace DogHouse.ToonWorld.CombatControllers
     /// ExperienceBarController is a script that controls the
     /// experience bar visuals.
     /// </summary>
-    public class ExperienceBarController : MonoBehaviour
+    public class ExperienceBarController : MonoBehaviour, IUnitIdentifier
     {
+        #region Public Variables
+        public float FadeValue => m_canvasGroup.alpha;
+
+        [HideInInspector]
+        public Action OnAnimationFinished;
+        #endregion
+
         #region Private Variables
         [Header("General")]
         [SerializeField]
@@ -43,10 +54,22 @@ namespace DogHouse.ToonWorld.CombatControllers
         private AudioSource m_audioSource;
 
         [SerializeField]
+        private LookAtConstraint m_lookAtContraint;
+
+        [SerializeField]
         private PlayableDirector m_playableDirector;
 
         [SerializeField]
         private ExperienceBarOverlayController m_overlayController;
+
+        [SerializeField]
+        private TMP_Text m_nameText;
+
+        [SerializeField]
+        private TMP_Text m_classNameText;
+
+        [SerializeField]
+        private CanvasGroup m_canvasGroup;
 
         [Header("Lerping")]
         [SerializeField]
@@ -100,8 +123,13 @@ namespace DogHouse.ToonWorld.CombatControllers
         private int m_currentBarIndex = 0;
         private bool m_animating = false;
         private float m_barThreshholdAmount;
+        private float m_timeScalar = 0f;
+
         private List<ExperienceBarSlotController> m_barControllers 
             = new List<ExperienceBarSlotController>();
+
+        private ServiceReference<ICameraFinder> m_cameraFinderService 
+            = new ServiceReference<ICameraFinder>();
 
         [MethodButton("TestFull")]
         [SerializeField]
@@ -127,6 +155,20 @@ namespace DogHouse.ToonWorld.CombatControllers
 
             m_overlayController.OnValueChanged -= HandleLevelValueChanged;
             m_overlayController.OnValueChanged += HandleLevelValueChanged;
+
+            m_cameraFinderService.AddRegistrationHandle(HandleCameraFinderAvailable);
+        }
+
+        private void OnEnable()
+        {
+            m_playableDirector.stopped -= OnAudioTimelineFinished;
+            m_playableDirector.stopped += OnAudioTimelineFinished;
+        }
+
+        private void OnDisable()
+        {
+            m_playableDirector.stopped -= OnAudioTimelineFinished;
+            CancelInvoke();
         }
 
         public void SetValue(float value)
@@ -134,6 +176,7 @@ namespace DogHouse.ToonWorld.CombatControllers
             m_progressAmount = Clamp01(value);
             m_animating = true;
             m_startSlowAmount = m_slowAmount;
+            m_timeScalar = (m_progressAmount - m_startSlowAmount);
         }
 
         private void Update()
@@ -141,7 +184,7 @@ namespace DogHouse.ToonWorld.CombatControllers
             if (!m_animating) return;
 
             m_currentTime += Time.deltaTime;
-            float lerp = Clamp01(m_currentTime / m_lerpTime);
+            float lerp = Clamp01(m_currentTime / (m_lerpTime * m_timeScalar));
             lerp = m_lerpCurve.Evaluate(lerp);
 
             m_slowAmount = Lerp(m_startSlowAmount, m_progressAmount, lerp);
@@ -166,7 +209,7 @@ namespace DogHouse.ToonWorld.CombatControllers
                 m_audioSource.PlayOneShot(m_barAddedClip);
             }
 
-            if (Random.Range(lerp, 1f) > m_shakeThreshhold)
+            if (UnityEngine.Random.Range(lerp, 1f) > m_shakeThreshhold)
             {
                 m_textShaker.AddShake();
             }
@@ -174,10 +217,13 @@ namespace DogHouse.ToonWorld.CombatControllers
             if(Approximately(lerp, 1f))
             {
                 m_animating = false;
-                if(Mathf.Approximately(m_progressAmount, 1f))
+                if(Approximately(m_progressAmount, 1f))
                 {
                     HandleLevelUp();
+                    return;
                 }
+
+                Invoke(nameof(HandleAnimationFinished), 1f);
             }
         }
 
@@ -186,6 +232,20 @@ namespace DogHouse.ToonWorld.CombatControllers
             value = value * 100f;
             string text = value.ToString("0");
             m_percentageText.text = text + "%";
+        }
+
+        public void SetDataDisplay(GameUnitDefinition definition)
+        {
+            m_nameText.text = definition.UnitName;
+            m_classNameText.text = definition.BaseClassType.ClassName;
+            m_classEmblem.overrideSprite = definition.BaseClassType.ClassSprite;
+            m_level = definition.Level;
+
+        }
+
+        public void SetFadeValue(float value)
+        {
+            m_canvasGroup.alpha = Clamp01(value);
         }
         #endregion
 
@@ -225,6 +285,24 @@ namespace DogHouse.ToonWorld.CombatControllers
             {
                 controller?.ResetBar();
             }
+        }
+
+        private void HandleCameraFinderAvailable()
+        {
+            ConstraintSource source = new ConstraintSource();
+            source.weight = 1f;
+            source.sourceTransform = m_cameraFinderService.Reference.Camera.transform;
+            m_lookAtContraint.AddSource(source);
+        }
+
+        private void OnAudioTimelineFinished(PlayableDirector director)
+        {
+            HandleAnimationFinished();
+        }
+
+        private void HandleAnimationFinished()
+        {
+            OnAnimationFinished?.Invoke();
         }
         #endregion
 

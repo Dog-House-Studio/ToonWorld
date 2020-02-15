@@ -647,6 +647,7 @@ GameObject:
   - component: {fileID: 3500431081589015669}
   - component: {fileID: 4120205988763320743}
   - component: {fileID: 2254537357884841007}
+  - component: {fileID: 4494456666763995294}
   m_Layer: 0
   m_Name: ExperienceBar_Parent
   m_TagString: Untagged
@@ -685,9 +686,7 @@ LookAtConstraint:
   m_UseUpObject: 0
   m_IsContraintActive: 1
   m_IsLocked: 1
-  m_Sources:
-  - sourceTransform: {fileID: 0}
-    weight: 1
+  m_Sources: []
 --- !u!114 &3500431081589015669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -709,8 +708,12 @@ MonoBehaviour:
   m_barPrefab: {fileID: 2849263834600882570, guid: 7924688826a51de4fb5e56f966751c2a,
     type: 3}
   m_audioSource: {fileID: 4120205988763320743}
+  m_lookAtContraint: {fileID: 1435120582478325996}
   m_playableDirector: {fileID: 2254537357884841007}
   m_overlayController: {fileID: 6830091437612581507}
+  m_nameText: {fileID: 6966622762538972414}
+  m_classNameText: {fileID: 134445108753612232}
+  m_canvasGroup: {fileID: 4494456666763995294}
   m_lerpCurve:
     serializedVersion: 2
     m_Curve:
@@ -876,6 +879,18 @@ PlayableDirector:
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
+--- !u!225 &4494456666763995294
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435120582478325998}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &2749239587182611860
 GameObject:
   m_ObjectHideFlags: 0
@@ -1285,8 +1300,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -179.99998, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.881, y: 0.643}
-  m_SizeDelta: {x: 28.7055, y: 8.71}
+  m_AnchoredPosition: {x: -0.4858, y: 0.643}
+  m_SizeDelta: {x: 40.0414, y: 8.71}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1920521060188164297
 CanvasRenderer:
@@ -1350,7 +1365,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 2
-  m_textAlignment: 514
+  m_textAlignment: 516
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -1899,8 +1914,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -179.99998, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.016, y: 0.799}
-  m_SizeDelta: {x: 21.38, y: 8.71}
+  m_AnchoredPosition: {x: 1.401, y: 0.799}
+  m_SizeDelta: {x: 21.38, y: 5.1616}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8134481436907851321
 CanvasRenderer:
@@ -1964,7 +1979,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 2
-  m_textAlignment: 514
+  m_textAlignment: 513
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -1974,7 +1989,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
