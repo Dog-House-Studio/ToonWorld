@@ -53,6 +53,8 @@ namespace DogHouse.ToonWorld.Unit
         [Range(0f, 1f)]
         private float m_highlightRange;
 
+        private float m_timePassed = 0.1f;
+
         private ServiceReference<ICameraFinder> m_cameraFinderService 
             = new ServiceReference<ICameraFinder>();
 
@@ -84,12 +86,14 @@ namespace DogHouse.ToonWorld.Unit
             if (m_state != PedestalState.IDLE && m_state != PedestalState.SELECTED) return;
             if (!m_cameraFinderService.CheckServiceRegistered()) return;
 
+            m_timePassed += Time.deltaTime;
             Vector3 mousePos = Input.mousePosition;
             float xPos = mousePos.x / (float)Screen.width;
             Vector3 screenPos = m_cameraFinderService.Reference.Camera.WorldToScreenPoint(transform.position);
             if(Mathf.Abs(xPos - screenPos.x / (float)Screen.width) < m_highlightRange)
             {
                 SetState(PedestalState.SELECTED);
+                if (m_timePassed < 0.1f) return;
                 if (Input.GetMouseButtonUp(0)) OnSetActive?.Invoke(this, true);
                 return;
             }
@@ -114,6 +118,7 @@ namespace DogHouse.ToonWorld.Unit
             if (m_state == newState) return;
 
             m_state = newState;
+            m_timePassed = 0f;
 
             if (newState == PedestalState.IDLE)
             {
