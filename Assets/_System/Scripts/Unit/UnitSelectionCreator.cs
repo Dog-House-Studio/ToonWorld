@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using DogHouse.ToonWorld.CombatControllers;
+using UnityEngine.UI;
 
 namespace DogHouse.ToonWorld.Unit
 {
@@ -50,6 +51,9 @@ namespace DogHouse.ToonWorld.Unit
 
             UnitRootController controller = root.GetComponent<UnitRootController>();
             controller?.CreateUnit(definition);
+
+            Image classImage = pedestal.GetComponentInChildren<Image>();
+            classImage.overrideSprite = definition.BaseClassType.ClassSprite;
         }
         #endregion
     }
