@@ -14,7 +14,10 @@ namespace DogHouse.ToonWorld.Unit
         private GameObject m_pedestalPrefab;
 
         [SerializeField]
-        private int m_numberOfOptions;
+        private GameObject m_playerRootPrefab;
+
+        [SerializeField]
+        private GameUnitDefinition[] m_definitions;
 
         [SerializeField]
         private float m_spacing;
@@ -23,24 +26,30 @@ namespace DogHouse.ToonWorld.Unit
         #region Main Methods
         private void Start()
         {
-            float offset = m_numberOfOptions * m_spacing;
-            Vector3 position = this.transform.position;
-            position.x -= offset * 0.5f;
+            Vector3 position = transform.position;
+            position.x -= m_definitions.Length * m_spacing * 0.5f;
 
-            for(int i = 0; i < m_numberOfOptions; i++)
+            for(int i = 0; i < m_definitions.Length; i++)
             {
-                CreatePedestal(position);
+                CreatePedestal(position, m_definitions[i]);
                 position.x += m_spacing;
             }
         }
         #endregion
 
         #region Utility Methods
-        private void CreatePedestal(Vector3 pos)
+        private void CreatePedestal(Vector3 pos, GameUnitDefinition definition)
         {
             GameObject pedestal = Instantiate(m_pedestalPrefab);
             pedestal.transform.position = pos;
             pedestal.transform.SetParent(transform);
+
+            GameObject root = Instantiate(m_playerRootPrefab);
+            root.transform.SetParent(pedestal.transform);
+            root.transform.localPosition = Vector3.up;
+
+            UnitRootController controller = root.GetComponent<UnitRootController>();
+            controller?.CreateUnit(definition);
         }
         #endregion
     }

@@ -166,8 +166,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_pedestalPrefab: {fileID: 1836338333125720332, guid: 1a9dff1da73ef394e92e1feab34c9d01,
     type: 3}
-  m_numberOfOptions: 3
-  m_spacing: 1.5
+  m_playerRootPrefab: {fileID: 4289593637941757727, guid: 4879693c8f1a8174abcf9c768e2bf453,
+    type: 3}
+  m_definitions:
+  - {fileID: 11400000, guid: a9c65b7902386e948a58dab046ee6de0, type: 2}
+  - {fileID: 11400000, guid: abfdfdad92f99324bb8c3bda78974783, type: 2}
+  - {fileID: 11400000, guid: 47615cb1a855aae4e9f81eb8f9314f63, type: 2}
+  m_spacing: 3.5
 --- !u!1 &946218314
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,8 +250,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 946218314}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.09429894, y: -0.035523795, z: 0.0033523473, w: 0.9949043}
+  m_LocalPosition: {x: -1.5552036, y: 3.183659, z: -8.974748}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1418053892}

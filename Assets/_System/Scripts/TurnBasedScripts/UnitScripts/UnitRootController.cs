@@ -55,7 +55,6 @@ namespace DogHouse.ToonWorld.CombatControllers
             CreateUnitModel(definition);
             SetUnitIdentifiers(definition);
             SetFadeValue(1f);
-            DisplayHealthBar(true);
 
             m_definition.OnExperienceGained -= OnExperienceCalculated;
             m_definition.OnExperienceGained += OnExperienceCalculated;
