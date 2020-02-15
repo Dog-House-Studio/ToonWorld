@@ -20,6 +20,7 @@ namespace DogHouse.ToonWorld.Unit
     {
         #region Public Variables
         public Action<UnitPedestalController, bool> OnSetActive;
+        public Action<GameUnitDefinition> OnUnitSelected;
         public float FadeValue => m_group.alpha;
         #endregion
 
@@ -60,6 +61,7 @@ namespace DogHouse.ToonWorld.Unit
             = new ServiceReference<ICameraFinder>();
 
         private PedestalState m_state = PedestalState.DISABLED;
+        private GameUnitDefinition m_definition;
         #endregion
 
         #region Main Methods
@@ -73,6 +75,7 @@ namespace DogHouse.ToonWorld.Unit
             m_emblemImage.overrideSprite = definition.BaseClassType.ClassSprite;
             m_nameText.text = definition.UnitName;
             m_classNameText.text = definition.BaseClassType.ClassName;
+            m_definition = definition;
         }
 
         void Start()
@@ -109,7 +112,7 @@ namespace DogHouse.ToonWorld.Unit
 
         void StartWithThisUnit()
         {
-
+            OnUnitSelected?.Invoke(m_definition);
         }
         #endregion
 

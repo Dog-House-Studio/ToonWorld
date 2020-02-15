@@ -429,6 +429,7 @@ MonoBehaviour:
   m_spacing: 3.5
   m_defaultVirtualCamera: {fileID: 1573537207}
   m_closeUpVirtualCamera: {fileID: 1129750299}
+  m_sceneDefinition: {fileID: 11400000, guid: 9c7e171e8928cff4996e26742aa722f5, type: 2}
 --- !u!1 &946218314
 GameObject:
   m_ObjectHideFlags: 0

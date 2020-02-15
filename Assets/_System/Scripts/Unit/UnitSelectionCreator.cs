@@ -2,6 +2,8 @@
 using DogHouse.ToonWorld.CombatControllers;
 using System.Collections.Generic;
 using Cinemachine;
+using DogHouse.ToonWorld.Services;
+using DogScaffold;
 
 namespace DogHouse.ToonWorld.Unit
 {
@@ -30,8 +32,14 @@ namespace DogHouse.ToonWorld.Unit
         [SerializeField]
         private CinemachineVirtualCamera m_closeUpVirtualCamera;
 
+        [SerializeField]
+        private GameSceneDefinition m_sceneDefinition;
+
         private List<UnitPedestalController> m_pedestalControllers 
             = new List<UnitPedestalController>();
+
+        private ServiceReference<IGameSceneManagerService> m_sceneManager 
+            = new ServiceReference<IGameSceneManagerService>();
         #endregion
 
         #region Main Methods
@@ -64,6 +72,11 @@ namespace DogHouse.ToonWorld.Unit
                 m_closeUpVirtualCamera.transform.position += Vector3.forward * 4f + Vector3.up * 1.5f;
             }
         }
+
+        private void OnUnitSelected(GameUnitDefinition definition)
+        {
+            m_sceneManager.Reference.LoadScene(m_sceneDefinition);
+        }
         #endregion
 
         #region Utility Methods
@@ -87,6 +100,9 @@ namespace DogHouse.ToonWorld.Unit
 
             identifier.OnSetActive -= OnPedestalBecameActive;
             identifier.OnSetActive += OnPedestalBecameActive;
+
+            identifier.OnUnitSelected -= OnUnitSelected;
+            identifier.OnUnitSelected += OnUnitSelected;
         }
         #endregion
     }
