@@ -37,6 +37,9 @@ namespace DogHouse.ToonWorld.Unit
         private TMP_Text m_nameText;
 
         [SerializeField]
+        private TMP_Text m_classNameText;
+
+        [SerializeField]
         private GameObject m_unitInformationParent;
 
         [Header("Settings")]
@@ -60,6 +63,7 @@ namespace DogHouse.ToonWorld.Unit
         {
             m_emblemImage.overrideSprite = definition.BaseClassType.ClassSprite;
             m_nameText.text = definition.UnitName;
+            m_classNameText.text = definition.BaseClassType.ClassName;
         }
 
         void Start()
@@ -96,6 +100,7 @@ namespace DogHouse.ToonWorld.Unit
             if (newState == PedestalState.IDLE)
             {
                 m_emblemImage.color = Color.gray;
+                m_classNameText.color = Color.gray;
                 m_lightObject.gameObject.SetActive(false);
                 m_unitInformationParent.SetActive(false);
                 return;
@@ -104,6 +109,7 @@ namespace DogHouse.ToonWorld.Unit
             if(newState == PedestalState.SELECTED)
             {
                 m_emblemImage.color = Color.white;
+                m_classNameText.color = Color.white;
                 m_lightObject.gameObject.SetActive(true);
                 m_unitInformationParent.SetActive(false);
                 return;
@@ -112,6 +118,7 @@ namespace DogHouse.ToonWorld.Unit
             if (newState == PedestalState.ACTIVE)
             {
                 m_emblemImage.color = Color.white;
+                m_classNameText.color = Color.white;
                 m_lightObject.gameObject.SetActive(true);
                 m_unitInformationParent.SetActive(true);
                 return;
@@ -120,6 +127,7 @@ namespace DogHouse.ToonWorld.Unit
             if (newState == PedestalState.DISABLED)
             {
                 m_emblemImage.color = Color.gray;
+                m_classNameText.color = Color.gray;
                 m_lightObject.gameObject.SetActive(false);
                 m_unitInformationParent.SetActive(false);
                 return;
