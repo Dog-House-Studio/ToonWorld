@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using DogHouse.ToonWorld.CombatControllers;
+using DogScaffold;
+using DogHouse.CoreServices;
 
 namespace DogHouse.ToonWorld.Unit
 {
@@ -18,11 +20,25 @@ namespace DogHouse.ToonWorld.Unit
         #endregion
 
         #region Private Variables
+        [Header("Elements")]
         [SerializeField]
         private Image m_emblemImage;
 
         [SerializeField]
         private CanvasGroup m_group;
+
+        [SerializeField]
+        private Light m_lightObject;
+
+        [Header("Settings")]
+        [SerializeField]
+        [Range(0f, 1f)]
+        private float m_highlightRange;
+
+        private ServiceReference<ICameraFinder> m_cameraFinderService 
+            = new ServiceReference<ICameraFinder>();
+
+        private PedestalState m_state = PedestalState.DISABLED;
         #endregion
 
         #region Main Methods
@@ -38,8 +54,55 @@ namespace DogHouse.ToonWorld.Unit
 
         void Start()
         {
-            m_emblemImage.color = Color.gray;
+            SetState(PedestalState.IDLE);
+        }
+
+        void Update()
+        {
+            if (m_state != PedestalState.IDLE && m_state != PedestalState.SELECTED) return;
+            if (!m_cameraFinderService.CheckServiceRegistered()) return;
+
+
+            Vector3 mousePos = Input.mousePosition;
+            float xPos = mousePos.x / (float)Screen.width;
+            Vector3 screenPos = m_cameraFinderService.Reference.Camera.WorldToScreenPoint(transform.position);
+            if(Mathf.Abs(xPos - screenPos.x / (float)Screen.width) < m_highlightRange)
+            {
+                SetState(PedestalState.SELECTED);
+                return;
+            }
+
+            SetState(PedestalState.IDLE);
         }
         #endregion
+
+        #region Utility Methods
+        private void SetState(PedestalState newState)
+        {
+            if (m_state == newState) return;
+
+            m_state = newState;
+
+            if (newState == PedestalState.IDLE)
+            {
+                m_emblemImage.color = Color.gray;
+                m_lightObject.gameObject.SetActive(false);
+                return;
+            }
+
+            if(newState == PedestalState.SELECTED)
+            {
+                m_emblemImage.color = Color.white;
+                m_lightObject.gameObject.SetActive(true);
+            }
+        }
+        #endregion
+    }
+
+    public enum PedestalState
+    {
+        IDLE,
+        SELECTED,
+        DISABLED
     }
 }
