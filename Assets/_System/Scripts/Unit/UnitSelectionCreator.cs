@@ -52,8 +52,8 @@ namespace DogHouse.ToonWorld.Unit
             UnitRootController controller = root.GetComponent<UnitRootController>();
             controller?.CreateUnit(definition);
 
-            Image classImage = pedestal.GetComponentInChildren<Image>();
-            classImage.overrideSprite = definition.BaseClassType.ClassSprite;
+            IUnitIdentifier identifier = pedestal.GetComponent<IUnitIdentifier>();
+            identifier.SetDataDisplay(definition);
         }
         #endregion
     }
