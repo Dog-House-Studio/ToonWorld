@@ -1055,7 +1055,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    m_lerpTime: 0.5
+    m_lerpTime: 0.25
 --- !u!1 &4168559824475978440
 GameObject:
   m_ObjectHideFlags: 0

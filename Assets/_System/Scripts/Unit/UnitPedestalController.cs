@@ -5,6 +5,7 @@ using DogScaffold;
 using DogHouse.CoreServices;
 using System;
 using TMPro;
+using DogHouse.ToonWorld.UI;
 
 namespace DogHouse.ToonWorld.Unit
 {
@@ -125,7 +126,7 @@ namespace DogHouse.ToonWorld.Unit
                 m_emblemImage.color = Color.gray;
                 m_classNameText.color = Color.gray;
                 m_lightObject.gameObject.SetActive(false);
-                m_unitInformationParent.SetActive(false);
+                m_unitInformationParent.GetComponent<FadeCanvasGroup>().FadeOut();
                 return;
             }
 
@@ -134,7 +135,7 @@ namespace DogHouse.ToonWorld.Unit
                 m_emblemImage.color = Color.white;
                 m_classNameText.color = Color.white;
                 m_lightObject.gameObject.SetActive(true);
-                m_unitInformationParent.SetActive(false);
+                m_unitInformationParent.GetComponent<FadeCanvasGroup>().FadeOut();
                 return;
             }
 
@@ -152,7 +153,7 @@ namespace DogHouse.ToonWorld.Unit
                 m_emblemImage.color = Color.gray;
                 m_classNameText.color = Color.gray;
                 m_lightObject.gameObject.SetActive(false);
-                m_unitInformationParent.SetActive(false);
+                m_unitInformationParent.GetComponent<FadeCanvasGroup>().FadeOut();
                 return;
             }
         }

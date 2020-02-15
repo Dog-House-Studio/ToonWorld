@@ -20,6 +20,7 @@ namespace DogHouse.ToonWorld.UI
         private Lerpable m_canvasLerp;
 
         private CanvasGroup m_group;
+        private bool m_fadingIn = true;
         #endregion
 
         #region Main Methods
@@ -28,9 +29,16 @@ namespace DogHouse.ToonWorld.UI
             m_group = GetComponent<CanvasGroup>();
         }
 
+        public void FadeOut()
+        {
+            m_canvasLerp.BeginLerping();
+            m_fadingIn = false;
+        }
+
         private void OnEnable()
         {
             m_canvasLerp.BeginLerping();
+            m_fadingIn = true;
         }
 
         public void SetFadeValue(float value)
@@ -42,7 +50,14 @@ namespace DogHouse.ToonWorld.UI
         {
             if (!m_canvasLerp.IsLerping) return;
             m_canvasLerp.Update();
-            SetFadeValue(m_canvasLerp.LerpValue);
+
+            if(m_fadingIn) SetFadeValue(m_canvasLerp.LerpValue);
+            if (!m_fadingIn)
+            {
+                SetFadeValue(1f - m_canvasLerp.LerpValue);
+                if (!m_canvasLerp.IsLerping) gameObject.SetActive(false);
+            }
+
         }
         #endregion
     }
