@@ -2,6 +2,8 @@
 using UnityEngine;
 using DogScaffold;
 using static UnityEngine.Mathf;
+using System;
+using System.Linq;
 
 namespace DogHouse.ToonWorld.Services
 {
@@ -22,6 +24,9 @@ namespace DogHouse.ToonWorld.Services
 
         [SerializeField]
         private Material m_zoneMaterial;
+
+        [SerializeField]
+        private GameObject m_cubePrefab;
         #endregion
 
         #region Main Methods
@@ -44,7 +49,10 @@ namespace DogHouse.ToonWorld.Services
         {
             List<Vector3> edgeTiles = ExtractEdgeTiles(tileLocations);
             Debug.Log(edgeTiles.Count);
-            
+            List<Vector3> perimeterTiles = DeterminePermimeterTiles(edgeTiles, tileLocations.ToList());
+            Debug.Log(perimeterTiles.Count);
+
+
 
         }
 
@@ -142,6 +150,47 @@ namespace DogHouse.ToonWorld.Services
             }
 
             return edgeTiles;
+        }
+
+        private List<Vector3> DeterminePermimeterTiles(List<Vector3> edgeTiles, List<Vector3> allLocations)
+        {
+            List<Vector3> perimeterTiles = new List<Vector3>();
+
+            //Add a tile on every side of the edge tiles
+            for(int i = 0; i < edgeTiles.Count; i++)
+            {
+                perimeterTiles.Add(edgeTiles[i] + Vector3.left);
+                perimeterTiles.Add(edgeTiles[i] + Vector3.right);
+                perimeterTiles.Add(edgeTiles[i] + Vector3.forward);
+                perimeterTiles.Add(edgeTiles[i] + Vector3.back);
+            }
+
+            //Remove duplicate locations compared to allLocations
+            foreach(Vector3 tile in allLocations)
+            {
+                for(int i = perimeterTiles.Count - 1; i >= 0; i--)
+                {
+                    if(Vector3.Distance(tile, perimeterTiles[i]) < (m_tileSize * 0.5f))
+                    {
+                        perimeterTiles.RemoveAt(i);
+                    }
+                }
+            }
+            
+            //Remove duplicate locations compared to other perimeter tiles
+            for(int i = perimeterTiles.Count - 1; i >= 1; i--)
+            {
+                for(int j = i - 1; j >= 0; j--)
+                {
+                    if(Vector3.Distance(perimeterTiles[i], perimeterTiles[j]) < (m_tileSize * 0.5f))
+                    {
+                        perimeterTiles.RemoveAt(i);
+                        break;
+                    }
+                }
+            }
+
+            return perimeterTiles;
         }
         #endregion
     }

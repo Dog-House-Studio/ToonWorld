@@ -1254,6 +1254,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 417673920}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &468972787 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 4271e1f51cf274c499b8283b04da0c03,
+    type: 3}
+  m_PrefabInstance: {fileID: 1891757513}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &475814233 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 4271e1f51cf274c499b8283b04da0c03,
@@ -1561,6 +1567,7 @@ MonoBehaviour:
   m_tileSize: 1
   m_tileOffset: {x: 0.5, y: 1.1, z: 0.5}
   m_zoneMaterial: {fileID: 2100000, guid: 2e523fd60fa5348458e7c2d381cb0afe, type: 2}
+  m_cubePrefab: {fileID: 468972787}
 --- !u!4 &616117246
 Transform:
   m_ObjectHideFlags: 0
