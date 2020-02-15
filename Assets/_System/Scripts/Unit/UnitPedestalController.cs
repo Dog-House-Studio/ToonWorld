@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using DogHouse.ToonWorld.CombatControllers;
 using DogScaffold;
 using DogHouse.CoreServices;
+using System;
 
 namespace DogHouse.ToonWorld.Unit
 {
@@ -16,6 +17,7 @@ namespace DogHouse.ToonWorld.Unit
     public class UnitPedestalController : MonoBehaviour, IUnitIdentifier
     {
         #region Public Variables
+        public Action<UnitPedestalController> OnSetActive;
         public float FadeValue => m_group.alpha;
         #endregion
 
@@ -69,6 +71,7 @@ namespace DogHouse.ToonWorld.Unit
             if(Mathf.Abs(xPos - screenPos.x / (float)Screen.width) < m_highlightRange)
             {
                 SetState(PedestalState.SELECTED);
+                if (Input.GetMouseButtonUp(0)) OnSetActive?.Invoke(this);
                 return;
             }
 
@@ -77,7 +80,7 @@ namespace DogHouse.ToonWorld.Unit
         #endregion
 
         #region Utility Methods
-        private void SetState(PedestalState newState)
+        public void SetState(PedestalState newState)
         {
             if (m_state == newState) return;
 
@@ -94,6 +97,21 @@ namespace DogHouse.ToonWorld.Unit
             {
                 m_emblemImage.color = Color.white;
                 m_lightObject.gameObject.SetActive(true);
+                return;
+            }
+
+            if (newState == PedestalState.ACTIVE)
+            {
+                m_emblemImage.color = Color.white;
+                m_lightObject.gameObject.SetActive(true);
+                return;
+            }
+
+            if (newState == PedestalState.DISABLED)
+            {
+                m_emblemImage.color = Color.gray;
+                m_lightObject.gameObject.SetActive(false);
+                return;
             }
         }
         #endregion
@@ -103,6 +121,7 @@ namespace DogHouse.ToonWorld.Unit
     {
         IDLE,
         SELECTED,
-        DISABLED
+        DISABLED,
+        ACTIVE
     }
 }

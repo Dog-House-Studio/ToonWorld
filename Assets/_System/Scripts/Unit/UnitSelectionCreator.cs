@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using DogHouse.ToonWorld.CombatControllers;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace DogHouse.ToonWorld.Unit
 {
@@ -22,6 +24,9 @@ namespace DogHouse.ToonWorld.Unit
 
         [SerializeField]
         private float m_spacing;
+
+        private List<UnitPedestalController> m_pedestalControllers 
+            = new List<UnitPedestalController>();
         #endregion
 
         #region Main Methods
@@ -34,6 +39,19 @@ namespace DogHouse.ToonWorld.Unit
             {
                 CreatePedestal(position, m_definitions[i]);
                 position.x += m_spacing;
+            }
+        }
+
+        private void OnPedestalBecameActive(UnitPedestalController controller)
+        {
+            for(int i = 0; i < m_pedestalControllers.Count; i++)
+            {
+                if (m_pedestalControllers[i] == controller)
+                {
+                    m_pedestalControllers[i].SetState(PedestalState.ACTIVE);
+                    continue;
+                }
+                m_pedestalControllers[i].SetState(PedestalState.DISABLED);
             }
         }
         #endregion
@@ -52,8 +70,13 @@ namespace DogHouse.ToonWorld.Unit
             UnitRootController controller = root.GetComponent<UnitRootController>();
             controller?.CreateUnit(definition);
 
-            IUnitIdentifier identifier = pedestal.GetComponent<IUnitIdentifier>();
+            UnitPedestalController identifier = pedestal.GetComponent<UnitPedestalController>();
             identifier.SetDataDisplay(definition);
+
+            m_pedestalControllers.Add(identifier);
+
+            identifier.OnSetActive -= OnPedestalBecameActive;
+            identifier.OnSetActive += OnPedestalBecameActive;
         }
         #endregion
     }
