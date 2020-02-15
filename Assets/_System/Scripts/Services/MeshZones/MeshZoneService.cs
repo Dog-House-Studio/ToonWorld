@@ -53,6 +53,7 @@ namespace DogHouse.ToonWorld.Services
             Debug.Log(perimeterTiles.Count);
 
             List<Vector3> edgeVertices = CalculateEdgeVertices(edgeTiles, perimeterTiles);
+            Debug.Log(edgeVertices.Count);
 
             foreach(Vector3 vert in edgeVertices)
             {
@@ -231,6 +232,18 @@ namespace DogHouse.ToonWorld.Services
                 if(count == 0)
                 {
                     edgeTileVertices.RemoveAt(i);
+                }
+            }
+
+            for(int i = edgeTileVertices.Count - 1; i > 0; i--)
+            {
+                for(int j = i - 1; j >= 0; j--)
+                {
+                    if(Vector3.Distance(edgeTileVertices[i], edgeTileVertices[j]) < (m_tileSize * 0.3f))
+                    {
+                        edgeTileVertices.RemoveAt(i);
+                        break;
+                    }
                 }
             }
 
