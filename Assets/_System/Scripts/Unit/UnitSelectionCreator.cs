@@ -3,6 +3,7 @@ using DogHouse.ToonWorld.CombatControllers;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 
 namespace DogHouse.ToonWorld.Unit
 {
@@ -25,6 +26,12 @@ namespace DogHouse.ToonWorld.Unit
         [SerializeField]
         private float m_spacing;
 
+        [SerializeField]
+        private CinemachineVirtualCamera m_defaultVirtualCamera;
+
+        [SerializeField]
+        private CinemachineVirtualCamera m_closeUpVirtualCamera;
+
         private List<UnitPedestalController> m_pedestalControllers 
             = new List<UnitPedestalController>();
         #endregion
@@ -44,6 +51,12 @@ namespace DogHouse.ToonWorld.Unit
 
         private void OnPedestalBecameActive(UnitPedestalController controller)
         {
+            m_closeUpVirtualCamera.transform.position = controller.transform.position;
+            m_closeUpVirtualCamera.transform.position += Vector3.forward * 4f + Vector3.up * 1.5f;
+
+            m_closeUpVirtualCamera.gameObject.SetActive(true);
+            m_defaultVirtualCamera.gameObject.SetActive(false);
+
             for(int i = 0; i < m_pedestalControllers.Count; i++)
             {
                 if (m_pedestalControllers[i] == controller)
