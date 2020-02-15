@@ -18,7 +18,7 @@ namespace DogHouse.ToonWorld.Unit
     public class UnitPedestalController : MonoBehaviour, IUnitIdentifier
     {
         #region Public Variables
-        public Action<UnitPedestalController> OnSetActive;
+        public Action<UnitPedestalController, bool> OnSetActive;
         public float FadeValue => m_group.alpha;
         #endregion
 
@@ -41,6 +41,12 @@ namespace DogHouse.ToonWorld.Unit
 
         [SerializeField]
         private GameObject m_unitInformationParent;
+
+        [SerializeField]
+        private Button m_cancelButton;
+
+        [SerializeField]
+        private Button m_startButton;
 
         [Header("Settings")]
         [SerializeField]
@@ -69,6 +75,8 @@ namespace DogHouse.ToonWorld.Unit
         void Start()
         {
             SetState(PedestalState.IDLE);
+            m_cancelButton.onClick.AddListener(Unselect);
+            m_startButton.onClick.AddListener(StartWithThisUnit);
         }
 
         void Update()
@@ -82,11 +90,21 @@ namespace DogHouse.ToonWorld.Unit
             if(Mathf.Abs(xPos - screenPos.x / (float)Screen.width) < m_highlightRange)
             {
                 SetState(PedestalState.SELECTED);
-                if (Input.GetMouseButtonUp(0)) OnSetActive?.Invoke(this);
+                if (Input.GetMouseButtonUp(0)) OnSetActive?.Invoke(this, true);
                 return;
             }
 
             SetState(PedestalState.IDLE);
+        }
+
+        void Unselect()
+        {
+            OnSetActive(this, false);
+        }
+
+        void StartWithThisUnit()
+        {
+
         }
         #endregion
 

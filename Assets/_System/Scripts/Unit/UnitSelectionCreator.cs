@@ -47,22 +47,21 @@ namespace DogHouse.ToonWorld.Unit
             }
         }
 
-        private void OnPedestalBecameActive(UnitPedestalController controller)
+        private void OnPedestalBecameActive(UnitPedestalController controller, bool selected)
         {
-            m_closeUpVirtualCamera.transform.position = controller.transform.position;
-            m_closeUpVirtualCamera.transform.position += Vector3.forward * 4f + Vector3.up * 1.5f;
+            PedestalState defaultState = (selected) ? PedestalState.DISABLED : PedestalState.IDLE;
 
-            m_closeUpVirtualCamera.gameObject.SetActive(true);
-            m_defaultVirtualCamera.gameObject.SetActive(false);
+            foreach (UnitPedestalController pedestal in m_pedestalControllers)
+                pedestal.SetState(defaultState);
 
-            for(int i = 0; i < m_pedestalControllers.Count; i++)
+            m_closeUpVirtualCamera.gameObject.SetActive(selected);
+            m_defaultVirtualCamera.gameObject.SetActive(!selected);
+
+            if (selected)
             {
-                if (m_pedestalControllers[i] == controller)
-                {
-                    m_pedestalControllers[i].SetState(PedestalState.ACTIVE);
-                    continue;
-                }
-                m_pedestalControllers[i].SetState(PedestalState.DISABLED);
+                controller.SetState(PedestalState.ACTIVE);
+                m_closeUpVirtualCamera.transform.position = controller.transform.position;
+                m_closeUpVirtualCamera.transform.position += Vector3.forward * 4f + Vector3.up * 1.5f;
             }
         }
         #endregion
