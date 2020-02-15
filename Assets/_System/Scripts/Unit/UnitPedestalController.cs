@@ -4,6 +4,7 @@ using DogHouse.ToonWorld.CombatControllers;
 using DogScaffold;
 using DogHouse.CoreServices;
 using System;
+using TMPro;
 
 namespace DogHouse.ToonWorld.Unit
 {
@@ -32,6 +33,9 @@ namespace DogHouse.ToonWorld.Unit
         [SerializeField]
         private Light m_lightObject;
 
+        [SerializeField]
+        private TMP_Text m_nameText;
+
         [Header("Settings")]
         [SerializeField]
         [Range(0f, 1f)]
@@ -52,6 +56,7 @@ namespace DogHouse.ToonWorld.Unit
         public void SetDataDisplay(GameUnitDefinition definition)
         {
             m_emblemImage.overrideSprite = definition.BaseClassType.ClassSprite;
+            m_nameText.text = definition.UnitName;
         }
 
         void Start()
