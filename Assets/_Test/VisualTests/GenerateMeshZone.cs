@@ -5,6 +5,9 @@ using DogHouse.ToonWorld.Services;
 
 public class GenerateMeshZone : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject[] m_tiles;
+
     [MethodButton("GenerateZone")]
     [SerializeField]
     private bool editorFoldout;
@@ -15,7 +18,10 @@ public class GenerateMeshZone : MonoBehaviour
     public void GenerateZone()
     {
         List<Vector3> zone = new List<Vector3>();
-        zone.Add(Vector3.zero);
+        foreach(GameObject obj in m_tiles)
+        {
+            zone.Add(obj.transform.position);
+        }
 
         m_meshZoneService.Reference.GenerateZone(zone.ToArray());
     }
