@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: RangerBaseStats
+  m_Name: HackerStats
   m_EditorClassIdentifier: Assembly-CSharp:DogHouse.ToonWorld.CombatControllers:UnitStats
   m_myDestroyableStats:
     Health:
       Value: 8
     Defence:
-      Value: 4
+      Value: 12
   m_strength:
-    Value: 15
+    Value: 6
   m_accuracy:
-    Value: 15
-  m_speed:
-    Value: 4
-  m_luck:
     Value: 10
+  m_speed:
+    Value: 12
+  m_luck:
+    Value: 8
