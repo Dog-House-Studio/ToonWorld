@@ -21,9 +21,14 @@ namespace DogHouse.ToonWorld.CombatControllers
         public CombatPlayer gamePlayer { get { return GamePlayer; } set { GamePlayer = value; } }
         public CombatPlayer enemyPlayer { get { return EnemyPlayer; } set { EnemyPlayer = value; } }
 
+        private ServiceReference<IPlayerService> PlayerService = new ServiceReference<IPlayerService>();
+        private ServiceReference<IUnitSpawnerService> UnitSpawnService = new ServiceReference<IUnitSpawnerService>();
+
         // Start is called before the first frame update
-        void Start()
+        public void InitializeUnits()
         {
+            SpawnAllUnits();
+
             currentPlayer = gamePlayer;
             otherPlayer = enemyPlayer;
         }
@@ -83,6 +88,40 @@ namespace DogHouse.ToonWorld.CombatControllers
             var tempPlayer = currentPlayer;
             currentPlayer = otherPlayer;
             otherPlayer = tempPlayer;
+
+        }
+        private void SpawnAllUnits()
+        {
+            SpawnPlayerUnits();
+            SpawnEnemyUnits();
+   
+        }
+        private void SpawnPlayerUnits()
+        {
+            int playerUnitCount = PlayerService.Reference.GetUnitCount();
+            for (int i = 0; i < playerUnitCount; i++)
+            {
+                GridObject temp = UnitSpawnService.Reference.SpawnUnit(PlayerService.Reference.GetUnitDefinition(i), true).GetComponent<GridObject>();
+                gamePlayer.units.Add(temp);
+            }
+            GameObject[] playerSpawnPoints = GameObject.FindGameObjectsWithTag("PlayerSpawnPoint");
+            for(int a = 0; a < playerUnitCount; a++)
+            {
+                gamePlayer.units[a].transform.position = playerSpawnPoints[a].transform.position;
+                gamePlayer.units[a].SetCurrentGridTile(playerSpawnPoints[a].GetComponent<GridTile>());
+            }
+        }
+        private void SpawnEnemyUnits()
+        {
+            EnemyDefinitionContainer enemyDefinitionContainer = FindObjectOfType<EnemyDefinitionContainer>();
+            GameObject[] enemySpawnPoints = GameObject.FindGameObjectsWithTag("EnemySpawnPoint");
+            int enemyCounter = enemySpawnPoints.Length;
+            for(int i = 0; i < enemyCounter; i++)
+            {
+                enemyPlayer.units.Add(UnitSpawnService.Reference.SpawnUnit(enemyDefinitionContainer.GetRandomDefinition(), false).GetComponent<GridObject>());
+                enemyPlayer.units[i].transform.position = enemySpawnPoints[i].transform.position;
+                enemyPlayer.units[i].SetCurrentGridTile(enemySpawnPoints[i].GetComponent<GridTile>());
+            }
 
         }
     }

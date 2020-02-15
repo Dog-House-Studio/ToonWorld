@@ -11,6 +11,8 @@ namespace DogHouse.ToonWorld.CombatControllers
         CombatPlayer gamePlayer { get; set; }
         CombatPlayer enemyPlayer { get; set; }
 
+        void InitializeUnits();
+
         GridObject TrySelectUnitAtTile(GridTile targetTile);
 
         void DeselectUnit();

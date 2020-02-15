@@ -40,6 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4289593637941757726}
   - component: {fileID: 2526847955940159525}
+  - component: {fileID: 8341908157032552760}
   m_Layer: 0
   m_Name: Unit_Root
   m_TagString: Untagged
@@ -79,6 +80,7 @@ MonoBehaviour:
   m_UICanvasGroup: {fileID: 4289593638382627100}
   m_healthBarController: {fileID: 7221964831835665796}
   m_experienceBarController: {fileID: 798180752879289882}
+  m_skillTreeController: {fileID: 0}
   m_UIFadeTime: 0.5
   m_UIFadeCurve:
     serializedVersion: 2
@@ -104,6 +106,23 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8341908157032552760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4289593637941757727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca978b636653d3408517ff83d146964, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GridPosition: {x: 2147483647, y: 2147483647}
+  m_CurrentGridTile: {fileID: 0}
+  m_PreviousGridTile: {fileID: 0}
+  m_InitialFacingDirection: {x: 0, y: 1}
+  m_classDefinition: {fileID: 0}
 --- !u!1 &4289593638382627102
 GameObject:
   m_ObjectHideFlags: 0
