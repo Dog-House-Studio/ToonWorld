@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using DogHouse.ToonWorld.CombatControllers;
-using UnityEngine.UI;
-using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 
