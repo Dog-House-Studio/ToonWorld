@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -130,8 +130,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 730233589}
+  - component: {fileID: 730233590}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: UnitSelectionCreator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,6 +152,22 @@ Transform:
   m_Father: {fileID: 1418053892}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &730233590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730233588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab841ccf4f8c1d4ebfd7104fb0ee15a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_pedestalPrefab: {fileID: 1836338333125720332, guid: 1a9dff1da73ef394e92e1feab34c9d01,
+    type: 3}
+  m_numberOfOptions: 3
+  m_spacing: 1.5
 --- !u!1 &946218314
 GameObject:
   m_ObjectHideFlags: 0
