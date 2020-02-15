@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using DogScaffold;
-using System;
+using static UnityEngine.Mathf;
 
 namespace DogHouse.ToonWorld.Services
 {
@@ -28,25 +27,28 @@ namespace DogHouse.ToonWorld.Services
         #region Main Methods
         public GameObject GenerateZone(Vector3[] tileLocations)
         {
-            GameObject zoneObject = SetupZoneObject();
+            List<Vector3> insideVerts = new List<Vector3>();
+            List<int> insideIndices = new List<int>();
+            GenerateInsideMeshData(tileLocations, ref insideVerts, ref insideIndices);
+            Mesh insideMesh = GenerateMesh(insideVerts, insideIndices);
 
-            List<Vector3> verts = new List<Vector3>();
-            List<int> indices = new List<int>();
+            List<Vector3> edgeVerts = new List<Vector3>();
+            List<int> edgeIndices = new List<int>();
+            GenerateEdgeMeshData(tileLocations, ref edgeVerts, ref edgeIndices, insideVerts);
+            Mesh edgeMesh = GenerateMesh(edgeVerts, edgeIndices);
 
-            GenerateZoneVerts(tileLocations, ref verts, ref indices);
-
-            Mesh mesh = new Mesh();
-            mesh.vertices = verts.ToArray();
-            mesh.triangles = indices.ToArray();
-            mesh.Optimize();
-
-            zoneObject.GetComponent<MeshFilter>().mesh = mesh;
-            zoneObject.GetComponent<MeshRenderer>().material = m_zoneMaterial;
-
-            return zoneObject;
+            return SetupZoneObject(insideMesh, m_zoneMaterial);
         }
 
-        private void GenerateZoneVerts(Vector3[] tileLocations, 
+        private void GenerateEdgeMeshData(Vector3[] tileLocations, ref List<Vector3> edgeVerts, ref List<int> edgeIndices, List<Vector3> insideVerts)
+        {
+            List<Vector3> edgeTiles = ExtractEdgeTiles(tileLocations);
+            Debug.Log(edgeTiles.Count);
+            
+
+        }
+
+        private void GenerateInsideMeshData(Vector3[] tileLocations, 
             ref List<Vector3> verts, ref List<int> indices)
         {
             //Tiles in between
@@ -59,24 +61,24 @@ namespace DogHouse.ToonWorld.Services
         private void CalculateTileVerts(Vector3 location, ref List<Vector3> verts, ref List<int> indices)
         {
             int lastIndex = verts.Count - 1;
-
+            float amount = 0.5f * m_tileSize;
             location += m_tileOffset;
 
             Vector3 vert1 = location;
-            vert1.z += 0.5f * m_tileSize;
-            vert1.x += 0.5f * m_tileSize;
+            vert1.z += amount;
+            vert1.x += amount;
 
             Vector3 vert2 = location;
-            vert2.z -= 0.5f * m_tileSize;
-            vert2.x += 0.5f * m_tileSize;
+            vert2.z -= amount;
+            vert2.x += amount;
 
             Vector3 vert3 = location;
-            vert3.z -= 0.5f * m_tileSize;
-            vert3.x -= 0.5f * m_tileSize;
+            vert3.z -= amount;
+            vert3.x -= amount;
 
             Vector3 vert4 = location;
-            vert4.z += 0.5f * m_tileSize;
-            vert4.x -= 0.5f * m_tileSize;
+            vert4.z += amount;
+            vert4.x -= amount;
 
             verts.Add(vert1);
             verts.Add(vert2);
@@ -94,16 +96,52 @@ namespace DogHouse.ToonWorld.Services
         #endregion
 
         #region Utility Methods
-        private GameObject SetupZoneObject()
+        private GameObject SetupZoneObject(Mesh mesh, Material material)
         {
             GameObject zoneObject = new GameObject();
             zoneObject.transform.SetParent(transform);
             zoneObject.transform.localPosition = Vector3.zero;
             zoneObject.transform.localRotation = Quaternion.identity;
-            zoneObject.AddComponent<MeshRenderer>();
-            zoneObject.AddComponent<MeshFilter>();
+            MeshRenderer renderer = zoneObject.AddComponent<MeshRenderer>();
+            MeshFilter filter = zoneObject.AddComponent<MeshFilter>();
+            renderer.material = material;
+            filter.mesh = mesh;
+
             zoneObject.name = "Zone";
             return zoneObject;
+        }
+
+        private Mesh GenerateMesh(List<Vector3> verts, List<int> indices)
+        {
+            Mesh mesh = new Mesh();
+            mesh.vertices = verts.ToArray();
+            mesh.triangles = indices.ToArray();
+            mesh.Optimize();
+            return mesh;
+        }
+
+        private List<Vector3> ExtractEdgeTiles(Vector3[] tileLocations)
+        {
+            List<Vector3> edgeTiles = new List<Vector3>();
+            int neighborCount = 0;
+
+            for (int i = 0; i < tileLocations.Length; i++)
+            {
+                neighborCount = 0;
+                for (int j = 0; j < tileLocations.Length; j++)
+                {
+                    if (j == i) continue;
+                    if (Approximately((tileLocations[i] - tileLocations[j]).magnitude, 1f))
+                    {
+                        neighborCount++;
+                    }
+                }
+
+                if (neighborCount == 4) continue;
+                edgeTiles.Add(tileLocations[i]);
+            }
+
+            return edgeTiles;
         }
         #endregion
     }
