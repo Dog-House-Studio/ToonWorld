@@ -349,9 +349,35 @@ namespace DogHouse.ToonWorld.Services
 
             //Create rings
             rings.Add(new ConnectionRing());
-            
+
+            while (connections.Count > 0)
+            {
+                ConnectionRing ring = new ConnectionRing();
+                CreateRing(connections[0], ref connections, ref ring);
+                rings.Add(ring);
+            }
 
             return rings;
+        }
+
+        private void CreateRing(Connection c, ref List<Connection> availableConnections, ref ConnectionRing ring)
+        {
+            if (!ring.IsValidConnection(c)) return;
+            ring.AddConnection(c);
+            availableConnections.Remove(c);
+
+            int availableNode = -1;
+            for(int i = 0; i < c.connections.Count; i++)
+            {
+                if (availableConnections.Contains(c.connections[i]))
+                {
+                    availableNode = i;
+                    break;
+                }
+            }
+
+            if (availableNode == -1) return;
+            CreateRing(c.connections[availableNode], ref availableConnections, ref ring);
         }
         #endregion
     }
