@@ -41,5 +41,22 @@ namespace DogHouse.ToonWorld.Services
                 return;
             }
         }
+
+        public static bool IsJoinable(ConnectionRing a, ConnectionRing b)
+        {
+            if (a.Ring.Count == 0) return false;
+            if (b.Ring.Count == 0) return false;
+            if (a.Ring[0].HasConnection(b.Ring[0])) return true;
+            if (a.Ring[0].HasConnection(b.Ring[b.Ring.Count - 1])) return true;
+            if (a.Ring[a.Ring.Count - 1].HasConnection(b.Ring[0])) return true;
+            if (a.Ring[a.Ring.Count - 1].HasConnection(b.Ring[b.Ring.Count - 1])) return true;
+
+            return false;
+        }
+
+        public void JoinRing(ConnectionRing ring)
+        {
+
+        }
     }
 }

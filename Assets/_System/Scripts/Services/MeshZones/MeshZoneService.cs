@@ -357,6 +357,20 @@ namespace DogHouse.ToonWorld.Services
                 rings.Add(ring);
             }
 
+            int joinCount = 0;
+            for(int i = rings.Count - 1; i > 0; i--)
+            {
+                for(int j = i - 1; j >= 0; j--)
+                {
+                    if(ConnectionRing.IsJoinable(rings[i], rings[j]))
+                    {
+                        joinCount++;
+                    }
+                }
+            }
+
+            Debug.Log(joinCount);
+
             return rings;
         }
 
