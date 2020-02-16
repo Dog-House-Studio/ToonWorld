@@ -139,9 +139,15 @@ namespace DogHouse.ToonWorld.Services
 
             for(int i = 0; i < m_rings.Count; i++)
             {
-                for(int j = 0; j < m_rings[i].Ring.Count; j++)
+                if (i == 1) Gizmos.color = Color.green;
+                if (i == 2) Gizmos.color = Color.blue;
+                if (i == 3) Gizmos.color = Color.gray;
+                if (i == 4) Gizmos.color = Color.cyan;
+
+                for(int j = 0; j < m_rings[i].Ring.Count - 1; j++)
                 {
-                    Gizmos.DrawLine(m_rings[i].Ring[j].root + Vector3.up * 0.1f, m_rings[i].Ring[(j + 1) % m_rings[i].Ring.Count].root + Vector3.up * 0.1f);
+                    Gizmos.DrawLine(m_rings[i].Ring[j].root + Vector3.up * (0.1f * i), m_rings[i].Ring[(j + 1)].root + Vector3.up * (0.1f * i));
+                    UnityEditor.Handles.Label(m_rings[i].Ring[j].root + Vector3.up * (0.1f * i), j.ToString());
                 }
             }
         }
@@ -357,19 +363,28 @@ namespace DogHouse.ToonWorld.Services
                 rings.Add(ring);
             }
 
-            int joinCount = 0;
-            for(int i = rings.Count - 1; i > 0; i--)
+            for(int i = rings.Count - 1; i >= 0; i--)
             {
+                if (rings[i].Ring.Count == 0) rings.RemoveAt(i);
+            }
+
+            //Connect rings when possible
+            
+            for (int i = rings.Count - 1; i > 0; i--)
+            {   
                 for(int j = i - 1; j >= 0; j--)
                 {
                     if(ConnectionRing.IsJoinable(rings[i], rings[j]))
                     {
-                        joinCount++;
+                        rings[j].JoinRing(rings[i]);
+                        rings.RemoveAt(i);
+                        break;
                     }
                 }
             }
 
-            Debug.Log(joinCount);
+            Debug.Log("Ring count : " + rings.Count);
+            
 
             return rings;
         }
@@ -383,7 +398,7 @@ namespace DogHouse.ToonWorld.Services
             int availableNode = -1;
             for(int i = 0; i < c.connections.Count; i++)
             {
-                if (availableConnections.Contains(c.connections[i]))
+                if (availableConnections.Contains(c.connections[i]) && c.connections[i].connections.Count == 2)
                 {
                     availableNode = i;
                     break;

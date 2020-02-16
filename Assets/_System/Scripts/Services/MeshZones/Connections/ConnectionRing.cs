@@ -63,7 +63,7 @@ namespace DogHouse.ToonWorld.Services
                 return;
             }
 
-            if (connectionPoint != 0) Ring.Reverse();
+            if (connectionPoint == 0) Ring.Reverse();
 
             int joiningRingConnectionPoint = ring.CalculateConnectionPoint(this);
             if(connectionPoint == -1)
