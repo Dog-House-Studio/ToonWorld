@@ -56,7 +56,35 @@ namespace DogHouse.ToonWorld.Services
 
         public void JoinRing(ConnectionRing ring)
         {
+            int connectionPoint = CalculateConnectionPoint(ring);
+            if(connectionPoint == -1)
+            {
+                UnityEngine.Debug.LogError("Connection point error");
+                return;
+            }
 
+            if (connectionPoint != 0) Ring.Reverse();
+
+            int joiningRingConnectionPoint = ring.CalculateConnectionPoint(this);
+            if(connectionPoint == -1)
+            {
+                UnityEngine.Debug.LogError("Connection point error");
+                return;
+            }
+
+            if (joiningRingConnectionPoint != 0) ring.Ring.Reverse();
+            Ring.AddRange(ring.Ring);
+        }
+
+        public int CalculateConnectionPoint(ConnectionRing joining)
+        {
+            if (Ring.Count == 0) return -1;
+            if (joining.Ring.Count == 0) return -1;
+            if (Ring[0].HasConnection(joining.Ring[0])) return 0;
+            if (Ring[0].HasConnection(joining.Ring[joining.Ring.Count - 1])) return 0;
+            if (Ring[Ring.Count - 1].HasConnection(joining.Ring[0])) return Ring.Count - 1;
+            if (Ring[Ring.Count - 1].HasConnection(joining.Ring[joining.Ring.Count - 1])) return Ring.Count - 1;
+            return -1;
         }
     }
 }
