@@ -2,7 +2,6 @@
 using UnityEngine;
 using DogScaffold;
 using static UnityEngine.Mathf;
-using System;
 using System.Linq;
 
 namespace DogHouse.ToonWorld.Services
@@ -48,18 +47,35 @@ namespace DogHouse.ToonWorld.Services
         private void GenerateEdgeMeshData(Vector3[] tileLocations, ref List<Vector3> edgeVerts, ref List<int> edgeIndices, List<Vector3> insideVerts)
         {
             List<Vector3> edgeTiles = ExtractEdgeTiles(tileLocations);
-            Debug.Log(edgeTiles.Count);
             List<Vector3> perimeterTiles = DeterminePermimeterTiles(edgeTiles, tileLocations.ToList());
-            Debug.Log(perimeterTiles.Count);
-
             List<Vector3> edgeVertices = CalculateEdgeVertices(edgeTiles, perimeterTiles);
-            Debug.Log(edgeVertices.Count);
+            List<Connection> connections = GenerateConnections(edgeVertices);
 
-            foreach(Vector3 vert in edgeVertices)
+            for(int i = 0; i < connections.Count; i++)
             {
-                Instantiate(m_cubePrefab, vert, Quaternion.identity);
-            }
+                GameObject point = Instantiate(m_cubePrefab);
+                point.transform.position = connections[i].root;
 
+                MeshRenderer renderer = point.GetComponent<MeshRenderer>();
+                Material material = renderer.material;
+
+                if(connections[i].connections.Count == 2)
+                {
+                    material.SetColor("_BaseColor", Color.green);
+                }
+
+                if (connections[i].connections.Count == 3)
+                {
+                    material.SetColor("_BaseColor", new Color(1f, 0.61f, 0f, 1f));
+                }
+
+                if (connections[i].connections.Count == 4)
+                {
+                    material.SetColor("_BaseColor", Color.red);
+                }
+
+                renderer.material = material;
+            }
         }
 
         private void GenerateInsideMeshData(Vector3[] tileLocations, 
@@ -249,6 +265,50 @@ namespace DogHouse.ToonWorld.Services
 
             return edgeTileVertices;
         }
+
+        private List<Connection> GenerateConnections(List<Vector3> edgeVertices)
+        {
+            List<Connection> connections = new List<Connection>();
+            List<Connection> invalidConnections = new List<Connection>();
+
+            //Get all connections regarless of whether they are valid or not.
+            for (int i = 0; i < edgeVertices.Count; i++)
+            {
+                Connection connection = new Connection();
+                connection.connections = new List<Vector3>();
+                connection.root = edgeVertices[i];
+
+                for(int j = 0; j < edgeVertices.Count; j++)
+                {
+                    if (j == i) continue;
+                    if(Approximately(Vector3.Distance(edgeVertices[i], edgeVertices[j]), m_tileSize))
+                    {
+                        connection.connections.Add(edgeVertices[j]);
+                    }
+                }
+
+                connections.Add(connection);
+
+                if(connection.connections.Count > 2)
+                {
+                    invalidConnections.Add(connection);
+                }
+            }
+
+            //Resolve invalid connections
+            for(int i = 0; i < invalidConnections.Count; i++)
+            {
+
+            }
+
+            return connections;
+        }
         #endregion
+    }
+
+    public struct Connection
+    {
+        public Vector3 root;
+        public List<Vector3> connections;
     }
 }
