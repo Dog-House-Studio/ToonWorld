@@ -322,6 +322,12 @@ namespace DogHouse.ToonWorld.Services
                         connection.invalidIndex.Add(j);
                     }
                 }
+
+                if(connection.invalidIndex.Count > 1)
+                {
+                    connection.Remove3PieceInvalidIndexes();
+                }
+
                 connections[badConnections[i]] = connection;
             }
 
@@ -349,6 +355,17 @@ namespace DogHouse.ToonWorld.Services
             for(int i = invalidIndex.Count - 1; i >= 0; i--)
             {
                 connections.RemoveAt(invalidIndex[i]);
+            }
+        }
+
+        public void Remove3PieceInvalidIndexes()
+        {
+            for(int i = invalidIndex.Count - 1; i >= 0; i--)
+            {
+                if(connections[invalidIndex[i]].connections.Count == 3)
+                {
+                    invalidIndex.RemoveAt(i);
+                }
             }
         }
     }
