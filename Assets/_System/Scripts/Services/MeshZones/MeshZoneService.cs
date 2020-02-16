@@ -3,6 +3,7 @@ using UnityEngine;
 using DogScaffold;
 using static UnityEngine.Mathf;
 using System.Linq;
+using System;
 
 namespace DogHouse.ToonWorld.Services
 {
@@ -26,6 +27,8 @@ namespace DogHouse.ToonWorld.Services
 
         [SerializeField]
         private GameObject m_cubePrefab;
+
+        private List<ConnectionRing> m_rings = new List<ConnectionRing>();
         #endregion
 
         #region Main Methods
@@ -51,7 +54,7 @@ namespace DogHouse.ToonWorld.Services
             List<Vector3> edgeVertices = CalculateEdgeVertices(edgeTiles, perimeterTiles);
             List<Connection> connections = GenerateConnections(edgeVertices, tileLocations.ToList());
 
-            for(int i = 0; i < connections.Count; i++)
+            for (int i = 0; i < connections.Count; i++)
             {
                 GameObject point = Instantiate(m_cubePrefab);
                 point.transform.position = connections[i].root;
@@ -59,7 +62,7 @@ namespace DogHouse.ToonWorld.Services
                 MeshRenderer renderer = point.GetComponent<MeshRenderer>();
                 Material material = renderer.material;
 
-                if(connections[i].connections.Count == 2)
+                if (connections[i].connections.Count == 2)
                 {
                     material.SetColor("_BaseColor", Color.green);
                 }
@@ -79,6 +82,9 @@ namespace DogHouse.ToonWorld.Services
                 ConnectionPointVisualization visualizer = point.GetComponent<ConnectionPointVisualization>();
                 visualizer.connection = connections[i];
             }
+
+            m_rings.Clear();
+            m_rings = GenerateConnectionRings(connections);
         }
 
         private void GenerateInsideMeshData(Vector3[] tileLocations, 
@@ -125,6 +131,19 @@ namespace DogHouse.ToonWorld.Services
             indices.Add(lastIndex + 1);
             indices.Add(lastIndex + 3);
             indices.Add(lastIndex + 4);
+        }
+
+        public void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+
+            for(int i = 0; i < m_rings.Count; i++)
+            {
+                for(int j = 0; j < m_rings[i].Ring.Count; j++)
+                {
+                    Gizmos.DrawLine(m_rings[i].Ring[j].root + Vector3.up * 0.1f, m_rings[i].Ring[(j + 1) % m_rings[i].Ring.Count].root + Vector3.up * 0.1f);
+                }
+            }
         }
         #endregion
 
@@ -313,6 +332,29 @@ namespace DogHouse.ToonWorld.Services
             }
 
             return connections;
+        }
+
+        private List<ConnectionRing> GenerateConnectionRings(List<Connection> connections)
+        {
+            List<ConnectionRing> rings = new List<ConnectionRing>();
+            List<Connection> intersectionPoints = new List<Connection>();
+
+            //Separate out the intersection points
+            for(int i = connections.Count - 1; i >= 0; i--)
+            {
+                if (connections[i].connections.Count == 2) continue;
+                intersectionPoints.Add(connections[i]);
+                connections.RemoveAt(i);
+            }
+
+            //Create rings
+            rings.Add(new ConnectionRing());
+            for(int i = connections.Count - 1; i >= 0; i--)
+            {
+                rings[0].Ring.Add(connections[i]);
+            }
+
+            return rings;
         }
         #endregion
     }
