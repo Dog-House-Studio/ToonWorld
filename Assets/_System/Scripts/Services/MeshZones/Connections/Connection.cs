@@ -27,6 +27,11 @@ namespace DogHouse.ToonWorld.Services
             }
         }
 
+        public bool HasConnection(Connection connection)
+        {
+            return connections.Contains(connection);
+        }
+
         public static bool isValidConnection(Connection a, Connection b)
         {
             //This shouldn't be hardcoded

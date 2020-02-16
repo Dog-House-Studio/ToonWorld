@@ -349,10 +349,7 @@ namespace DogHouse.ToonWorld.Services
 
             //Create rings
             rings.Add(new ConnectionRing());
-            for(int i = connections.Count - 1; i >= 0; i--)
-            {
-                rings[0].Ring.Add(connections[i]);
-            }
+            
 
             return rings;
         }
