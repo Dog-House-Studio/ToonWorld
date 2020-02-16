@@ -306,37 +306,6 @@ namespace DogHouse.ToonWorld.Services
                 connections[i] = node;
             }
             
-            //Resolve invalid connections
-            for(int i = 0; i < badConnections.Count; i++)
-            {
-                //we'll deal with this later
-                if (connections[badConnections[i]].connections.Count == 4) continue;
-
-                Connection connection = connections[badConnections[i]];
-                connection.invalidIndex = new List<int>();
-
-                for(int j = 0; j < connection.connections.Count; j++)
-                {
-                    if(connection.connections[j].connections.Count > 2)
-                    {
-                        connection.invalidIndex.Add(j);
-                    }
-                }
-
-                if(connection.invalidIndex.Count > 1)
-                {
-                    connection.Remove3PieceInvalidIndexes();
-                }
-
-                connections[badConnections[i]] = connection;
-            }
-
-            //Remove invalid connections
-            for(int i = 0; i < badConnections.Count; i++)
-            {
-                if (connections[badConnections[i]].connections.Count == 4) continue;
-                connections[badConnections[i]].RemoveBadConnections();
-            }
 
             return connections;
         }
@@ -347,26 +316,5 @@ namespace DogHouse.ToonWorld.Services
     {
         public Vector3 root;
         public List<Connection> connections;
-        public List<int> invalidIndex;
-
-        public void RemoveBadConnections()
-        {
-            invalidIndex.Sort();
-            for(int i = invalidIndex.Count - 1; i >= 0; i--)
-            {
-                connections.RemoveAt(invalidIndex[i]);
-            }
-        }
-
-        public void Remove3PieceInvalidIndexes()
-        {
-            for(int i = invalidIndex.Count - 1; i >= 0; i--)
-            {
-                if(connections[invalidIndex[i]].connections.Count == 3)
-                {
-                    invalidIndex.RemoveAt(i);
-                }
-            }
-        }
     }
 }
