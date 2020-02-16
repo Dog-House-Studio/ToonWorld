@@ -49,7 +49,7 @@ namespace DogHouse.ToonWorld.Services
             List<Vector3> edgeTiles = ExtractEdgeTiles(tileLocations);
             List<Vector3> perimeterTiles = DeterminePermimeterTiles(edgeTiles, tileLocations.ToList());
             List<Vector3> edgeVertices = CalculateEdgeVertices(edgeTiles, perimeterTiles);
-            List<Connection> connections = GenerateConnections(edgeVertices);
+            List<Connection> connections = GenerateConnections(edgeVertices, edgeTiles);
 
             for(int i = 0; i < connections.Count; i++)
             {
@@ -77,7 +77,7 @@ namespace DogHouse.ToonWorld.Services
                 renderer.material = material;
 
                 ConnectionPointVisualization visualizer = point.GetComponent<ConnectionPointVisualization>();
-                visualizer.connections = connections[i].connections;
+                visualizer.connection = connections[i];
             }
         }
 
@@ -269,7 +269,7 @@ namespace DogHouse.ToonWorld.Services
             return edgeTileVertices;
         }
 
-        private List<Connection> GenerateConnections(List<Vector3> edgeVertices)
+        private List<Connection> GenerateConnections(List<Vector3> edgeVertices, List<Vector3> edgeTiles)
         {
             List<Connection> connections = new List<Connection>();
             List<int> badConnections = new List<int>();
@@ -278,11 +278,18 @@ namespace DogHouse.ToonWorld.Services
             {
                 Connection connection = new Connection();
                 connection.root = edgeVertices[i];
-                connection.connections = new List<Connection>();
+
+                for (int j = 0; j < edgeTiles.Count; j++)
+                {
+                    if(Vector3.Distance(edgeTiles[j] + m_tileOffset, connection.root) < (m_tileSize))
+                    {
+                        connection.sharedTiles.Add(edgeTiles[j] + m_tileOffset);
+                    }
+                }
+
                 connections.Add(connection);
             }
 
-            
             //Get all connections regarless of whether they are valid or not.
             for (int i = 0; i < connections.Count; i++)
             {
@@ -315,6 +322,7 @@ namespace DogHouse.ToonWorld.Services
     public class Connection
     {
         public Vector3 root;
-        public List<Connection> connections;
+        public List<Connection> connections = new List<Connection>();
+        public List<Vector3> sharedTiles = new List<Vector3>();
     }
 }
