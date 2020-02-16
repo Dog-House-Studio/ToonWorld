@@ -188,12 +188,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1378172}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &15031635 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 4271e1f51cf274c499b8283b04da0c03,
-    type: 3}
-  m_PrefabInstance: {fileID: 884630396}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &104169642
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1041,12 +1035,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 315799976}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &320465006 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 4271e1f51cf274c499b8283b04da0c03,
-    type: 3}
-  m_PrefabInstance: {fileID: 2135947005}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &347459641
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1590,17 +1578,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_tiles:
   - {fileID: 1988286488}
-  - {fileID: 1700114676}
+  - {fileID: 1555989563}
   - {fileID: 1807429778}
   - {fileID: 475814233}
-  - {fileID: 320465006}
   - {fileID: 402625491}
-  - {fileID: 1792366286}
-  - {fileID: 1987265442}
-  - {fileID: 1957854323}
   - {fileID: 1726957133}
   - {fileID: 1776145519}
-  - {fileID: 15031635}
+  - {fileID: 1776248626}
   - {fileID: 1469815576}
   editorFoldout: 1
 --- !u!1001 &623092436
@@ -3616,6 +3600,7 @@ GameObject:
   - component: {fileID: 1416426309}
   - component: {fileID: 1416426308}
   - component: {fileID: 1416426307}
+  - component: {fileID: 1416426311}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -3697,6 +3682,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1416426311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416426306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a44ccd45aa7ee8e419d620d81a2deac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1431511225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3836,6 +3833,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 4271e1f51cf274c499b8283b04da0c03,
     type: 3}
   m_PrefabInstance: {fileID: 1373111420}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1555989563 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 4271e1f51cf274c499b8283b04da0c03,
+    type: 3}
+  m_PrefabInstance: {fileID: 1226778154}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1558265057
 PrefabInstance:
@@ -4109,12 +4112,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1666541602}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1700114676 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 4271e1f51cf274c499b8283b04da0c03,
-    type: 3}
-  m_PrefabInstance: {fileID: 1906584624}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1706659209
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4261,11 +4258,11 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 117057061}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1792366286 stripped
+--- !u!1 &1776248626 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 4271e1f51cf274c499b8283b04da0c03,
     type: 3}
-  m_PrefabInstance: {fileID: 916462917}
+  m_PrefabInstance: {fileID: 1936132003}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1799400776
 PrefabInstance:
@@ -4891,18 +4888,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 4271e1f51cf274c499b8283b04da0c03,
     type: 3}
   m_PrefabInstance: {fileID: 1951966274}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1957854323 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 4271e1f51cf274c499b8283b04da0c03,
-    type: 3}
-  m_PrefabInstance: {fileID: 237590391}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1987265442 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 4271e1f51cf274c499b8283b04da0c03,
-    type: 3}
-  m_PrefabInstance: {fileID: 905343214}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1988286488 stripped
 GameObject:

@@ -75,6 +75,9 @@ namespace DogHouse.ToonWorld.Services
                 }
 
                 renderer.material = material;
+
+                ConnectionPointVisualization visualizer = point.GetComponent<ConnectionPointVisualization>();
+                visualizer.connections = connections[i].connections;
             }
         }
 
