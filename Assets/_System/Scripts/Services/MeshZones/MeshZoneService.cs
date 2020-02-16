@@ -314,7 +314,7 @@ namespace DogHouse.ToonWorld.Services
 
                 for(int j = 0; j < connection.connections.Count; j++)
                 {
-                    if(connection.connections[j].connections.Count == 3)
+                    if(connection.connections[j].connections.Count > 2)
                     {
                         connection.invalidIndex.Add(j);
                     }
@@ -325,6 +325,7 @@ namespace DogHouse.ToonWorld.Services
             //Remove invalid connections
             for(int i = 0; i < badConnections.Count; i++)
             {
+                if (connections[badConnections[i]].connections.Count == 4) continue;
                 connections[badConnections[i]].RemoveBadConnections();
             }
 
