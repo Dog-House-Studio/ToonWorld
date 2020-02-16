@@ -269,36 +269,63 @@ namespace DogHouse.ToonWorld.Services
         private List<Connection> GenerateConnections(List<Vector3> edgeVertices)
         {
             List<Connection> connections = new List<Connection>();
-            List<Connection> invalidConnections = new List<Connection>();
+            List<int> badConnections = new List<int>();
 
-            //Get all connections regarless of whether they are valid or not.
-            for (int i = 0; i < edgeVertices.Count; i++)
+            for(int i = 0; i < edgeVertices.Count; i++)
             {
                 Connection connection = new Connection();
-                connection.connections = new List<Vector3>();
                 connection.root = edgeVertices[i];
+                connection.connections = new List<Connection>();
+                connections.Add(connection);
+            }
 
-                for(int j = 0; j < edgeVertices.Count; j++)
+            
+            //Get all connections regarless of whether they are valid or not.
+            for (int i = 0; i < connections.Count; i++)
+            {
+                Connection node = connections[i];
+                node.connections = new List<Connection>();
+
+                for(int j = 0; j < connections.Count; j++)
                 {
                     if (j == i) continue;
-                    if(Approximately(Vector3.Distance(edgeVertices[i], edgeVertices[j]), m_tileSize))
+                    if(Approximately(Vector3.Distance(node.root, connections[j].root), m_tileSize))
                     {
-                        connection.connections.Add(edgeVertices[j]);
+                        node.connections.Add(connections[j]);
                     }
                 }
 
-                connections.Add(connection);
-
-                if(connection.connections.Count > 2)
+                if(node.connections.Count > 2)
                 {
-                    invalidConnections.Add(connection);
+                    badConnections.Add(i);
                 }
+
+                connections[i] = node;
+            }
+            
+            //Resolve invalid connections
+            for(int i = 0; i < badConnections.Count; i++)
+            {
+                //we'll deal with this later
+                if (connections[badConnections[i]].connections.Count == 4) continue;
+
+                Connection connection = connections[badConnections[i]];
+                connection.invalidIndex = new List<int>();
+
+                for(int j = 0; j < connection.connections.Count; j++)
+                {
+                    if(connection.connections[j].connections.Count == 3)
+                    {
+                        connection.invalidIndex.Add(j);
+                    }
+                }
+                connections[badConnections[i]] = connection;
             }
 
-            //Resolve invalid connections
-            for(int i = 0; i < invalidConnections.Count; i++)
+            //Remove invalid connections
+            for(int i = 0; i < badConnections.Count; i++)
             {
-
+                connections[badConnections[i]].RemoveBadConnections();
             }
 
             return connections;
@@ -306,9 +333,19 @@ namespace DogHouse.ToonWorld.Services
         #endregion
     }
 
-    public struct Connection
+    public class Connection
     {
         public Vector3 root;
-        public List<Vector3> connections;
+        public List<Connection> connections;
+        public List<int> invalidIndex;
+
+        public void RemoveBadConnections()
+        {
+            invalidIndex.Sort();
+            for(int i = invalidIndex.Count - 1; i >= 0; i--)
+            {
+                connections.RemoveAt(invalidIndex[i]);
+            }
+        }
     }
 }
