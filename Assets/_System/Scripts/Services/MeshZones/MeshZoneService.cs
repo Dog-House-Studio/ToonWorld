@@ -49,7 +49,7 @@ namespace DogHouse.ToonWorld.Services
             List<Vector3> edgeTiles = ExtractEdgeTiles(tileLocations);
             List<Vector3> perimeterTiles = DeterminePermimeterTiles(edgeTiles, tileLocations.ToList());
             List<Vector3> edgeVertices = CalculateEdgeVertices(edgeTiles, perimeterTiles);
-            List<Connection> connections = GenerateConnections(edgeVertices, edgeTiles);
+            List<Connection> connections = GenerateConnections(edgeVertices, tileLocations.ToList());
 
             for(int i = 0; i < connections.Count; i++)
             {
