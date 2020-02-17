@@ -354,8 +354,6 @@ namespace DogHouse.ToonWorld.Services
             }
 
             //Create rings
-            rings.Add(new ConnectionRing());
-
             while (connections.Count > 0)
             {
                 ConnectionRing ring = new ConnectionRing();
@@ -363,13 +361,7 @@ namespace DogHouse.ToonWorld.Services
                 rings.Add(ring);
             }
 
-            for(int i = rings.Count - 1; i >= 0; i--)
-            {
-                if (rings[i].Ring.Count == 0) rings.RemoveAt(i);
-            }
-
-            //Connect rings when possible
-            
+            //Connect rings when possible    
             for (int i = rings.Count - 1; i > 0; i--)
             {   
                 for(int j = i - 1; j >= 0; j--)
@@ -382,10 +374,7 @@ namespace DogHouse.ToonWorld.Services
                     }
                 }
             }
-
-            Debug.Log("Ring count : " + rings.Count);
             
-
             return rings;
         }
 
