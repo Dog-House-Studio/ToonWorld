@@ -144,9 +144,9 @@ namespace DogHouse.ToonWorld.Services
                 if (i == 3) Gizmos.color = Color.gray;
                 if (i == 4) Gizmos.color = Color.cyan;
 
-                for(int j = 0; j < m_rings[i].Ring.Count - 1; j++)
+                for(int j = 0; j < m_rings[i].Ring.Count; j++)
                 {
-                    Gizmos.DrawLine(m_rings[i].Ring[j].root + Vector3.up * (0.1f * i), m_rings[i].Ring[(j + 1)].root + Vector3.up * (0.1f * i));
+                    Gizmos.DrawLine(m_rings[i].Ring[j].root + Vector3.up * (0.1f * i), m_rings[i].Ring[(j + 1) % m_rings[i].Ring.Count].root + Vector3.up * (0.1f * i));
                     UnityEditor.Handles.Label(m_rings[i].Ring[j].root + Vector3.up * (0.1f * i), j.ToString());
                 }
             }
@@ -375,6 +375,22 @@ namespace DogHouse.ToonWorld.Services
                 }
             }
             
+            //Connect broken rings
+            for(int i = 0; i < rings.Count; i++)
+            {
+                if (rings[i].IsClosed) continue;
+
+                for(int j = 0; j < intersectionPoints.Count; j++)
+                {
+                    if(rings[i].Ring[rings[i].Ring.Count - 1].HasConnection(intersectionPoints[j])
+                        && intersectionPoints[j].HasConnection(rings[i].Ring[0]))
+                    {
+                        rings[i].AddConnection(intersectionPoints[j]);
+                        break;
+                    }
+                }
+            }
+
             return rings;
         }
 

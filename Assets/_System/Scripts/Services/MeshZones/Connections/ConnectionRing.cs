@@ -10,6 +10,7 @@ namespace DogHouse.ToonWorld.Services
     public class ConnectionRing
     {
         public List<Connection> Ring = new List<Connection>();
+        public bool IsClosed => Ring[0].HasConnection(Ring[Ring.Count - 1]);
 
         public bool IsValidConnection(Connection connection)
         {
