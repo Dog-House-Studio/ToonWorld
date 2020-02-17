@@ -391,6 +391,20 @@ namespace DogHouse.ToonWorld.Services
                 }
             }
 
+            //Merge rings
+            for (int i = rings.Count - 1; i > 0; i--)
+            {
+                for (int j = i - 1; j >= 0; j--)
+                {
+                    if (ConnectionRing.IsMergable(rings[i], rings[j]))
+                    {
+                        rings[j].MergeRing(rings[i]);
+                        rings.RemoveAt(i);
+                        break;
+                    }
+                }
+            }
+
             return rings;
         }
 
