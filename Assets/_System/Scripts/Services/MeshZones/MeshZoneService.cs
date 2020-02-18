@@ -49,42 +49,49 @@ namespace DogHouse.ToonWorld.Services
 
         private void GenerateEdgeMeshData(Vector3[] tileLocations, ref List<Vector3> edgeVerts, ref List<int> edgeIndices, List<Vector3> insideVerts)
         {
-            List<Vector3> edgeTiles = ExtractEdgeTiles(tileLocations);
-            List<Vector3> perimeterTiles = DeterminePermimeterTiles(edgeTiles, tileLocations.ToList());
-            List<Vector3> edgeVertices = CalculateEdgeVertices(edgeTiles, perimeterTiles);
-            List<Connection> connections = GenerateConnections(edgeVertices, tileLocations.ToList());
-
-            for (int i = 0; i < connections.Count; i++)
-            {
-                GameObject point = Instantiate(m_cubePrefab);
-                point.transform.position = connections[i].root;
-
-                MeshRenderer renderer = point.GetComponent<MeshRenderer>();
-                Material material = renderer.material;
-
-                if (connections[i].connections.Count == 2)
-                {
-                    material.SetColor("_BaseColor", Color.green);
-                }
-
-                if (connections[i].connections.Count == 3)
-                {
-                    material.SetColor("_BaseColor", new Color(1f, 0.61f, 0f, 1f));
-                }
-
-                if (connections[i].connections.Count == 4)
-                {
-                    material.SetColor("_BaseColor", Color.red);
-                }
-
-                renderer.material = material;
-
-                ConnectionPointVisualization visualizer = point.GetComponent<ConnectionPointVisualization>();
-                visualizer.connection = connections[i];
-            }
-
             m_rings.Clear();
-            m_rings = GenerateConnectionRings(connections);
+            List<List<Vector3>> separatedTileLocations = SeparateTileLocations(tileLocations);
+
+            for (int j = 0; j < separatedTileLocations.Count; j++)
+            {
+                List<Vector3> edgeTiles = ExtractEdgeTiles(separatedTileLocations[j].ToArray());
+                List<Vector3> perimeterTiles = DeterminePermimeterTiles(edgeTiles, separatedTileLocations[j]);
+                List<Vector3> edgeVertices = CalculateEdgeVertices(edgeTiles, perimeterTiles);
+                List<Connection> connections = GenerateConnections(edgeVertices, separatedTileLocations[j]);
+
+                #if UNITY_EDITOR
+                for (int i = 0; i < connections.Count; i++)
+                {
+                    GameObject point = Instantiate(m_cubePrefab);
+                    point.transform.position = connections[i].root;
+
+                    MeshRenderer renderer = point.GetComponent<MeshRenderer>();
+                    Material material = renderer.material;
+
+                    if (connections[i].connections.Count == 2)
+                    {
+                        material.SetColor("_BaseColor", Color.green);
+                    }
+
+                    if (connections[i].connections.Count == 3)
+                    {
+                        material.SetColor("_BaseColor", new Color(1f, 0.61f, 0f, 1f));
+                    }
+
+                    if (connections[i].connections.Count == 4)
+                    {
+                        material.SetColor("_BaseColor", Color.red);
+                    }
+
+                    renderer.material = material;
+
+                    ConnectionPointVisualization visualizer = point.GetComponent<ConnectionPointVisualization>();
+                    visualizer.connection = connections[i];
+                }
+                #endif
+
+                m_rings.AddRange(GenerateConnectionRings(connections));
+            }
         }
 
         private void GenerateInsideMeshData(Vector3[] tileLocations, 
@@ -426,6 +433,30 @@ namespace DogHouse.ToonWorld.Services
 
             if (availableNode == -1) return;
             CreateRing(c.connections[availableNode], ref availableConnections, ref ring);
+        }
+
+        private List<List<Vector3>> SeparateTileLocations(Vector3[] tileLocations)
+        {
+            List<List<Vector3>> result = new List<List<Vector3>>();
+            for(int i = 0; i < tileLocations.Length; i++)
+            {
+                for(int j = 0; j <= result.Count; j++)
+                {
+                    if (j == result.Count)
+                    {
+                        result.Add(new List<Vector3>());
+                        result[j].Add(tileLocations[i]);
+                        break;
+                    }
+
+                    if (Approximately(result[j][0].y, tileLocations[i].y))
+                    {
+                        result[j].Add(tileLocations[i]);
+                        break;
+                    }
+                }
+            }
+            return result;
         }
         #endregion
     }
