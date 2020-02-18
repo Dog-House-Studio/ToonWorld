@@ -181,7 +181,6 @@ namespace DogHouse.ToonWorld.Services
             Mesh mesh = new Mesh();
             mesh.vertices = verts.ToArray();
             mesh.triangles = indices.ToArray();
-            mesh.Optimize();
             return mesh;
         }
 

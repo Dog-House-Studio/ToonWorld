@@ -25,4 +25,9 @@ public class GenerateMeshZone : MonoBehaviour
 
         m_meshZoneService.Reference.GenerateZone(zone.ToArray());
     }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P)) GenerateZone();
+    }
 }
