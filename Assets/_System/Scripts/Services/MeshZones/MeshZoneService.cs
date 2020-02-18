@@ -179,8 +179,8 @@ namespace DogHouse.ToonWorld.Services
         private Mesh GenerateMesh(List<Vector3> verts, List<int> indices)
         {
             Mesh mesh = new Mesh();
-            mesh.vertices = verts.ToArray();
-            mesh.triangles = indices.ToArray();
+            mesh.SetVertices(verts);
+            mesh.SetTriangles(indices, 0);
             return mesh;
         }
 
