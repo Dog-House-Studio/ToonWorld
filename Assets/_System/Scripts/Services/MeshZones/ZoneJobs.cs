@@ -14,12 +14,19 @@ namespace DogHouse.ToonWorld.Services
      * the mesh zone service uses for the sorting
      * and creation of the zones.
      */
-    [BurstCompile]
+    [BurstCompile(CompileSynchronously = true)]
     public struct CalculateTileVerts : IJobParallelFor
     {
-        public NativeArray<float3> vertices;
-        public NativeArray<float3> tileLocations;
+        [NativeDisableParallelForRestriction]
+        public NativeArray<Vector3> vertices;
+
+        [ReadOnly]
+        public NativeArray<Vector3> tileLocations;
+
+        [NativeDisableParallelForRestriction]
         public NativeArray<int> indices;
+
+        [ReadOnly]
         public float offset;
 
         public void Execute(int index)
@@ -27,19 +34,19 @@ namespace DogHouse.ToonWorld.Services
             int vertIndex = index * 4;
             int indiceIndex = index * 6;
 
-            float3 vert1 = tileLocations[index];
+            Vector3 vert1 = tileLocations[index];
             vert1.z += offset;
             vert1.x += offset;
 
-            float3 vert2 = tileLocations[index];
+            Vector3 vert2 = tileLocations[index];
             vert1.z -= offset;
             vert1.x += offset;
 
-            float3 vert3 = tileLocations[index];
+            Vector3 vert3 = tileLocations[index];
             vert1.z -= offset;
             vert1.x -= offset;
 
-            float3 vert4 = tileLocations[index];
+            Vector3 vert4 = tileLocations[index];
             vert1.z += offset;
             vert1.x -= offset;
 

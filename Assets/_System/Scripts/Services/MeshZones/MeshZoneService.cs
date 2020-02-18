@@ -4,6 +4,9 @@ using DogScaffold;
 using static UnityEngine.Mathf;
 using System.Linq;
 using System;
+using System.Diagnostics;
+using Unity.Jobs;
+using Unity.Collections;
 
 namespace DogHouse.ToonWorld.Services
 {
@@ -34,17 +37,23 @@ namespace DogHouse.ToonWorld.Services
         #region Main Methods
         public GameObject GenerateZone(Vector3[] tileLocations)
         {
-            List<Vector3> insideVerts = new List<Vector3>();
-            List<int> insideIndices = new List<int>();
+            Vector3[] insideVerts = new Vector3[tileLocations.Length * 4];
+            int[] insideIndices = new int[tileLocations.Length * 6];
+
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             GenerateInsideMeshData(tileLocations, ref insideVerts, ref insideIndices);
-            Mesh insideMesh = GenerateMesh(insideVerts, insideIndices);
+            stopwatch.Stop();
+            TimeSpan ts = stopwatch.Elapsed;
+            UnityEngine.Debug.Log(ts.Milliseconds);
+            //Mesh insideMesh = GenerateMesh(insideVerts, insideIndices);
 
             List<Vector3> edgeVerts = new List<Vector3>();
             List<int> edgeIndices = new List<int>();
-            GenerateEdgeMeshData(tileLocations, ref edgeVerts, ref edgeIndices, insideVerts);
+            GenerateEdgeMeshData(tileLocations, ref edgeVerts, ref edgeIndices, edgeVerts);
             Mesh edgeMesh = GenerateMesh(edgeVerts, edgeIndices);
 
-            return SetupZoneObject(insideMesh, m_zoneMaterial);
+            return SetupZoneObject(edgeMesh, m_zoneMaterial);
         }
 
         private void GenerateEdgeMeshData(Vector3[] tileLocations, ref List<Vector3> edgeVerts, ref List<int> edgeIndices, List<Vector3> insideVerts)
@@ -95,12 +104,33 @@ namespace DogHouse.ToonWorld.Services
         }
 
         private void GenerateInsideMeshData(Vector3[] tileLocations, 
-            ref List<Vector3> verts, ref List<int> indices)
+            ref Vector3[] verts, ref int[] indices)
         {
-            for (int i = 0; i < tileLocations.Length; i++)
+            NativeArray<Vector3> vertices = new NativeArray<Vector3>(tileLocations.Length * 4, Allocator.TempJob);
+            NativeArray<Vector3> tilePosition = new NativeArray<Vector3>(tileLocations, Allocator.TempJob);
+            NativeArray<int> indexes = new NativeArray<int>(tileLocations.Length * 6, Allocator.TempJob);
+
+            var job = new CalculateTileVerts()
             {
-                CalculateTileVerts(tileLocations[i], ref verts, ref indices);
-            }
+                vertices = vertices,
+                tileLocations = tilePosition,
+                indices = indexes,
+                offset = 0.5f * m_tileSize
+            };
+
+            JobHandle jobHandle = job.Schedule(tileLocations.Length, 8);
+            jobHandle.Complete();
+
+            vertices.CopyTo(verts);
+            indexes.CopyTo(indices);
+
+            vertices.Dispose();
+            tilePosition.Dispose();
+            indexes.Dispose();
+            //for (int i = 0; i < tileLocations.Length; i++)
+            //{
+            //    CalculateTileVerts(tileLocations[i], ref verts, ref indices);
+            //}
         }
 
         private void CalculateTileVerts(Vector3 location, ref List<Vector3> verts, ref List<int> indices)
