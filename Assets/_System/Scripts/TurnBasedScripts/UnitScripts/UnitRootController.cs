@@ -61,6 +61,7 @@ namespace DogHouse.ToonWorld.CombatControllers
 
             m_experienceBarController.OnAnimationFinished -= HandleExperienceBarAnimationFinished;
             m_experienceBarController.OnAnimationFinished += HandleExperienceBarAnimationFinished;
+            this.GetComponent<BattleFieldUnit>().ClassType = definition.BaseClassType;
         }
 
         public void OnDestroy()

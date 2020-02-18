@@ -99,28 +99,34 @@ namespace DogHouse.ToonWorld.CombatControllers
         private void SpawnPlayerUnits()
         {
             int playerUnitCount = PlayerService.Reference.GetUnitCount();
+            GameObject gridObjects = GameObject.FindGameObjectWithTag("GridObjects");
             for (int i = 0; i < playerUnitCount; i++)
             {
                 GridObject temp = UnitSpawnService.Reference.SpawnUnit(PlayerService.Reference.GetUnitDefinition(i), true).GetComponent<GridObject>();
+                temp.transform.parent = gridObjects.transform;
                 gamePlayer.units.Add(temp);
             }
             GameObject[] playerSpawnPoints = GameObject.FindGameObjectsWithTag("PlayerSpawnPoint");
             for(int a = 0; a < playerUnitCount; a++)
             {
                 gamePlayer.units[a].transform.position = playerSpawnPoints[a].transform.position;
-                gamePlayer.units[a].SetCurrentGridTile(playerSpawnPoints[a].GetComponent<GridTile>());
+                Vector3Int position = new Vector3Int(playerSpawnPoints[a].GetComponent<GridTile>().m_GridPosition.x, playerSpawnPoints[a].GetComponent<GridTile>().m_GridPosition.y, 0);
+                gamePlayer.units[a].Initialize(position);
             }
         }
         private void SpawnEnemyUnits()
         {
+            GameObject gridObjects = GameObject.FindGameObjectWithTag("GridObjects");
             EnemyDefinitionContainer enemyDefinitionContainer = FindObjectOfType<EnemyDefinitionContainer>();
             GameObject[] enemySpawnPoints = GameObject.FindGameObjectsWithTag("EnemySpawnPoint");
             int enemyCounter = enemySpawnPoints.Length;
             for(int i = 0; i < enemyCounter; i++)
             {
                 enemyPlayer.units.Add(UnitSpawnService.Reference.SpawnUnit(enemyDefinitionContainer.GetRandomDefinition(), false).GetComponent<GridObject>());
+                enemyPlayer.units[i].transform.parent = gridObjects.transform;
                 enemyPlayer.units[i].transform.position = enemySpawnPoints[i].transform.position;
-                enemyPlayer.units[i].SetCurrentGridTile(enemySpawnPoints[i].GetComponent<GridTile>());
+                Vector3Int position = new Vector3Int(enemySpawnPoints[i].GetComponent<GridTile>().m_GridPosition.x, enemySpawnPoints[i].GetComponent<GridTile>().m_GridPosition.y, 0);
+                enemyPlayer.units[i].Initialize(position);
             }
 
         }

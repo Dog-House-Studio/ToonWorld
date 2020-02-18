@@ -11,7 +11,7 @@ namespace DogHouse.ToonWorld.CombatControllers
     public class BattleFieldUnit : GridObject
     {
         #region Public Variables
-        public UnitClassType ClassType => m_classDefinition;
+        public UnitClassType ClassType { get { return m_classDefinition; } set { m_classDefinition = value; } }
         #endregion
 
         #region Private Variables
