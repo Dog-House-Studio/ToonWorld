@@ -97,7 +97,6 @@ namespace DogHouse.ToonWorld.Services
         private void GenerateInsideMeshData(Vector3[] tileLocations, 
             ref List<Vector3> verts, ref List<int> indices)
         {
-            //Tiles in between
             for (int i = 0; i < tileLocations.Length; i++)
             {
                 CalculateTileVerts(tileLocations[i], ref verts, ref indices);
