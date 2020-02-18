@@ -108,6 +108,13 @@ namespace DogHouse.ToonWorld.Services
 
             if (mergingRingConnectionPoint != 0) ring.Ring.Reverse();
             Ring.RemoveAt(Ring.Count - 1);
+
+            if(!ring.Ring[ring.Ring.Count - 1].HasConnection(Ring[0]))
+            {
+                ring.Ring.Add(ring.Ring[0]);
+                ring.Ring.Reverse();
+            }
+
             Ring.AddRange(ring.Ring);
         }
 
