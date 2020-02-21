@@ -7,6 +7,8 @@ using System;
 using System.Diagnostics;
 using Unity.Jobs;
 using Unity.Collections;
+using DogHouse.ToonWorld.Jobs;
+using Unity.Mathematics;
 
 namespace DogHouse.ToonWorld.Services
 {
@@ -43,10 +45,10 @@ namespace DogHouse.ToonWorld.Services
 
             Mesh insideMesh = GenerateMesh(insideVerts, insideIndices);
 
-            //List<Vector3> edgeVerts = new List<Vector3>();
-            //List<int> edgeIndices = new List<int>();
-            //GenerateEdgeMeshData(tileLocations, ref edgeVerts, ref edgeIndices, edgeVerts);
-            //Mesh edgeMesh = GenerateMesh(edgeVerts, edgeIndices);
+            List<Vector3> edgeVerts = new List<Vector3>();
+            List<int> edgeIndices = new List<int>();
+            GenerateEdgeMeshData(tileLocations, ref edgeVerts, ref edgeIndices, edgeVerts);
+            Mesh edgeMesh = GenerateMesh(edgeVerts, edgeIndices);
 
             return SetupZoneObject(insideMesh, m_zoneMaterial);
         }
@@ -101,26 +103,56 @@ namespace DogHouse.ToonWorld.Services
         private void GenerateInsideMeshData(Vector3[] tileLocations, 
             ref Vector3[] verts, ref int[] indices)
         {
-            NativeArray<Vector3> vertices = new NativeArray<Vector3>(tileLocations.Length * 4, Allocator.TempJob);
-            NativeArray<Vector3> tilePosition = new NativeArray<Vector3>(tileLocations, Allocator.TempJob);
+            NativeArray<Vector3> vec3_vertices = new NativeArray<Vector3>(tileLocations.Length * 4, Allocator.TempJob);
+            NativeArray<Vector3> vec3_tilePosition = new NativeArray<Vector3>(tileLocations, Allocator.TempJob);
+            NativeArray<float3> float3_vertices = new NativeArray<float3>(tileLocations.Length * 4, Allocator.TempJob);
+            NativeArray<float3> float3_tilePosition = new NativeArray<float3>(tileLocations.Length, Allocator.TempJob);
             NativeArray<int> indexes = new NativeArray<int>(tileLocations.Length * 6, Allocator.TempJob);
+
+            var vertexVec3ToFloat3 = new Vector3ToFloat3Job()
+            {
+                input = vec3_vertices,
+                output = float3_vertices
+            };
+
+            JobHandle verticeConversionHandle = vertexVec3ToFloat3.Schedule(vec3_vertices.Length, 8);
+       
+            var positionConversionJob = new Vector3ToFloat3Job()
+            {
+                input = vec3_tilePosition,
+                output = float3_tilePosition
+            };
+
+            JobHandle positionConversionHandle = positionConversionJob.Schedule(vec3_tilePosition.Length, 8);
+            JobHandle dependency = JobHandle.CombineDependencies(verticeConversionHandle, positionConversionHandle);
 
             var job = new CalculateTileVerts()
             {
-                vertices = vertices,
-                tileLocations = tilePosition,
+                vertices = float3_vertices,
+                tileLocations = float3_tilePosition,
                 indices = indexes,
                 offset = 0.5f * m_tileSize
             };
 
-            JobHandle jobHandle = job.Schedule(tileLocations.Length, 8);
+            JobHandle jobHandle = job.Schedule(tileLocations.Length, 8, dependency);
             jobHandle.Complete();
 
-            vertices.CopyTo(verts);
+            var verticeConversionToVec3 = new Float3ToVector3Job()
+            {
+                input = float3_vertices,
+                output = vec3_vertices
+            };
+
+            JobHandle verticeConversionToVec3_Handle = verticeConversionToVec3.Schedule(float3_vertices.Length, 8);
+            verticeConversionToVec3_Handle.Complete();
+
+            vec3_vertices.CopyTo(verts);
             indexes.CopyTo(indices);
 
-            vertices.Dispose();
-            tilePosition.Dispose();
+            vec3_vertices.Dispose();
+            vec3_tilePosition.Dispose();
+            float3_vertices.Dispose();
+            float3_tilePosition.Dispose();
             indexes.Dispose();
         }
 

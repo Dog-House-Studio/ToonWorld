@@ -4,14 +4,14 @@ using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Collections;
 
-namespace DogHouse.ToonWorld.Jobs
+namespace DogHouse.ToonWorld.Services
 {
     /// <summary>
     /// Vector3ToFloat3Job is a parallel job that converts
     /// a vector3 to a float 3.
     /// </summary>
     [BurstCompile(CompileSynchronously = true)]
-    public class Vector3ToFloat3Job : IJobParallelFor
+    public struct Vector3ToFloat3Job : IJobParallelFor
     {
         [ReadOnly]
         public NativeArray<Vector3> input;

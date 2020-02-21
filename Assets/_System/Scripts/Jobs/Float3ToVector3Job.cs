@@ -11,7 +11,7 @@ namespace DogHouse.ToonWorld.Jobs
     /// array of float3 to an array of vector3.
     /// </summary>
     [BurstCompile(CompileSynchronously = true)]
-    public class Float3ToVector3Job : IJobParallelFor
+    public struct Float3ToVector3Job : IJobParallelFor
     {
         [ReadOnly]
         public NativeArray<float3> input;
