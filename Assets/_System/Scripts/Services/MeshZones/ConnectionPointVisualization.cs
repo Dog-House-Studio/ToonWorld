@@ -8,6 +8,7 @@ public class ConnectionPointVisualization : MonoBehaviour
     public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
+        if (connection == null) return;
         foreach (Connection c in connection.connections)
         {
             Gizmos.DrawLine(transform.position, c.root);

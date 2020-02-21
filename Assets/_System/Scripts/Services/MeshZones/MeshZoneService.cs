@@ -39,21 +39,16 @@ namespace DogHouse.ToonWorld.Services
         {
             Vector3[] insideVerts = new Vector3[tileLocations.Length * 4];
             int[] insideIndices = new int[tileLocations.Length * 6];
-
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
             GenerateInsideMeshData(tileLocations, ref insideVerts, ref insideIndices);
-            stopwatch.Stop();
-            TimeSpan ts = stopwatch.Elapsed;
-            UnityEngine.Debug.Log(ts.Milliseconds);
-            //Mesh insideMesh = GenerateMesh(insideVerts, insideIndices);
 
-            List<Vector3> edgeVerts = new List<Vector3>();
-            List<int> edgeIndices = new List<int>();
-            GenerateEdgeMeshData(tileLocations, ref edgeVerts, ref edgeIndices, edgeVerts);
-            Mesh edgeMesh = GenerateMesh(edgeVerts, edgeIndices);
+            Mesh insideMesh = GenerateMesh(insideVerts, insideIndices);
 
-            return SetupZoneObject(edgeMesh, m_zoneMaterial);
+            //List<Vector3> edgeVerts = new List<Vector3>();
+            //List<int> edgeIndices = new List<int>();
+            //GenerateEdgeMeshData(tileLocations, ref edgeVerts, ref edgeIndices, edgeVerts);
+            //Mesh edgeMesh = GenerateMesh(edgeVerts, edgeIndices);
+
+            return SetupZoneObject(insideMesh, m_zoneMaterial);
         }
 
         private void GenerateEdgeMeshData(Vector3[] tileLocations, ref List<Vector3> edgeVerts, ref List<int> edgeIndices, List<Vector3> insideVerts)
@@ -206,6 +201,14 @@ namespace DogHouse.ToonWorld.Services
         }
 
         private Mesh GenerateMesh(List<Vector3> verts, List<int> indices)
+        {
+            Mesh mesh = new Mesh();
+            mesh.SetVertices(verts);
+            mesh.SetTriangles(indices, 0);
+            return mesh;
+        }
+
+        private Mesh GenerateMesh(Vector3[] verts, int[] indices)
         {
             Mesh mesh = new Mesh();
             mesh.SetVertices(verts);
