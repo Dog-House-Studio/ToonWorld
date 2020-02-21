@@ -11,6 +11,11 @@ namespace DogHouse.ToonWorld.Services
      * the mesh zone service uses for the sorting
      * and creation of the zones.
      */
+
+    /// <summary>
+    /// CalculateTileVerts is a job that calculates
+    /// the inner tile verts and indices.
+    /// </summary>
     [BurstCompile(CompileSynchronously = true)]
     public struct CalculateTileVerts : IJobParallelFor
     {
@@ -63,6 +68,34 @@ namespace DogHouse.ToonWorld.Services
             indices[indiceIndex + 3] = vertIndex;
             indices[indiceIndex + 4] = vertIndex + 2;
             indices[indiceIndex + 5] = vertIndex + 3;
+        }
+    }
+    
+    [BurstCompile(CompileSynchronously = true)]
+    public struct FilterEdgePositions : IJobParallelForFilter
+    {
+        [NativeDisableParallelForRestriction]
+        [ReadOnly]
+        public NativeArray<Vector3> locations;
+
+        public bool Execute(int index)
+        {
+            int neighbourCount = 0;
+            float magnitude = 0f;
+
+            for (int i = 0; i != locations.Length; i++)
+            {
+                if (i == index) continue;
+                magnitude = (locations[i] - locations[index]).magnitude;
+
+                if (math.abs(1f - magnitude) < 0.01f)
+                {
+                    neighbourCount++;
+                }
+            }
+
+            if (neighbourCount == 4) return false;
+            return true;
         }
     }
 }
