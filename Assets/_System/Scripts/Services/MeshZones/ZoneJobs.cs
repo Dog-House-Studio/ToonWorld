@@ -2,6 +2,7 @@
 using Unity.Collections;
 using Unity.Burst;
 using Unity.Mathematics;
+using UnityEngine;
 
 namespace DogHouse.ToonWorld.Services
 {
@@ -14,10 +15,10 @@ namespace DogHouse.ToonWorld.Services
     public struct CalculateTileVerts : IJobParallelFor
     {
         [NativeDisableParallelForRestriction]
-        public NativeArray<float3> vertices;
+        public NativeArray<Vector3> vertices;
 
         [ReadOnly]
-        public NativeArray<float3> tileLocations;
+        public NativeArray<Vector3> tileLocations;
 
         [NativeDisableParallelForRestriction]
         public NativeArray<int> indices;
@@ -30,19 +31,19 @@ namespace DogHouse.ToonWorld.Services
             int vertIndex = index * 4;
             int indiceIndex = index * 6;
 
-            float3 vert1 = new float3();
+            Vector3 vert1 = new Vector3();
             vert1.z = tileLocations[index].z + offset;
             vert1.x = tileLocations[index].x + offset;
 
-            float3 vert2 = new float3();
+            Vector3 vert2 = new Vector3();
             vert2.z = tileLocations[index].z - offset;
             vert2.x = tileLocations[index].x + offset;
 
-            float3 vert3 = new float3();
+            Vector3 vert3 = new Vector3();
             vert3.z = tileLocations[index].z -  offset;
             vert3.x = tileLocations[index].x - offset;
 
-            float3 vert4 = new float3();
+            Vector3 vert4 = new Vector3();
             vert4.z = tileLocations[index].z + offset;
             vert4.x = tileLocations[index].x - offset;
 

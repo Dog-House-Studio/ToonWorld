@@ -105,54 +105,24 @@ namespace DogHouse.ToonWorld.Services
         {
             NativeArray<Vector3> vec3_vertices = new NativeArray<Vector3>(tileLocations.Length * 4, Allocator.TempJob);
             NativeArray<Vector3> vec3_tilePosition = new NativeArray<Vector3>(tileLocations, Allocator.TempJob);
-            NativeArray<float3> float3_vertices = new NativeArray<float3>(tileLocations.Length * 4, Allocator.TempJob);
-            NativeArray<float3> float3_tilePosition = new NativeArray<float3>(tileLocations.Length, Allocator.TempJob);
             NativeArray<int> indexes = new NativeArray<int>(tileLocations.Length * 6, Allocator.TempJob);
-
-            var vertexVec3ToFloat3 = new Vector3ToFloat3Job()
-            {
-                input = vec3_vertices,
-                output = float3_vertices
-            };
-
-            JobHandle verticeConversionHandle = vertexVec3ToFloat3.Schedule(vec3_vertices.Length, 8);
-       
-            var positionConversionJob = new Vector3ToFloat3Job()
-            {
-                input = vec3_tilePosition,
-                output = float3_tilePosition
-            };
-
-            JobHandle positionConversionHandle = positionConversionJob.Schedule(vec3_tilePosition.Length, 8);
-            JobHandle dependency = JobHandle.CombineDependencies(verticeConversionHandle, positionConversionHandle);
-
+            
             var job = new CalculateTileVerts()
             {
-                vertices = float3_vertices,
-                tileLocations = float3_tilePosition,
+                vertices = vec3_vertices,
+                tileLocations = vec3_tilePosition,
                 indices = indexes,
                 offset = 0.5f * m_tileSize
             };
 
-            JobHandle jobHandle = job.Schedule(tileLocations.Length, 8, dependency);
+            JobHandle jobHandle = job.Schedule(tileLocations.Length, 8);
             jobHandle.Complete();
-
-            var verticeConversionToVec3 = new Float3ToVector3Job()
-            {
-                input = float3_vertices,
-                output = vec3_vertices
-            };
-
-            JobHandle verticeConversionToVec3_Handle = verticeConversionToVec3.Schedule(float3_vertices.Length, 8);
-            verticeConversionToVec3_Handle.Complete();
-
+            
             vec3_vertices.CopyTo(verts);
             indexes.CopyTo(indices);
 
             vec3_vertices.Dispose();
             vec3_tilePosition.Dispose();
-            float3_vertices.Dispose();
-            float3_tilePosition.Dispose();
             indexes.Dispose();
         }
 
