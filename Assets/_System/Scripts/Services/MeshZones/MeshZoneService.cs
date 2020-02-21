@@ -122,10 +122,6 @@ namespace DogHouse.ToonWorld.Services
             vertices.Dispose();
             tilePosition.Dispose();
             indexes.Dispose();
-            //for (int i = 0; i < tileLocations.Length; i++)
-            //{
-            //    CalculateTileVerts(tileLocations[i], ref verts, ref indices);
-            //}
         }
 
         private void CalculateTileVerts(Vector3 location, ref List<Vector3> verts, ref List<int> indices)
