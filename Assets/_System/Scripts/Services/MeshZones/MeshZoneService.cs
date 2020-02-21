@@ -109,7 +109,16 @@ namespace DogHouse.ToonWorld.Services
             NativeArray<Vector3> vec3_vertices = new NativeArray<Vector3>(tileLocations.Length * 4, Allocator.TempJob);
             NativeArray<Vector3> vec3_tilePosition = new NativeArray<Vector3>(tileLocations, Allocator.TempJob);
             NativeArray<int> indexes = new NativeArray<int>(tileLocations.Length * 6, Allocator.TempJob);
-            
+
+            var offsetJob = new ApplyOffsetToVector3ArrayJob()
+            {
+                vecArray = vec3_tilePosition,
+                offset = m_tileOffset
+            };
+
+            JobHandle offsetHandle = offsetJob.Schedule(vec3_tilePosition.Length, 8);
+            offsetHandle.Complete();
+
             var job = new CalculateTileVerts()
             {
                 vertices = vec3_vertices,
@@ -120,7 +129,7 @@ namespace DogHouse.ToonWorld.Services
 
             JobHandle jobHandle = job.Schedule(tileLocations.Length, 8);
             jobHandle.Complete();
-            
+
             vec3_vertices.CopyTo(verts);
             indexes.CopyTo(indices);
 

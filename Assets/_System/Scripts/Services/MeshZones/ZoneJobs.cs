@@ -32,18 +32,22 @@ namespace DogHouse.ToonWorld.Services
             int indiceIndex = index * 6;
 
             Vector3 vert1 = new Vector3();
+            vert1.y = tileLocations[index].y;
             vert1.z = tileLocations[index].z + offset;
             vert1.x = tileLocations[index].x + offset;
 
             Vector3 vert2 = new Vector3();
+            vert2.y = tileLocations[index].y;
             vert2.z = tileLocations[index].z - offset;
             vert2.x = tileLocations[index].x + offset;
 
             Vector3 vert3 = new Vector3();
+            vert3.y = tileLocations[index].y;
             vert3.z = tileLocations[index].z -  offset;
             vert3.x = tileLocations[index].x - offset;
 
             Vector3 vert4 = new Vector3();
+            vert4.y = tileLocations[index].y;
             vert4.z = tileLocations[index].z + offset;
             vert4.x = tileLocations[index].x - offset;
 
