@@ -41,7 +41,10 @@ namespace DogHouse.ToonWorld.Services
         {
             Vector3[] insideVerts = new Vector3[tileLocations.Length * 4];
             int[] insideIndices = new int[tileLocations.Length * 6];
+
+            float startTime = Time.realtimeSinceStartup;
             GenerateInsideMeshData(tileLocations, ref insideVerts, ref insideIndices);
+            UnityEngine.Debug.Log((Time.realtimeSinceStartup - startTime) * 1000f);
 
             Mesh insideMesh = GenerateMesh(insideVerts, insideIndices);
 
