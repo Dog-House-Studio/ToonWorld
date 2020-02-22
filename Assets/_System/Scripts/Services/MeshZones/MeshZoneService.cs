@@ -142,48 +142,7 @@ namespace DogHouse.ToonWorld.Services
             return mesh;
         }
 
-        private List<Vector3> DeterminePermimeterTiles(Vector3[] edgeTiles, List<Vector3> allLocations)
-        {
-            List<Vector3> perimeterTiles = new List<Vector3>();
-
-            //Add a tile on every side of the edge tiles
-            for (int i = 0; i < edgeTiles.Length; i++)
-            {
-                perimeterTiles.Add(edgeTiles[i] + Vector3.left);
-                perimeterTiles.Add(edgeTiles[i] + Vector3.right);
-                perimeterTiles.Add(edgeTiles[i] + Vector3.forward);
-                perimeterTiles.Add(edgeTiles[i] + Vector3.back);
-            }
-
-            //Remove duplicate locations compared to allLocations
-            foreach (Vector3 tile in allLocations)
-            {
-                for (int i = perimeterTiles.Count - 1; i >= 0; i--)
-                {
-                    if (Vector3.Distance(tile, perimeterTiles[i]) < (m_tileSize * 0.5f))
-                    {
-                        perimeterTiles.RemoveAt(i);
-                    }
-                }
-            }
-
-            //Remove duplicate locations compared to other perimeter tiles
-            for (int i = perimeterTiles.Count - 1; i >= 1; i--)
-            {
-                for (int j = i - 1; j >= 0; j--)
-                {
-                    if (Vector3.Distance(perimeterTiles[i], perimeterTiles[j]) < (m_tileSize * 0.5f))
-                    {
-                        perimeterTiles.RemoveAt(i);
-                        break;
-                    }
-                }
-            }
-
-            return perimeterTiles;
-        }
-
-        private List<Vector3> CalculateEdgeVertices(Vector3[] edgeTiles, List<Vector3> perimeterTiles)
+        private List<Vector3> CalculateEdgeVertices(Vector3[] edgeTiles, Vector3[] perimeterTiles)
         {
             List<Vector3> edgeTileVertices = new List<Vector3>();
             List<int> edgeTileIndices = new List<int>();
@@ -194,7 +153,7 @@ namespace DogHouse.ToonWorld.Services
 
             List<Vector3> perimeterVertices = new List<Vector3>();
             List<int> perimeterIndices = new List<int>();
-            for (int i = 0; i < perimeterTiles.Count; i++)
+            for (int i = 0; i < perimeterTiles.Length; i++)
             {
                 CalculateTileVerts(perimeterTiles[i], ref perimeterVertices, ref perimeterIndices);
             }
@@ -391,6 +350,23 @@ namespace DogHouse.ToonWorld.Services
             }
             return result;
         }
+
+        private Vector3[] ApplyPositionOffset(Vector3[] vecArray)
+        {
+            NativeArray<Vector3> vec = new NativeArray<Vector3>(vecArray, Allocator.TempJob);
+            var job = new ApplyOffsetToVector3ArrayJob()
+            {
+                vecArray = vec,
+                offset = m_tileOffset
+            };
+
+            JobHandle handle = job.Schedule(vecArray.Length, 8);
+            handle.Complete();
+
+            vec.CopyTo(vecArray);
+            vec.Dispose();
+            return vecArray;
+        }
         #endregion
 
         #region Inside Logic
@@ -439,15 +415,26 @@ namespace DogHouse.ToonWorld.Services
 
             for (int j = 0; j < separatedTileLocations.Count; j++)
             {
-                float startTime = Time.realtimeSinceStartup;
-                Vector3[] edgeTiles = ExtractEdgeTiles(separatedTileLocations[j].ToArray());
-                UnityEngine.Debug.Log((Time.realtimeSinceStartup - startTime) * 1000f);
+                Vector3[] locations = separatedTileLocations[j].ToArray();
+                locations = ApplyPositionOffset(locations);
 
-                List<Vector3> perimeterTiles = DeterminePermimeterTiles(edgeTiles, separatedTileLocations[j]);
-                List<Vector3> edgeVertices = CalculateEdgeVertices(edgeTiles, perimeterTiles);
-                List<Connection> connections = GenerateConnections(edgeVertices, separatedTileLocations[j]);
+                Vector3[] edgeTiles = ExtractEdgeTiles(locations);
 
-#if UNITY_EDITOR
+                //float startTime = Time.realtimeSinceStartup;
+                //Vector3[] perimeterTiles = DeterminePermimeterTiles(edgeTiles, locations);
+                //UnityEngine.Debug.Log((Time.realtimeSinceStartup - startTime) * 1000f);
+            
+                //List<Vector3> edgeVertices = CalculateEdgeVertices(edgeTiles, perimeterTiles);
+                //List<Connection> connections = GenerateConnections(edgeVertices, separatedTileLocations[j]);
+
+                #if UNITY_EDITOR
+                for(int i = 0; i < edgeTiles.Length; i++)
+                {
+                    GameObject point = Instantiate(m_cubePrefab);
+                    point.transform.position = edgeTiles[i];
+                }
+
+                /*
                 for (int i = 0; i < connections.Count; i++)
                 {
                     GameObject point = Instantiate(m_cubePrefab);
@@ -476,9 +463,10 @@ namespace DogHouse.ToonWorld.Services
                     ConnectionPointVisualization visualizer = point.GetComponent<ConnectionPointVisualization>();
                     visualizer.connection = connections[i];
                 }
-#endif
+                */
+                #endif
 
-                m_rings.AddRange(GenerateConnectionRings(connections));
+                //m_rings.AddRange(GenerateConnectionRings(connections));
             }
         }
 
@@ -522,6 +510,67 @@ namespace DogHouse.ToonWorld.Services
             edgeLocations.Dispose();
             edgeIndexes.Dispose();
             return edge;
+        }
+
+        private Vector3[] DeterminePermimeterTiles(Vector3[] edgeTiles, Vector3[] allLocations)
+        {
+            NativeArray<Vector3> _tileLocations = new NativeArray<Vector3>(allLocations, Allocator.TempJob);
+            NativeArray<Vector3> _perimeterTiles = new NativeArray<Vector3>(allLocations.Length * 4, Allocator.TempJob);
+            NativeArray<Vector3> _edgeTiles = new NativeArray<Vector3>(edgeTiles, Allocator.TempJob);
+            NativeList<int> _resultFilter = new NativeList<int>(allLocations.Length * 4, Allocator.TempJob);
+
+            var job_setupFilter = new InitializeSequentialIntNativeList()
+            {
+                input = _resultFilter,
+                count = allLocations.Length * 4
+            };
+
+            JobHandle handle_filterSetup = job_setupFilter.Schedule();
+
+            var job_generateTiles = new GeneratePerimeterTiles()
+            {
+                edgeTiles = _edgeTiles,
+                allLocations = _tileLocations,
+                perimeterTiles = _perimeterTiles,
+                distanceAmount = m_tileSize * 0.5f
+            };
+
+            JobHandle handle_generateTiles = job_generateTiles.Schedule(edgeTiles.Length, 32);
+            JobHandle handle_Dependency = JobHandle.CombineDependencies(handle_filterSetup, handle_generateTiles);
+            
+
+            var job_filterPerimeter = new FilterLegalPerimeterTileLocations()
+            {
+                perimeterTiles = _perimeterTiles,
+                distanceAmount = m_tileSize * 0.5f
+            };
+
+            JobHandle handle_filterPerimeter 
+                = job_filterPerimeter.ScheduleFilter(_resultFilter, 16, handle_Dependency);
+
+            NativeList<Vector3> _resultList 
+                = new NativeList<Vector3>(allLocations.Length * 4, Allocator.TempJob);
+
+            var job_ApplyFilter = new ApplyNativeListFilterVector3_Deferred()
+            {
+                originalCollection = _perimeterTiles,
+                indexCollection = _resultFilter.AsDeferredJobArray(),
+                filteredList = _resultList
+            };
+
+            JobHandle handle_ApplyFilter = job_ApplyFilter.Schedule(handle_filterPerimeter);
+            handle_ApplyFilter.Complete();
+
+            Vector3[] resultArray = new Vector3[_resultList.Length];
+            resultArray = _resultList.ToArray();
+
+            _resultFilter.Dispose();
+            _resultList.Dispose();
+            _tileLocations.Dispose();
+            _perimeterTiles.Dispose();
+            _edgeTiles.Dispose();
+
+            return resultArray;
         }
         #endregion
     }

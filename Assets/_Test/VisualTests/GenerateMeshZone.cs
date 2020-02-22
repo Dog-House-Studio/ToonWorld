@@ -28,6 +28,6 @@ public class GenerateMeshZone : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)) GenerateZone();
+        if (Input.GetKeyUp(KeyCode.P)) GenerateZone();
     }
 }

@@ -23,4 +23,15 @@ namespace DogHouse.ToonWorld.Jobs
             }
         }
     }
+
+    [BurstCompile(CompileSynchronously = true)]
+    public struct InitializeSequentialIntNativeArray : IJobParallelFor
+    {
+        public NativeArray<int> input;
+
+        public void Execute(int index)
+        {
+            input[index] = index;
+        }
+    }
 }

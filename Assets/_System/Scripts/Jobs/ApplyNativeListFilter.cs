@@ -29,4 +29,24 @@ namespace DogHouse.ToonWorld.Jobs
             }
         }
     }
+
+    public struct ApplyNativeListFilterVector3_Deferred : IJob
+    {
+        [ReadOnly]
+        public NativeArray<Vector3> originalCollection;
+
+        [ReadOnly]
+        public NativeArray<int> indexCollection;
+
+        [WriteOnly]
+        public NativeList<Vector3> filteredList;
+
+        public void Execute()
+        {
+            for (int i = 0; i != indexCollection.Length; i++)
+            {
+                filteredList.Add(originalCollection[indexCollection[i]]);
+            }
+        }
+    }
 }

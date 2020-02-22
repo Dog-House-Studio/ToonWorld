@@ -98,4 +98,79 @@ namespace DogHouse.ToonWorld.Services
             return true;
         }
     }
+
+    /// <summary>
+    /// GenreatePerimeterTiles is a job that generates a perimeter
+    /// tile on all sides of an edge tile.
+    /// </summary>
+    [BurstCompile(CompileSynchronously = true)]
+    public struct GeneratePerimeterTiles : IJobParallelFor
+    {
+        [ReadOnly]
+        public NativeArray<Vector3> edgeTiles;
+
+        [NativeDisableParallelForRestriction]
+        [ReadOnly]
+        public NativeArray<Vector3> allLocations;
+
+        [NativeDisableParallelForRestriction]
+        public NativeArray<Vector3> perimeterTiles;
+
+        public float distanceAmount;
+
+        public void Execute(int index)
+        {
+            int lowBounds = index * 4;
+            perimeterTiles[lowBounds] = edgeTiles[index] + Vector3.left;
+            perimeterTiles[lowBounds + 1] = edgeTiles[index] + Vector3.right;
+            perimeterTiles[lowBounds + 2] = edgeTiles[index] + Vector3.forward;
+            perimeterTiles[lowBounds + 3] = edgeTiles[index] + Vector3.back;
+
+            float magnitude = 0f;
+
+            for(int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < allLocations.Length; j++)
+                {
+                    magnitude = (perimeterTiles[lowBounds + i] - allLocations[j]).magnitude;
+                    if(magnitude < distanceAmount)
+                    {
+                        perimeterTiles[lowBounds + i] = Vector3.negativeInfinity;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    [BurstCompile(CompileSynchronously = true)]
+    public struct FilterLegalPerimeterTileLocations : IJobParallelForFilter
+    {
+        [ReadOnly]
+        [NativeDisableParallelForRestriction]
+        public NativeArray<Vector3> perimeterTiles;
+
+        [ReadOnly]
+        public float distanceAmount;
+
+        public bool Execute(int index)
+        {
+            if(Vector3.negativeInfinity == perimeterTiles[index])
+            {
+                return false;
+            }
+
+            float magnitude = 0f;
+            for(int i = index + 1; i != perimeterTiles.Length; i++)
+            {
+                magnitude = (perimeterTiles[index] - perimeterTiles[i]).magnitude;
+                if(math.abs(1f - magnitude) < distanceAmount)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+    }
 }
