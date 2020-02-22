@@ -155,7 +155,7 @@ namespace DogHouse.ToonWorld.Services
 
         public bool Execute(int index)
         {
-            if(Vector3.negativeInfinity == perimeterTiles[index])
+            if(float.IsNegativeInfinity(perimeterTiles[index].x))
             {
                 return false;
             }
@@ -164,7 +164,7 @@ namespace DogHouse.ToonWorld.Services
             for(int i = index + 1; i != perimeterTiles.Length; i++)
             {
                 magnitude = (perimeterTiles[index] - perimeterTiles[i]).magnitude;
-                if(math.abs(1f - magnitude) < distanceAmount)
+                if(magnitude < distanceAmount)
                 {
                     return false;
                 }

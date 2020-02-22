@@ -421,17 +421,17 @@ namespace DogHouse.ToonWorld.Services
                 Vector3[] edgeTiles = ExtractEdgeTiles(locations);
 
                 //float startTime = Time.realtimeSinceStartup;
-                //Vector3[] perimeterTiles = DeterminePermimeterTiles(edgeTiles, locations);
+                Vector3[] perimeterTiles = DeterminePermimeterTiles(edgeTiles, locations);
                 //UnityEngine.Debug.Log((Time.realtimeSinceStartup - startTime) * 1000f);
             
                 //List<Vector3> edgeVertices = CalculateEdgeVertices(edgeTiles, perimeterTiles);
                 //List<Connection> connections = GenerateConnections(edgeVertices, separatedTileLocations[j]);
 
                 #if UNITY_EDITOR
-                for(int i = 0; i < edgeTiles.Length; i++)
+                for(int i = 0; i < perimeterTiles.Length; i++)
                 {
                     GameObject point = Instantiate(m_cubePrefab);
-                    point.transform.position = edgeTiles[i];
+                    point.transform.position = perimeterTiles[i];
                 }
 
                 /*
